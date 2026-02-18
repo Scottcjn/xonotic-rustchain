@@ -1,0 +1,40 @@
+services:
+  xonotic:
+    build:
+      context: ..
+      dockerfile: deploy/Dockerfile
+    image: xonotic-rustchain:latest
+    container_name: xonotic-rustchain
+    restart: unless-stopped
+    ports:
+      - "26000:26000/udp"
+    volumes:
+      - xonotic_data:/opt/xonotic/data
+      - ./server_config:/opt/xonotic/server_config_mount
+    environment:
+      - DISCORD_TOKEN=${DISCORD_TOKEN}
+      - ENABLE_ML=true
+      - ENABLE_LLM=true
+      - OLLAMA_HOST=http://ollama:11434
+    depends_on:
+      - ollama
+
+  ollama:
+    image: ollama/ollama:latest
+    container_name: xonotic-ollama
+    volumes:
+      - ollama_data:/root/.ollama
+    ports:
+      - "11434:11434"
+    # Optional: GPU support if host has Nvidia
+    # deploy:
+    #   resources:
+    #     reservations:
+    #       devices:
+    #         - driver: nvidia
+    #           count: 1
+    #           capabilities: [gpu]
+
+volumes:
+  xonotic_data:
+  ollama_data:
