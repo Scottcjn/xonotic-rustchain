@@ -1,0 +1,116 @@
+#!/bin/sh
+
+# usage: compress-texture tool compression in.png out.dds
+# example: compress-texture compressonator dxt1 foo.jpg foo.dds
+
+echo >&2 "$0 $*"
+
+tool=$1; shift
+format=$1; shift
+src=$1; shift
+dst=$1; shift
+
+ext=${src##*.}
+
+c=
+f=
+
+fourcchack=
+case "$tool" in
+	compressonator-dxtc|crunch)
+		# We still have to preprocess the image to premultiply alpha, as it seems
+		case "$format" in
+			dxt2)
+				fourcchack=DXT2
+				format=dxt2
+				;;
+			dxt4)
+				fourcchack=DXT4
+				format=dxt4
+				;;
+		esac
+		;;
+	compressonator-atic|nvcompress|s2tc)
+		# These tools don't support DXT2/4 at all.
+		case "$format" in
+			dxt2)
+				fourcchack=DXT2
+				format=dxt3
+				;;
+			dxt4)
+				fourcchack=DXT4
+				format=dxt5
+				;;
+		esac
+		;;
+	*)
+		echo >&2 "Please figure out the DXT2/DXT4 story for $tool."
+		;;
+esac
+
+if [ -n "$fourcchack" ]; then
+	fourcchack_dir=`mktemp -d`
+	convert "$src" -auto-orient -fx "u*u.a" -type TrueColorMatte "$fourcchack_dir/src.$ext"
+	src="$fourcchack_dir/src.$ext"
+fi
+
+case "$tool" in
+	compressonator-dxtc|compressonator-atic)
+		case "$tool" in
+			*-dxtc) c="-codec DXTC.dll" ;;
+			*-atic) c="-codec ATICompressor.dll" ;;
+		esac
+		case "$format" in
+			dxt1) f="+fourCC DXT1" ;;
+			dxt2) f="+fourCC DXT2" ;;
+			dxt3) f="+fourCC DXT3" ;;
+			dxt4) f="+fourCC DXT4" ;;
+			dxt5) f="+fourCC DXT5" ;;
+		esac
+		dir=`mktemp -d "$HOME/.wine/drive_c/compressonator.XXXXXX"`
+		dir_dos="C:/${dir##*/}"
+		cp "$src" "$dir/src.$ext"
+
+		# compressonator and wine suck, so we sometimes have to retry :(
+		for retry in 1 2 3 4 5; do
+			wine "c:/Program Files/AMD/The Compressonator 1.50/TheCompressonator.exe" -convert -mipmaps "$dir_dos/src.$ext" "$dir_dos/dst.dds" $c $f "$@" -mipper BoxFilter.dll
+			if mv "$dir/dst.dds" "$dst"; then
+				break
+			fi
+		done
+		rm -rf "$dir"
+		[ -f "$dst" ]
+		;;
+	nvcompress)
+		case "$format" in
+			dxt1) f="-bc1" ;;
+			dxt3) f="-alpha -bc3" ;;
+			dxt5) f="-alpha -bc5" ;;
+		esac
+		nvcompress $f "$@" "$src" "$dst"
+		;;
+	s2tc)
+		case "$format" in
+			dxt1) f="-t DXT1" ;;
+			dxt3) f="-t DXT3" ;;
+			dxt5) f="-t DXT5" ;;
+		esac
+		s2tc_compress $f "$@" -i "$src" -o "$dst"
+		;;
+	crunch)
+		case "$format" in
+			dxt1) f="-DXT1" ;;
+			dxt2) f="-DXT2" ;;
+			dxt3) f="-DXT3" ;;
+			dxt4) f="-DXT4" ;;
+			dxt5) f="-DXT5" ;;
+		esac
+		crunch $f "$@" -noprogress -nostats -quality 255 -mipMode Generate -dxtQuality uber $CRUNCH_TEXTYPEFLAGS -file "$src" -out "$dst"
+		;;
+esac
+
+if [ -n "$fourcchack" ]; then
+	# use dd to hack in the right FOURCC
+	echo -n "$fourcchack" | dd of="$dst" bs=1 count=4 seek=84 conv=notrunc
+	rm -rf "$fourcchack_dir"
+fi

@@ -1,0 +1,24 @@
+// Simple box map - a sealed hollow room
+// Based on NetRadiant output format
+{
+"classname" "worldspawn"
+"message" "Simple Box Arena"
+"author" "RustChain DevKit"
+"_ambient" "100"
+"_minlight" "100"
+// Floor at z=0, thickness 32, extends from -512,-512 to 512,512
+{
+( 512 512 0 ) ( -512 512 0 ) ( -512 -512 0 ) trak4x/base/base_concrete3 0 0 0 0.25 0.25 0 0 0
+( -512 -512 -32 ) ( -512 512 -32 ) ( 512 512 -32 ) common/caulk 0 0 0 0.25 0.25 0 0 0
+( -512 512 0 ) ( 512 512 0 ) ( 512 512 -32 ) common/caulk 0 0 0 0.25 0.25 0 0 0
+( 512 512 0 ) ( 512 -512 0 ) ( 512 -512 -32 ) common/caulk 0 0 0 0.25 0.25 0 0 0
+( 512 -512 0 ) ( -512 -512 0 ) ( -512 -512 -32 ) common/caulk 0 0 0 0.25 0.25 0 0 0
+( -512 -512 0 ) ( -512 512 0 ) ( -512 512 -32 ) common/caulk 0 0 0 0.25 0.25 0 0 0
+}
+}
+// Spawn Point - Center
+{
+"classname" "info_player_deathmatch"
+"origin" "0 0 32"
+"angle" "0"
+}

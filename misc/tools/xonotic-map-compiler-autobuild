@@ -1,0 +1,442 @@
+#!/bin/sh
+
+set -e
+
+bspdir="$PWD/data"
+url_http=https://beta.xonotic.org/autobuild-bsp/
+url_ssh=xonotic-beta:./
+build_cachedir="$HOME/xonotic-map-compiler.cache/"
+screenshot_cachedir="$HOME/xonotic-map-screenshot.cache/"
+build_override="-bsp_timeout 3600 -vis_timeout 10800 -light_timeout 18000 -minimap_timeout 900 -scale_timeout 900 -timeout_stealing 0.8"
+screenshot_override="9 900 5 +g_ctf 1"
+
+getthemap_fail=false
+
+allmaps()
+{
+	commithash=$1
+	shift
+	for F in `git show "${commithash}:maps/"`; do
+		case "$F" in
+			*.map.options)
+				;;
+			*)
+				continue
+				;;
+		esac
+		M=${F%.map.options}
+		blobhash=`git rev-parse --revs-only "${commithash}:maps/$M.map.options" || true`-`git rev-parse --revs-only "${commithash}:maps/$M.map" || true`
+		case "$blobhash" in
+			-*)
+				;;
+			*-)
+				;;
+			*)
+				"$@" "$M" "$blobhash" "$commithash"
+				;;
+		esac
+	done
+}
+
+pre2spam()
+{
+	map=$1
+	url=$2
+	branch=$3
+	hash=$4
+	lasttime_formatted=$5
+
+	branch=${branch##refs/heads/}
+	branch=${branch##refs/remotes/}
+	branch=${branch##origin/}
+	hash=`echo "$hash" | cut -c 1-7`
+
+	echo -n "[<font color=\"#FF00FF\">$branch</font> $hash] starting map compile of $map"
+	if [ -n "$lasttime_formatted" ]; then
+		echo ", last time it took $lasttime_formatted"
+	else
+		echo
+	fi
+}
+
+ss2spam()
+{
+	map=$1
+	url=$2
+	branch=$3
+	hash=$4
+	status=$5
+
+	branch=${branch##refs/heads/}
+	branch=${branch##refs/remotes/}
+	branch=${branch##origin/}
+	hash=`echo "$hash" | cut -c 1-7`
+
+	s_error=
+
+	if [ "$status" -ne 0 ]; then
+		s_error="exited with status $status"
+	fi
+
+	if [ -n "$s_error" ]; then
+		echo "[<font color=\"#FF00FF\">$branch</font> $hash] screenshots of $map <font color=\"#FF0000\">could not be taken: $s_error</font>"
+	else
+		echo "[<font color=\"#FF00FF\">$branch</font> $hash] screenshots of $map <a href=\"$url\">are available</a>"
+	fi
+}
+
+log2spam()
+{
+	map=$1
+	url=$2
+	branch=$3
+	hash=$4
+	status=$5
+	time=$6
+
+	hash=`echo "$hash" | cut -c 1-7`
+
+	branch=${branch##refs/heads/}
+	branch=${branch##refs/remotes/}
+	branch=${branch##origin/}
+
+	s_samplesize=
+	s_failshaders=
+	s_leaked=
+	s_error=
+
+	if [ "$status" -ne 0 ]; then
+		s_error="exited with status $status"
+	fi
+	while IFS= read -r L; do
+		case "$L" in
+			WARNING:\ surface\ at\ *\ too\ large\ for\ desired\ samplesize*)
+				s=${L##* }
+				if [ -z "$s_samplesize" ] || [ "$s" -gt "$s_samplesize" ]; then
+					s_samplesize=$s
+				fi
+				;;
+			WARNING:\ Couldn\'t\ find\ image\ for\ shader\ textures/NULL)
+				# radiant stupid
+				;;
+			WARNING:\ Couldn\'t\ find\ image\ for\ shader\ *)
+				s_failshaders="$s_failshaders ${L##* }"
+				;;
+			ERROR:\ *)
+				if [ -z "$s_error" ]; then
+					s_error=$L
+				fi
+				;;
+			'******* leaked *******')
+				s_leaked=1
+				;;
+			'************ ERROR ************')
+				IFS= read -r s_error
+				;;
+		esac
+	done
+	s_failshaders=`echo "$s_failshaders" | sed "s, textures/, ,g"`
+	s_failshaders=${s_failshaders# }
+	if [ -n "$s_error" ]; then
+		echo -n "[<font color=\"#FF00FF\">$branch</font> $hash] <font color=\"#FF0000\">failed</font>"
+	else
+		echo -n "[<font color=\"#FF00FF\">$branch</font> $hash] <font color=\"#00FF00\">finished</font>"
+	fi
+	printf " map compile of <a href=\"$url\">$map</a> in %d:%02d:%02d" $((time/3600)) $((time%3600/60)) $((time%60))
+	if [ -n "$s_samplesize" ]; then
+		echo -n "<br><font color=\"#FF0000\">FIX samplesize >= $s_samplesize</font>"
+	fi
+	if [ -n "$s_failshaders" ]; then
+		if [ -n "`echo "$s_failshaders" | cut -d ' ' -f 4-`" ]; then
+			s_failshaders="`echo "$s_failshaders" | cut -d ' ' -f 1-3`..."
+		fi
+		echo -n "<br><font color=\"#FF0000\">FIX shaders $s_failshaders</font>"
+	fi
+	if [ -n "$s_leaked" ]; then
+		echo -n "<br><font color=\"#FF0000\">FIX LEAK</font>"
+	fi
+	if [ -n "$s_error" ]; then
+		s_error=`echo "$s_error" | sed "s,$PWD/\?,,g"`
+		echo -n "<br><font color=\"#FF0000\">ERROR: $s_error</font>"
+	fi
+	echo
+}
+
+buildthemap()
+{
+	REFNAME=$1
+	url=$2
+	M=$3
+	blobhash=$4
+	commithash=$5
+	if lwp-request -m HEAD "$url$M-$blobhash.pk3"; then
+		# already compiled
+		return
+	fi
+
+	git reset --hard
+	git clean -xfd
+	git checkout -f "$commithash"
+
+	mkdir -p ~/.xonotic-map-compiler-autobuild/ # to store map compile times in
+	lasttime=`cat ~/.xonotic-map-compiler-autobuild/"${M##*/}".buildtime 2>/dev/null || true`
+	if [ -n "$lasttime" ] ; then
+		lasttime_formatted=$(printf '%d:%02d:%02d' $((lasttime/3600)) $((lasttime%3600/60)) $((lasttime%60)) )
+		echo "Previous build took $lasttime_formatted"
+	fi
+	if [ -n "$IRCSPAM" ]; then
+		pre2spam "$M" "$url$M-$blobhash.pk3" "$REFNAME" "$commithash" "$lasttime_formatted" | $IRCSPAM || true
+	fi
+
+	t0=`date +%s`
+
+	# It's sad that we must enforce this rule by code.
+	if grep -- '-nosRGB' "maps/$M.map.options" >/dev/null; then
+		is_nosrgb=true
+	else
+		is_nosrgb=false
+	fi
+	allow_build=true
+	if $is_nosrgb; then
+		case "$REFNAME" in
+			master|refs/heads/master|origin/master|refs/remotes/origin/master)
+				if [ -n "$IRCSPAM" ]; then
+					echo "4ERROR: map $M uses -nosRGB. This is not acceptable in master. Please fix." | $IRCSPAM || true
+				fi
+				allow_build=false
+				;;
+			*)
+				if [ -n "$IRCSPAM" ]; then
+					echo "4WARNING: map $M uses -nosRGB. This is not acceptable in master. Please fix." | $IRCSPAM || true
+				fi
+				;;
+		esac
+	fi
+
+	set +e
+	$allow_build && (
+		cd ../..
+		misc/tools/xonotic-map-compiler-optionsfile "data/xonotic-maps.pk3dir/maps/$M" $build_override > "data/xonotic-maps.pk3dir/maps/$M.log" 2>&1
+	)
+	status=$?
+	set -e
+	if ! [ -f "maps/$M.bsp" ]; then
+		echo >>"maps/$M.log" "ERROR: No BSP file"
+	fi
+	t1=`date +%s`
+	dt=$(($t1 - $t0))
+	if [ -n "$IRCSPAM" ]; then
+		cat "maps/$M.log" | log2spam "$M" "$url$M-$blobhash.pk3" "$REFNAME" "$commithash" "$status" "$dt" > "maps/$M.irc"
+	fi
+	if [ $status -eq 0 ]; then
+		echo "$dt" > ~/.xonotic-map-compiler-autobuild/"${M##*/}".buildtime # save time in ~/.xonotic-map-compiler-autobuild/mapname
+	fi
+	zip -9r "$M-$blobhash.pk3" "maps/$M.bsp" "maps/$M.log" "maps/$M.irc" "maps/$M/" "maps/$M.lin" "gfx/${M}_mini.tga"
+	ln -snf "../$M-$blobhash.pk3" "$M.pk3" # from ALL branches, so beware!
+	cp "$M-$blobhash.pk3" "$M-full-$blobhash.pk3"
+	zip -9r "$M-full-$blobhash.pk3" `git diff --name-only --diff-filter=ACMRTUXB master...HEAD` || true
+	ln -snf "../$M-full-$blobhash.pk3" "$M-full.pk3" # from ALL branches, so beware!
+	rsync -vaSHP "$M-$blobhash.pk3" "$M-full-$blobhash.pk3" "$url_ssh"
+	rsync -vaSHP "$M.pk3" "$M-full.pk3" "$url_ssh""latest/"
+	if [ -n "$IRCSPAM" ]; then
+		$IRCSPAM < "maps/$M.irc" || true
+	fi
+	if [ -n "$BUILD_ONE" ]; then
+		exit
+	fi
+}
+
+screenshotthemap()
+{
+	REFNAME=$1
+	url=$2
+	M=$3
+	blobhash=$4
+	commithash=$5
+	if ! [ -f "$bspdir/$M-$blobhash.pk3" ]; then
+		# not downloaded yet
+		return
+	fi
+
+	if lwp-request -m HEAD "$url$M-$blobhash/$M-000000.jpg"; then
+		# already done
+		return
+	fi
+
+	if ! unzip -l "$bspdir/$M-$blobhash.pk3" "maps/$M.bsp"; then
+		# no BSP file
+		return
+	fi
+
+	rm -rf ~/.xonotic/data
+	mkdir -p ~/.xonotic/data
+	(
+		cd ../..
+		if [ -n "$DISPLAY" ]; then
+			misc/tools/xonotic-map-screenshot "$M" $screenshot_override $DRIVERFLAGS +"scr_screenshot_name \"$M-\""
+		else
+			case "$DRIVER" in
+				gl)
+					startx "$PWD/misc/tools/xonotic-map-screenshot" "$M" $screenshot_override $DRIVERFLAGS +"scr_screenshot_name \"$M-\"" -- :8
+					;;
+				soft|*)
+					startx "$PWD/misc/tools/xonotic-map-screenshot" "$M" $screenshot_override +"vid_soft 1" $DRIVERFLAGS +"scr_screenshot_name \"$M-\"" -- /usr/bin/Xvfb :8 -screen 0 1024x768x24
+					;;
+			esac
+		fi
+	) 2>&1 | tee ~/.xonotic/data/autoscreenshot.log
+	good=false
+	if mv ~/.xonotic/data/screenshots "$M-$blobhash"; then
+		ss2spam "$M" "$url$M-$blobhash/" "$REFNAME" "$commithash" 0 > ~/.xonotic/data/"$M.ircss"
+	else
+		mkdir "$M-$blobhash"
+		ss2spam "$M" "$url$M-$blobhash/" "$REFNAME" "$commithash" 1 > ~/.xonotic/data/"$M.ircss"
+	fi
+	mv ~/.xonotic/data/"$M.ircss" "$M-$blobhash"/
+	mv ~/.xonotic/data/autoscreenshot.log "$M-$blobhash"/
+	chmod 1777 "$M-$blobhash"
+	ln -snf "../$M-$blobhash" "$M" # from ALL branches, so beware!
+	rsync -vaSHP "$M-$blobhash" "$url_ssh"
+	rsync -vaSHP "$M" "$url_ssh""latest/"
+	if [ -n "$IRCSPAM" ]; then
+		# It takes about 5 minutes for the server to update.
+		sleep 360  # Cut it one more minute of slack.
+
+		$IRCSPAM < "$M-$blobhash/$M.ircss" || true
+	fi
+	if [ -n "$BUILD_ONE" ]; then
+		exit
+	fi
+}
+
+getthemap()
+{
+	url=$1
+	bspdir_old=$2
+	bspdir=$3
+	M=$4
+	blobhash=$5
+	commithash=$6
+	if mv "$bspdir_old/$M-$blobhash.pk3" "$bspdir/$M-$blobhash.pk3"; then
+		if unzip -l "$bspdir/$M-$blobhash.pk3" >/dev/null 2>&1; then
+			return 0
+		fi
+	fi
+	if ! wget -c -O "$bspdir/$M-$blobhash.pk3" "$url$M-$blobhash.pk3"; then
+		if ! curl -Lo "$bspdir/$M-$blobhash.pk3" "$url$M-$blobhash.pk3"; then
+			rm -f "$bspdir/$M-$blobhash.pk3"
+			echo "WARNING: could not download $url$M-$blobhash.pk3, maybe not ready yet"
+			getthemap_fail=true
+			return 0
+		fi
+	fi
+	if ! unzip -l "$bspdir/$M-$blobhash.pk3"; then
+		rm -f "$bspdir/$M-$blobhash.pk3"
+		echo "WARNING: could not download $url$M-$blobhash.pk3, invalid zip file"
+		getthemap_fail=true
+		return 0
+	fi
+}
+
+indexthemap()
+{
+	REFNAME=$1
+	M=$2
+	blobhash=$3
+	commithash=$4
+	echo "$M $blobhash $commithash $REFNAME"
+}
+
+rundownload()
+{
+	mkdir -p "$bspdir" "$bspdir.old"
+	for b in "$bspdir"/*-????????????????????????????????????????-????????????????????????????????????????.pk3; do
+		if [ -e "$b" ]; then
+			mv "$b" "$bspdir.old"/
+		fi
+	done
+	allmaps "HEAD" getthemap "$url_http" "$bspdir.old" "$bspdir"
+}
+
+branches()
+{
+	git for-each-ref 'refs/remotes' | grep -vE '	refs/remotes/([^/]*/HEAD|.*/archived/.*)$'
+}
+
+runmakeindex()
+{
+	cd data/xonotic-maps.pk3dir
+	branches | while read -r HASH TYPE REFNAME; do
+		allmaps "$HASH" indexthemap "$REFNAME"
+	done
+	cd ../..
+}
+
+case "$1" in
+	build)
+		cd data/xonotic-maps.pk3dir
+		branches | while read -r HASH TYPE REFNAME; do
+			if [ -f "$build_cachedir/$HASH" ]; then
+				continue
+			fi
+			allmaps "$HASH" buildthemap "$REFNAME" "$url_http"
+			touch "$build_cachedir/$HASH"
+		done
+		git checkout -f master
+		;;
+	screenshot)
+		runmakeindex > "branches.idx.new"
+		rsync -vaSHP "branches.idx.new" "$url_ssh""branches.idx.new"
+		rm -f "branches.idx.new"
+		cd data/xonotic-maps.pk3dir
+		branches | while read -r HASH TYPE REFNAME; do
+			if [ -f "$screenshot_cachedir/$HASH" ]; then
+				continue
+			fi
+
+			git reset --hard
+			git clean -xfd
+			git checkout -f "$HASH"
+
+			getthemap_fail=false
+			rundownload
+
+			allmaps "$HASH" screenshotthemap "$REFNAME" "$url_http"
+
+			if $getthemap_fail; then
+				# If any map fetch failed, we've skipped them and thus need to try again later.
+				# Note that we're not going to re-screenshot maps because of this as we'll check for uploaded screenshots first.
+				continue
+			fi
+
+			touch "$screenshot_cachedir/$HASH"
+		done
+		git checkout -f master
+		;;
+	makeindex)
+		runmakeindex
+		;;
+	download)
+		if ! which unzip >/dev/null 2>&1; then
+			echo "Cannot find unzip, bailing out"
+			exit 1
+		fi
+		if ! cd data/xonotic-maps.pk3dir >/dev/null 2>&1; then
+			echo "data/xonotic-maps.pk3dir does not exist, not downloading"
+			exit 0
+		fi
+		rundownload
+		cd ../..
+		echo "List of maps that got deleted (if any) and currently are in $bspdir.old:"
+		ls -l "$bspdir.old" || true
+		;;
+	download-latest)
+		mkdir -p "$bspdir"
+		cd "$bspdir"
+		rm -f *-????????????????????????????????????????-????????????????????????????????????????.pk3
+		wget -r -l1 -A "*.pk3" -N --no-parent --no-directories "$url_http""latest"
+		;;
+	log2spam-test)
+		log2spam "mapname" "http://mapurl" "branch" "commit" "0"
+		;;
+esac

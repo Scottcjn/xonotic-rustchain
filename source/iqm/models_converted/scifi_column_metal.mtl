@@ -1,0 +1,22 @@
+# Blender 4.3.2 MTL File: 'None'
+# www.blender.org
+
+newmtl MI_PaddedWall
+Ns 250.000000
+Ka 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 1
+map_Kd models_raw/scifi_megakit/Modular SciFi MegaKit[Standard]/FBX/Columns/C:/Users/Usuario/Desktop/Work/Blender/_FreeModels/_Unfinished/Sci Fi Trimmed/Blends/T_PaddedWall_BaseColor.png
+
+newmtl MI_Trim_02
+Ns 250.000000
+Ka 1.000000 1.000000 1.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 2
+map_Kd models_raw/scifi_megakit/Modular SciFi MegaKit[Standard]/FBX/Columns/C:/Users/Usuario/Desktop/Work/Blender/_FreeModels/_Unfinished/Sci Fi Trimmed/Blends/T_Trim_02_BaseColor_Red.png

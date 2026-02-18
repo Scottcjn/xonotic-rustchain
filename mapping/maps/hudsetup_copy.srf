@@ -1,0 +1,765 @@
+default
+{
+	castShadows 1
+	receiveShadows 1
+	sampleSize 16
+	longestCurve 0.000000
+}
+
+0 // SURFACE_PATCH V: 27 I: 0 
+{
+	shader textures/facility114x/misc-tube
+	sampleSize 1
+	longestCurve 107.396980
+}
+
+1 // SURFACE_PATCH V: 27 I: 0 
+{
+	shader textures/facility114x/misc-tube
+	sampleSize 1
+	longestCurve 53.698490
+}
+
+2 // SURFACE_PATCH V: 27 I: 0 
+{
+	shader textures/facility114x/base-basegray
+	sampleSize 1
+	longestCurve 107.396980
+}
+
+3 // SURFACE_PATCH V: 9 I: 0 planar
+{
+	shader textures/facility114x/base-basegray
+	sampleSize 1
+	longestCurve 71.597969
+	lightmapAxis ( 0.000000 0.000000 1.000000 )
+}
+
+4 // SURFACE_PATCH V: 9 I: 0 planar
+{
+	shader textures/facility114x/base-basegray
+	sampleSize 1
+	longestCurve 71.597969
+	lightmapAxis ( 0.000000 0.000000 1.000000 )
+}
+
+5 // SURFACE_PATCH V: 9 I: 0 planar
+{
+	shader textures/facility114x/base-basegray
+	sampleSize 1
+	longestCurve 71.597969
+	lightmapAxis ( 0.000000 0.000000 1.000000 )
+}
+
+6 // SURFACE_PATCH V: 9 I: 0 planar
+{
+	shader textures/facility114x/base-basegray
+	sampleSize 1
+	longestCurve 71.597969
+	lightmapAxis ( 0.000000 0.000000 1.000000 )
+}
+
+7 // SURFACE_PATCH V: 27 I: 0 
+{
+	shader textures/facility114x/misc-tube
+	sampleSize 1
+	longestCurve 71.597969
+}
+
+8 // SURFACE_TRIANGLES V: 228 I: 966 
+{
+	shader textures/trak5x/base/base_base1b
+	sampleSize 0
+}
+
+9 // SURFACE_TRIANGLES V: 52 I: 222 
+{
+	shader textures/trak5x/light/light_light3a
+	sampleSize 0
+}
+
+10 // SURFACE_TRIANGLES V: 158 I: 456 
+{
+	shader textures/trak5x/base/base_base1b
+	sampleSize 0
+}
+
+11 // SURFACE_TRIANGLES V: 64 I: 156 
+{
+	shader textures/trak5x/base/base_holes1b
+	sampleSize 0
+}
+
+12 // SURFACE_TRIANGLES V: 64 I: 156 
+{
+	shader textures/trak5x/base/base_holes1b
+	sampleSize 0
+}
+
+13 // SURFACE_TRIANGLES V: 164 I: 186 
+{
+	shader textures/trak5x/base/base_base1b
+	sampleSize 0
+}
+
+14 // SURFACE_TRIANGLES V: 104 I: 282 
+{
+	shader textures/trak5x/base/base_base1b
+	sampleSize 0
+}
+
+15 // SURFACE_TRIANGLES V: 52 I: 144 
+{
+	shader textures/trak5x/base/base_base1b
+	sampleSize 0
+}
+
+16 // SURFACE_META V: 3 I: 3 planar
+{
+	shader textures/facility114x/wall-corridor03
+	sampleSize 1
+	lightmapAxis ( 0.000000 0.000000 -1.000000 )
+}
+
+17 // SURFACE_META V: 3 I: 3 planar
+{
+	shader textures/facility114x/wall-corridor03
+	sampleSize 1
+	lightmapAxis ( 0.000000 0.000000 -1.000000 )
+}
+
+18 // SURFACE_META V: 3 I: 3 planar
+{
+	shader textures/facility114x/wall-corridor03
+	sampleSize 1
+	lightmapAxis ( 0.000000 0.000000 -1.000000 )
+}
+
+19 // SURFACE_META V: 4 I: 6 planar
+{
+	shader textures/facility114x/wall-corridor03
+	sampleSize 1
+	lightmapAxis ( 0.000000 0.000000 -1.000000 )
+}
+
+20 // SURFACE_META V: 3 I: 3 planar
+{
+	shader textures/facility114x/wall-corridor03
+	sampleSize 1
+	lightmapAxis ( 0.000000 0.000000 -1.000000 )
+}
+
+21 // SURFACE_META V: 3 I: 3 planar
+{
+	shader textures/facility114x/wall-corridor03
+	sampleSize 1
+	lightmapAxis ( 0.000000 0.000000 -1.000000 )
+}
+
+22 // SURFACE_META V: 4 I: 6 planar
+{
+	shader textures/facility114x/wall-corridor03
+	sampleSize 1
+	lightmapAxis ( 0.000000 0.000000 -1.000000 )
+}
+
+23 // SURFACE_META V: 3 I: 3 planar
+{
+	shader textures/facility114x/wall-corridor03
+	sampleSize 1
+	lightmapAxis ( 0.000000 0.000000 -1.000000 )
+}
+
+24 // SURFACE_META V: 3 I: 3 planar
+{
+	shader textures/facility114x/wall-corridor03
+	sampleSize 1
+	lightmapAxis ( 0.000000 0.000000 -1.000000 )
+}
+
+25 // SURFACE_META V: 4 I: 6 planar
+{
+	shader textures/facility114x/wall-corridor03
+	sampleSize 1
+	lightmapAxis ( 0.000000 0.000000 -1.000000 )
+}
+
+26 // SURFACE_META V: 4 I: 6 planar
+{
+	shader textures/facility114x/wall-corridor03
+	sampleSize 1
+	lightmapAxis ( 0.000000 0.000000 -1.000000 )
+}
+
+27 // SURFACE_META V: 8 I: 18 planar
+{
+	shader textures/facility114x/wall-corridor02
+	sampleSize 1
+	lightmapAxis ( 0.000000 1.000000 0.000000 )
+}
+
+28 // SURFACE_META V: 3 I: 3 planar
+{
+	shader textures/facility114x/wall-corridor02
+	sampleSize 1
+	lightmapAxis ( 0.000000 1.000000 0.000000 )
+}
+
+29 // SURFACE_META V: 6 I: 12 planar
+{
+	shader textures/facility114x/wall-corridor02
+	sampleSize 1
+	lightmapAxis ( 0.000000 1.000000 0.000000 )
+}
+
+30 // SURFACE_META V: 3 I: 3 planar
+{
+	shader textures/facility114x/wall-corridor02
+	sampleSize 1
+	lightmapAxis ( 0.000000 1.000000 0.000000 )
+}
+
+31 // SURFACE_META V: 4 I: 6 planar
+{
+	shader textures/facility114x/wall-corridor02
+	sampleSize 1
+	lightmapAxis ( 0.000000 1.000000 0.000000 )
+}
+
+32 // SURFACE_META V: 3 I: 3 planar
+{
+	shader textures/facility114x/wall-corridor01
+	sampleSize 1
+	lightmapAxis ( -1.000000 0.000000 0.000000 )
+}
+
+33 // SURFACE_META V: 4 I: 6 planar
+{
+	shader textures/facility114x/wall-corridor01
+	sampleSize 1
+	lightmapAxis ( -1.000000 0.000000 0.000000 )
+}
+
+34 // SURFACE_META V: 4 I: 6 planar
+{
+	shader textures/facility114x/wall-corridor00
+	sampleSize 1
+	lightmapAxis ( -1.000000 0.000000 0.000000 )
+}
+
+35 // SURFACE_META V: 3 I: 3 planar
+{
+	shader textures/facility114x/wall-corridor00
+	sampleSize 1
+	lightmapAxis ( -1.000000 0.000000 0.000000 )
+}
+
+36 // SURFACE_META V: 3 I: 3 planar
+{
+	shader textures/facility114x/wall-corridor00
+	sampleSize 1
+	lightmapAxis ( -1.000000 0.000000 0.000000 )
+}
+
+37 // SURFACE_META V: 3 I: 3 planar
+{
+	shader textures/facility114x/wall-corridor00
+	sampleSize 1
+	lightmapAxis ( -1.000000 0.000000 0.000000 )
+}
+
+38 // SURFACE_META V: 3 I: 3 planar
+{
+	shader textures/facility114x/wall-corridor00
+	sampleSize 1
+	lightmapAxis ( -1.000000 0.000000 0.000000 )
+}
+
+39 // SURFACE_META V: 3 I: 3 planar
+{
+	shader textures/facility114x/wall-corridor00
+	sampleSize 1
+	lightmapAxis ( -1.000000 0.000000 0.000000 )
+}
+
+40 // SURFACE_META V: 4 I: 6 planar
+{
+	shader textures/facility114x/wall-corridor00
+	sampleSize 1
+	lightmapAxis ( -1.000000 0.000000 0.000000 )
+}
+
+41 // SURFACE_META V: 4 I: 6 planar
+{
+	shader textures/facility114x/wall-corridor00
+	sampleSize 1
+	lightmapAxis ( 0.000000 -1.000000 0.000000 )
+}
+
+42 // SURFACE_META V: 3 I: 3 planar
+{
+	shader textures/facility114x/wall-corridor00
+	sampleSize 1
+	lightmapAxis ( 1.000000 0.000000 0.000000 )
+}
+
+43 // SURFACE_META V: 3 I: 3 planar
+{
+	shader textures/facility114x/wall-corridor00
+	sampleSize 1
+	lightmapAxis ( 1.000000 0.000000 0.000000 )
+}
+
+44 // SURFACE_META V: 3 I: 3 planar
+{
+	shader textures/facility114x/wall-corridor00
+	sampleSize 1
+	lightmapAxis ( 0.000000 1.000000 0.000000 )
+}
+
+45 // SURFACE_META V: 5 I: 9 planar
+{
+	shader textures/facility114x/wall-corridor00
+	sampleSize 1
+	lightmapAxis ( 1.000000 0.000000 0.000000 )
+}
+
+46 // SURFACE_META V: 3 I: 3 planar
+{
+	shader textures/facility114x/wall-corridor00
+	sampleSize 1
+	lightmapAxis ( 0.000000 1.000000 0.000000 )
+}
+
+47 // SURFACE_META V: 3 I: 3 planar
+{
+	shader textures/facility114x/wall-corridor00
+	sampleSize 1
+	lightmapAxis ( 0.000000 1.000000 0.000000 )
+}
+
+48 // SURFACE_META V: 3 I: 3 planar
+{
+	shader textures/facility114x/wall-corridor00
+	sampleSize 1
+	lightmapAxis ( 0.000000 1.000000 0.000000 )
+}
+
+49 // SURFACE_META V: 3 I: 3 planar
+{
+	shader textures/facility114x/trim-trim01
+	sampleSize 1
+	lightmapAxis ( -1.000000 0.000000 0.000000 )
+}
+
+50 // SURFACE_META V: 4 I: 6 planar
+{
+	shader textures/facility114x/trim-trim01
+	sampleSize 1
+	lightmapAxis ( -1.000000 0.000000 0.000000 )
+}
+
+51 // SURFACE_META V: 3 I: 3 planar
+{
+	shader textures/facility114x/trim-trim01
+	sampleSize 1
+	lightmapAxis ( 0.000000 -1.000000 0.000000 )
+}
+
+52 // SURFACE_META V: 3 I: 3 planar
+{
+	shader textures/facility114x/trim-trim01
+	sampleSize 1
+	lightmapAxis ( 0.000000 -1.000000 0.000000 )
+}
+
+53 // SURFACE_META V: 3 I: 3 planar
+{
+	shader textures/facility114x/trim-trim01
+	sampleSize 1
+	lightmapAxis ( 0.000000 -1.000000 0.000000 )
+}
+
+54 // SURFACE_META V: 4 I: 6 planar
+{
+	shader textures/facility114x/trim-trim01
+	sampleSize 1
+	lightmapAxis ( 1.000000 0.000000 0.000000 )
+}
+
+55 // SURFACE_META V: 4 I: 6 planar
+{
+	shader textures/facility114x/trim-trim01
+	sampleSize 1
+	lightmapAxis ( 0.000000 1.000000 0.000000 )
+}
+
+56 // SURFACE_META V: 4 I: 6 planar
+{
+	shader textures/facility114x/misc-lift00
+	sampleSize 1
+	lightmapAxis ( 0.000000 0.000000 1.000000 )
+}
+
+57 // SURFACE_META V: 4 I: 6 planar
+{
+	shader textures/facility114x/floor-floor02
+	sampleSize 1
+	lightmapAxis ( 0.000000 0.000000 1.000000 )
+}
+
+58 // SURFACE_META V: 3 I: 3 planar
+{
+	shader textures/facility114x/floor-floor02
+	sampleSize 1
+	lightmapAxis ( 0.000000 0.000000 1.000000 )
+}
+
+59 // SURFACE_META V: 3 I: 3 planar
+{
+	shader textures/facility114x/floor-floor02
+	sampleSize 1
+	lightmapAxis ( 0.000000 0.000000 1.000000 )
+}
+
+60 // SURFACE_META V: 3 I: 3 planar
+{
+	shader textures/facility114x/floor-floor02
+	sampleSize 1
+	lightmapAxis ( 0.000000 0.000000 1.000000 )
+}
+
+61 // SURFACE_META V: 3 I: 3 planar
+{
+	shader textures/facility114x/floor-floor02
+	sampleSize 1
+	lightmapAxis ( 0.000000 0.000000 1.000000 )
+}
+
+62 // SURFACE_META V: 3 I: 3 planar
+{
+	shader textures/facility114x/floor-floor02
+	sampleSize 1
+	lightmapAxis ( 0.000000 0.000000 1.000000 )
+}
+
+63 // SURFACE_META V: 4 I: 6 planar
+{
+	shader textures/facility114x/floor-floor02
+	sampleSize 1
+	lightmapAxis ( 0.000000 0.000000 1.000000 )
+}
+
+64 // SURFACE_META V: 3 I: 3 planar
+{
+	shader textures/facility114x/floor-floor02
+	sampleSize 1
+	lightmapAxis ( 0.000000 0.000000 1.000000 )
+}
+
+65 // SURFACE_META V: 3 I: 3 planar
+{
+	shader textures/facility114x/floor-floor02
+	sampleSize 1
+	lightmapAxis ( 0.000000 0.000000 1.000000 )
+}
+
+66 // SURFACE_META V: 4 I: 6 planar
+{
+	shader textures/facility114x/floor-floor02
+	sampleSize 1
+	lightmapAxis ( 0.000000 0.000000 1.000000 )
+}
+
+67 // SURFACE_META V: 4 I: 6 planar
+{
+	shader textures/facility114x/floor-floor02
+	sampleSize 1
+	lightmapAxis ( 0.000000 0.000000 1.000000 )
+}
+
+68 // SURFACE_META V: 3 I: 3 planar
+{
+	shader textures/facility114x/floor-floor02
+	sampleSize 1
+	lightmapAxis ( 0.000000 0.000000 1.000000 )
+}
+
+69 // SURFACE_META V: 3 I: 3 planar
+{
+	shader textures/facility114x/floor-floor02
+	sampleSize 1
+	lightmapAxis ( 0.000000 0.000000 1.000000 )
+}
+
+70 // SURFACE_META V: 3 I: 3 planar
+{
+	shader textures/facility114x/floor-floor02
+	sampleSize 1
+	lightmapAxis ( 0.000000 0.000000 1.000000 )
+}
+
+71 // SURFACE_META V: 5 I: 9 planar
+{
+	shader textures/facility114x/floor-floor00
+	sampleSize 1
+	lightmapAxis ( 1.000000 0.000000 0.000000 )
+}
+
+72 // SURFACE_META V: 5 I: 9 planar
+{
+	shader textures/facility114x/floor-floor00
+	sampleSize 1
+	lightmapAxis ( 0.000000 1.000000 0.000000 )
+}
+
+73 // SURFACE_META V: 5 I: 9 planar
+{
+	shader textures/facility114x/floor-floor00
+	sampleSize 1
+	lightmapAxis ( 1.000000 0.000000 0.000000 )
+}
+
+74 // SURFACE_META V: 5 I: 9 planar
+{
+	shader textures/facility114x/floor-floor00
+	sampleSize 1
+	lightmapAxis ( 1.000000 0.000000 0.000000 )
+}
+
+75 // SURFACE_META V: 5 I: 9 planar
+{
+	shader textures/facility114x/floor-floor00
+	sampleSize 1
+	lightmapAxis ( 0.000000 -1.000000 0.000000 )
+}
+
+76 // SURFACE_META V: 4 I: 6 planar
+{
+	shader textures/facility114x/floor-floor00
+	sampleSize 1
+	lightmapAxis ( 0.000000 -1.000000 0.000000 )
+}
+
+77 // SURFACE_META V: 4 I: 6 planar
+{
+	shader textures/facility114x/floor-floor00
+	sampleSize 1
+	lightmapAxis ( 0.000000 -1.000000 0.000000 )
+}
+
+78 // SURFACE_META V: 6 I: 12 planar
+{
+	shader textures/facility114x/floor-floor00
+	sampleSize 1
+	lightmapAxis ( -1.000000 0.000000 0.000000 )
+}
+
+79 // SURFACE_META V: 5 I: 9 planar
+{
+	shader textures/facility114x/floor-floor00
+	sampleSize 1
+	lightmapAxis ( -1.000000 0.000000 0.000000 )
+}
+
+80 // SURFACE_META V: 6 I: 12 planar
+{
+	shader textures/facility114x/floor-floor00
+	sampleSize 1
+	lightmapAxis ( 0.000000 0.000000 -1.000000 )
+}
+
+81 // SURFACE_META V: 4 I: 6 planar
+{
+	shader textures/facility114x/floor-floor00
+	sampleSize 1
+	lightmapAxis ( 0.000000 0.000000 1.000000 )
+}
+
+82 // SURFACE_META V: 4 I: 6 planar
+{
+	shader textures/facility114x/floor-floor00
+	sampleSize 1
+	lightmapAxis ( 0.000000 1.000000 0.000000 )
+}
+
+83 // SURFACE_META V: 5 I: 9 planar
+{
+	shader textures/facility114x/floor-floor00
+	sampleSize 1
+	lightmapAxis ( -1.000000 0.000000 0.000000 )
+}
+
+84 // SURFACE_META V: 4 I: 6 planar
+{
+	shader textures/facility114x/floor-floor00
+	sampleSize 1
+	lightmapAxis ( 0.000000 0.000000 1.000000 )
+}
+
+85 // SURFACE_META V: 4 I: 6 planar
+{
+	shader textures/facility114x/floor-floor00
+	sampleSize 1
+	lightmapAxis ( 0.000000 1.000000 0.000000 )
+}
+
+86 // SURFACE_META V: 4 I: 6 planar
+{
+	shader textures/facility114x/floor-floor00
+	sampleSize 1
+	lightmapAxis ( 0.000000 0.000000 1.000000 )
+}
+
+87 // SURFACE_META V: 5 I: 9 planar
+{
+	shader textures/facility114x/base-basegray
+	sampleSize 1
+	lightmapAxis ( 0.000000 0.000000 1.000000 )
+}
+
+88 // SURFACE_META V: 8 I: 18 planar
+{
+	shader textures/facility114x/base-basegray
+	sampleSize 1
+	lightmapAxis ( 0.000000 0.000000 1.000000 )
+}
+
+89 // SURFACE_META V: 5 I: 9 planar
+{
+	shader textures/facility114x/base-basegray
+	sampleSize 1
+	lightmapAxis ( 0.000000 0.000000 1.000000 )
+}
+
+90 // SURFACE_META V: 6 I: 12 planar
+{
+	shader textures/facility114x/base-basegray
+	sampleSize 1
+	lightmapAxis ( 0.000000 0.000000 1.000000 )
+}
+
+91 // SURFACE_META V: 4 I: 6 planar
+{
+	shader textures/facility114x/base-base
+	sampleSize 1
+	lightmapAxis ( -1.000000 0.000000 0.000000 )
+}
+
+92 // SURFACE_META V: 4 I: 6 planar
+{
+	shader textures/facility114x/base-base
+	sampleSize 1
+	lightmapAxis ( -1.000000 0.000000 0.000000 )
+}
+
+93 // SURFACE_META V: 4 I: 6 planar
+{
+	shader textures/facility114x/base-base
+	sampleSize 1
+	lightmapAxis ( 0.000000 0.000000 -1.000000 )
+}
+
+94 // SURFACE_META V: 4 I: 6 planar
+{
+	shader textures/facility114x/base-base
+	sampleSize 1
+	lightmapAxis ( 1.000000 0.000000 0.000000 )
+}
+
+95 // SURFACE_META V: 4 I: 6 planar
+{
+	shader textures/facility114x/base-base
+	sampleSize 1
+	lightmapAxis ( 0.000000 0.000000 1.000000 )
+}
+
+96 // SURFACE_META V: 4 I: 6 planar
+{
+	shader textures/facility114x/base-base
+	sampleSize 1
+	lightmapAxis ( 1.000000 0.000000 0.000000 )
+}
+
+97 // SURFACE_META V: 4 I: 6 planar
+{
+	shader textures/facility114x/base-base
+	sampleSize 1
+	lightmapAxis ( 0.000000 1.000000 0.000000 )
+}
+
+98 // SURFACE_META V: 4 I: 6 planar
+{
+	shader textures/facility114x/base-base
+	sampleSize 1
+	lightmapAxis ( -1.000000 0.000000 0.000000 )
+}
+
+99 // SURFACE_META V: 4 I: 6 planar
+{
+	shader textures/facility114x/base-base
+	sampleSize 1
+	lightmapAxis ( 0.000000 -1.000000 0.000000 )
+}
+
+100 // SURFACE_META V: 4 I: 6 planar
+{
+	shader textures/facility114x/base-base
+	sampleSize 1
+	lightmapAxis ( 0.000000 -1.000000 0.000000 )
+}
+
+101 // SURFACE_META V: 4 I: 6 planar
+{
+	shader textures/facility114x/base-base
+	sampleSize 1
+	lightmapAxis ( 1.000000 0.000000 0.000000 )
+}
+
+102 // SURFACE_META V: 4 I: 6 planar
+{
+	shader textures/facility114x/base-base
+	sampleSize 1
+	lightmapAxis ( 0.000000 1.000000 0.000000 )
+}
+
+103 // SURFACE_META V: 4 I: 6 planar
+{
+	shader textures/facility114x/wall-corridor02
+	entity 2
+	castShadows 0
+	lightmapAxis ( 0.000000 1.000000 0.000000 )
+}
+
+104 // SURFACE_META V: 4 I: 6 planar
+{
+	shader textures/facility114x/base-basegray
+	entity 2
+	castShadows 0
+	lightmapAxis ( 1.000000 0.000000 0.000000 )
+}
+
+105 // SURFACE_META V: 4 I: 6 planar
+{
+	shader textures/facility114x/base-basegray
+	entity 2
+	castShadows 0
+	lightmapAxis ( 0.000000 0.000000 1.000000 )
+}
+
+106 // SURFACE_META V: 4 I: 6 planar
+{
+	shader textures/facility114x/base-basegray
+	entity 2
+	castShadows 0
+	lightmapAxis ( -1.000000 0.000000 0.000000 )
+}
+
+107 // SURFACE_META V: 4 I: 6 planar
+{
+	shader textures/facility114x/base-basegray
+	entity 2
+	castShadows 0
+	lightmapAxis ( 0.000000 0.000000 -1.000000 )
+}
+

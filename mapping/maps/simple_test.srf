@@ -1,0 +1,14 @@
+default
+{
+	castShadows 1
+	receiveShadows 1
+	sampleSize 16
+	longestCurve 0.000000
+}
+
+0 // SURFACE_FACE V: 4 I: 6 planar
+{
+	shader textures/trak4x/base/base_concrete3
+	lightmapAxis ( 0.000000 0.000000 1.000000 )
+}
+

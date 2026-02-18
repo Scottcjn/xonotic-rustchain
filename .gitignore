@@ -1,0 +1,29 @@
+# Xonotic binaries and game data
+Xonotic
+Xonotic.app/
+bin32/
+bin64/
+data/
+key_0.d0pk
+
+# Database files
+*.db
+*.db-journal
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.env
+
+# Build artifacts
+*.o
+*.so
+*.bsp
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Xonotic user data
+.xonotic/

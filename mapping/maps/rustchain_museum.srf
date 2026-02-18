@@ -1,0 +1,3092 @@
+default
+{
+	castShadows 1
+	receiveShadows 1
+	sampleSize 16
+	longestCurve 0.000000
+}
+
+0 // SURFACE_FACE V: 4 I: 6 planar
+{
+	shader textures/rustchain/rustchain_wall_panel_01
+	sampleSize 2
+	lightmapAxis ( -1.000000 0.000000 0.000000 )
+}
+
+1 // SURFACE_FACE V: 4 I: 6 planar
+{
+	shader textures/rustchain/rustchain_wall_panel_01
+	sampleSize 2
+	lightmapAxis ( 1.000000 0.000000 0.000000 )
+}
+
+2 // SURFACE_FACE V: 4 I: 6 planar
+{
+	shader textures/rustchain/rustchain_wall_panel_01
+	sampleSize 2
+	lightmapAxis ( 0.000000 -1.000000 0.000000 )
+}
+
+3 // SURFACE_FACE V: 4 I: 6 planar
+{
+	shader textures/rustchain/rustchain_wall_panel_01
+	sampleSize 2
+	lightmapAxis ( 0.000000 1.000000 0.000000 )
+}
+
+4 // SURFACE_FACE V: 4 I: 6 planar
+{
+	shader textures/eX/eX_mtl_panel_03_d
+	sampleSize 2
+	lightmapAxis ( 0.000000 0.000000 1.000000 )
+}
+
+5 // SURFACE_FACE V: 4 I: 6 planar
+{
+	shader textures/rustchain/rustchain_wall_panel_01
+	sampleSize 2
+	lightmapAxis ( -1.000000 0.000000 0.000000 )
+}
+
+6 // SURFACE_FACE V: 4 I: 6 planar
+{
+	shader textures/rustchain/rustchain_wall_panel_01
+	sampleSize 2
+	lightmapAxis ( 1.000000 0.000000 0.000000 )
+}
+
+7 // SURFACE_FACE V: 4 I: 6 planar
+{
+	shader textures/rustchain/rustchain_wall_panel_01
+	sampleSize 2
+	lightmapAxis ( 0.000000 -1.000000 0.000000 )
+}
+
+8 // SURFACE_FACE V: 4 I: 6 planar
+{
+	shader textures/rustchain/rustchain_wall_panel_01
+	sampleSize 2
+	lightmapAxis ( 0.000000 1.000000 0.000000 )
+}
+
+9 // SURFACE_FACE V: 4 I: 6 planar
+{
+	shader textures/eX/eX_mtl_panel_03_d
+	sampleSize 2
+	lightmapAxis ( 0.000000 0.000000 1.000000 )
+}
+
+10 // SURFACE_FACE V: 4 I: 6 planar
+{
+	shader textures/rustchain/rustchain_wall_panel_01
+	sampleSize 2
+	lightmapAxis ( -1.000000 0.000000 0.000000 )
+}
+
+11 // SURFACE_FACE V: 4 I: 6 planar
+{
+	shader textures/rustchain/rustchain_wall_panel_01
+	sampleSize 2
+	lightmapAxis ( 1.000000 0.000000 0.000000 )
+}
+
+12 // SURFACE_FACE V: 4 I: 6 planar
+{
+	shader textures/rustchain/rustchain_wall_panel_01
+	sampleSize 2
+	lightmapAxis ( 0.000000 -1.000000 0.000000 )
+}
+
+13 // SURFACE_FACE V: 4 I: 6 planar
+{
+	shader textures/rustchain/rustchain_wall_panel_01
+	sampleSize 2
+	lightmapAxis ( 0.000000 1.000000 0.000000 )
+}
+
+14 // SURFACE_FACE V: 4 I: 6 planar
+{
+	shader textures/eX/eX_mtl_panel_03_d
+	sampleSize 2
+	lightmapAxis ( 0.000000 0.000000 1.000000 )
+}
+
+15 // SURFACE_FACE V: 4 I: 6 planar
+{
+	shader textures/rustchain/rustchain_wall_panel_01
+	sampleSize 2
+	lightmapAxis ( -1.000000 0.000000 0.000000 )
+}
+
+16 // SURFACE_FACE V: 4 I: 6 planar
+{
+	shader textures/rustchain/rustchain_wall_panel_01
+	sampleSize 2
+	lightmapAxis ( 1.000000 0.000000 0.000000 )
+}
+
+17 // SURFACE_FACE V: 4 I: 6 planar
+{
+	shader textures/rustchain/rustchain_wall_panel_01
+	sampleSize 2
+	lightmapAxis ( 0.000000 -1.000000 0.000000 )
+}
+
+18 // SURFACE_FACE V: 4 I: 6 planar
+{
+	shader textures/rustchain/rustchain_wall_panel_01
+	sampleSize 2
+	lightmapAxis ( 0.000000 1.000000 0.000000 )
+}
+
+19 // SURFACE_FACE V: 4 I: 6 planar
+{
+	shader textures/eX/eX_mtl_panel_03_d
+	sampleSize 2
+	lightmapAxis ( 0.000000 0.000000 1.000000 )
+}
+
+20 // SURFACE_FACE V: 4 I: 6 planar
+{
+	shader textures/rustchain/rustchain_wall_panel_01
+	sampleSize 2
+	lightmapAxis ( -1.000000 0.000000 0.000000 )
+}
+
+21 // SURFACE_FACE V: 4 I: 6 planar
+{
+	shader textures/rustchain/rustchain_wall_panel_01
+	sampleSize 2
+	lightmapAxis ( 1.000000 0.000000 0.000000 )
+}
+
+22 // SURFACE_FACE V: 4 I: 6 planar
+{
+	shader textures/rustchain/rustchain_wall_panel_01
+	sampleSize 2
+	lightmapAxis ( 0.000000 -1.000000 0.000000 )
+}
+
+23 // SURFACE_FACE V: 4 I: 6 planar
+{
+	shader textures/rustchain/rustchain_wall_panel_01
+	sampleSize 2
+	lightmapAxis ( 0.000000 1.000000 0.000000 )
+}
+
+24 // SURFACE_FACE V: 4 I: 6 planar
+{
+	shader textures/eX/eX_mtl_panel_03_d
+	sampleSize 2
+	lightmapAxis ( 0.000000 0.000000 1.000000 )
+}
+
+25 // SURFACE_FACE V: 4 I: 6 planar
+{
+	shader textures/rustchain/rustchain_wall_panel_01
+	sampleSize 2
+	lightmapAxis ( -1.000000 0.000000 0.000000 )
+}
+
+26 // SURFACE_FACE V: 4 I: 6 planar
+{
+	shader textures/rustchain/rustchain_wall_panel_01
+	sampleSize 2
+	lightmapAxis ( 1.000000 0.000000 0.000000 )
+}
+
+27 // SURFACE_FACE V: 4 I: 6 planar
+{
+	shader textures/rustchain/rustchain_wall_panel_01
+	sampleSize 2
+	lightmapAxis ( 0.000000 -1.000000 0.000000 )
+}
+
+28 // SURFACE_FACE V: 4 I: 6 planar
+{
+	shader textures/rustchain/rustchain_wall_panel_01
+	sampleSize 2
+	lightmapAxis ( 0.000000 1.000000 0.000000 )
+}
+
+29 // SURFACE_FACE V: 4 I: 6 planar
+{
+	shader textures/eX/eX_mtl_panel_03_d
+	sampleSize 2
+	lightmapAxis ( 0.000000 0.000000 1.000000 )
+}
+
+30 // SURFACE_FACE V: 4 I: 6 planar
+{
+	shader textures/rustchain/rustchain_wall_panel_01
+	sampleSize 2
+	lightmapAxis ( -1.000000 0.000000 0.000000 )
+}
+
+31 // SURFACE_FACE V: 4 I: 6 planar
+{
+	shader textures/rustchain/rustchain_wall_panel_01
+	sampleSize 2
+	lightmapAxis ( 1.000000 0.000000 0.000000 )
+}
+
+32 // SURFACE_FACE V: 4 I: 6 planar
+{
+	shader textures/rustchain/rustchain_wall_panel_01
+	sampleSize 2
+	lightmapAxis ( 0.000000 -1.000000 0.000000 )
+}
+
+33 // SURFACE_FACE V: 4 I: 6 planar
+{
+	shader textures/rustchain/rustchain_wall_panel_01
+	sampleSize 2
+	lightmapAxis ( 0.000000 1.000000 0.000000 )
+}
+
+34 // SURFACE_FACE V: 4 I: 6 planar
+{
+	shader textures/eX/eX_mtl_panel_03_d
+	sampleSize 2
+	lightmapAxis ( 0.000000 0.000000 1.000000 )
+}
+
+35 // SURFACE_FACE V: 4 I: 6 planar
+{
+	shader textures/rustchain/rustchain_wall_panel_01
+	sampleSize 2
+	lightmapAxis ( -1.000000 0.000000 0.000000 )
+}
+
+36 // SURFACE_FACE V: 4 I: 6 planar
+{
+	shader textures/rustchain/rustchain_wall_panel_01
+	sampleSize 2
+	lightmapAxis ( 1.000000 0.000000 0.000000 )
+}
+
+37 // SURFACE_FACE V: 4 I: 6 planar
+{
+	shader textures/rustchain/rustchain_wall_panel_01
+	sampleSize 2
+	lightmapAxis ( 0.000000 -1.000000 0.000000 )
+}
+
+38 // SURFACE_FACE V: 4 I: 6 planar
+{
+	shader textures/rustchain/rustchain_wall_panel_01
+	sampleSize 2
+	lightmapAxis ( 0.000000 1.000000 0.000000 )
+}
+
+39 // SURFACE_FACE V: 4 I: 6 planar
+{
+	shader textures/eX/eX_mtl_panel_03_d
+	sampleSize 2
+	lightmapAxis ( 0.000000 0.000000 1.000000 )
+}
+
+40 // SURFACE_FACE V: 4 I: 6 planar
+{
+	shader textures/eX/eX_trim_vert_01_d
+	sampleSize 2
+	lightmapAxis ( -1.000000 0.000000 0.000000 )
+}
+
+41 // SURFACE_FACE V: 4 I: 6 planar
+{
+	shader textures/eX/eX_trim_vert_01_d
+	sampleSize 2
+	lightmapAxis ( 1.000000 0.000000 0.000000 )
+}
+
+42 // SURFACE_FACE V: 4 I: 6 planar
+{
+	shader textures/eX/eX_trim_vert_01_d
+	sampleSize 2
+	lightmapAxis ( 0.000000 -1.000000 0.000000 )
+}
+
+43 // SURFACE_FACE V: 4 I: 6 planar
+{
+	shader textures/eX/eX_trim_vert_01_d
+	sampleSize 2
+	lightmapAxis ( 0.000000 1.000000 0.000000 )
+}
+
+44 // SURFACE_FACE V: 4 I: 6 planar
+{
+	shader textures/eX/eX_floor_tread_01_d
+	sampleSize 2
+	lightmapAxis ( 0.000000 0.000000 1.000000 )
+}
+
+45 // SURFACE_FACE V: 4 I: 6 planar
+{
+	shader textures/eX/eX_trim_vert_01_d
+	sampleSize 2
+	lightmapAxis ( -1.000000 0.000000 0.000000 )
+}
+
+46 // SURFACE_FACE V: 4 I: 6 planar
+{
+	shader textures/eX/eX_trim_vert_01_d
+	sampleSize 2
+	lightmapAxis ( 1.000000 0.000000 0.000000 )
+}
+
+47 // SURFACE_FACE V: 4 I: 6 planar
+{
+	shader textures/eX/eX_trim_vert_01_d
+	sampleSize 2
+	lightmapAxis ( 0.000000 -1.000000 0.000000 )
+}
+
+48 // SURFACE_FACE V: 4 I: 6 planar
+{
+	shader textures/eX/eX_trim_vert_01_d
+	sampleSize 2
+	lightmapAxis ( 0.000000 1.000000 0.000000 )
+}
+
+49 // SURFACE_FACE V: 4 I: 6 planar
+{
+	shader textures/eX/eX_floor_tread_01_d
+	sampleSize 2
+	lightmapAxis ( 0.000000 0.000000 1.000000 )
+}
+
+50 // SURFACE_FACE V: 4 I: 6 planar
+{
+	shader textures/eX/eX_trim_vert_01_d
+	sampleSize 2
+	lightmapAxis ( -1.000000 0.000000 0.000000 )
+}
+
+51 // SURFACE_FACE V: 4 I: 6 planar
+{
+	shader textures/eX/eX_trim_vert_01_d
+	sampleSize 2
+	lightmapAxis ( 1.000000 0.000000 0.000000 )
+}
+
+52 // SURFACE_FACE V: 4 I: 6 planar
+{
+	shader textures/eX/eX_trim_vert_01_d
+	sampleSize 2
+	lightmapAxis ( 0.000000 -1.000000 0.000000 )
+}
+
+53 // SURFACE_FACE V: 4 I: 6 planar
+{
+	shader textures/eX/eX_trim_vert_01_d
+	sampleSize 2
+	lightmapAxis ( 0.000000 1.000000 0.000000 )
+}
+
+54 // SURFACE_FACE V: 4 I: 6 planar
+{
+	shader textures/eX/eX_floor_tread_01_d
+	sampleSize 2
+	lightmapAxis ( 0.000000 0.000000 1.000000 )
+}
+
+55 // SURFACE_FACE V: 4 I: 6 planar
+{
+	shader textures/eX/eX_trim_vert_01_d
+	sampleSize 2
+	lightmapAxis ( -1.000000 0.000000 0.000000 )
+}
+
+56 // SURFACE_FACE V: 4 I: 6 planar
+{
+	shader textures/eX/eX_trim_vert_01_d
+	sampleSize 2
+	lightmapAxis ( 1.000000 0.000000 0.000000 )
+}
+
+57 // SURFACE_FACE V: 4 I: 6 planar
+{
+	shader textures/eX/eX_trim_vert_01_d
+	sampleSize 2
+	lightmapAxis ( 0.000000 -1.000000 0.000000 )
+}
+
+58 // SURFACE_FACE V: 4 I: 6 planar
+{
+	shader textures/eX/eX_trim_vert_01_d
+	sampleSize 2
+	lightmapAxis ( 0.000000 1.000000 0.000000 )
+}
+
+59 // SURFACE_FACE V: 4 I: 6 planar
+{
+	shader textures/eX/eX_floor_tread_01_d
+	sampleSize 2
+	lightmapAxis ( 0.000000 0.000000 1.000000 )
+}
+
+60 // SURFACE_FACE V: 4 I: 6 planar
+{
+	shader textures/eX/eX_trim_vert_01_d
+	sampleSize 2
+	lightmapAxis ( -1.000000 0.000000 0.000000 )
+}
+
+61 // SURFACE_FACE V: 4 I: 6 planar
+{
+	shader textures/eX/eX_trim_vert_01_d
+	sampleSize 2
+	lightmapAxis ( 1.000000 0.000000 0.000000 )
+}
+
+62 // SURFACE_FACE V: 4 I: 6 planar
+{
+	shader textures/eX/eX_trim_vert_01_d
+	sampleSize 2
+	lightmapAxis ( 0.000000 -1.000000 0.000000 )
+}
+
+63 // SURFACE_FACE V: 4 I: 6 planar
+{
+	shader textures/eX/eX_trim_vert_01_d
+	sampleSize 2
+	lightmapAxis ( 0.000000 1.000000 0.000000 )
+}
+
+64 // SURFACE_FACE V: 4 I: 6 planar
+{
+	shader textures/eX/eX_floor_tread_01_d
+	sampleSize 2
+	lightmapAxis ( 0.000000 0.000000 1.000000 )
+}
+
+65 // SURFACE_FACE V: 4 I: 6 planar
+{
+	shader textures/eX/eX_trim_vert_01_d
+	sampleSize 2
+	lightmapAxis ( -1.000000 0.000000 0.000000 )
+}
+
+66 // SURFACE_FACE V: 4 I: 6 planar
+{
+	shader textures/eX/eX_trim_vert_01_d
+	sampleSize 2
+	lightmapAxis ( 1.000000 0.000000 0.000000 )
+}
+
+67 // SURFACE_FACE V: 4 I: 6 planar
+{
+	shader textures/eX/eX_trim_vert_01_d
+	sampleSize 2
+	lightmapAxis ( 0.000000 -1.000000 0.000000 )
+}
+
+68 // SURFACE_FACE V: 4 I: 6 planar
+{
+	shader textures/eX/eX_trim_vert_01_d
+	sampleSize 2
+	lightmapAxis ( 0.000000 1.000000 0.000000 )
+}
+
+69 // SURFACE_FACE V: 4 I: 6 planar
+{
+	shader textures/eX/eX_floor_tread_01_d
+	sampleSize 2
+	lightmapAxis ( 0.000000 0.000000 1.000000 )
+}
+
+70 // SURFACE_FACE V: 4 I: 6 planar
+{
+	shader textures/eX/eX_trim_vert_01_d
+	sampleSize 2
+	lightmapAxis ( -1.000000 0.000000 0.000000 )
+}
+
+71 // SURFACE_FACE V: 4 I: 6 planar
+{
+	shader textures/eX/eX_trim_vert_01_d
+	sampleSize 2
+	lightmapAxis ( 1.000000 0.000000 0.000000 )
+}
+
+72 // SURFACE_FACE V: 4 I: 6 planar
+{
+	shader textures/eX/eX_trim_vert_01_d
+	sampleSize 2
+	lightmapAxis ( 0.000000 -1.000000 0.000000 )
+}
+
+73 // SURFACE_FACE V: 4 I: 6 planar
+{
+	shader textures/eX/eX_trim_vert_01_d
+	sampleSize 2
+	lightmapAxis ( 0.000000 1.000000 0.000000 )
+}
+
+74 // SURFACE_FACE V: 4 I: 6 planar
+{
+	shader textures/eX/eX_floor_tread_01_d
+	sampleSize 2
+	lightmapAxis ( 0.000000 0.000000 1.000000 )
+}
+
+75 // SURFACE_FACE V: 4 I: 6 planar
+{
+	shader textures/eX/eX_trim_vert_01_d
+	sampleSize 2
+	lightmapAxis ( -1.000000 0.000000 0.000000 )
+}
+
+76 // SURFACE_FACE V: 4 I: 6 planar
+{
+	shader textures/eX/eX_trim_vert_01_d
+	sampleSize 2
+	lightmapAxis ( 1.000000 0.000000 0.000000 )
+}
+
+77 // SURFACE_FACE V: 4 I: 6 planar
+{
+	shader textures/eX/eX_trim_vert_01_d
+	sampleSize 2
+	lightmapAxis ( 0.000000 -1.000000 0.000000 )
+}
+
+78 // SURFACE_FACE V: 4 I: 6 planar
+{
+	shader textures/eX/eX_trim_vert_01_d
+	sampleSize 2
+	lightmapAxis ( 0.000000 1.000000 0.000000 )
+}
+
+79 // SURFACE_FACE V: 4 I: 6 planar
+{
+	shader textures/eX/eX_floor_tread_01_d
+	sampleSize 2
+	lightmapAxis ( 0.000000 0.000000 1.000000 )
+}
+
+80 // SURFACE_FACE V: 4 I: 6 planar
+{
+	shader textures/eX/eX_trim_vert_01_d
+	sampleSize 2
+	lightmapAxis ( -1.000000 0.000000 0.000000 )
+}
+
+81 // SURFACE_FACE V: 4 I: 6 planar
+{
+	shader textures/eX/eX_trim_vert_01_d
+	sampleSize 2
+	lightmapAxis ( 1.000000 0.000000 0.000000 )
+}
+
+82 // SURFACE_FACE V: 4 I: 6 planar
+{
+	shader textures/eX/eX_trim_vert_01_d
+	sampleSize 2
+	lightmapAxis ( 0.000000 -1.000000 0.000000 )
+}
+
+83 // SURFACE_FACE V: 4 I: 6 planar
+{
+	shader textures/eX/eX_trim_vert_01_d
+	sampleSize 2
+	lightmapAxis ( 0.000000 1.000000 0.000000 )
+}
+
+84 // SURFACE_FACE V: 4 I: 6 planar
+{
+	shader textures/eX/eX_floor_tread_01_d
+	sampleSize 2
+	lightmapAxis ( 0.000000 0.000000 1.000000 )
+}
+
+85 // SURFACE_FACE V: 4 I: 6 planar
+{
+	shader textures/eX/eX_trim_vert_01_d
+	sampleSize 2
+	lightmapAxis ( -1.000000 0.000000 0.000000 )
+}
+
+86 // SURFACE_FACE V: 4 I: 6 planar
+{
+	shader textures/eX/eX_trim_vert_01_d
+	sampleSize 2
+	lightmapAxis ( 1.000000 0.000000 0.000000 )
+}
+
+87 // SURFACE_FACE V: 4 I: 6 planar
+{
+	shader textures/eX/eX_trim_vert_01_d
+	sampleSize 2
+	lightmapAxis ( 0.000000 -1.000000 0.000000 )
+}
+
+88 // SURFACE_FACE V: 4 I: 6 planar
+{
+	shader textures/eX/eX_trim_vert_01_d
+	sampleSize 2
+	lightmapAxis ( 0.000000 1.000000 0.000000 )
+}
+
+89 // SURFACE_FACE V: 4 I: 6 planar
+{
+	shader textures/eX/eX_floor_tread_01_d
+	sampleSize 2
+	lightmapAxis ( 0.000000 0.000000 1.000000 )
+}
+
+90 // SURFACE_FACE V: 4 I: 6 planar
+{
+	shader textures/eX/eX_trim_vert_01_d
+	sampleSize 2
+	lightmapAxis ( -1.000000 0.000000 0.000000 )
+}
+
+91 // SURFACE_FACE V: 4 I: 6 planar
+{
+	shader textures/eX/eX_trim_vert_01_d
+	sampleSize 2
+	lightmapAxis ( 1.000000 0.000000 0.000000 )
+}
+
+92 // SURFACE_FACE V: 4 I: 6 planar
+{
+	shader textures/eX/eX_trim_vert_01_d
+	sampleSize 2
+	lightmapAxis ( 0.000000 -1.000000 0.000000 )
+}
+
+93 // SURFACE_FACE V: 4 I: 6 planar
+{
+	shader textures/eX/eX_trim_vert_01_d
+	sampleSize 2
+	lightmapAxis ( 0.000000 1.000000 0.000000 )
+}
+
+94 // SURFACE_FACE V: 4 I: 6 planar
+{
+	shader textures/eX/eX_floor_tread_01_d
+	sampleSize 2
+	lightmapAxis ( 0.000000 0.000000 1.000000 )
+}
+
+95 // SURFACE_FACE V: 4 I: 6 planar
+{
+	shader textures/eX/eX_trim_vert_01_d
+	sampleSize 2
+	lightmapAxis ( -1.000000 0.000000 0.000000 )
+}
+
+96 // SURFACE_FACE V: 4 I: 6 planar
+{
+	shader textures/eX/eX_trim_vert_01_d
+	sampleSize 2
+	lightmapAxis ( 1.000000 0.000000 0.000000 )
+}
+
+97 // SURFACE_FACE V: 4 I: 6 planar
+{
+	shader textures/eX/eX_trim_vert_01_d
+	sampleSize 2
+	lightmapAxis ( 0.000000 -1.000000 0.000000 )
+}
+
+98 // SURFACE_FACE V: 4 I: 6 planar
+{
+	shader textures/eX/eX_trim_vert_01_d
+	sampleSize 2
+	lightmapAxis ( 0.000000 1.000000 0.000000 )
+}
+
+99 // SURFACE_FACE V: 4 I: 6 planar
+{
+	shader textures/eX/eX_floor_tread_01_d
+	sampleSize 2
+	lightmapAxis ( 0.000000 0.000000 1.000000 )
+}
+
+100 // SURFACE_FACE V: 4 I: 6 planar
+{
+	shader textures/eX/eX_trim_vert_01_d
+	sampleSize 2
+	lightmapAxis ( -1.000000 0.000000 0.000000 )
+}
+
+101 // SURFACE_FACE V: 4 I: 6 planar
+{
+	shader textures/eX/eX_trim_vert_01_d
+	sampleSize 2
+	lightmapAxis ( 1.000000 0.000000 0.000000 )
+}
+
+102 // SURFACE_FACE V: 4 I: 6 planar
+{
+	shader textures/eX/eX_trim_vert_01_d
+	sampleSize 2
+	lightmapAxis ( 0.000000 -1.000000 0.000000 )
+}
+
+103 // SURFACE_FACE V: 4 I: 6 planar
+{
+	shader textures/eX/eX_trim_vert_01_d
+	sampleSize 2
+	lightmapAxis ( 0.000000 1.000000 0.000000 )
+}
+
+104 // SURFACE_FACE V: 4 I: 6 planar
+{
+	shader textures/eX/eX_floor_tread_01_d
+	sampleSize 2
+	lightmapAxis ( 0.000000 0.000000 1.000000 )
+}
+
+105 // SURFACE_FACE V: 4 I: 6 planar
+{
+	shader textures/eX/eX_trim_vert_01_d
+	sampleSize 2
+	lightmapAxis ( -1.000000 0.000000 0.000000 )
+}
+
+106 // SURFACE_FACE V: 4 I: 6 planar
+{
+	shader textures/eX/eX_trim_vert_01_d
+	sampleSize 2
+	lightmapAxis ( 1.000000 0.000000 0.000000 )
+}
+
+107 // SURFACE_FACE V: 4 I: 6 planar
+{
+	shader textures/eX/eX_trim_vert_01_d
+	sampleSize 2
+	lightmapAxis ( 0.000000 -1.000000 0.000000 )
+}
+
+108 // SURFACE_FACE V: 4 I: 6 planar
+{
+	shader textures/eX/eX_trim_vert_01_d
+	sampleSize 2
+	lightmapAxis ( 0.000000 1.000000 0.000000 )
+}
+
+109 // SURFACE_FACE V: 4 I: 6 planar
+{
+	shader textures/eX/eX_floor_tread_01_d
+	sampleSize 2
+	lightmapAxis ( 0.000000 0.000000 1.000000 )
+}
+
+110 // SURFACE_FACE V: 4 I: 6 planar
+{
+	shader textures/eX/eX_trim_vert_01_d
+	sampleSize 2
+	lightmapAxis ( 0.000000 -1.000000 0.000000 )
+}
+
+111 // SURFACE_FACE V: 4 I: 6 planar
+{
+	shader textures/eX/eX_trim_vert_01_d
+	sampleSize 2
+	lightmapAxis ( 0.000000 1.000000 0.000000 )
+}
+
+112 // SURFACE_FACE V: 4 I: 6 planar
+{
+	shader textures/eX/eX_trim_vert_01_d
+	sampleSize 2
+	lightmapAxis ( 0.000000 -1.000000 0.000000 )
+}
+
+113 // SURFACE_FACE V: 4 I: 6 planar
+{
+	shader textures/eX/eX_trim_vert_01_d
+	sampleSize 2
+	lightmapAxis ( 0.000000 1.000000 0.000000 )
+}
+
+114 // SURFACE_FACE V: 4 I: 6 planar
+{
+	shader textures/eX/eX_trim_vert_01_d
+	sampleSize 2
+	lightmapAxis ( 0.000000 -1.000000 0.000000 )
+}
+
+115 // SURFACE_FACE V: 4 I: 6 planar
+{
+	shader textures/eX/eX_trim_vert_01_d
+	sampleSize 2
+	lightmapAxis ( 0.000000 1.000000 0.000000 )
+}
+
+116 // SURFACE_FACE V: 4 I: 6 planar
+{
+	shader textures/eX/eX_trim_vert_01_d
+	sampleSize 2
+	lightmapAxis ( 0.000000 -1.000000 0.000000 )
+}
+
+117 // SURFACE_FACE V: 4 I: 6 planar
+{
+	shader textures/eX/eX_trim_vert_01_d
+	sampleSize 2
+	lightmapAxis ( 0.000000 1.000000 0.000000 )
+}
+
+118 // SURFACE_FACE V: 4 I: 6 planar
+{
+	shader textures/eX/eX_trim_vert_01_d
+	sampleSize 2
+	lightmapAxis ( 0.000000 -1.000000 0.000000 )
+}
+
+119 // SURFACE_FACE V: 4 I: 6 planar
+{
+	shader textures/eX/eX_trim_vert_01_d
+	sampleSize 2
+	lightmapAxis ( 0.000000 1.000000 0.000000 )
+}
+
+120 // SURFACE_FACE V: 4 I: 6 planar
+{
+	shader textures/eX/eX_trim_vert_01_d
+	sampleSize 2
+	lightmapAxis ( 0.000000 -1.000000 0.000000 )
+}
+
+121 // SURFACE_FACE V: 4 I: 6 planar
+{
+	shader textures/eX/eX_trim_vert_01_d
+	sampleSize 2
+	lightmapAxis ( 0.000000 1.000000 0.000000 )
+}
+
+122 // SURFACE_FACE V: 4 I: 6 planar
+{
+	shader textures/eX/eX_trim_vert_01_d
+	sampleSize 2
+	lightmapAxis ( 0.000000 -1.000000 0.000000 )
+}
+
+123 // SURFACE_FACE V: 4 I: 6 planar
+{
+	shader textures/eX/eX_trim_vert_01_d
+	sampleSize 2
+	lightmapAxis ( 0.000000 1.000000 0.000000 )
+}
+
+124 // SURFACE_FACE V: 4 I: 6 planar
+{
+	shader textures/eX/eX_trim_vert_01_d
+	sampleSize 2
+	lightmapAxis ( 0.000000 -1.000000 0.000000 )
+}
+
+125 // SURFACE_FACE V: 4 I: 6 planar
+{
+	shader textures/eX/eX_trim_vert_01_d
+	sampleSize 2
+	lightmapAxis ( 0.000000 1.000000 0.000000 )
+}
+
+126 // SURFACE_FACE V: 4 I: 6 planar
+{
+	shader textures/eX/eX_trim_vert_01_d
+	sampleSize 2
+	lightmapAxis ( 0.000000 -1.000000 0.000000 )
+}
+
+127 // SURFACE_FACE V: 4 I: 6 planar
+{
+	shader textures/eX/eX_trim_vert_01_d
+	sampleSize 2
+	lightmapAxis ( 0.000000 1.000000 0.000000 )
+}
+
+128 // SURFACE_FACE V: 4 I: 6 planar
+{
+	shader textures/eX/eX_trim_vert_01_d
+	sampleSize 2
+	lightmapAxis ( 0.000000 -1.000000 0.000000 )
+}
+
+129 // SURFACE_FACE V: 4 I: 6 planar
+{
+	shader textures/eX/eX_trim_vert_01_d
+	sampleSize 2
+	lightmapAxis ( 0.000000 1.000000 0.000000 )
+}
+
+130 // SURFACE_FACE V: 4 I: 6 planar
+{
+	shader textures/rustchain/rustchain_floor_plate_01
+	sampleSize 2
+	lightmapAxis ( 0.000000 0.000000 1.000000 )
+}
+
+131 // SURFACE_FACE V: 4 I: 6 planar
+{
+	shader textures/eX/eX_trim_vert_01_d
+	sampleSize 2
+	lightmapAxis ( -1.000000 0.000000 0.000000 )
+}
+
+132 // SURFACE_FACE V: 4 I: 6 planar
+{
+	shader textures/eX/eX_trim_vert_01_d
+	sampleSize 2
+	lightmapAxis ( 1.000000 0.000000 0.000000 )
+}
+
+133 // SURFACE_FACE V: 4 I: 6 planar
+{
+	shader textures/eX/eX_trim_vert_01_d
+	sampleSize 2
+	lightmapAxis ( 0.000000 -1.000000 0.000000 )
+}
+
+134 // SURFACE_FACE V: 4 I: 6 planar
+{
+	shader textures/eX/eX_trim_vert_01_d
+	sampleSize 2
+	lightmapAxis ( 0.000000 1.000000 0.000000 )
+}
+
+135 // SURFACE_FACE V: 4 I: 6 planar
+{
+	shader textures/eX/eX_trim_vert_01_d
+	sampleSize 2
+	lightmapAxis ( 0.000000 0.000000 1.000000 )
+}
+
+136 // SURFACE_FACE V: 5 I: 9 planar
+{
+	shader textures/rustchain/rustchain_wall_panel_01
+	sampleSize 2
+	lightmapAxis ( -1.000000 0.000000 0.000000 )
+}
+
+137 // SURFACE_FACE V: 7 I: 15 planar
+{
+	shader textures/rustchain/rustchain_wall_panel_01
+	sampleSize 2
+	lightmapAxis ( 1.000000 0.000000 0.000000 )
+}
+
+138 // SURFACE_FACE V: 4 I: 6 planar
+{
+	shader textures/rustchain/rustchain_wall_panel_01
+	sampleSize 2
+	lightmapAxis ( 0.000000 -1.000000 0.000000 )
+}
+
+139 // SURFACE_FACE V: 4 I: 6 planar
+{
+	shader textures/rustchain/rustchain_wall_panel_01
+	sampleSize 2
+	lightmapAxis ( 0.000000 1.000000 0.000000 )
+}
+
+140 // SURFACE_FACE V: 6 I: 12 planar
+{
+	shader textures/eX/eX_mtl_panel_03_d
+	sampleSize 2
+	lightmapAxis ( 0.000000 0.000000 -1.000000 )
+}
+
+141 // SURFACE_FACE V: 4 I: 6 planar
+{
+	shader textures/rustchain/rustchain_floor_plate_01
+	sampleSize 2
+	lightmapAxis ( 0.000000 0.000000 1.000000 )
+}
+
+142 // SURFACE_FACE V: 4 I: 6 planar
+{
+	shader textures/rustchain/rustchain_wall_panel_01
+	sampleSize 2
+	lightmapAxis ( -1.000000 0.000000 0.000000 )
+}
+
+143 // SURFACE_FACE V: 4 I: 6 planar
+{
+	shader textures/rustchain/rustchain_wall_panel_01
+	sampleSize 2
+	lightmapAxis ( 1.000000 0.000000 0.000000 )
+}
+
+144 // SURFACE_FACE V: 4 I: 6 planar
+{
+	shader textures/rustchain/rustchain_wall_panel_01
+	sampleSize 2
+	lightmapAxis ( 0.000000 -1.000000 0.000000 )
+}
+
+145 // SURFACE_FACE V: 4 I: 6 planar
+{
+	shader textures/rustchain/rustchain_wall_panel_01
+	sampleSize 2
+	lightmapAxis ( 0.000000 0.000000 -1.000000 )
+}
+
+146 // SURFACE_FACE V: 4 I: 6 planar
+{
+	shader textures/rustchain/rustchain_wall_panel_01
+	sampleSize 2
+	lightmapAxis ( 0.000000 0.000000 1.000000 )
+}
+
+147 // SURFACE_FACE V: 4 I: 6 planar
+{
+	shader textures/rustchain/rustchain_wall_panel_01
+	sampleSize 2
+	lightmapAxis ( -1.000000 0.000000 0.000000 )
+}
+
+148 // SURFACE_FACE V: 4 I: 6 planar
+{
+	shader textures/rustchain/rustchain_wall_panel_01
+	sampleSize 2
+	lightmapAxis ( 1.000000 0.000000 0.000000 )
+}
+
+149 // SURFACE_FACE V: 4 I: 6 planar
+{
+	shader textures/rustchain/rustchain_wall_panel_01
+	sampleSize 2
+	lightmapAxis ( 0.000000 -1.000000 0.000000 )
+}
+
+150 // SURFACE_FACE V: 4 I: 6 planar
+{
+	shader textures/rustchain/rustchain_wall_panel_01
+	sampleSize 2
+	lightmapAxis ( 0.000000 0.000000 -1.000000 )
+}
+
+151 // SURFACE_FACE V: 4 I: 6 planar
+{
+	shader textures/rustchain/rustchain_wall_panel_01
+	sampleSize 2
+	lightmapAxis ( 0.000000 0.000000 1.000000 )
+}
+
+152 // SURFACE_FACE V: 4 I: 6 planar
+{
+	shader textures/rustchain/rustchain_wall_panel_01
+	sampleSize 2
+	lightmapAxis ( -1.000000 0.000000 0.000000 )
+}
+
+153 // SURFACE_FACE V: 4 I: 6 planar
+{
+	shader textures/rustchain/rustchain_wall_panel_01
+	sampleSize 2
+	lightmapAxis ( 1.000000 0.000000 0.000000 )
+}
+
+154 // SURFACE_FACE V: 4 I: 6 planar
+{
+	shader textures/rustchain/rustchain_wall_panel_01
+	sampleSize 2
+	lightmapAxis ( 0.000000 -1.000000 0.000000 )
+}
+
+155 // SURFACE_FACE V: 4 I: 6 planar
+{
+	shader textures/rustchain/rustchain_wall_panel_01
+	sampleSize 2
+	lightmapAxis ( 0.000000 1.000000 0.000000 )
+}
+
+156 // SURFACE_FACE V: 4 I: 6 planar
+{
+	shader textures/rustchain/rustchain_wall_panel_01
+	sampleSize 2
+	lightmapAxis ( 0.000000 0.000000 -1.000000 )
+}
+
+157 // SURFACE_FACE V: 4 I: 6 planar
+{
+	shader textures/rustchain/rustchain_wall_panel_01
+	sampleSize 2
+	lightmapAxis ( 0.000000 0.000000 1.000000 )
+}
+
+158 // SURFACE_FACE V: 4 I: 6 planar
+{
+	shader textures/rustchain/rustchain_wall_panel_01
+	sampleSize 2
+	lightmapAxis ( 0.000000 -1.000000 0.000000 )
+}
+
+159 // SURFACE_FACE V: 4 I: 6 planar
+{
+	shader textures/rustchain/rustchain_wall_panel_01
+	sampleSize 2
+	lightmapAxis ( 0.000000 0.000000 -1.000000 )
+}
+
+160 // SURFACE_FACE V: 4 I: 6 planar
+{
+	shader textures/rustchain/rustchain_wall_panel_01
+	sampleSize 2
+	lightmapAxis ( -1.000000 0.000000 0.000000 )
+}
+
+161 // SURFACE_FACE V: 4 I: 6 planar
+{
+	shader textures/rustchain/rustchain_wall_panel_01
+	sampleSize 2
+	lightmapAxis ( 0.000000 -1.000000 0.000000 )
+}
+
+162 // SURFACE_FACE V: 6 I: 12 planar
+{
+	shader textures/rustchain/rustchain_wall_panel_01
+	sampleSize 2
+	lightmapAxis ( 0.000000 1.000000 0.000000 )
+}
+
+163 // SURFACE_FACE V: 6 I: 12 planar
+{
+	shader textures/rustchain/rustchain_wall_panel_01
+	sampleSize 2
+	lightmapAxis ( 0.000000 0.000000 -1.000000 )
+}
+
+164 // SURFACE_FACE V: 4 I: 6 planar
+{
+	shader textures/rustchain/rustchain_wall_panel_01
+	sampleSize 2
+	lightmapAxis ( 1.000000 0.000000 0.000000 )
+}
+
+165 // SURFACE_FACE V: 4 I: 6 planar
+{
+	shader textures/rustchain/rustchain_wall_panel_01
+	sampleSize 2
+	lightmapAxis ( 0.000000 -1.000000 0.000000 )
+}
+
+166 // SURFACE_FACE V: 6 I: 12 planar
+{
+	shader textures/rustchain/rustchain_wall_panel_01
+	sampleSize 2
+	lightmapAxis ( 0.000000 1.000000 0.000000 )
+}
+
+167 // SURFACE_FACE V: 6 I: 12 planar
+{
+	shader textures/rustchain/rustchain_wall_panel_01
+	sampleSize 2
+	lightmapAxis ( 0.000000 0.000000 -1.000000 )
+}
+
+168 // SURFACE_FACE V: 9 I: 24 planar
+{
+	shader textures/eX/eX_mtl_panel_03_d
+	sampleSize 2
+	lightmapAxis ( 0.000000 0.000000 -1.000000 )
+}
+
+169 // SURFACE_FACE V: 9 I: 24 planar
+{
+	shader textures/rustchain/rustchain_floor_plate_01
+	sampleSize 2
+	lightmapAxis ( 0.000000 0.000000 1.000000 )
+}
+
+170 // SURFACE_FACE V: 6 I: 12 planar
+{
+	shader textures/eX/eX_trim_vert_01_d
+	sampleSize 2
+	lightmapAxis ( -1.000000 0.000000 0.000000 )
+}
+
+171 // SURFACE_FACE V: 4 I: 6 planar
+{
+	shader textures/eX/eX_trim_vert_01_d
+	sampleSize 2
+	lightmapAxis ( 1.000000 0.000000 0.000000 )
+}
+
+172 // SURFACE_FACE V: 4 I: 6 planar
+{
+	shader textures/eX/eX_trim_vert_01_d
+	sampleSize 2
+	lightmapAxis ( 0.000000 1.000000 0.000000 )
+}
+
+173 // SURFACE_FACE V: 6 I: 12 planar
+{
+	shader textures/eX/eX_trim_vert_01_d
+	sampleSize 2
+	lightmapAxis ( 0.000000 0.000000 -1.000000 )
+}
+
+174 // SURFACE_FACE V: 4 I: 6 planar
+{
+	shader textures/eX/eX_trim_vert_01_d
+	sampleSize 2
+	lightmapAxis ( 0.000000 0.000000 1.000000 )
+}
+
+175 // SURFACE_FACE V: 4 I: 6 planar
+{
+	shader textures/eX/eX_trim_vert_01_d
+	sampleSize 2
+	lightmapAxis ( -1.000000 0.000000 0.000000 )
+}
+
+176 // SURFACE_FACE V: 6 I: 12 planar
+{
+	shader textures/eX/eX_trim_vert_01_d
+	sampleSize 2
+	lightmapAxis ( 1.000000 0.000000 0.000000 )
+}
+
+177 // SURFACE_FACE V: 4 I: 6 planar
+{
+	shader textures/eX/eX_trim_vert_01_d
+	sampleSize 2
+	lightmapAxis ( 0.000000 1.000000 0.000000 )
+}
+
+178 // SURFACE_FACE V: 6 I: 12 planar
+{
+	shader textures/eX/eX_trim_vert_01_d
+	sampleSize 2
+	lightmapAxis ( 0.000000 0.000000 -1.000000 )
+}
+
+179 // SURFACE_FACE V: 4 I: 6 planar
+{
+	shader textures/eX/eX_trim_vert_01_d
+	sampleSize 2
+	lightmapAxis ( 0.000000 0.000000 1.000000 )
+}
+
+180 // SURFACE_FACE V: 6 I: 12 planar
+{
+	shader textures/eX/eX_mtl_panel_03_d
+	sampleSize 2
+	lightmapAxis ( 0.000000 0.000000 -1.000000 )
+}
+
+181 // SURFACE_FACE V: 8 I: 18 planar
+{
+	shader textures/eX/eX_floor_mtl_grate_01_d
+	sampleSize 2
+	lightmapAxis ( 0.000000 0.000000 1.000000 )
+}
+
+182 // SURFACE_FACE V: 4 I: 6 planar
+{
+	shader textures/rustchain/rustchain_wall_panel_01
+	sampleSize 2
+	lightmapAxis ( -1.000000 0.000000 0.000000 )
+}
+
+183 // SURFACE_FACE V: 4 I: 6 planar
+{
+	shader textures/rustchain/rustchain_wall_panel_01
+	sampleSize 2
+	lightmapAxis ( 1.000000 0.000000 0.000000 )
+}
+
+184 // SURFACE_FACE V: 4 I: 6 planar
+{
+	shader textures/rustchain/rustchain_wall_panel_01
+	sampleSize 2
+	lightmapAxis ( 0.000000 -1.000000 0.000000 )
+}
+
+185 // SURFACE_FACE V: 4 I: 6 planar
+{
+	shader textures/rustchain/rustchain_wall_panel_01
+	sampleSize 2
+	lightmapAxis ( 0.000000 1.000000 0.000000 )
+}
+
+186 // SURFACE_FACE V: 4 I: 6 planar
+{
+	shader textures/rustchain/rustchain_wall_panel_01
+	sampleSize 2
+	lightmapAxis ( 0.000000 0.000000 -1.000000 )
+}
+
+187 // SURFACE_FACE V: 4 I: 6 planar
+{
+	shader textures/rustchain/rustchain_wall_panel_01
+	sampleSize 2
+	lightmapAxis ( 0.000000 0.000000 1.000000 )
+}
+
+188 // SURFACE_FACE V: 5 I: 9 planar
+{
+	shader textures/eX/eX_trim_vert_01_d
+	sampleSize 2
+	lightmapAxis ( -1.000000 0.000000 0.000000 )
+}
+
+189 // SURFACE_FACE V: 5 I: 9 planar
+{
+	shader textures/eX/eX_trim_vert_01_d
+	sampleSize 2
+	lightmapAxis ( 1.000000 0.000000 0.000000 )
+}
+
+190 // SURFACE_FACE V: 4 I: 6 planar
+{
+	shader textures/eX/eX_trim_vert_01_d
+	sampleSize 2
+	lightmapAxis ( 0.000000 -1.000000 0.000000 )
+}
+
+191 // SURFACE_FACE V: 4 I: 6 planar
+{
+	shader textures/eX/eX_trim_vert_01_d
+	sampleSize 2
+	lightmapAxis ( 0.000000 1.000000 0.000000 )
+}
+
+192 // SURFACE_FACE V: 4 I: 6 planar
+{
+	shader textures/eX/eX_trim_vert_01_d
+	sampleSize 2
+	lightmapAxis ( 0.000000 0.000000 -1.000000 )
+}
+
+193 // SURFACE_FACE V: 4 I: 6 planar
+{
+	shader textures/eX/eX_trim_vert_01_d
+	sampleSize 2
+	lightmapAxis ( 0.000000 0.000000 1.000000 )
+}
+
+194 // SURFACE_FACE V: 5 I: 9 planar
+{
+	shader textures/eX/eX_trim_vert_01_d
+	sampleSize 2
+	lightmapAxis ( -1.000000 0.000000 0.000000 )
+}
+
+195 // SURFACE_FACE V: 5 I: 9 planar
+{
+	shader textures/eX/eX_trim_vert_01_d
+	sampleSize 2
+	lightmapAxis ( 1.000000 0.000000 0.000000 )
+}
+
+196 // SURFACE_FACE V: 4 I: 6 planar
+{
+	shader textures/eX/eX_trim_vert_01_d
+	sampleSize 2
+	lightmapAxis ( 0.000000 -1.000000 0.000000 )
+}
+
+197 // SURFACE_FACE V: 4 I: 6 planar
+{
+	shader textures/eX/eX_trim_vert_01_d
+	sampleSize 2
+	lightmapAxis ( 0.000000 1.000000 0.000000 )
+}
+
+198 // SURFACE_FACE V: 4 I: 6 planar
+{
+	shader textures/eX/eX_trim_vert_01_d
+	sampleSize 2
+	lightmapAxis ( 0.000000 0.000000 -1.000000 )
+}
+
+199 // SURFACE_FACE V: 4 I: 6 planar
+{
+	shader textures/eX/eX_trim_vert_01_d
+	sampleSize 2
+	lightmapAxis ( 0.000000 0.000000 1.000000 )
+}
+
+200 // SURFACE_FACE V: 6 I: 12 planar
+{
+	shader textures/eX/eX_mtl_panel_03_d
+	sampleSize 2
+	lightmapAxis ( 0.000000 0.000000 -1.000000 )
+}
+
+201 // SURFACE_FACE V: 4 I: 6 planar
+{
+	shader textures/eX/eX_floor_mtl_grate_01_d
+	sampleSize 2
+	lightmapAxis ( 0.000000 0.000000 1.000000 )
+}
+
+202 // SURFACE_FACE V: 4 I: 6 planar
+{
+	shader textures/eX/eX_wall_panels_08_d
+	sampleSize 2
+	lightmapAxis ( -1.000000 0.000000 0.000000 )
+}
+
+203 // SURFACE_FACE V: 6 I: 12 planar
+{
+	shader textures/eX/eX_wall_panels_08_d
+	sampleSize 2
+	lightmapAxis ( 1.000000 0.000000 0.000000 )
+}
+
+204 // SURFACE_FACE V: 4 I: 6 planar
+{
+	shader textures/eX/eX_wall_panels_08_d
+	sampleSize 2
+	lightmapAxis ( 0.000000 -1.000000 0.000000 )
+}
+
+205 // SURFACE_FACE V: 4 I: 6 planar
+{
+	shader textures/eX/eX_wall_panels_08_d
+	sampleSize 2
+	lightmapAxis ( 0.000000 1.000000 0.000000 )
+}
+
+206 // SURFACE_FACE V: 6 I: 12 planar
+{
+	shader textures/eX/eX_wall_panels_08_d
+	sampleSize 2
+	lightmapAxis ( 0.000000 0.000000 -1.000000 )
+}
+
+207 // SURFACE_FACE V: 4 I: 6 planar
+{
+	shader textures/eX/eX_wall_panels_08_d
+	sampleSize 2
+	lightmapAxis ( 0.000000 0.000000 1.000000 )
+}
+
+208 // SURFACE_FACE V: 4 I: 6 planar
+{
+	shader textures/eX/eX_wall_panels_08_d
+	sampleSize 2
+	lightmapAxis ( -1.000000 0.000000 0.000000 )
+}
+
+209 // SURFACE_FACE V: 4 I: 6 planar
+{
+	shader textures/eX/eX_wall_panels_08_d
+	sampleSize 2
+	lightmapAxis ( 0.000000 -1.000000 0.000000 )
+}
+
+210 // SURFACE_FACE V: 4 I: 6 planar
+{
+	shader textures/eX/eX_wall_panels_08_d
+	sampleSize 2
+	lightmapAxis ( 0.000000 1.000000 0.000000 )
+}
+
+211 // SURFACE_FACE V: 4 I: 6 planar
+{
+	shader textures/eX/eX_wall_panels_08_d
+	sampleSize 2
+	lightmapAxis ( 0.000000 0.000000 -1.000000 )
+}
+
+212 // SURFACE_FACE V: 4 I: 6 planar
+{
+	shader textures/eX/eX_wall_panels_08_d
+	sampleSize 2
+	lightmapAxis ( 0.000000 0.000000 1.000000 )
+}
+
+213 // SURFACE_FACE V: 4 I: 6 planar
+{
+	shader textures/eX/eX_wall_panels_08_d
+	sampleSize 2
+	lightmapAxis ( -1.000000 0.000000 0.000000 )
+}
+
+214 // SURFACE_FACE V: 4 I: 6 planar
+{
+	shader textures/eX/eX_wall_panels_08_d
+	sampleSize 2
+	lightmapAxis ( 0.000000 -1.000000 0.000000 )
+}
+
+215 // SURFACE_FACE V: 4 I: 6 planar
+{
+	shader textures/eX/eX_wall_panels_08_d
+	sampleSize 2
+	lightmapAxis ( 0.000000 1.000000 0.000000 )
+}
+
+216 // SURFACE_FACE V: 4 I: 6 planar
+{
+	shader textures/eX/eX_wall_panels_08_d
+	sampleSize 2
+	lightmapAxis ( 0.000000 0.000000 -1.000000 )
+}
+
+217 // SURFACE_FACE V: 4 I: 6 planar
+{
+	shader textures/eX/eX_wall_panels_08_d
+	sampleSize 2
+	lightmapAxis ( 0.000000 0.000000 1.000000 )
+}
+
+218 // SURFACE_FACE V: 6 I: 12 planar
+{
+	shader textures/eX/eX_mtl_panel_03_d
+	sampleSize 2
+	lightmapAxis ( 0.000000 0.000000 -1.000000 )
+}
+
+219 // SURFACE_FACE V: 4 I: 6 planar
+{
+	shader textures/rustchain/rustchain_floor_plate_01
+	sampleSize 2
+	lightmapAxis ( 0.000000 0.000000 1.000000 )
+}
+
+220 // SURFACE_FACE V: 4 I: 6 planar
+{
+	shader textures/rustchain/rustchain_floor_plate_01
+	sampleSize 2
+	lightmapAxis ( 0.000000 0.000000 1.000000 )
+}
+
+221 // SURFACE_FACE V: 6 I: 12 planar
+{
+	shader textures/rustchain/rustchain_floor_plate_01
+	sampleSize 2
+	lightmapAxis ( 0.000000 0.000000 1.000000 )
+}
+
+222 // SURFACE_FACE V: 6 I: 12 planar
+{
+	shader textures/eX/eX_wall_panels_08_d
+	sampleSize 2
+	lightmapAxis ( -1.000000 0.000000 0.000000 )
+}
+
+223 // SURFACE_FACE V: 4 I: 6 planar
+{
+	shader textures/eX/eX_wall_panels_08_d
+	sampleSize 2
+	lightmapAxis ( 1.000000 0.000000 0.000000 )
+}
+
+224 // SURFACE_FACE V: 4 I: 6 planar
+{
+	shader textures/eX/eX_wall_panels_08_d
+	sampleSize 2
+	lightmapAxis ( 0.000000 -1.000000 0.000000 )
+}
+
+225 // SURFACE_FACE V: 4 I: 6 planar
+{
+	shader textures/eX/eX_wall_panels_08_d
+	sampleSize 2
+	lightmapAxis ( 0.000000 1.000000 0.000000 )
+}
+
+226 // SURFACE_FACE V: 6 I: 12 planar
+{
+	shader textures/eX/eX_wall_panels_08_d
+	sampleSize 2
+	lightmapAxis ( 0.000000 0.000000 -1.000000 )
+}
+
+227 // SURFACE_FACE V: 4 I: 6 planar
+{
+	shader textures/eX/eX_wall_panels_08_d
+	sampleSize 2
+	lightmapAxis ( 0.000000 0.000000 1.000000 )
+}
+
+228 // SURFACE_FACE V: 4 I: 6 planar
+{
+	shader textures/eX/eX_wall_panels_08_d
+	sampleSize 2
+	lightmapAxis ( 1.000000 0.000000 0.000000 )
+}
+
+229 // SURFACE_FACE V: 4 I: 6 planar
+{
+	shader textures/eX/eX_wall_panels_08_d
+	sampleSize 2
+	lightmapAxis ( 0.000000 -1.000000 0.000000 )
+}
+
+230 // SURFACE_FACE V: 4 I: 6 planar
+{
+	shader textures/eX/eX_wall_panels_08_d
+	sampleSize 2
+	lightmapAxis ( 0.000000 1.000000 0.000000 )
+}
+
+231 // SURFACE_FACE V: 4 I: 6 planar
+{
+	shader textures/eX/eX_wall_panels_08_d
+	sampleSize 2
+	lightmapAxis ( 0.000000 0.000000 -1.000000 )
+}
+
+232 // SURFACE_FACE V: 4 I: 6 planar
+{
+	shader textures/eX/eX_wall_panels_08_d
+	sampleSize 2
+	lightmapAxis ( 0.000000 0.000000 1.000000 )
+}
+
+233 // SURFACE_FACE V: 4 I: 6 planar
+{
+	shader textures/eX/eX_wall_panels_08_d
+	sampleSize 2
+	lightmapAxis ( 1.000000 0.000000 0.000000 )
+}
+
+234 // SURFACE_FACE V: 4 I: 6 planar
+{
+	shader textures/eX/eX_wall_panels_08_d
+	sampleSize 2
+	lightmapAxis ( 0.000000 -1.000000 0.000000 )
+}
+
+235 // SURFACE_FACE V: 4 I: 6 planar
+{
+	shader textures/eX/eX_wall_panels_08_d
+	sampleSize 2
+	lightmapAxis ( 0.000000 1.000000 0.000000 )
+}
+
+236 // SURFACE_FACE V: 4 I: 6 planar
+{
+	shader textures/eX/eX_wall_panels_08_d
+	sampleSize 2
+	lightmapAxis ( 0.000000 0.000000 -1.000000 )
+}
+
+237 // SURFACE_FACE V: 4 I: 6 planar
+{
+	shader textures/eX/eX_wall_panels_08_d
+	sampleSize 2
+	lightmapAxis ( 0.000000 0.000000 1.000000 )
+}
+
+238 // SURFACE_FACE V: 6 I: 12 planar
+{
+	shader textures/eX/eX_mtl_panel_03_d
+	sampleSize 2
+	lightmapAxis ( 0.000000 0.000000 -1.000000 )
+}
+
+239 // SURFACE_FACE V: 4 I: 6 planar
+{
+	shader textures/rustchain/rustchain_floor_plate_01
+	sampleSize 2
+	lightmapAxis ( 0.000000 0.000000 1.000000 )
+}
+
+240 // SURFACE_FACE V: 4 I: 6 planar
+{
+	shader textures/rustchain/rustchain_floor_plate_01
+	sampleSize 2
+	lightmapAxis ( 0.000000 0.000000 1.000000 )
+}
+
+241 // SURFACE_FACE V: 6 I: 12 planar
+{
+	shader textures/rustchain/rustchain_floor_plate_01
+	sampleSize 2
+	lightmapAxis ( 0.000000 0.000000 1.000000 )
+}
+
+242 // SURFACE_FACE V: 4 I: 6 planar
+{
+	shader textures/rustchain/rustchain_wall_panel_01
+	sampleSize 2
+	lightmapAxis ( -1.000000 0.000000 0.000000 )
+}
+
+243 // SURFACE_FACE V: 4 I: 6 planar
+{
+	shader textures/rustchain/rustchain_wall_panel_01
+	sampleSize 2
+	lightmapAxis ( 1.000000 0.000000 0.000000 )
+}
+
+244 // SURFACE_FACE V: 4 I: 6 planar
+{
+	shader textures/rustchain/rustchain_wall_panel_01
+	sampleSize 2
+	lightmapAxis ( 0.000000 0.000000 -1.000000 )
+}
+
+245 // SURFACE_FACE V: 9 I: 21 planar
+{
+	shader textures/rustchain/rustchain_wall_panel_01
+	sampleSize 2
+	lightmapAxis ( -1.000000 0.000000 0.000000 )
+}
+
+246 // SURFACE_FACE V: 6 I: 12 planar
+{
+	shader textures/rustchain/rustchain_wall_panel_01
+	sampleSize 2
+	lightmapAxis ( 1.000000 0.000000 0.000000 )
+}
+
+247 // SURFACE_FACE V: 4 I: 6 planar
+{
+	shader textures/rustchain/rustchain_wall_panel_01
+	sampleSize 2
+	lightmapAxis ( 0.000000 -1.000000 0.000000 )
+}
+
+248 // SURFACE_FACE V: 4 I: 6 planar
+{
+	shader textures/rustchain/rustchain_wall_panel_01
+	sampleSize 2
+	lightmapAxis ( 0.000000 1.000000 0.000000 )
+}
+
+249 // SURFACE_FACE V: 6 I: 12 planar
+{
+	shader textures/rustchain/rustchain_wall_panel_01
+	sampleSize 2
+	lightmapAxis ( 0.000000 0.000000 -1.000000 )
+}
+
+250 // SURFACE_FACE V: 4 I: 6 planar
+{
+	shader textures/rustchain/rustchain_wall_panel_01
+	sampleSize 2
+	lightmapAxis ( 0.000000 0.000000 1.000000 )
+}
+
+251 // SURFACE_FACE V: 9 I: 21 planar
+{
+	shader textures/rustchain/rustchain_wall_panel_01
+	sampleSize 2
+	lightmapAxis ( -1.000000 0.000000 0.000000 )
+}
+
+252 // SURFACE_FACE V: 6 I: 12 planar
+{
+	shader textures/rustchain/rustchain_wall_panel_01
+	sampleSize 2
+	lightmapAxis ( 1.000000 0.000000 0.000000 )
+}
+
+253 // SURFACE_FACE V: 4 I: 6 planar
+{
+	shader textures/rustchain/rustchain_wall_panel_01
+	sampleSize 2
+	lightmapAxis ( 0.000000 1.000000 0.000000 )
+}
+
+254 // SURFACE_FACE V: 6 I: 12 planar
+{
+	shader textures/rustchain/rustchain_wall_panel_01
+	sampleSize 2
+	lightmapAxis ( 0.000000 0.000000 -1.000000 )
+}
+
+255 // SURFACE_FACE V: 4 I: 6 planar
+{
+	shader textures/rustchain/rustchain_wall_panel_01
+	sampleSize 2
+	lightmapAxis ( 0.000000 0.000000 1.000000 )
+}
+
+256 // SURFACE_FACE V: 4 I: 6 planar
+{
+	shader textures/rustchain/rustchain_wall_panel_01
+	sampleSize 2
+	lightmapAxis ( -1.000000 0.000000 0.000000 )
+}
+
+257 // SURFACE_FACE V: 4 I: 6 planar
+{
+	shader textures/rustchain/rustchain_wall_panel_01
+	sampleSize 2
+	lightmapAxis ( 1.000000 0.000000 0.000000 )
+}
+
+258 // SURFACE_FACE V: 4 I: 6 planar
+{
+	shader textures/rustchain/rustchain_wall_panel_01
+	sampleSize 2
+	lightmapAxis ( 0.000000 0.000000 -1.000000 )
+}
+
+259 // SURFACE_FACE V: 6 I: 12 planar
+{
+	shader textures/rustchain/rustchain_wall_panel_01
+	sampleSize 2
+	lightmapAxis ( -1.000000 0.000000 0.000000 )
+}
+
+260 // SURFACE_FACE V: 9 I: 21 planar
+{
+	shader textures/rustchain/rustchain_wall_panel_01
+	sampleSize 2
+	lightmapAxis ( 1.000000 0.000000 0.000000 )
+}
+
+261 // SURFACE_FACE V: 4 I: 6 planar
+{
+	shader textures/rustchain/rustchain_wall_panel_01
+	sampleSize 2
+	lightmapAxis ( 0.000000 -1.000000 0.000000 )
+}
+
+262 // SURFACE_FACE V: 4 I: 6 planar
+{
+	shader textures/rustchain/rustchain_wall_panel_01
+	sampleSize 2
+	lightmapAxis ( 0.000000 1.000000 0.000000 )
+}
+
+263 // SURFACE_FACE V: 6 I: 12 planar
+{
+	shader textures/rustchain/rustchain_wall_panel_01
+	sampleSize 2
+	lightmapAxis ( 0.000000 0.000000 -1.000000 )
+}
+
+264 // SURFACE_FACE V: 4 I: 6 planar
+{
+	shader textures/rustchain/rustchain_wall_panel_01
+	sampleSize 2
+	lightmapAxis ( 0.000000 0.000000 1.000000 )
+}
+
+265 // SURFACE_FACE V: 6 I: 12 planar
+{
+	shader textures/rustchain/rustchain_wall_panel_01
+	sampleSize 2
+	lightmapAxis ( -1.000000 0.000000 0.000000 )
+}
+
+266 // SURFACE_FACE V: 9 I: 21 planar
+{
+	shader textures/rustchain/rustchain_wall_panel_01
+	sampleSize 2
+	lightmapAxis ( 1.000000 0.000000 0.000000 )
+}
+
+267 // SURFACE_FACE V: 4 I: 6 planar
+{
+	shader textures/rustchain/rustchain_wall_panel_01
+	sampleSize 2
+	lightmapAxis ( 0.000000 1.000000 0.000000 )
+}
+
+268 // SURFACE_FACE V: 6 I: 12 planar
+{
+	shader textures/rustchain/rustchain_wall_panel_01
+	sampleSize 2
+	lightmapAxis ( 0.000000 0.000000 -1.000000 )
+}
+
+269 // SURFACE_FACE V: 4 I: 6 planar
+{
+	shader textures/rustchain/rustchain_wall_panel_01
+	sampleSize 2
+	lightmapAxis ( 0.000000 0.000000 1.000000 )
+}
+
+270 // SURFACE_FACE V: 10 I: 24 planar
+{
+	shader textures/rustchain/rustchain_wall_panel_01
+	sampleSize 2
+	lightmapAxis ( 0.000000 -1.000000 0.000000 )
+}
+
+271 // SURFACE_FACE V: 8 I: 18 planar
+{
+	shader textures/rustchain/rustchain_wall_panel_01
+	sampleSize 2
+	lightmapAxis ( 0.000000 1.000000 0.000000 )
+}
+
+272 // SURFACE_FACE V: 6 I: 12 planar
+{
+	shader textures/rustchain/rustchain_wall_panel_01
+	sampleSize 2
+	lightmapAxis ( 0.000000 0.000000 -1.000000 )
+}
+
+273 // SURFACE_FACE V: 4 I: 6 planar
+{
+	shader textures/rustchain/rustchain_wall_panel_01
+	sampleSize 2
+	lightmapAxis ( 0.000000 0.000000 1.000000 )
+}
+
+274 // SURFACE_FACE V: 5 I: 9 planar
+{
+	shader textures/rustchain/rustchain_wall_panel_01
+	sampleSize 2
+	lightmapAxis ( 0.000000 -1.000000 0.000000 )
+}
+
+275 // SURFACE_FACE V: 5 I: 9 planar
+{
+	shader textures/rustchain/rustchain_wall_panel_01
+	sampleSize 2
+	lightmapAxis ( 0.000000 1.000000 0.000000 )
+}
+
+276 // SURFACE_FACE V: 4 I: 6 planar
+{
+	shader textures/rustchain/rustchain_wall_panel_01
+	sampleSize 2
+	lightmapAxis ( 0.000000 0.000000 -1.000000 )
+}
+
+277 // SURFACE_FACE V: 5 I: 9 planar
+{
+	shader textures/rustchain/rustchain_wall_panel_01
+	sampleSize 2
+	lightmapAxis ( 0.000000 -1.000000 0.000000 )
+}
+
+278 // SURFACE_FACE V: 5 I: 9 planar
+{
+	shader textures/rustchain/rustchain_wall_panel_01
+	sampleSize 2
+	lightmapAxis ( 0.000000 1.000000 0.000000 )
+}
+
+279 // SURFACE_FACE V: 4 I: 6 planar
+{
+	shader textures/rustchain/rustchain_wall_panel_01
+	sampleSize 2
+	lightmapAxis ( 0.000000 0.000000 -1.000000 )
+}
+
+280 // SURFACE_FACE V: 9 I: 24 planar
+{
+	shader textures/rustchain/rustchain_wall_panel_01
+	sampleSize 2
+	lightmapAxis ( 0.000000 -1.000000 0.000000 )
+}
+
+281 // SURFACE_FACE V: 9 I: 24 planar
+{
+	shader textures/rustchain/rustchain_wall_panel_01
+	sampleSize 2
+	lightmapAxis ( 0.000000 1.000000 0.000000 )
+}
+
+282 // SURFACE_FACE V: 12 I: 30 planar
+{
+	shader textures/rustchain/rustchain_wall_panel_01
+	sampleSize 2
+	lightmapAxis ( 0.000000 0.000000 -1.000000 )
+}
+
+283 // SURFACE_FACE V: 4 I: 6 planar
+{
+	shader textures/rustchain/rustchain_wall_panel_01
+	sampleSize 2
+	lightmapAxis ( 0.000000 0.000000 1.000000 )
+}
+
+284 // SURFACE_FACE V: 4 I: 6 planar
+{
+	shader textures/rustchain/rustchain_wall_panel_01
+	sampleSize 2
+	lightmapAxis ( -1.000000 0.000000 0.000000 )
+}
+
+285 // SURFACE_FACE V: 4 I: 6 planar
+{
+	shader textures/rustchain/rustchain_wall_panel_01
+	sampleSize 2
+	lightmapAxis ( 1.000000 0.000000 0.000000 )
+}
+
+286 // SURFACE_FACE V: 5 I: 9 planar
+{
+	shader textures/rustchain/rustchain_wall_panel_01
+	sampleSize 2
+	lightmapAxis ( 0.000000 -1.000000 0.000000 )
+}
+
+287 // SURFACE_FACE V: 5 I: 9 planar
+{
+	shader textures/rustchain/rustchain_wall_panel_01
+	sampleSize 2
+	lightmapAxis ( 0.000000 1.000000 0.000000 )
+}
+
+288 // SURFACE_FACE V: 4 I: 6 planar
+{
+	shader textures/rustchain/rustchain_wall_panel_01
+	sampleSize 2
+	lightmapAxis ( 0.000000 0.000000 -1.000000 )
+}
+
+289 // SURFACE_FACE V: 4 I: 6 planar
+{
+	shader textures/rustchain/rustchain_wall_panel_01
+	sampleSize 2
+	lightmapAxis ( 0.000000 0.000000 1.000000 )
+}
+
+290 // SURFACE_FACE V: 4 I: 6 planar
+{
+	shader textures/rustchain/rustchain_wall_panel_01
+	sampleSize 2
+	lightmapAxis ( -1.000000 0.000000 0.000000 )
+}
+
+291 // SURFACE_FACE V: 4 I: 6 planar
+{
+	shader textures/rustchain/rustchain_wall_panel_01
+	sampleSize 2
+	lightmapAxis ( 1.000000 0.000000 0.000000 )
+}
+
+292 // SURFACE_FACE V: 5 I: 9 planar
+{
+	shader textures/rustchain/rustchain_wall_panel_01
+	sampleSize 2
+	lightmapAxis ( 0.000000 -1.000000 0.000000 )
+}
+
+293 // SURFACE_FACE V: 5 I: 9 planar
+{
+	shader textures/rustchain/rustchain_wall_panel_01
+	sampleSize 2
+	lightmapAxis ( 0.000000 1.000000 0.000000 )
+}
+
+294 // SURFACE_FACE V: 4 I: 6 planar
+{
+	shader textures/rustchain/rustchain_wall_panel_01
+	sampleSize 2
+	lightmapAxis ( 0.000000 0.000000 -1.000000 )
+}
+
+295 // SURFACE_FACE V: 4 I: 6 planar
+{
+	shader textures/rustchain/rustchain_wall_panel_01
+	sampleSize 2
+	lightmapAxis ( 0.000000 0.000000 1.000000 )
+}
+
+296 // SURFACE_FACE V: 19 I: 54 planar
+{
+	shader textures/eX/eX_mtl_panel_03_d
+	sampleSize 2
+	lightmapAxis ( 0.000000 0.000000 -1.000000 )
+}
+
+297 // SURFACE_FACE V: 19 I: 54 planar
+{
+	shader textures/rustchain/rustchain_floor_plate_01
+	sampleSize 2
+	lightmapAxis ( 0.000000 0.000000 1.000000 )
+}
+
+298 // SURFACE_FORCED_META V: 43242 I: 129813 
+{
+	shader models/props/Material_#0
+}
+
+299 // SURFACE_TRIANGLES V: 345 I: 1710 
+{
+	shader models/props/Material_#1
+	sampleSize 0
+}
+
+300 // SURFACE_TRIANGLES V: 328 I: 606 
+{
+	shader models/props/Material_#3
+	sampleSize 0
+}
+
+301 // SURFACE_TRIANGLES V: 162 I: 270 
+{
+	shader models/props/Material_#4
+	sampleSize 0
+}
+
+302 // SURFACE_TRIANGLES V: 126 I: 222 
+{
+	shader models/props/Material_#5
+	sampleSize 0
+}
+
+303 // SURFACE_TRIANGLES V: 108 I: 168 
+{
+	shader models/props/Material_#6
+	sampleSize 0
+}
+
+304 // SURFACE_TRIANGLES V: 176 I: 336 
+{
+	shader models/props/Material_#2
+	sampleSize 0
+}
+
+305 // SURFACE_TRIANGLES V: 92 I: 138 
+{
+	shader models/props/Material_#7
+	sampleSize 0
+}
+
+306 // SURFACE_TRIANGLES V: 4 I: 6 
+{
+	shader models/props/Material_#9
+	sampleSize 0
+}
+
+307 // SURFACE_FORCED_META V: 1784 I: 4725 
+{
+	shader models/props/Material_#12
+}
+
+308 // SURFACE_FORCED_META V: 9768 I: 22314 
+{
+	shader models/props/Material_#11
+}
+
+309 // SURFACE_FORCED_META V: 2946 I: 7662 
+{
+	shader models/props/Material_#10
+}
+
+310 // SURFACE_FORCED_META V: 1217 I: 2475 
+{
+	shader models/props/Material_#15
+}
+
+311 // SURFACE_TRIANGLES V: 100 I: 240 
+{
+	shader models/props/Material_#14
+	sampleSize 0
+}
+
+312 // SURFACE_FORCED_META V: 43242 I: 129813 
+{
+	shader models/props/Material_#0
+}
+
+313 // SURFACE_TRIANGLES V: 345 I: 1710 
+{
+	shader models/props/Material_#1
+	sampleSize 0
+}
+
+314 // SURFACE_TRIANGLES V: 328 I: 606 
+{
+	shader models/props/Material_#3
+	sampleSize 0
+}
+
+315 // SURFACE_TRIANGLES V: 162 I: 270 
+{
+	shader models/props/Material_#4
+	sampleSize 0
+}
+
+316 // SURFACE_TRIANGLES V: 126 I: 222 
+{
+	shader models/props/Material_#5
+	sampleSize 0
+}
+
+317 // SURFACE_TRIANGLES V: 108 I: 168 
+{
+	shader models/props/Material_#6
+	sampleSize 0
+}
+
+318 // SURFACE_TRIANGLES V: 176 I: 336 
+{
+	shader models/props/Material_#2
+	sampleSize 0
+}
+
+319 // SURFACE_TRIANGLES V: 92 I: 138 
+{
+	shader models/props/Material_#7
+	sampleSize 0
+}
+
+320 // SURFACE_TRIANGLES V: 4 I: 6 
+{
+	shader models/props/Material_#9
+	sampleSize 0
+}
+
+321 // SURFACE_FORCED_META V: 1784 I: 4725 
+{
+	shader models/props/Material_#12
+}
+
+322 // SURFACE_FORCED_META V: 9768 I: 22314 
+{
+	shader models/props/Material_#11
+}
+
+323 // SURFACE_FORCED_META V: 2946 I: 7662 
+{
+	shader models/props/Material_#10
+}
+
+324 // SURFACE_FORCED_META V: 1217 I: 2475 
+{
+	shader models/props/Material_#15
+}
+
+325 // SURFACE_TRIANGLES V: 100 I: 240 
+{
+	shader models/props/Material_#14
+	sampleSize 0
+}
+
+326 // SURFACE_FORCED_META V: 43242 I: 129813 
+{
+	shader models/props/Material_#0
+}
+
+327 // SURFACE_TRIANGLES V: 345 I: 1710 
+{
+	shader models/props/Material_#1
+	sampleSize 0
+}
+
+328 // SURFACE_TRIANGLES V: 328 I: 606 
+{
+	shader models/props/Material_#3
+	sampleSize 0
+}
+
+329 // SURFACE_TRIANGLES V: 162 I: 270 
+{
+	shader models/props/Material_#4
+	sampleSize 0
+}
+
+330 // SURFACE_TRIANGLES V: 126 I: 222 
+{
+	shader models/props/Material_#5
+	sampleSize 0
+}
+
+331 // SURFACE_TRIANGLES V: 108 I: 168 
+{
+	shader models/props/Material_#6
+	sampleSize 0
+}
+
+332 // SURFACE_TRIANGLES V: 176 I: 336 
+{
+	shader models/props/Material_#2
+	sampleSize 0
+}
+
+333 // SURFACE_TRIANGLES V: 92 I: 138 
+{
+	shader models/props/Material_#7
+	sampleSize 0
+}
+
+334 // SURFACE_TRIANGLES V: 4 I: 6 
+{
+	shader models/props/Material_#9
+	sampleSize 0
+}
+
+335 // SURFACE_FORCED_META V: 1784 I: 4725 
+{
+	shader models/props/Material_#12
+}
+
+336 // SURFACE_FORCED_META V: 9768 I: 22314 
+{
+	shader models/props/Material_#11
+}
+
+337 // SURFACE_FORCED_META V: 2946 I: 7662 
+{
+	shader models/props/Material_#10
+}
+
+338 // SURFACE_FORCED_META V: 1217 I: 2475 
+{
+	shader models/props/Material_#15
+}
+
+339 // SURFACE_TRIANGLES V: 100 I: 240 
+{
+	shader models/props/Material_#14
+	sampleSize 0
+}
+
+340 // SURFACE_FORCED_META V: 43242 I: 129813 
+{
+	shader models/props/Material_#0
+}
+
+341 // SURFACE_TRIANGLES V: 345 I: 1710 
+{
+	shader models/props/Material_#1
+	sampleSize 0
+}
+
+342 // SURFACE_TRIANGLES V: 328 I: 606 
+{
+	shader models/props/Material_#3
+	sampleSize 0
+}
+
+343 // SURFACE_TRIANGLES V: 162 I: 270 
+{
+	shader models/props/Material_#4
+	sampleSize 0
+}
+
+344 // SURFACE_TRIANGLES V: 126 I: 222 
+{
+	shader models/props/Material_#5
+	sampleSize 0
+}
+
+345 // SURFACE_TRIANGLES V: 108 I: 168 
+{
+	shader models/props/Material_#6
+	sampleSize 0
+}
+
+346 // SURFACE_TRIANGLES V: 176 I: 336 
+{
+	shader models/props/Material_#2
+	sampleSize 0
+}
+
+347 // SURFACE_TRIANGLES V: 92 I: 138 
+{
+	shader models/props/Material_#7
+	sampleSize 0
+}
+
+348 // SURFACE_TRIANGLES V: 4 I: 6 
+{
+	shader models/props/Material_#9
+	sampleSize 0
+}
+
+349 // SURFACE_FORCED_META V: 1784 I: 4725 
+{
+	shader models/props/Material_#12
+}
+
+350 // SURFACE_FORCED_META V: 9768 I: 22314 
+{
+	shader models/props/Material_#11
+}
+
+351 // SURFACE_FORCED_META V: 2946 I: 7662 
+{
+	shader models/props/Material_#10
+}
+
+352 // SURFACE_FORCED_META V: 1217 I: 2475 
+{
+	shader models/props/Material_#15
+}
+
+353 // SURFACE_TRIANGLES V: 100 I: 240 
+{
+	shader models/props/Material_#14
+	sampleSize 0
+}
+
+354 // SURFACE_TRIANGLES V: 232 I: 348 
+{
+	shader models/props/Mat
+	sampleSize 0
+}
+
+355 // SURFACE_TRIANGLES V: 232 I: 348 
+{
+	shader models/props/Mat
+	sampleSize 0
+}
+
+356 // SURFACE_TRIANGLES V: 120 I: 180 
+{
+	shader models/props/Mat_1
+	sampleSize 0
+}
+
+357 // SURFACE_TRIANGLES V: 120 I: 180 
+{
+	shader models/props/Mat_1
+	sampleSize 0
+}
+
+358 // SURFACE_TRIANGLES V: 888 I: 1848 
+{
+	shader models/props/Mat
+	sampleSize 0
+}
+
+359 // SURFACE_TRIANGLES V: 56 I: 84 
+{
+	shader models/props/Mat_2
+	sampleSize 0
+}
+
+360 // SURFACE_TRIANGLES V: 59 I: 156 
+{
+	shader models/props/Bok2_1001_1001
+	sampleSize 0
+}
+
+361 // SURFACE_TRIANGLES V: 52 I: 156 
+{
+	shader models/props/Bok1_1001_1001
+	sampleSize 0
+}
+
+362 // SURFACE_TRIANGLES V: 298 I: 684 
+{
+	shader models/props/Material
+	sampleSize 0
+}
+
+363 // SURFACE_FORCED_META V: 1448 I: 3552 
+{
+	shader models/props/term_1001
+}
+
+364 // SURFACE_TRIANGLES V: 148 I: 366 
+{
+	shader models/props/Material
+	sampleSize 0
+}
+
+365 // SURFACE_TRIANGLES V: 4 I: 6 
+{
+	shader models/props/Material
+	sampleSize 0
+}
+
+366 // SURFACE_TRIANGLES V: 4 I: 6 planar
+{
+	shader models/props/Material
+	sampleSize 0
+}
+
+367 // SURFACE_FORCED_META V: 6697 I: 9396 
+{
+	shader models/props/Material
+}
+
+368 // SURFACE_TRIANGLES V: 4 I: 6 planar
+{
+	shader models/props/Material
+	sampleSize 0
+}
+
+369 // SURFACE_TRIANGLES V: 4 I: 6 planar
+{
+	shader models/props/;_1001
+	sampleSize 0
+}
+
+370 // SURFACE_TRIANGLES V: 4 I: 6 planar
+{
+	shader models/props/tab_1001
+	sampleSize 0
+}
+
+371 // SURFACE_TRIANGLES V: 4 I: 6 planar
+{
+	shader models/props/caps_1001
+	sampleSize 0
+}
+
+372 // SURFACE_TRIANGLES V: 4 I: 6 planar
+{
+	shader models/props/Shift_1001
+	sampleSize 0
+}
+
+373 // SURFACE_TRIANGLES V: 4 I: 6 planar
+{
+	shader models/props/ctrl_2_1001
+	sampleSize 0
+}
+
+374 // SURFACE_TRIANGLES V: 4 I: 6 planar
+{
+	shader models/props/Material
+	sampleSize 0
+}
+
+375 // SURFACE_TRIANGLES V: 4 I: 6 planar
+{
+	shader models/props/alt_1_1001
+	sampleSize 0
+}
+
+376 // SURFACE_TRIANGLES V: 4 I: 6 planar
+{
+	shader models/props/YZ_1001
+	sampleSize 0
+}
+
+377 // SURFACE_TRIANGLES V: 4 I: 6 planar
+{
+	shader models/props/Material
+	sampleSize 0
+}
+
+378 // SURFACE_TRIANGLES V: 4 I: 6 planar
+{
+	shader models/props/Material
+	sampleSize 0
+}
+
+379 // SURFACE_TRIANGLES V: 4 I: 6 planar
+{
+	shader models/props/Material
+	sampleSize 0
+}
+
+380 // SURFACE_TRIANGLES V: 4 I: 6 planar
+{
+	shader models/props/Material
+	sampleSize 0
+}
+
+381 // SURFACE_TRIANGLES V: 4 I: 6 planar
+{
+	shader models/props/Material
+	sampleSize 0
+}
+
+382 // SURFACE_TRIANGLES V: 4 I: 6 planar
+{
+	shader models/props/Material
+	sampleSize 0
+}
+
+383 // SURFACE_TRIANGLES V: 4 I: 6 planar
+{
+	shader models/props/F3_1001
+	sampleSize 0
+}
+
+384 // SURFACE_TRIANGLES V: 4 I: 6 planar
+{
+	shader models/props/F4_1001
+	sampleSize 0
+}
+
+385 // SURFACE_TRIANGLES V: 4 I: 6 planar
+{
+	shader models/props/F5_1001
+	sampleSize 0
+}
+
+386 // SURFACE_TRIANGLES V: 4 I: 6 planar
+{
+	shader models/props/F6_1001
+	sampleSize 0
+}
+
+387 // SURFACE_TRIANGLES V: 4 I: 6 planar
+{
+	shader models/props/F7_1001
+	sampleSize 0
+}
+
+388 // SURFACE_TRIANGLES V: 4 I: 6 planar
+{
+	shader models/props/F8_1001
+	sampleSize 0
+}
+
+389 // SURFACE_TRIANGLES V: 4 I: 6 planar
+{
+	shader models/props/F10_1001
+	sampleSize 0
+}
+
+390 // SURFACE_TRIANGLES V: 4 I: 6 planar
+{
+	shader models/props/F11_1001
+	sampleSize 0
+}
+
+391 // SURFACE_TRIANGLES V: 4 I: 6 planar
+{
+	shader models/props/F12_1001
+	sampleSize 0
+}
+
+392 // SURFACE_TRIANGLES V: 4 I: 6 planar
+{
+	shader models/props/Delete_1001
+	sampleSize 0
+}
+
+393 // SURFACE_TRIANGLES V: 4 I: 6 planar
+{
+	shader models/props/3_1001
+	sampleSize 0
+}
+
+394 // SURFACE_TRIANGLES V: 4 I: 6 planar
+{
+	shader models/props/4_1001
+	sampleSize 0
+}
+
+395 // SURFACE_TRIANGLES V: 4 I: 6 planar
+{
+	shader models/props/5_1001
+	sampleSize 0
+}
+
+396 // SURFACE_TRIANGLES V: 4 I: 6 planar
+{
+	shader models/props/6_1001
+	sampleSize 0
+}
+
+397 // SURFACE_TRIANGLES V: 4 I: 6 planar
+{
+	shader models/props/7_1001
+	sampleSize 0
+}
+
+398 // SURFACE_TRIANGLES V: 4 I: 6 planar
+{
+	shader models/props/8_1001
+	sampleSize 0
+}
+
+399 // SURFACE_TRIANGLES V: 4 I: 6 planar
+{
+	shader models/props/9_1001
+	sampleSize 0
+}
+
+400 // SURFACE_TRIANGLES V: 4 I: 6 planar
+{
+	shader models/props/0_1001
+	sampleSize 0
+}
+
+401 // SURFACE_TRIANGLES V: 4 I: 6 planar
+{
+	shader models/props/-_1001
+	sampleSize 0
+}
+
+402 // SURFACE_TRIANGLES V: 4 I: 6 planar
+{
+	shader models/props/+_1001
+	sampleSize 0
+}
+
+403 // SURFACE_TRIANGLES V: 4 I: 6 planar
+{
+	shader models/props/Bacspace_1001
+	sampleSize 0
+}
+
+404 // SURFACE_TRIANGLES V: 4 I: 6 planar
+{
+	shader models/props/W_1001
+	sampleSize 0
+}
+
+405 // SURFACE_TRIANGLES V: 4 I: 6 planar
+{
+	shader models/props/S_1001
+	sampleSize 0
+}
+
+406 // SURFACE_TRIANGLES V: 4 I: 6 planar
+{
+	shader models/props/D_1001
+	sampleSize 0
+}
+
+407 // SURFACE_TRIANGLES V: 4 I: 6 planar
+{
+	shader models/props/E_1001
+	sampleSize 0
+}
+
+408 // SURFACE_TRIANGLES V: 4 I: 6 planar
+{
+	shader models/props/R_1001
+	sampleSize 0
+}
+
+409 // SURFACE_TRIANGLES V: 4 I: 6 planar
+{
+	shader models/props/T_1001
+	sampleSize 0
+}
+
+410 // SURFACE_TRIANGLES V: 4 I: 6 planar
+{
+	shader models/props/Y_1001
+	sampleSize 0
+}
+
+411 // SURFACE_TRIANGLES V: 4 I: 6 planar
+{
+	shader models/props/U_1001
+	sampleSize 0
+}
+
+412 // SURFACE_TRIANGLES V: 4 I: 6 planar
+{
+	shader models/props/I_1001
+	sampleSize 0
+}
+
+413 // SURFACE_TRIANGLES V: 4 I: 6 planar
+{
+	shader models/props/Material
+	sampleSize 0
+}
+
+414 // SURFACE_TRIANGLES V: 4 I: 6 planar
+{
+	shader models/props/P_1001
+	sampleSize 0
+}
+
+415 // SURFACE_TRIANGLES V: 4 I: 6 planar
+{
+	shader models/props/ú_1001
+	sampleSize 0
+}
+
+416 // SURFACE_TRIANGLES V: 4 I: 6 planar
+{
+	shader models/props/(_1001
+	sampleSize 0
+}
+
+417 // SURFACE_TRIANGLES V: 4 I: 6 planar
+{
+	shader models/props/enter_1001
+	sampleSize 0
+}
+
+418 // SURFACE_TRIANGLES V: 4 I: 6 planar
+{
+	shader models/props/←_1001
+	sampleSize 0
+}
+
+419 // SURFACE_TRIANGLES V: 4 I: 6 planar
+{
+	shader models/props/Stop_1001
+	sampleSize 0
+}
+
+420 // SURFACE_TRIANGLES V: 4 I: 6 planar
+{
+	shader models/props/ctrl_1_1001
+	sampleSize 0
+}
+
+421 // SURFACE_TRIANGLES V: 4 I: 6 planar
+{
+	shader models/props/Material
+	sampleSize 0
+}
+
+422 // SURFACE_TRIANGLES V: 4 I: 6 planar
+{
+	shader models/props/ctrl_1001
+	sampleSize 0
+}
+
+423 // SURFACE_TRIANGLES V: 4 I: 6 planar
+{
+	shader models/props/alt_1001
+	sampleSize 0
+}
+
+424 // SURFACE_TRIANGLES V: 4 I: 6 planar
+{
+	shader models/props/Space_1001
+	sampleSize 0
+}
+
+425 // SURFACE_TRIANGLES V: 4 I: 6 planar
+{
+	shader models/props/X_1001
+	sampleSize 0
+}
+
+426 // SURFACE_TRIANGLES V: 4 I: 6 planar
+{
+	shader models/props/Material
+	sampleSize 0
+}
+
+427 // SURFACE_TRIANGLES V: 4 I: 6 planar
+{
+	shader models/props/V_1001
+	sampleSize 0
+}
+
+428 // SURFACE_TRIANGLES V: 4 I: 6 planar
+{
+	shader models/props/B_1001
+	sampleSize 0
+}
+
+429 // SURFACE_TRIANGLES V: 4 I: 6 planar
+{
+	shader models/props/N_1001
+	sampleSize 0
+}
+
+430 // SURFACE_TRIANGLES V: 4 I: 6 planar
+{
+	shader models/props/F_1001
+	sampleSize 0
+}
+
+431 // SURFACE_TRIANGLES V: 4 I: 6 planar
+{
+	shader models/props/G_1001
+	sampleSize 0
+}
+
+432 // SURFACE_TRIANGLES V: 4 I: 6 planar
+{
+	shader models/props/H_1001
+	sampleSize 0
+}
+
+433 // SURFACE_TRIANGLES V: 4 I: 6 planar
+{
+	shader models/props/J_1001
+	sampleSize 0
+}
+
+434 // SURFACE_TRIANGLES V: 4 I: 6 planar
+{
+	shader models/props/Material
+	sampleSize 0
+}
+
+435 // SURFACE_TRIANGLES V: 4 I: 6 planar
+{
+	shader models/props/L_1001
+	sampleSize 0
+}
+
+436 // SURFACE_TRIANGLES V: 4 I: 6 planar
+{
+	shader models/props/Material
+	sampleSize 0
+}
+
+437 // SURFACE_TRIANGLES V: 4 I: 6 planar
+{
+	shader models/props/Material
+	sampleSize 0
+}
+
+438 // SURFACE_TRIANGLES V: 4 I: 6 planar
+{
+	shader models/props/Material
+	sampleSize 0
+}
+
+439 // SURFACE_TRIANGLES V: 4 I: 6 planar
+{
+	shader models/props/Material
+	sampleSize 0
+}
+
+440 // SURFACE_TRIANGLES V: 4 I: 6 planar
+{
+	shader models/props/Material
+	sampleSize 0
+}
+
+441 // SURFACE_TRIANGLES V: 4 I: 6 planar
+{
+	shader models/props/M_1001
+	sampleSize 0
+}
+
+442 // SURFACE_FORCED_META V: 1348 I: 2544 
+{
+	shader models/props/rack102
+}
+
+443 // SURFACE_TRIANGLES V: 240 I: 360 
+{
+	shader models/props/rack100
+	sampleSize 0
+}
+
+444 // SURFACE_TRIANGLES V: 56 I: 84 
+{
+	shader models/props/rack101
+	sampleSize 0
+}
+
+445 // SURFACE_TRIANGLES V: 24 I: 36 
+{
+	shader models/props/Material
+	sampleSize 0
+}
+
+446 // SURFACE_TRIANGLES V: 105 I: 162 
+{
+	shader models/props/Material
+	sampleSize 0
+}
+
+447 // SURFACE_TRIANGLES V: 368 I: 552 
+{
+	shader models/props/Material
+	sampleSize 0
+}
+
+448 // SURFACE_TRIANGLES V: 24 I: 36 
+{
+	shader models/props/Material
+	sampleSize 0
+}
+
+449 // SURFACE_TRIANGLES V: 105 I: 162 
+{
+	shader models/props/Material
+	sampleSize 0
+}
+
+450 // SURFACE_TRIANGLES V: 368 I: 552 
+{
+	shader models/props/Material
+	sampleSize 0
+}
+
+451 // SURFACE_TRIANGLES V: 8 I: 12 
+{
+	shader textures/rustchain/sophia_terminal
+	sampleSize 0
+}
+
+452 // SURFACE_TRIANGLES V: 8 I: 12 
+{
+	shader textures/rustchain/rustchain_logo_new
+	sampleSize 0
+}
+
+453 // SURFACE_TRIANGLES V: 8 I: 12 
+{
+	shader textures/rustchain/robot_janitor
+	sampleSize 0
+}
+
+454 // SURFACE_TRIANGLES V: 8 I: 12 
+{
+	shader textures/rustchain/doginal_dog
+	sampleSize 0
+}
+
+455 // SURFACE_FORCED_META V: 43242 I: 129813 
+{
+	shader models/props/Material_#0
+}
+
+456 // SURFACE_TRIANGLES V: 345 I: 1710 
+{
+	shader models/props/Material_#1
+	sampleSize 0
+}
+
+457 // SURFACE_TRIANGLES V: 328 I: 606 
+{
+	shader models/props/Material_#3
+	sampleSize 0
+}
+
+458 // SURFACE_TRIANGLES V: 162 I: 270 
+{
+	shader models/props/Material_#4
+	sampleSize 0
+}
+
+459 // SURFACE_TRIANGLES V: 126 I: 222 
+{
+	shader models/props/Material_#5
+	sampleSize 0
+}
+
+460 // SURFACE_TRIANGLES V: 108 I: 168 
+{
+	shader models/props/Material_#6
+	sampleSize 0
+}
+
+461 // SURFACE_TRIANGLES V: 176 I: 336 
+{
+	shader models/props/Material_#2
+	sampleSize 0
+}
+
+462 // SURFACE_TRIANGLES V: 92 I: 138 
+{
+	shader models/props/Material_#7
+	sampleSize 0
+}
+
+463 // SURFACE_TRIANGLES V: 4 I: 6 
+{
+	shader models/props/Material_#9
+	sampleSize 0
+}
+
+464 // SURFACE_FORCED_META V: 1784 I: 4725 
+{
+	shader models/props/Material_#12
+}
+
+465 // SURFACE_FORCED_META V: 9768 I: 22314 
+{
+	shader models/props/Material_#11
+}
+
+466 // SURFACE_FORCED_META V: 2946 I: 7662 
+{
+	shader models/props/Material_#10
+}
+
+467 // SURFACE_FORCED_META V: 1217 I: 2475 
+{
+	shader models/props/Material_#15
+}
+
+468 // SURFACE_TRIANGLES V: 100 I: 240 
+{
+	shader models/props/Material_#14
+	sampleSize 0
+}
+

@@ -1,0 +1,144 @@
+// RustChain DevKit - Deathmatch Map Template
+// Simple box room with proper brush format
+{
+"classname" "worldspawn"
+"message" "RustChain Test Arena"
+"author" "RustChain DevKit"
+"_ambient" "100"
+"_minlight" "100"
+// Floor (z=-16 to z=0)
+{
+( -512 -512 0 ) ( -512 512 0 ) ( 512 512 0 ) trak4x/base/base_concrete3 0 0 0 0.25 0.25 0 0 0
+( 512 512 -16 ) ( -512 512 -16 ) ( -512 -512 -16 ) common/caulk 0 0 0 0.25 0.25 0 0 0
+( -512 -512 -16 ) ( 512 -512 -16 ) ( 512 -512 0 ) common/caulk 0 0 0 0.25 0.25 0 0 0
+( 512 -512 -16 ) ( 512 512 -16 ) ( 512 512 0 ) common/caulk 0 0 0 0.25 0.25 0 0 0
+( 512 512 -16 ) ( -512 512 -16 ) ( -512 512 0 ) common/caulk 0 0 0 0.25 0.25 0 0 0
+( -512 512 -16 ) ( -512 -512 -16 ) ( -512 -512 0 ) common/caulk 0 0 0 0.25 0.25 0 0 0
+}
+// Ceiling (z=256 to z=272)
+{
+( 512 512 256 ) ( -512 512 256 ) ( -512 -512 256 ) common/caulk 0 0 0 0.25 0.25 0 0 0
+( -512 -512 272 ) ( -512 512 272 ) ( 512 512 272 ) common/caulk 0 0 0 0.25 0.25 0 0 0
+( -512 -512 256 ) ( 512 -512 256 ) ( 512 -512 272 ) common/caulk 0 0 0 0.25 0.25 0 0 0
+( 512 -512 256 ) ( 512 512 256 ) ( 512 512 272 ) common/caulk 0 0 0 0.25 0.25 0 0 0
+( 512 512 256 ) ( -512 512 256 ) ( -512 512 272 ) common/caulk 0 0 0 0.25 0.25 0 0 0
+( -512 512 256 ) ( -512 -512 256 ) ( -512 -512 272 ) common/caulk 0 0 0 0.25 0.25 0 0 0
+}
+// North Wall (y=512 to y=528)
+{
+( 512 528 256 ) ( -512 528 256 ) ( -512 528 0 ) common/caulk 0 0 0 0.25 0.25 0 0 0
+( -512 512 0 ) ( -512 512 256 ) ( 512 512 256 ) trak4x/base/base_rust2 0 0 0 0.25 0.25 0 0 0
+( -512 512 0 ) ( 512 512 0 ) ( 512 528 0 ) common/caulk 0 0 0 0.25 0.25 0 0 0
+( 512 512 256 ) ( -512 512 256 ) ( -512 528 256 ) common/caulk 0 0 0 0.25 0.25 0 0 0
+( 512 528 256 ) ( 512 512 256 ) ( 512 512 0 ) common/caulk 0 0 0 0.25 0.25 0 0 0
+( -512 512 256 ) ( -512 528 256 ) ( -512 528 0 ) common/caulk 0 0 0 0.25 0.25 0 0 0
+}
+// South Wall (y=-528 to y=-512)
+{
+( -512 -512 0 ) ( -512 -512 256 ) ( 512 -512 256 ) trak4x/base/base_rust2 0 0 0 0.25 0.25 0 0 0
+( 512 -528 256 ) ( -512 -528 256 ) ( -512 -528 0 ) common/caulk 0 0 0 0.25 0.25 0 0 0
+( -512 -528 0 ) ( 512 -528 0 ) ( 512 -512 0 ) common/caulk 0 0 0 0.25 0.25 0 0 0
+( 512 -512 256 ) ( -512 -512 256 ) ( -512 -528 256 ) common/caulk 0 0 0 0.25 0.25 0 0 0
+( 512 -512 256 ) ( 512 -528 256 ) ( 512 -528 0 ) common/caulk 0 0 0 0.25 0.25 0 0 0
+( -512 -528 256 ) ( -512 -512 256 ) ( -512 -512 0 ) common/caulk 0 0 0 0.25 0.25 0 0 0
+}
+// East Wall (x=512 to x=528)
+{
+( 512 512 256 ) ( 512 -512 256 ) ( 512 -512 0 ) trak4x/base/base_rust2 0 0 0 0.25 0.25 0 0 0
+( 528 -512 0 ) ( 528 -512 256 ) ( 528 512 256 ) common/caulk 0 0 0 0.25 0.25 0 0 0
+( 512 -512 0 ) ( 528 -512 0 ) ( 528 512 0 ) common/caulk 0 0 0 0.25 0.25 0 0 0
+( 528 512 256 ) ( 528 -512 256 ) ( 512 -512 256 ) common/caulk 0 0 0 0.25 0.25 0 0 0
+( 528 512 256 ) ( 512 512 256 ) ( 512 512 0 ) common/caulk 0 0 0 0.25 0.25 0 0 0
+( 512 -512 256 ) ( 528 -512 256 ) ( 528 -512 0 ) common/caulk 0 0 0 0.25 0.25 0 0 0
+}
+// West Wall (x=-528 to x=-512)
+{
+( -528 -512 0 ) ( -528 -512 256 ) ( -528 512 256 ) common/caulk 0 0 0 0.25 0.25 0 0 0
+( -512 512 256 ) ( -512 -512 256 ) ( -512 -512 0 ) trak4x/base/base_rust2 0 0 0 0.25 0.25 0 0 0
+( -528 -512 0 ) ( -512 -512 0 ) ( -512 512 0 ) common/caulk 0 0 0 0.25 0.25 0 0 0
+( -512 512 256 ) ( -528 512 256 ) ( -528 -512 256 ) common/caulk 0 0 0 0.25 0.25 0 0 0
+( -512 512 256 ) ( -512 512 0 ) ( -528 512 0 ) common/caulk 0 0 0 0.25 0.25 0 0 0
+( -512 -512 0 ) ( -512 -512 256 ) ( -528 -512 256 ) common/caulk 0 0 0 0.25 0.25 0 0 0
+}
+}
+// Spawn Point 1 - Northwest
+{
+"classname" "info_player_deathmatch"
+"origin" "-384 384 32"
+"angle" "315"
+}
+// Spawn Point 2 - Northeast
+{
+"classname" "info_player_deathmatch"
+"origin" "384 384 32"
+"angle" "225"
+}
+// Spawn Point 3 - Southeast
+{
+"classname" "info_player_deathmatch"
+"origin" "384 -384 32"
+"angle" "135"
+}
+// Spawn Point 4 - Southwest
+{
+"classname" "info_player_deathmatch"
+"origin" "-384 -384 32"
+"angle" "45"
+}
+// Center Light
+{
+"classname" "light"
+"origin" "0 0 240"
+"light" "400"
+"_color" "1 1 1"
+}
+// Corner Lights
+{
+"classname" "light"
+"origin" "-400 400 200"
+"light" "200"
+"_color" "1 0.9 0.8"
+}
+{
+"classname" "light"
+"origin" "400 400 200"
+"light" "200"
+"_color" "1 0.9 0.8"
+}
+{
+"classname" "light"
+"origin" "400 -400 200"
+"light" "200"
+"_color" "1 0.9 0.8"
+}
+{
+"classname" "light"
+"origin" "-400 -400 200"
+"light" "200"
+"_color" "1 0.9 0.8"
+}
+// Rocket Launcher - Center
+{
+"classname" "weapon_rocketlauncher"
+"origin" "0 0 32"
+}
+// Shotgun - North
+{
+"classname" "weapon_shotgun"
+"origin" "0 300 32"
+}
+// Machine Gun - South
+{
+"classname" "weapon_machinegun"
+"origin" "0 -300 32"
+}
+// Health - East
+{
+"classname" "item_health_large"
+"origin" "300 0 32"
+}
+// Armor - West
+{
+"classname" "item_armor_large"
+"origin" "-300 0 32"
+}

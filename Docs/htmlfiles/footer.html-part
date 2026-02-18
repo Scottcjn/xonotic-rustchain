@@ -1,0 +1,16 @@
+		  <p><br style="clear:left" />
+        </p>
+	  </div>
+	  <!-- end content -->
+		<div id="footer">
+		</div>
+		<!-- end footer -->
+		<p class="subFooter">Come to the Xonotic IRC channel: <a href="irc://irc.quakenet.org/xonotic" title="#xonotic on irc.quakenet.org">#xonotic on irc.quakenet.org</a> or the team channel: <a href="irc://irc.freenode.net/xonotic" title="#xonotic on irc.freenode.net">#xonotic on irc.freenode.net</a></p>
+
+		<div id="valid">
+			<p>&copy; 2009-2011 Xonotic.org</p>
+	  </div>
+	</div><!-- end right -->
+</div>
+</body>
+</html>

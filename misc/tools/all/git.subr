@@ -1,0 +1,997 @@
+initrepo_()
+{
+	if [ x"$3" != x"." ]; then
+		return
+	fi
+	case "$1" in
+		*$4)
+			base=${1%$4}
+			;;
+	esac
+	case "$2" in
+		*$4)
+			pushbase=${2%$4}
+			;;
+	esac
+}
+initrepo()
+{
+	base=
+	pushbase=
+	allrepos initrepo_ "`git config remote.origin.url`" "`git config remote.origin.pushurl`"
+	if [ -z "$base" ]; then
+		msg "The main repo is not xonotic.git, what have you done?"
+		exit 1
+	fi
+	msg "Found main repo = $base"
+	if [ -n "$pushbase" ]; then
+		msg "Found push repo = $pushbase"
+	fi
+}
+matchrepoflag()
+{
+	case ",$2," in
+		*",$1,"*)
+			return 0
+			;;
+		*)
+			return 1
+			;;
+	esac
+}
+testrepoflag_()
+{
+	[ x"$1" = x"$3" ] || return
+	if matchrepoflag "$6" "$2"; then
+		echo 0
+	fi
+}
+testrepoflag()
+{
+	allrepos testrepoflag_ "$1" "$2" | grep ^0 >/dev/null
+}
+
+mirrorspeed()
+{
+	# first result is to be ignored, but we use it to check status
+	git ls-remote "$1" refs/heads/master >/dev/null 2>&1 || return 1
+	# if we can't time, we only check availability
+	if ! $have_time; then
+		echo 0
+		return
+	fi
+	# now actually time it
+	(
+		set +x
+		export REPO="$1" # so that the sh -c subshell can use it
+		{ measure_time sh -c 'git ls-remote "$REPO" refs/heads/master >/dev/null 2>&1'; } 2>&1 >/dev/null | head -n 1 | cut -d ' ' -f 2 | tr -d . | sed 's,^0*,,' | grep . || echo 0
+			# unit: clock ticks (depends on what "time" returns
+	)
+}
+bestmirror()
+{
+	oldurl="$1"
+	newprotocol="$2"
+	newlocation="$3"
+	oldprotocol=
+	oldlocation=
+	testrepo=
+	bestmirror_firstrepo()
+	{
+		if [ -z "$testrepo" ]; then
+			testrepo=$2
+		fi
+	}
+	allrepos bestmirror_firstrepo
+	bestmirror_findold()
+	{
+		if [ x"$oldurl" = x"$3" ]; then
+			oldprotocol=$1
+			oldlocation=$2
+		fi
+	}
+	allmirrors bestmirror_findold
+
+	if [ -z "$newprotocol" ]; then
+		newprotocol=$oldprotocol
+	fi
+	if [ -z "$newlocation" ]; then
+		newlocation=$oldlocation
+	fi
+
+	besturl=
+	bestlocation=
+	besttime=
+	bestcount=
+	bestmirror_benchmark()
+	{
+		bmb_curloc=$1
+		bmb_proto=$2
+		bmb_loc=$3
+		bmb_url=$4
+		bmb_fudge=$5
+
+		if [ -z "$bmb_loc" ]; then
+			# empty location is not allowed
+			return
+		fi
+		case " $newprotocol " in
+			*"  "*)
+				# no protocol requested? all match
+				;;
+			*" $bmb_proto "*)
+				;;
+			*)
+				return
+				;;
+		esac
+
+		# prefer location match
+		case " $newlocation " in
+			*" $bmb_loc "*)
+				# bmb_curloc is true in first run, false in second
+				# so first run gets all matching locations
+				# so second run gets all non-matching locations
+				if ! $bmb_curloc; then
+					return
+				fi
+				;;
+			*)
+				if $bmb_curloc; then
+					return
+				fi
+				case " $newlocation " in
+					*" $bestlocation "*)
+						# worse
+						return
+						;;
+				esac
+				;;
+		esac
+
+		case " $newlocation " in
+			*" $bmb_loc "*)
+				# see below
+				;;
+			*)
+				case " $newlocation " in
+					*" $bestlocation "*)
+						# worse
+						return
+						;;
+				esac
+				;;
+		esac
+		msg "Testing speed of $bmb_url..."
+
+		# only working mirrors
+		if ! thistime=`mirrorspeed "$bmb_url$testrepo"`; then
+			msg "-> FAILED"
+			return
+		fi
+		thistime=$(($thistime $bmb_fudge))
+		msg "-> $thistime"
+
+		# anything is better than nothing
+		if [ -z "$besttime" ]; then
+			besturl=$bmb_url
+			bestlocation=$bmb_loc
+			besttime=$thistime
+			bestcount=1
+			return
+		fi
+
+		# prefer location match
+		case " $newlocation " in
+			*" $bmb_loc "*)
+				case " $newlocation " in
+					*" $bestlocation "*)
+						# equality
+						;;
+					*)
+						# better
+						besturl=$bmb_url
+						bestlocation=$bmb_loc
+						besttime=$thistime
+						bestcount=1
+						return
+						;;
+				esac
+				;;
+			*)
+				# if newlocation matches bestlocation, then we already discarded it above
+				;;
+		esac
+
+		# if we get here, we must compare mirror speed as we have more than one match
+		if [ $thistime -gt $besttime ]; then
+			return
+		elif [ $thistime -lt $besttime ]; then
+			besturl=$bmb_url
+			bestlocation=$bmb_loc
+			besttime=$thistime
+			bestcount=1
+			return
+		fi
+		# both location and time match. Random decision.
+		bestcount=$(($bestcount + 1))
+		if [ $((($RANDOM + 0) % $bestcount)) -eq 0 ]; then
+			besturl=$bmb_url
+			bestlocation=$bmb_loc
+		fi
+	}
+	allmirrors bestmirror_benchmark true
+	allmirrors bestmirror_benchmark false
+	echo "$besturl"
+}
+
+testrepoflag_()
+{
+	[ x"$1" = x"$3" ] || return
+	case ",$6," in
+		*",$2,"*)
+			echo 0
+			;;
+		*)
+			;;
+	esac
+}
+testrepoflag()
+{
+	allrepos testrepoflag_ "$1" "$2" | grep ^0 >/dev/null
+}
+listrepos_()
+{
+	d=$1
+	f=$4
+	p="${d%dir}"
+	# if we have .no file, skip
+	if [ -f "$d.no" ]; then
+		msg "Repository $d disabled by a .no file, delete $d.no to enable"
+		return
+	fi
+	# if .yes file exists, always keep it
+	if [ -f "$d.yes" ]; then
+		msg "Repository $d enabled by a .yes file"
+		$ECHO "$d"
+		return
+	fi
+	# remove broken clones so they don't mess up stuff
+	if [ x"$d" != x"." ] && [ -d "$d" ] && ! [ -d "$d/.git" ]; then
+		msg "$d exists but has no .git subdir. Probably a broken clone. Deleting."
+		verbose rm -rf "$d"
+		return
+	fi
+	# if we have the dir, always keep it
+	if [ -d "$d" ]; then
+		msg "Repository $d enabled because it already exists"
+		$ECHO "$d"
+		return
+	fi
+	# if we have matching pk3, skip
+	if [ x"$p" != x"$d" ] && [ -f "$p" ]; then
+		msg "Repository $d disabled by matching .pk3 file, delete $p or create $d.yes to enable"
+		return
+	fi
+	# if "no" flag is set, skip
+	if matchrepoflag "$f" no; then
+		msg "Repository $d disabled by default, create $d.yes to enable"
+		return
+	fi
+	# default: enable
+	msg "Repository $d enabled by default"
+	$ECHO "$d"
+}
+
+listrepos()
+{
+	$ECHO `allrepos listrepos_`
+}
+initrepo
+repos=`listrepos`
+
+ifrepoenabled()
+{
+	eval ire_test=\$$(($1 + 3))
+	shift
+	case " $repos " in
+		*" $ire_test "*)
+			"$@"
+			;;
+	esac
+}
+check_mergeconflict() # overrides the one in ./all
+{
+	if git ls-files -u | grep ' 1	'; then
+		$ECHO
+		$ECHO "MERGE CONFLICT."
+		$ECHO "change into the \"$1\" project directory, and then:"
+		$ECHO "- edit the files mentioned above with your favorite editor,"
+		$ECHO "  and fix the conflicts (marked with <<<<<<< blocks)"
+		$ECHO "- for binary files, you can select the files using"
+		$ECHO "  git checkout --ours or git checkout --theirs"
+		$ECHO "- when done with a file, 'git add' the file"
+		$ECHO "- when done, 'git commit'"
+		$ECHO
+		exit 1
+	fi
+}
+
+visible_repo_name()
+{
+	case "$1" in
+		.)
+			$ECHO "the root directory"
+			;;
+		*)
+			$ECHO "\"$1\""
+			;;
+	esac
+}
+
+fix_upstream_rebase()
+{
+	if [ -z "$r_me" ] || [ -z "$r_other" ]; then
+		return
+	fi
+
+	# one of the two sides of the merge should be remote upstream, or all is fine
+	r_r=`git symbolic-ref HEAD`
+	r_r=${r_r#refs/heads/}
+	r_rem=`git config "branch.$r_rem.remote" || $ECHO origin`
+	r_bra=`git config "branch.$r_bra.merge" || $ECHO "$r_r"`
+	r_bra=${r_bra#refs/heads/}
+	if [ x"$r_me" != x"`git rev-parse "$r_rem/$r_bra"`" ]; then
+		if [ x"$r_other" != x"`git rev-parse "$r_rem/$r_bra"`" ]; then
+			return
+		fi
+	fi
+
+	r_base=`git merge-base "$r_me" "$r_other"`
+
+	# no merge-base? upstream did filter-branch
+	if [ -n "$r_base" ]; then
+		# otherwise, check if the two histories are "similar"
+		r_l_me=`git log --pretty="format:%s" "$r_other".."$r_me" | grep -v "^Merge" | sort -u`
+		r_l_other=`git log --pretty="format:%s" "$r_me".."$r_other" | grep -v "^Merge" | sort -u`
+
+		# heuristics: upstream rebase/filter-branch if more than 50% of the commits of one of the sides are in the other too
+		r_lc_me=`$ECHO "$r_l_me" | wc -l`
+		r_lc_other=`$ECHO "$r_l_other" | wc -l`
+		r_lc_together=`{ $ECHO "$r_l_me"; $ECHO "$r_l_other"; } | sort -u | wc -l`
+		r_lc_same=$(($r_lc_me + $r_lc_other - $r_lc_together))
+
+		if [ $(( $r_lc_same * 2 )) -gt $(( $r_lc_me )) ] || [ $(( $r_lc_same * 2 )) -gt $(( $r_lc_other )) ]; then
+			if yesno "Probable upstream rebase detected, automatically fix?" 'git log --oneline --graph --date-order --left-right "$r_other"..."$r_me"'; then
+				git reset --hard "$r_me"
+				git pull --rebase
+				return 1
+			fi
+		fi
+	fi
+
+	return 0
+}
+
+fix_upstream_rebase_mergeok()
+{
+	r_me=`git rev-parse --revs-only HEAD^1 2>/dev/null || true`
+	r_other=`git rev-parse --revs-only HEAD^2 2>/dev/null || true`
+	fix_upstream_rebase
+}
+
+fix_upstream_rebase_mergefail()
+{
+	r_me=`git rev-parse --revs-only HEAD 2>/dev/null || true`
+	r_other=`git rev-parse --revs-only MERGE_HEAD 2>/dev/null || true`
+	fix_upstream_rebase
+}
+
+fix_git_config()
+{
+	if ! [ -f ".git/config" ]; then
+		$ECHO "Not a git repository. Bailing out to not cause damage."
+		exit 1
+	fi
+	verbose git config remote.origin.url "$1"
+	if [ -n "$2" ]; then
+		verbose git config remote.origin.pushurl "$2"
+	else
+		verbose git config --unset remote.origin.pushurl || true
+	fi
+	verbose git config remote.origin.fetch "+refs/heads/*:refs/remotes/origin/*"
+	if testrepoflag "$d" noautocrlf; then
+		verbose git config --unset core.autocrlf || true
+	else
+		verbose git config core.autocrlf input
+	fi
+	if [ -z "`git config push.default || true`" ]; then
+		verbose git config push.default current # or is tracking better?
+	fi
+	verbose git config filter.mapclean.clean "tr -d '\r' | grep '^[^/]'"
+	verbose git config filter.mapclean.smudge "cat"
+}
+
+setrepovars()
+{
+	while [ $# -gt 4 ]; do
+		shift
+	done
+	d=$1
+	url="$base$2"
+	if [ -n "$pushbase" ]; then
+		pushurl="$pushbase$2"
+	else
+		pushurl=
+	fi
+	branch=$3
+	f=$4
+}
+
+handled=true
+case "$cmd" in
+	fix_upstream_rebase)
+		fix_upstream_rebase_()
+		{
+			setrepovars "$@"
+			enter "$d0/$d" verbose
+			verbose fix_upstream_rebase_mergefail && verbose fix_upstream_rebase_mergeok
+		}
+		allrepos ifrepoenabled 0 fix_upstream_rebase_
+		;;
+	fix_config)
+		fix_config_()
+		{
+			setrepovars "$@"
+			if [ -f "$d0/$d/.git/config" ]; then
+				verbose cd "$d0/$d"
+				fix_git_config "$url" "$pushurl"
+				cd "$d0"
+			fi
+		}
+		allrepos ifrepoenabled 0 fix_config_
+		;;
+	keygen)
+		if [ -f ~/.ssh/id_ef25519.pub ]; then
+			msg ""
+			msg "A key already exists and no new one will be generated. If you"
+			msg "already have done the procedure for getting your key approved, you"
+			msg "can skip the following paragraph and already use the repository."
+			msg ""
+			msg "To get access, your key has to be approved first. For that, visit"
+			msg "$gitsite_url, then log in, enter the"
+			msg "\"xonotic\" project, create an \"Issue\" tagged \"Repository Access\""
+			msg "to apply for access."
+			msg ""
+			msg "After that, go to your profile settings, \"SSH Keys\", \"Add SSH Key\""
+			msg "and paste the following output:"
+			msg ""
+			msg "`cat ~/.ssh/id_ef25519.pub`"
+		elif [ -f ~/.ssh/id_rsa.pub ]; then
+			msg ""
+			msg "A key already exists and no new one will be generated. If you"
+			msg "already have done the procedure for getting your key approved, you"
+			msg "can skip the following paragraph and already use the repository."
+			msg ""
+			msg "To get access, your key has to be approved first. For that, visit"
+			msg "$gitsite_url, then log in, enter the"
+			msg "\"xonotic\" project, create an \"Issue\" tagged \"Repository Access\""
+			msg "to apply for access."
+			msg ""
+			msg "After that, go to your profile settings, \"SSH Keys\", \"Add SSH Key\""
+			msg "and paste the following output:"
+			msg ""
+			msg "`cat ~/.ssh/id_rsa.pub`"
+		elif [ -f ~/.ssh/id_dsa.pub ]; then
+			msg ""
+			msg "A key already exists and no new one will be generated. If you"
+			msg "already have done the procedure for getting your key approved, you"
+			msg "can skip the following paragraph and already use the repository."
+			msg ""
+			msg "To get access, your key has to be approved first. For that, visit"
+			msg "$gitsite_url, then log in, enter the"
+			msg "\"xonotic\" project, create an \"Issue\" tagged \"Repository Access\""
+			msg "to apply for access."
+			msg ""
+			msg "After that, go to your profile settings, \"SSH Keys\", \"Add SSH Key\""
+			msg "and paste the following output:"
+			msg ""
+			msg "`cat ~/.ssh/id_dsa.pub`"
+		else
+			msg ""
+			msg "No key has been generated yet. One will be generated now."
+			msg "If other people are using your computer, it is recommended"
+			msg "to specify a passphrase. Otherwise you can simply hit ENTER"
+			msg "when asked for a passphrase."
+			msg ""
+			ssh-keygen -t rsa -b 4096 -f ~/.ssh/id_rsa
+			msg ""
+			msg "To get access, your key has to be approved first. For that, visit"
+			msg "$gitsite_url, then log in, enter the"
+			msg "\"xonotic\" project, create an \"Issue\" tagged \"Repository Access\""
+			msg "to apply for access."
+			msg ""
+			msg "After that, go to your profile settings, \"SSH Keys\", \"Add SSH Key\""
+			msg "and paste the following output:"
+			msg ""
+			msg "`cat ~/.ssh/id_rsa.pub`"
+		fi
+		msg ""
+		msg "Note that you will only have write access to branches that start"
+		msg "with your user name."
+		msg
+		msg "Once you have gotten access, run ./all update -p"
+		;;
+	update|pull)
+		allow_pull=true
+		need_bestmirror=false
+
+		newprotocol=
+		newpushprotocol=
+		newlocation=
+
+		case "`git config xonotic.all.mirrorselection 2>/dev/null || true`" in
+			done)
+				;;
+			try_same)
+				need_bestmirror=true
+				;;
+			try_all)
+				newprotocol="git http"
+				newlocation="any"
+				need_bestmirror=true
+				;;
+			*)
+				newprotocol= # same protocol
+				newlocation="any"
+				need_bestmirror=true
+				;;
+		esac
+
+		if $need_bestmirror; then
+			found=false
+			identifymirror_()
+			{
+				if [ x"$base" = x"$3" ]; then
+					found=true
+				fi
+			}
+			allmirrors identifymirror_
+			if ! $found; then
+				msg ""
+				msg "Current mirror not found = $base"
+				msg "but the last pull attempt failed."
+				msg ""
+				msg "Use ./all update -l any to switch to the best mirror."
+				msg ""
+				need_bestmirror=false
+			fi
+		fi
+
+		while :; do
+			if [ x"$1" = x"-N" ]; then
+				allow_pull=false
+			elif [ x"$1" = x"-p" ]; then
+				newpushprotocol=ssh
+				need_bestmirror=true
+			elif [ x"$1" = x"-s" ]; then
+				newprotocol=ssh
+				need_bestmirror=true
+			elif [ x"$1" = x"-g" ]; then
+				newprotocol=git
+				need_bestmirror=true
+			elif [ x"$1" = x"-h" ]; then
+				newprotocol=http
+				need_bestmirror=true
+			elif [ x"$1" = x"-l" ]; then
+				newlocation=$2
+				need_bestmirror=true
+				shift
+			else
+				break
+			fi
+			shift
+		done
+
+		if $need_bestmirror; then
+			newbase=`bestmirror "$base" "$newprotocol" "$newlocation"`
+			if [ -z "$newbase" ]; then
+				msg "Could not find any good mirror. Maybe try again later."
+				git config xonotic.all.mirrorselection try_all
+				exit 1
+			fi
+			if [ -n "$newpushprotocol" ]; then
+				if [ -n "$pushbase" ]; then
+					newpushbase=`bestmirror "$pushbase" "$newpushprotocol" "$newlocation"`
+				else
+					newpushbase=`bestmirror "$base" "$newpushprotocol" "$newlocation"`
+				fi
+			else
+				newpushbase=$pushbase
+			fi
+
+			if [ x"$base" != x"$newbase" ] || [ x"$pushbase" != x"$newpushbase" ]; then
+				base=$newbase
+				pushbase=$newpushbase
+				seturl_()
+				{
+					setrepovars "$@"
+					if [ x"$d" = x"." ]; then
+						fix_git_config "$url" "$pushurl"
+					fi
+				}
+				allrepos ifrepoenabled 0 seturl_
+			fi
+			git config xonotic.all.mirrorselection done
+		fi
+
+		"$SELF" fix_config
+
+		pull_()
+		{
+			setrepovars "$@"
+			if [ -f "$d0/$d/.git/config" ]; then
+				# if we have .no file, skip
+				if [ -f "$d0/$d.no" ]; then
+					msg "Repository $d disabled by a .no file, delete $d.no to enable; thus, not updated"
+					return
+				fi
+				if $allow_pull; then
+					enter "$d0/$d" verbose
+					r=`git symbolic-ref HEAD`
+					r=${r#refs/heads/}
+					if git config branch.$r.remote >/dev/null 2>&1; then
+						o=`( cd "$d0" && git config xonotic.all.mirrorselection 2>/dev/null || true )`
+						( cd "$d0" && git config xonotic.all.mirrorselection try_same )
+						if ! verbose git pull; then
+							if fix_upstream_rebase_mergefail; then
+								check_mergeconflict "$d"
+								$ECHO "Pulling failed. Press ENTER to continue, or Ctrl-C to abort."
+								read -r DUMMY
+							fi
+						else
+							( cd "$d0" && git config xonotic.all.mirrorselection "$o" )
+							fix_upstream_rebase_mergeok || true
+						fi
+					fi
+
+					cd "$d00"
+					checkself "$cmd" "$@"
+					cd "$d0/$d"
+					verbose git remote prune origin
+					cd "$d0"
+				fi
+			else
+				if [ -d "$d0/$d" ]; then
+					if yesno "$d0/$d is in the way, get rid of it and reclone?"; then
+						verbose rm -rf "$d0/$d"
+					else
+						echo "Note: $d0/$d will stay broken."
+						return
+					fi
+				fi
+				o=`git config xonotic.all.mirrorselection 2>/dev/null || true`
+				git config xonotic.all.mirrorselection try_same
+				verbose git clone --branch "$branch" "$url" "$d0/$d"
+				git config xonotic.all.mirrorselection "$o"
+				enter "$d0/$d" verbose
+				fix_git_config "$url" "$pushurl"
+				cd "$d0"
+			fi
+		}
+		allrepos ifrepoenabled 0 pull_
+		;;
+	checkout|switch)
+		checkoutflags=
+		if [ x"$1" = x"-f" ]; then
+			checkoutflags=-f
+			shift
+		fi
+		remote=$1
+		branch=$2
+		if [ -z "$branch" ]; then
+			case "$remote" in
+				origin/*)
+					askbranch=${remote#origin/}
+					remote=origin
+					;;
+				*)
+					askbranch=$remote
+					remote=origin
+					;;
+			esac
+		fi
+		if [ -n "$checkoutflags" ]; then
+			set -- -f "$@" # to make checkself work again
+		fi
+		exists=false
+		checkout_()
+		{
+			setrepovars "$@"
+			enter "$d0/$d" verbose
+			b=$askbranch
+			if [ -n "$b" ] && git rev-parse "refs/heads/$b" >/dev/null 2>&1; then
+				exists=true
+				verbose git checkout $checkoutflags "$b"
+			elif [ -n "$b" ] && git rev-parse "refs/remotes/$remote/$b" >/dev/null 2>&1; then
+				exists=true
+				verbose git checkout $checkoutflags --track -b "$b" "$remote/$b"
+			else
+				b=$branch
+				if git rev-parse "refs/heads/$b" >/dev/null 2>&1; then
+					[ -n "$b" ] || exists=true
+					verbose git checkout $checkoutflags "$b"
+				elif git rev-parse "refs/remotes/$remote/$b" >/dev/null 2>&1; then
+					[ -n "$b" ] || exists=true
+					verbose git checkout $checkoutflags --track -b "$b" "$remote/$b"
+				else
+					$ECHO "WTF? Not even branch $b doesn't exist in $d"
+					exit 1
+				fi
+			fi
+			cd "$d00"
+			checkself "$cmd" "$@"
+			cd "$d0"
+		}
+		allrepos ifrepoenabled 0 checkout_
+		if ! $exists; then
+			$ECHO "The requested branch was not found in any repository."
+		fi
+		exec "$SELF" branch
+		;;
+	branch)
+		remote=$1
+		askbranch=$2
+		srcbranch=$3
+		if [ -z "$askbranch" ]; then
+			askbranch=$remote
+			remote=origin
+		fi
+		branch_show_()
+		{
+			setrepovars "$@"
+			enter "$d0/$d"
+			r=`git symbolic-ref HEAD`
+			r=${r#refs/heads/}
+			dv=`visible_repo_name "$d"`
+			$ECHO "$dv is at $r"
+			cd "$d0"
+		}
+		if [ -n "$askbranch" ]; then
+			branch_()
+			{
+				setrepovars "$@"
+				dv=`visible_repo_name "$d"`
+				enter "$d0/$d" verbose
+				if git rev-parse "refs/heads/$askbranch" >/dev/null 2>&1; then
+					$ECHO "Already having this branch in $dv."
+				else
+					if yesno "Branch in $dv?"; then
+						if [ -n "$srcbranch" ]; then
+							b=$srcbranch
+						else
+							b=$branch
+							verbose git fetch origin || true
+						fi
+						verbose git checkout -b "$askbranch" "$b"
+						verbose git config "branch.$askbranch.remote" "$remote"
+						verbose git config "branch.$askbranch.merge" "refs/heads/$askbranch"
+					fi
+				fi
+				cd "$d0"
+			}
+			allrepos ifrepoenabled 0 branch_
+		fi
+		allrepos ifrepoenabled 0 branch_show_
+		;;
+	push|commit)
+		submit=$1
+		push_()
+		{
+			setrepovars "$@"
+			dv=`visible_repo_name "$d"`
+			enter "$d0/$d" verbose
+			r=`git symbolic-ref HEAD`
+			r=${r#refs/heads/}
+			diffdata=`git diff --color HEAD`
+			if [ -n "$diffdata" ]; then
+				# we have uncommitted changes
+				if yesno "Uncommitted changes in \"$r\" in $dv. Commit?" '$ECHO "$diffdata" | less -r'; then
+					verbose git commit -a
+				fi
+			fi
+			rem=`git config "branch.$r.remote" || $ECHO origin`
+			bra=`git config "branch.$r.merge" || $ECHO "$r"`
+			upstream="$rem/${bra#refs/heads/}"
+			if ! git rev-parse "$upstream" >/dev/null 2>&1; then
+				upstream="origin/$branch"
+			fi
+			logdata=`git log --color "$upstream".."$r"`
+			if [ -n "$logdata" ]; then
+				if yesno "Push \"$r\" in $dv?" '$ECHO "$logdata" | less -r'; then
+					verbose git push "$rem" HEAD
+				fi
+			fi
+			if [ x"$submit" = x"-s" ]; then
+				case "$r" in
+					*/*)
+						verbose git push "$rem" HEAD:"${bra%%/*}/finished/${bra#*/}"
+						;;
+				esac
+			fi
+			cd "$d0"
+		}
+		allrepos ifrepoenabled 0 push_
+		;;
+	each|foreach)
+		keep_going=false
+		if [ x"$1" = x"-k" ]; then
+			keep_going=true
+			shift
+		fi
+		for d in $repos; do
+			if verbose cd "$d0/$d"; then
+				if $keep_going; then
+					verbose "$@" || true
+				else
+					verbose "$@"
+				fi
+				cd "$d0"
+			fi
+		done
+		;;
+	clean)
+		"$SELF" fix_config
+		"$SELF" update -N
+		force=false
+		gotoupstream=false
+		fetchupstream=false
+		gotomaster=false
+		rmuntracked=false
+		killbranches=false
+		# usage:
+		#   ./all clean [-m] [-f | -fu | -fU] [-r] [-D]
+		#   ./all clean --reclone
+		found=false
+		for X in "$@"; do
+			if [ x"$X" = x"--reclone" ]; then
+				force=true
+				fetchupstream=true
+				gotoupstream=true
+				gotomaster=true
+				rmuntracked=true
+				killbranches=true
+			elif [ x"$X" = x"-f" ]; then
+				force=true
+			elif [ x"$X" = x"-u" ]; then
+				gotoupstream=true
+			elif [ x"$X" = x"-U" ]; then
+				gotoupstream=true
+				fetchupstream=true
+			elif [ x"$X" = x"-fu" ]; then
+				force=true
+				gotoupstream=true
+			elif [ x"$X" = x"-fU" ]; then
+				force=true
+				gotoupstream=true
+				fetchupstream=true
+			elif [ x"$X" = x"-m" ]; then
+				gotomaster=true
+			elif [ x"$X" = x"-r" ]; then
+				rmuntracked=true
+			elif [ x"$X" = x"-D" ]; then
+				killbranches=true
+			elif $ECHO "$X" | grep '^-FFFF*UUUU*$' >/dev/null; then
+				msg ''
+				msg "        _____"
+				msg "    ,--'-\\P/\`\\  FFFFFFF"
+				msg " __/_    B/,-.\\  FFFFFFF"
+				msg " /  _\\  (//  O\\\\  FFFFFF"
+				msg "| (O  \`) _\\._ _)\\  FFFUU"
+				msg "| |___/.^d0~~\"\\  \\ UUUU"
+				msg "|     |\`~'     \\ |  UUUU"
+				msg "|     |    __,C>|| UUUU"
+				msg "\\    /_ ,-/,-'   |  UUUU"
+				msg " \\\\_ \\_>~'      /  UUUU-"
+				msg ''
+			else
+				msg "Unknown arg: $X"
+			fi
+			found=true
+		done
+		if ! $found; then
+			rmuntracked=true
+		fi
+		clean_()
+		{
+			setrepovars "$@"
+			verbose cd "$d0/$d"
+			if $gotoupstream; then
+				if ! $force; then
+					msg "Must also use -f (delete local changes) when using -u"
+					exit 1
+				fi
+				if $gotomaster; then
+					if $fetchupstream; then
+						verbose git fetch origin
+						verbose git remote prune origin
+					fi
+					verbose git checkout -f "$branch"
+					verbose git reset --hard origin/"$branch"
+				else
+					r=`git symbolic-ref HEAD`
+					r=${r#refs/heads/}
+					rem=`git config "branch.$r.remote" || $ECHO origin`
+					bra=`git config "branch.$r.merge" || $ECHO "$r"`
+					upstream="$rem/${bra#refs/heads/}"
+					if $fetchupstream; then
+						for t in `git tag -l "xonotic-v"*`; do
+							verbose git tag -d "$t"
+						done
+						verbose git fetch "$rem"
+						verbose git remote prune "$rem"
+					fi
+					if ! git rev-parse "$upstream" >/dev/null 2>&1; then
+						upstream="origin/$branch"
+					fi
+					verbose git reset --hard "$upstream"
+				fi
+			elif $gotomaster; then
+				if $force; then
+					verbose git checkout -f "$branch"
+					verbose git reset --hard
+				else
+					verbose git checkout "$branch"
+				fi
+			elif $force; then
+				verbose git reset --hard
+			fi
+			if $rmuntracked; then
+				case "$d" in
+					.)
+						verbose git clean -df || true
+						;;
+					*)
+						verbose git clean -xdf || true
+						;;
+				esac
+			fi
+			if $killbranches; then
+				git for-each-ref --format='%(refname)' refs/heads/ | while IFS= read -r B; do
+					if [ x"$B" != x"`git symbolic-ref HEAD`" ]; then
+						verbose git branch -D "${B#refs/heads/}"
+					fi
+				done
+				git rev-parse "refs/heads/$branch" >/dev/null 2>&1 || verbose git branch --track "$branch" origin/"$branch" || true
+			fi
+			checkself "$cmd" "$@"
+		}
+		allrepos ifrepoenabled 0 clean_
+		;;
+	help)
+		$ECHO "  $SELF branch <branch>"
+		$ECHO "  $SELF branch <remote> <branch> [<srcbranch>]"
+		$ECHO "  $SELF checkout|switch <branch>"
+		$ECHO "  $SELF checkout|switch <remote>/<branch>"
+		$ECHO "  $SELF clean [-m] [-f | -fu | -fU] [-r] [-D]"
+		$ECHO "  $SELF clean --reclone"
+		$ECHO "  $SELF each|foreach [-k] command..."
+		$ECHO "  $SELF fix_upstream_rebase"
+		$ECHO "  $SELF keygen"
+		$ECHO "  $SELF push|commit [-s]"
+		$ECHO "  $SELF update|pull [-N] [-s | -h [-p] | -g [-p]] [-l de|nl|default]"
+		$ECHO "  $SELF grep \"<regex>\""
+		handled=false
+		;;
+	grep)
+		for d in $repos; do
+			if verbose cd "$d0/$d"; then
+				git grep -In "$@" || true
+				cd "$d0"
+			fi
+		done
+		;;
+	*)
+		handled=false
+		;;
+esac

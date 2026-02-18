@@ -1,0 +1,635 @@
+release_common()
+{
+	export LC_ALL=C
+
+	if [ -z "$MAKEFLAGS" ]; then
+		ncpus=`getconf _NPROCESSORS_ONLN 2>/dev/null || getconf NPROCESSORS_ONLN 2>/dev/null || echo 1`
+		if [ $ncpus -gt 1 ]; then
+			export MAKEFLAGS=-j$ncpus
+		fi
+	fi
+
+	release_args="$cmd $*"
+	msg "*** $release_args: start"
+	release_starttime=`date +%s`
+	release_end()
+	{
+		release_endtime=`date +%s`
+		release_deltatime=$(($release_endtime - $release_starttime))
+		msg "*** $release_args: $release_deltatime seconds"
+	}
+	trap release_end EXIT
+	release_tempstarttime=$release_starttime
+	release_timereport()
+	{
+		release_endtime=`date +%s` # RELEASE NOW!!!
+		if [ -n "$*" ]; then
+			release_deltatime=$(($release_endtime - $release_tempstarttime))
+			msg "**** $release_args: $*: $release_deltatime seconds"
+		fi
+		release_tempstarttime=$release_endtime
+	}
+	release_git_extract_dir()
+	{
+		release_src=$1; shift
+		release_dst=$1; shift
+		# try to create a hardlink
+		if ln -f "$release_src/.git/HEAD" "$release_dst/.hardlink-test"; then
+			rm -f "$release_dst/.hardlink-test"
+			{
+				verbose cd "$release_src"
+				git ls-files HEAD -- "$@"
+			} | {
+				while IFS= read -r F; do
+					case "$F" in */*) mkdir -p "$release_dst/${F%/*}" ;; esac
+					verbose ln -f "$release_src/$F" "$release_dst/$F"
+				done
+			}
+		else
+			{
+				verbose cd "$release_src"
+				verbose git archive --format=tar HEAD -- "$@"
+			} | {
+				verbose cd "$release_dst"
+				verbose tar xvf -
+			}
+		fi
+	}
+
+	mkzipr()
+	{
+		archive=$1; shift
+
+		# bones_was_here: 7za still doesn't store symlinks correctly (even with -snl)
+		# but it does now store the executable bit.
+		# compared to advzip, 7za achieves very similar final zip size, is multi threaded,
+		# and avoids https://gitlab.com/xonotic/xonotic/-/issues/371
+
+		sevenzipflags=-mx=9
+		zipflags=-9
+		# git restore-mtime replaces this hack:
+		#find "$@" -exec touch -d "2001-01-01 01:01:01 +0000" {} \+ # ugly hack to make the pk3 files rsync-friendly
+		ziplist=`mktemp`
+		find "$@" -xtype f \( -type l \) -print | sed 's,\([./][^./]*$\),\1 \1,' | sort -k2 | cut -d\  -f1 > "$ziplist"
+		7za a -tzip $sevenzipflags -x@"$ziplist" "$archive" "$@" || true
+		zip         $zipflags -y   -@<"$ziplist" "$archive"      || true
+		rm -f "$ziplist"
+	}
+
+	mkzip()
+	{
+		# not using this currently, see above
+		archive=$1; shift
+		zipflags=-1ry
+		zip $zipflags "$archive" "$@" || true
+		advzip -z -4 "$archive"
+	}
+
+	mkzip0()
+	{
+		archive=$1; shift
+		zipflags=-0ry
+		zip $zipflags "$archive" "$@" || true
+	}
+
+	getversion()
+	{
+		gv=`grep "^gameversion " "$1/xonotic-common.cfg" | awk '{ print $2 }'`
+		major=$(($gv / 10000))
+		minor=$((($gv / 100) - ($major * 100)))
+		patch=$(($gv - ($major * 10000) - ($minor * 100)))
+		versionstr="$major.$minor.$patch"
+	}
+}
+
+handled=true
+case "$cmd" in
+	# release building goes here
+	release-prepare)
+		release_common
+		#"$SELF" each git clean -fxd
+		case "$RELEASETYPE" in
+			'')
+				$ECHO >&2 -n "$ESC[2J$ESC[H"
+				msg ""
+				msg ""
+				msg ""
+				msg ""
+				msg ""
+				msg ""
+				msg "        +---------------------------------------------------------.---+"
+				msg "        | NOTE                                                    | X |"
+				msg "        +---------------------------------------------------------^---+"
+				msg "        |   ____                                                      |"
+				msg "        |  /    \  This is the official release build system.         |"
+				msg "        | |      | If you are not a member of the Xonotic Core Team,  |"
+				msg "        | | STOP | you are not supposed to use this script and should |"
+				msg "        | |      | instead use ./all compile to compile the engine    |"
+				msg "        |  \____/  and game code.                                     |"
+				msg "        |                                                             |"
+				msg "        |                      [ I understand ]                       |"
+				msg "        +-------------------------------------------------------------+"
+				sleep 10
+				# A LOT of build infrastructure is required:
+				# - vorbis-tools
+				# - ImageMagick
+				# - .ssh/config must be configured so the following
+				#   host names are reachable and have a compile
+				#   infrastructure set up:
+				#   - xonotic-build-linux64 (with gcc on x86_64)
+				#   - xonotic-build-win32 (with i686-w64-mingw32)
+				#   - xonotic-build-win64 (with x86_64-w64-mingw32)
+				#   - xonotic-build-osx (with Xcode and SDL.framework)
+				# - AMD Compressonator installed in WINE
+				# - ResEdit installed in WINE
+				# - a lot of other requirements you will figure out
+				#   while reading the error messages
+				# - environment variable RELEASETYPE set
+				# - optionally, environment variable RELEASEDATE set
+				#   (YYYYMMDD)
+				exit 1
+				;;
+			release|RC*)
+				msg "Building a FINISHED RELEASE"
+				getversion data/xonotic-data.pk3dir
+				verbose "$SELF" each -k git tag -m "TEMP TAG" -f "xonotic-v$versionstr"
+				;;
+			*)
+				msg "Building a $RELEASETYPE"
+				;;
+		esac
+		verbose rm -rf Xonotic Xonotic*.zip
+		verbose mkdir -p Xonotic
+		if [ -n "$RELEASEDATE" ]; then
+			verbose $ECHO "$RELEASEDATE" > Xonotic/stamp.txt
+			case "$RELEASETYPE" in
+				release|RC*)
+					verbose $ECHO "${RELEASEDATE%_*}" > Xonotic/pk3stamp.txt
+					;;
+				*)
+					verbose $ECHO "$RELEASEDATE" > Xonotic/pk3stamp.txt
+					;;
+			esac
+		else
+			verbose date +%Y%m%d > Xonotic/stamp.txt
+			verbose date +%Y%m%d > Xonotic/pk3stamp.txt
+		fi
+		release_git_extract_dir "." "Xonotic" Docs misc server xonotic-linux-glx.sh xonotic-linux-sdl.sh xonotic-linux-dedicated.sh Makefile key_0.d0pk COPYING GPL-2 GPL-3
+		(
+			verbose cd Xonotic
+			verbose mkdir data source source/darkplaces source/gmqcc source/d0_blind_id mapping
+			verbose rm -rf misc/builddeps
+			#verbose mv bin32/SDL.dll . || true # Leftover?
+
+			# We're going to be building these later
+			#verbose mv misc/buildfiles/win32 bin32 || true
+			#verbose mv misc/buildfiles/win64 bin64 || true
+
+			verbose mv misc/buildfiles/osx/* . || true
+			verbose rm -rf misc/buildfiles
+			verbose rm -rf misc/pki
+			verbose rm -rf misc/infrastructure
+		)
+		release_git_extract_dir "darkplaces" "Xonotic/source/darkplaces" .
+		release_git_extract_dir "gmqcc" "Xonotic/source/gmqcc" .
+		release_git_extract_dir "data/xonotic-data.pk3dir" "Xonotic/source" qcsrc Makefile
+		release_git_extract_dir "d0_blind_id" "Xonotic/source/d0_blind_id" .
+		(
+			verbose cd Xonotic/source/d0_blind_id
+			verbose sh autogen.sh
+		)
+		rm -f Xonotic/key_15.d0pk
+		(
+			verbose cd Xonotic/mapping
+			# bones_was_here: don't ship 10 year old netradiant
+			# also seems better to update netradiant independently of xonotic versions
+			#verbose wget http://www.icculus.org/netradiant/files/netradiant-1.5.0-20120301.tar.bz2
+			#verbose wget http://www.icculus.org/netradiant/files/netradiant-1.5.0-20120301-win32-7z.exe
+			#for X in *-7z.exe; do
+			#	7za x "$X"
+			#	rm -f "$X"
+			#done
+			# TODO possibly include other tools?
+			printf "Please find links to NetRadiant builds at https://netradiant.gitlab.io or https://xonotic.org/download\nNetRadiant source available at https://gitlab.com/xonotic/netradiant\n" > NetRadiant\ links.txt
+		)
+		./all each git rev-parse HEAD > Xonotic/misc/git-revisions.txt
+		;;
+	release-compile-run)
+		release_common
+		host=$1
+		buildpath=$2
+		maketargets=$3
+		makeflags=$4
+		srcdir=$5
+		depsdir=$6
+		targetfiles=$7
+		set -x
+		if [ -z "$targetfiles" ]; then
+			exit
+		fi
+		case " $HOSTS_THAT_ARE_DISABLED " in
+			*\ $host\ *)
+				exit
+				;;
+		esac
+		case " $HOSTS_THAT_ARE_MYSELF " in
+			*\ $host\ *)
+				verbose rsync --delete -zLvaSHP "$srcdir"/ "$buildpath/"
+				verbose rsync --delete -zLvaSHP misc/logos/icons_ico/xonotic.ico "$buildpath"/darkplaces.ico
+				verbose rsync --delete -zLvaSHP "$depsdir"/*/ "$buildpath.deps/"
+				verbose ln -snf "$buildpath.deps" "$buildpath/.deps"
+				verbose eval make -C "$buildpath" clean $maketargets $makeflags
+				for f in $targetfiles; do
+					verbose mv "$buildpath/${f%:*}" "${f##*:}" || true
+				done
+				;;
+			*)
+				verbose rsync --delete -zLvaSHP "$srcdir"/ "$host":"$buildpath/"
+				verbose rsync --delete -zLvaSHP misc/logos/icons_ico/xonotic.ico "$host":"$buildpath"/darkplaces.ico
+				verbose rsync --delete -zLvaSHP "$depsdir"/*/ "$host":"$buildpath.deps/"
+				verbose ssh "$host" "[ -f /etc/profile ] && . /etc/profile; [ -f ~/.profile ] && . ~/.profile; export LC_ALL=C; ln -snf $buildpath.deps $buildpath/.deps && cd $buildpath && nice -`nice` make clean $maketargets $makeflags"
+				for f in $targetfiles; do
+					verbose rsync -zvaSHP "$host:$buildpath/${f%:*}" "${f##*:}" || true
+				done
+				;;
+		esac
+		;;
+	release-compile)
+		release_common
+		suffix=$1
+		makeflags=$2
+		darkplaces_maketargets=$3
+		darkplaces_files=$4
+		host=xonotic-build-$suffix
+		verbose "$SELF" release-compile-run "$host" /tmp/Darkplaces.build."$suffix" "$darkplaces_maketargets" "$makeflags" "Xonotic/source/darkplaces" "$d0/misc/builddeps/$suffix" "$darkplaces_files"
+		;;
+	release-getbinary)
+		release_common
+		binary=$1
+		basename=${binary##*/}
+		dpname=darkplaces${basename#xonotic}
+		rev=`( cd "$d0/darkplaces" && git rev-parse HEAD )`
+		verbose wget -O "$binary" "http://beta.xonotic.org/autobuild-bin/$rev/$dpname"
+		[ -s "$binary" ] || rm -f "$binary"
+		[ -f "$binary" ]
+		case "$binary" in
+			Xonotic/*osx*|Xonotic/*linux*)
+				chmod +x "$binary"
+				;;
+		esac
+		;;
+	release-dlls-compile)
+		release_common
+		arch=$1
+		buildpath=$2
+		targetdir=$3
+		mkdir -p "$targetdir"
+		(
+			cd "misc/buildsrc"
+			verbose ./dlls.sh all "$buildpath" "$arch"
+		)
+		verbose cp -v $buildpath/out/$arch/* "$targetdir"
+		;;
+	release-dlls-win32)
+		release_common
+		verbose "$SELF" release-dlls-compile win32 /tmp/dlls Xonotic/bin32
+		;;
+	release-dlls-win64)
+		release_common
+		verbose "$SELF" release-dlls-compile win64 /tmp/dlls Xonotic/bin64
+		;;
+	release-dlls)
+		release_common
+		verbose "$SELF" release-dlls-win32
+		verbose "$SELF" release-dlls-win64
+		verbose rm -rf /tmp/dlls
+		;;
+	release-engine-win32)
+		release_common
+		#good=true
+		#verbose "$SELF" release-getbinary Xonotic/xonotic-x86.exe || good=false
+		#verbose "$SELF" release-getbinary Xonotic/xonotic-x86-dedicated.exe || good=false
+		#$good
+		verbose "$SELF" release-compile win32 \
+			'STRIP=: D3D=1 DP_MAKE_TARGET=mingw WIN32RELEASE=1 CC="i686-w64-mingw32-gcc -static -flto=auto -mstackrealign -Wl,--dynamicbase -Wl,--nxcompat -I../../../.deps/include -L../../../.deps/lib -DSUPPORTIPV6" WINDRES="i686-w64-mingw32-windres" SDL_CONFIG="../../../.deps/bin/sdl2-config" DP_LINK_CRYPTO=dlopen DP_LINK_CRYPTO_RIJNDAEL=dlopen DP_LINK_JPEG=dlopen DP_LINK_ODE=dlopen DP_LINK_ZLIB=dlopen' \
+			release 'darkplaces.exe:Xonotic/xonotic-x86-wgl.exe darkplaces-sdl.exe:Xonotic/xonotic-x86.exe darkplaces-dedicated.exe:Xonotic/xonotic-x86-dedicated.exe'
+		;;
+	release-engine-win64)
+		release_common
+		#good=true
+		#verbose "$SELF" release-getbinary Xonotic/xonotic.exe || good=false
+		#verbose "$SELF" release-getbinary Xonotic/xonotic-dedicated.exe || good=false
+		#$good
+		verbose "$SELF" release-compile win64 \
+			'STRIP=: D3D=1 DP_MAKE_TARGET=mingw WIN64RELEASE=1 CC="x86_64-w64-mingw32-gcc -static -flto=auto -Wl,--dynamicbase -Wl,--nxcompat -I../../../.deps/include -L../../../.deps/lib -DSUPPORTIPV6" WINDRES="x86_64-w64-mingw32-windres" SDL_CONFIG="../../../.deps/bin/sdl2-config" DP_LINK_CRYPTO=dlopen DP_LINK_CRYPTO_RIJNDAEL=dlopen DP_LINK_JPEG=dlopen DP_LINK_ODE=dlopen DP_LINK_ZLIB=dlopen' \
+			release 'darkplaces.exe:Xonotic/xonotic-wgl.exe darkplaces-sdl.exe:Xonotic/xonotic.exe darkplaces-dedicated.exe:Xonotic/xonotic-dedicated.exe'
+		;;
+	release-engine-osx)
+		release_common
+		#good=true
+		#verbose "$SELF" release-getbinary Xonotic/Xonotic.app/Contents/MacOS/xonotic-osx-sdl-bin || good=false
+		#verbose "$SELF" release-getbinary Xonotic/xonotic-osx-dedicated || good=false
+		#$good
+		# Note: travis build script also had SDLCONFIG_MACOSX* flags; need to check if they're still needed with osxcross.
+		verbose "$SELF" release-compile osx \
+			'STRIP=: DP_MAKE_TARGET=macosx CC="$HOME/osxcross/out/bin/o64-clang -flto -arch x86_64 -mmacosx-version-min=10.6 -Wl,-rpath -Wl,@loader_path/../Frameworks -Wl,-rpath -Wl,@loader_path -I../../../.deps/include -L../../../.deps/lib -DSUPPORTIPV6" SDLCONFIG_MACOSXCFLAGS="-I../../../.deps/SDL2.framework/Headers" SDLCONFIG_MACOSXLIBS="-F../../../.deps -framework SDL2 -framework Cocoa -I../../../.deps/SDL2.framework/Headers" SDLCONFIG_MACOSXSTATICLIBS="-F../../../.deps -framework SDL2 -framework Cocoa -I../../../.deps/SDL2.framework/Headers" DP_LINK_CRYPTO=dlopen DP_LINK_CRYPTO_RIJNDAEL=dlopen DP_LINK_JPEG=dlopen DP_LINK_ODE=dlopen DP_LINK_ZLIB=shared' \
+			'sv-release sdl-release' 'darkplaces-sdl:Xonotic/Xonotic.app/Contents/MacOS/xonotic-osx-sdl-bin darkplaces-dedicated:Xonotic/xonotic-osx-dedicated'
+		;;
+	release-engine-linux64)
+		release_common
+		#good=true
+		#verbose "$SELF" release-getbinary Xonotic/xonotic-linux64-sdl || good=false
+		#verbose "$SELF" release-getbinary Xonotic/xonotic-linux64-glx || good=false
+		#verbose "$SELF" release-getbinary Xonotic/xonotic-linux64-dedicated || good=false
+		#$good
+		verbose "$SELF" release-compile linux64 \
+			'STRIP=: CC="gcc -m64 -flto=auto -I../../../.deps/include -L../../../.deps/lib -DSUPPORTIPV6" DP_LINK_CRYPTO=shared LIB_CRYPTO="../../../.deps/lib/libd0_blind_id.a ../../../.deps/lib/libgmp.a" DP_LINK_CRYPTO_RIJNDAEL=shared DP_LINK_JPEG=shared LIB_JPEG=/usr/lib/x86_64-linux-gnu/libjpeg.a DP_LINK_ODE=shared CFLAGS_ODE="-DUSEODE -DLINK_TO_LIBODE -DdDOUBLE" LIB_ODE="../../../.deps/lib/libode.a -lstdc++ -pthread" DP_LINK_ZLIB=shared' \
+			release 'darkplaces-glx:Xonotic/xonotic-linux64-glx darkplaces-sdl:Xonotic/xonotic-linux64-sdl darkplaces-dedicated:Xonotic/xonotic-linux64-dedicated'
+		;;
+	release-engine)
+		release_common
+		# TODO report failures here.
+		good=false
+		verbose "$SELF" release-engine-linux64 && good=true
+		verbose "$SELF" release-engine-win32 && good=true
+		verbose "$SELF" release-engine-win64 && good=true
+		verbose "$SELF" release-engine-osx && good=true
+		$good
+		;;
+	release-maps)
+		release_common
+		verbose "$SELF" update-maps
+		;;
+	release-qc)
+		release_common
+		verbose make -C "$d0/gmqcc" gmqcc
+		verbose env GIT_DIR="$d0/data/xonotic-data.pk3dir/.git" make -C Xonotic/source QCC="$d0/gmqcc/gmqcc" XON_BUILDSYSTEM=1 QCCFLAGS_WATERMARK='$(shell git describe --tags)' clean qc
+		;;
+	release-buildpk3-transform-raw)
+		release_common
+		dir=$1
+		;;
+	release-buildpk3-transform-normal)
+		release_common
+		dir=$1
+		verbose cd "$dir"
+		# texture: convert to jpeg and dds
+		verbose export do_jpeg=true
+		verbose export jpeg_qual_rgb=97
+		verbose export jpeg_qual_a=99
+		verbose export do_dds=false
+		verbose export do_ogg=true
+		verbose export ogg_ogg=false
+		verbose export del_src=true
+		find . -type f -print0 | verbose xargs -0 "$d0"/misc/tools/cached-converter.sh
+		;;
+	release-buildpk3-transform-normaldds)
+		release_common
+		dir=$1
+		verbose cd "$dir"
+		# texture: convert to jpeg and dds
+		# music: reduce bitrate
+		verbose export do_jpeg=false
+		verbose export do_jpeg_if_not_dds=true
+		verbose export jpeg_qual_rgb=95
+		verbose export jpeg_qual_a=99
+		verbose export do_dds=true
+		verbose export dds_flags=
+		verbose export do_ogg=true
+		verbose export ogg_ogg=false
+		verbose export del_src=true
+		find . -type f -print0 | verbose xargs -0 "$d0"/misc/tools/cached-converter.sh
+		;;
+	release-buildpk3-transform-mapping)
+		release_common
+		dir=$1
+		verbose cd "$dir"
+		# don't include levelshots, lightmaps and minimaps from official map builds, as well as other unneeded folders
+		rm -rf gfx maps scripts sound
+		# remove stuff radiant has no use for
+		verbose find . -name \*_norm.\* -exec rm -f {} \;
+		verbose find . -name \*_bump.\* -exec rm -f {} \;
+		verbose find . -name \*_glow.\* -exec rm -f {} \;
+		verbose find . -name \*_gloss.\* -exec rm -f {} \;
+		verbose find . -name \*_pants.\* -exec rm -f {} \;
+		verbose find . -name \*_shirt.\* -exec rm -f {} \;
+		verbose find . -name \*_reflect.\* -exec rm -f {} \;
+		verbose find . -not \( -name \*.tga -o -name \*.png -o -name \*.jpg \) -exec rm -f {} \;
+		# texture: convert to jpeg and dds
+		# music: reduce bitrate
+		verbose export do_jpeg=true
+		verbose export jpeg_qual_rgb=80
+		verbose export jpeg_qual_a=97
+		verbose export do_dds=false
+		verbose export do_ogg=true
+		verbose export ogg_qual=1
+		verbose export del_src=true
+		find . -type f -print0 | verbose xargs -0 "$d0"/misc/tools/cached-converter.sh
+		;;
+	release-buildpk3)
+		release_common
+		src=$1
+		dst=$2
+		transform=$3
+		case "$dst" in
+			/*)
+				;;
+			*/)
+				dst="$PWD/$dst"
+				;;
+		esac
+		release_timereport
+		verbose rm -rf Xonotic/temp
+		release_timereport "deleted temp directory"
+		verbose mkdir -p Xonotic/temp
+		release_git_extract_dir "$src" "Xonotic/temp" .
+		release_timereport "extracted data"
+		verbose cd Xonotic/temp
+		if [ x"$src" = x"data/xonotic-data.pk3dir" ]; then
+			verbose cp ../source/progs.dat .
+			verbose cp ../source/csprogs.dat .
+			verbose cp ../source/menu.dat .
+			# Include line numbers in qc errors
+			verbose cp ../source/progs.lno .
+			verbose cp ../source/csprogs.lno .
+			verbose cp ../source/menu.lno .
+			verbose rm -rf qcsrc
+			getversion .
+			case "$RELEASETYPE" in
+				release)
+					;;
+				RC*)
+					versionstr="$versionstr $RELEASETYPE"
+					;;
+				*)
+					versionstr="$versionstr$RELEASETYPE"
+					;;
+			esac
+			if [ $gv -lt 9900 ]; then
+				# pre-1.0: compatible with any other pre-1.0
+				verbose sed "
+					s/^set g_xonoticversion [^ ]* /set g_xonoticversion \"$versionstr\" /;
+					s/^gameversion_max [0-9]*/gameversion_max  9999/;
+				" < xonotic-common.cfg > xonotic-common.cfg.new
+				# Following line was included in sed above, ref https://gitlab.com/xonotic/xonotic-data.pk3dir/-/merge_requests/1034
+				# s/^gameversion_min [0-9]*/gameversion_min     0/;
+			else
+				# >= 1.0
+				verbose sed "
+					s/^set g_xonoticversion [^ ]* /set g_xonoticversion \"$versionstr\" /;
+					s/^gameversion_max [0-9]*/gameversion_max $(( ($gv / 100) * 100 + 199 ))/;
+				" < xonotic-common.cfg > xonotic-common.cfg.new
+				# Following line was included in sed above, ref https://gitlab.com/xonotic/xonotic-data.pk3dir/-/merge_requests/1034
+				# s/^gameversion_min [0-9]*/gameversion_min $(( ($gv / 100) * 100 - 100 ))/;
+			fi
+			mv xonotic-common.cfg.new xonotic-common.cfg
+			case "$RELEASETYPE" in
+				release|RC*)
+					echo "" >> xonotic-common.cfg
+					echo "// nicer menu" >> xonotic-common.cfg
+					echo "set menu_watermark \"\"" >> xonotic-common.cfg
+					;;
+			esac
+			(
+				verbose cd gfx/menu/luminos
+				verbose rm -f background_l2.tga background_ingame_l2.tga
+				verbose cp "$d0"/mediasource/gfx/menu/luminos_versionbuilder/background_l2.svg .
+				verbose "$d0"/mediasource/gfx/menu/luminos_versionbuilder/versionbuilder "$versionstr"
+				verbose rm background_l2.svg
+			)
+			verbose "$d0"/mediasource/gfx/luma/render-version.sh "$d0/mediasource/gfx/luma" "$PWD" "$versionstr"
+		fi
+		if [ x"$src" = x"data/xonotic-maps.pk3dir" ]; then
+			for X in ../../data/*-????????????????????????????????????????-????????????????????????????????????????.pk3; do
+				if [ -f "$X" ]; then
+					verbose unzip "$X"
+					verbose rm -f maps/*.log maps/*.irc maps/*.lin
+				fi
+			done
+		fi
+		verbose export git_src_repo="$d0/$src" # skip hash-object
+		release_timereport "processed data"
+		verbose "$SELF" release-buildpk3-transform-$transform "Xonotic/temp"
+		release_timereport "transformed data"
+		find . -type f -size +4k | verbose "$d0"/misc/tools/symlink-deduplicate.sh
+		release_timereport "deduplicated data"
+		verbose mkzipr "../../$dst" *
+		release_timereport "zipped data"
+		verbose cd ../..
+		verbose rm -rf Xonotic/temp
+		release_timereport "deleted temp directory again"
+		;;
+	release-buildpk3s)
+		release_common
+		pk3stamp=`cat Xonotic/pk3stamp.txt`
+		src=$1
+		shift
+		dst=${src%.pk3dir}
+		case "$dst" in
+			data/xonotic-*)
+				dst="data/xonotic-$pk3stamp-${dst#data/xonotic-}"
+				;;
+			*)
+				dst="$dst-$pk3stamp"
+				;;
+		esac
+		while [ "$#" -gt 1 ]; do
+			verbose "$SELF" release-buildpk3 "$src" "Xonotic/$dst$2.pk3" "$1"
+			shift
+			shift
+		done
+		;;
+	release-pack)
+		release_common
+		verbose "$SELF" release-buildpk3s data/font-unifont.pk3dir      raw ''
+		verbose "$SELF" release-buildpk3s data/font-xolonium.pk3dir     raw ''
+		verbose "$SELF" release-buildpk3s data/xonotic-data.pk3dir             normaldds ''                    normal '-high'
+		verbose "$SELF" release-buildpk3s data/xonotic-maps.pk3dir             normaldds '' mapping '-mapping' normal '-high'
+		verbose "$SELF" release-buildpk3s data/xonotic-music.pk3dir     raw ''
+		verbose "$SELF" release-buildpk3s data/xonotic-nexcompat.pk3dir        normaldds ''                    normal '-high'
+		verbose "$SELF" release-buildpk3s data/xonotic-xoncompat.pk3dir        normaldds ''                    normal '-high'
+		;;
+	release-pack-needsx11)
+		release_common
+		case "$DISPLAY" in
+			'')
+				verbose startx "$SELF" release-pack -- /usr/bin/Xvfb :7
+				;;
+			*)
+				verbose "$SELF" release-pack
+				;;
+		esac
+		;;
+	release-zip)
+		release_common
+		stamp=`cat Xonotic/stamp.txt`
+		pk3stamp=`cat Xonotic/pk3stamp.txt`
+		# exe and dll files do not need +x, so this makes them eligible for 7zip compression too
+		chmod a-x Xonotic/*.exe Xonotic/*.dll || true
+		# build the archives
+		verbose mkzipr Xonotic-$stamp-enginesource.zip \
+			Xonotic/Makefile \
+			Xonotic/source/darkplaces/ \
+			Xonotic/COPYING Xonotic/GPL-2 Xonotic/GPL-3
+		verbose cp Xonotic-$stamp-enginesource.zip Xonotic-$stamp-engine.zip
+		verbose mkzipr Xonotic-$stamp-engine.zip \
+			Xonotic/*.dll \
+			Xonotic/bin32/*.dll \
+			Xonotic/bin64/*.dll \
+			Xonotic/*.app \
+			Xonotic/xonotic-* \
+			Xonotic/xonotic.exe
+		verbose cp Xonotic-$stamp-engine.zip Xonotic-$stamp-common.zip
+		verbose mkzipr Xonotic-$stamp-common.zip \
+			Xonotic/source/d0_blind_id/ \
+			Xonotic/source/gmqcc/ \
+			Xonotic/source/qcsrc/ \
+			Xonotic/Docs \
+			Xonotic/misc \
+			Xonotic/gmqcc \
+			Xonotic/server \
+			Xonotic/key_0.d0pk \
+			Xonotic/data/font-unifont-$pk3stamp.pk3 \
+			Xonotic/data/font-xolonium-$pk3stamp.pk3
+		verbose cp Xonotic-$stamp-enginesource.zip Xonotic-$stamp-source.zip
+		verbose mkzipr Xonotic-$stamp-source.zip \
+			Xonotic/source/d0_blind_id/ \
+			Xonotic/source/gmqcc/ \
+			Xonotic/source/qcsrc/ \
+			Xonotic/misc/logos
+		verbose cp Xonotic-$stamp-common.zip Xonotic-$stamp.zip
+		verbose mkzip0 Xonotic-$stamp.zip \
+			Xonotic/data/xonotic-$pk3stamp-data.pk3 \
+			Xonotic/data/xonotic-$pk3stamp-maps.pk3 \
+			Xonotic/data/xonotic-$pk3stamp-music.pk3 \
+			Xonotic/data/xonotic-$pk3stamp-nexcompat.pk3 \
+			Xonotic/data/xonotic-$pk3stamp-xoncompat.pk3
+		verbose mv Xonotic-$stamp-common.zip Xonotic-$stamp-high.zip
+		verbose mkzip0 Xonotic-$stamp-high.zip \
+			Xonotic/data/xonotic-$pk3stamp-data-high.pk3 \
+			Xonotic/data/xonotic-$pk3stamp-maps-high.pk3 \
+			Xonotic/data/xonotic-$pk3stamp-music.pk3 \
+			Xonotic/data/xonotic-$pk3stamp-nexcompat-high.pk3 \
+			Xonotic/data/xonotic-$pk3stamp-xoncompat-high.pk3
+		verbose mkzipr Xonotic-$stamp-mappingsupport.zip \
+			Xonotic/mapping
+		verbose mkzip0 Xonotic-$stamp-mappingsupport.zip \
+			Xonotic/data/xonotic-$pk3stamp-maps-mapping.pk3
+		verbose mkzipr gmqcc-$stamp.zip \
+			Xonotic/gmqcc \
+			Xonotic/source/gmqcc
+		;;
+	release)
+		release_common
+		verbose "$SELF" release-prepare
+		verbose "$SELF" release-maps
+		verbose "$SELF" release-dlls
+		verbose "$SELF" release-engine
+		verbose "$SELF" release-qc
+		verbose "$SELF" release-pack
+		verbose "$SELF" release-zip
+		;;
+	*)
+		handled=false
+		;;
+esac
