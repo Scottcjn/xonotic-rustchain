@@ -1,0 +1,19 @@
+[Unit]
+Description=Xonotic RustChain Arena Server
+After=network.target
+
+[Service]
+Type=simple
+# Change User to your dedicated user if not root
+User=root
+# Adjust path to where you installed Xonotic
+WorkingDirectory=/opt/xonotic
+# Launches the full stack wrapper script
+ExecStart=/opt/xonotic/rustchain_arena_full.sh
+Restart=always
+RestartSec=10
+# StandardOutput=syslog
+# StandardError=syslog
+
+[Install]
+WantedBy=multi-user.target
