@@ -202,7 +202,7 @@ What is your tactical decision? (1 line, be specific: target player, position, w
                 result = response.json()
                 return result.get("response", "").strip()
 
-        except:
+        except Exception:
             pass
 
         # Fallback taunts by style
@@ -260,7 +260,7 @@ def check_ollama_available() -> bool:
                 return True
             print(f"[LLM] Model {OLLAMA_MODEL} not found. Available: {model_names}")
             return False
-    except:
+    except Exception:
         pass
     return False
 

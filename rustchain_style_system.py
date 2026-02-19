@@ -9,7 +9,7 @@ import re
 import time
 import json
 import sqlite3
-from datetime import datetime
+from datetime import datetime, timezone
 from decimal import Decimal, getcontext
 from dataclasses import dataclass, field
 from typing import Dict, List, Optional, Tuple
@@ -112,6 +112,7 @@ class PlayerStyle:
     points: int = 0
     rank: StyleRank = StyleRank.D_DORMANT
     kills_this_life: int = 0
+    total_kills: int = 0
     deaths: int = 0
     last_kill_time: float = 0
     recent_kills: List[float] = field(default_factory=list)
@@ -253,6 +254,7 @@ class StyleSystem:
         player.recent_kills = [t for t in player.recent_kills if now - t < 10]  # Last 10 seconds
         player.last_kill_time = now
         player.kills_this_life += 1
+        player.total_kills += 1
         player.killstreak += 1
 
         if player.killstreak > player.best_streak:
@@ -430,7 +432,7 @@ def create_discord_embed(result: Dict) -> Optional[Dict]:
             {"name": "RTC Earned", "value": f"+{result['total_rtc']:.4f}", "inline": True},
         ],
         "footer": {"text": "RustChain Arena | Style System"},
-        "timestamp": datetime.utcnow().isoformat()
+        "timestamp": datetime.now(timezone.utc).isoformat()
     }
 
     if result["ranked_up"]:
@@ -510,7 +512,7 @@ def main():
                                         requests.post(DISCORD_WEBHOOK,
                                                     json={"embeds": [embed]},
                                                     timeout=2)
-                                    except:
+                                    except Exception:
                                         pass
                         break
 

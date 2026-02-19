@@ -30,7 +30,7 @@ def get_stats(player):
         conn.close()
         if row:
             return {"kills": row[0], "deaths": row[1], "wins": row[2], "rtc": Decimal(row[3] or "0")}
-    except:
+    except Exception:
         pass
     return {"kills": 0, "deaths": 0, "wins": 0, "rtc": Decimal("0")}
 

@@ -149,7 +149,7 @@ class DynamicAnnouncer:
                 if any(OLLAMA_MODEL in m for m in models):
                     print(f"[Announcer] LLM connected: {OLLAMA_MODEL}")
                     return True
-        except:
+        except Exception:
             pass
         print("[Announcer] LLM unavailable, using fallback lines")
         return False
@@ -182,7 +182,7 @@ class DynamicAnnouncer:
                 line = line.split('\n')[0]  # First line only
                 if len(line) > 10 and len(line) < 100:
                     return line
-        except:
+        except Exception:
             pass
 
         return None

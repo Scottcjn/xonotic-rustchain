@@ -10,7 +10,7 @@ import time
 import json
 import requests
 import sqlite3
-from datetime import datetime
+from datetime import datetime, timezone
 from decimal import Decimal, getcontext
 
 getcontext().prec = 18
@@ -97,7 +97,7 @@ def announce_kill(killer, victim, rtc_total, streak=0, bonus_type=None):
             {"name": "💰 RTC Earned", "value": f"+{rtc_total:.4f}", "inline": True}
         ],
         "footer": {"text": "RustChain Arena"},
-        "timestamp": datetime.utcnow().isoformat()
+        "timestamp": datetime.now(timezone.utc).isoformat()
     }
     
     # Only post notable kills to avoid spam
@@ -114,7 +114,7 @@ def announce_first_blood(killer, victim):
             {"name": "💰 Bonus", "value": "+0.005 RTC", "inline": True}
         ],
         "footer": {"text": "RustChain Arena"},
-        "timestamp": datetime.utcnow().isoformat()
+        "timestamp": datetime.now(timezone.utc).isoformat()
     }
     post_to_discord(embed)
 
@@ -128,7 +128,7 @@ def announce_godlike(player, streak):
             {"name": "💰 Streak Bonus", "value": "+0.025 RTC", "inline": True}
         ],
         "footer": {"text": "RustChain Arena"},
-        "timestamp": datetime.utcnow().isoformat()
+        "timestamp": datetime.now(timezone.utc).isoformat()
     }
     post_to_discord(embed)
 
@@ -139,7 +139,7 @@ def announce_match_start(map_name):
         "description": f"**Map:** {map_name}\n**Mode:** Deathmatch\n\nJoin now and earn RTC!",
         "color": 0x00FF00,
         "footer": {"text": "RustChain Arena"},
-        "timestamp": datetime.utcnow().isoformat()
+        "timestamp": datetime.now(timezone.utc).isoformat()
     }
     post_to_discord(embed)
 
@@ -164,7 +164,7 @@ def announce_match_end(stats):
             {"name": "💰 RTC Distributed", "value": f"{total_rtc:.4f}", "inline": True}
         ],
         "footer": {"text": "RustChain Arena | Play to Earn"},
-        "timestamp": datetime.utcnow().isoformat()
+        "timestamp": datetime.now(timezone.utc).isoformat()
     }
     post_to_discord(embed)
 

@@ -17,7 +17,7 @@ cleanup() {
 trap cleanup SIGTERM SIGINT
 
 # Start Discord Bridge if configured
-if [ -n "$DISCORD_TOKEN" ] && [ -f "rustchain_discord_bridge.py" ]; then
+if [ -n "$DISCORD_WEBHOOK" ] && [ -f "rustchain_discord_bridge.py" ]; then
     echo "[Bridge] Starting Discord integration..."
     python3 rustchain_discord_bridge.py > /var/log/discord_bridge.log 2>&1 &
 fi
@@ -30,12 +30,11 @@ fi
 
 # Start LLM Bot Brain (requires Ollama)
 if [ "$ENABLE_LLM" = "true" ] && [ -f "rustchain_bot_brain.py" ]; then
-    if [ -n "$OLLAMA_HOST" ]; then
-        echo "[AI] Starting LLM Bot Brain (Ollama: $OLLAMA_HOST)..."
-        # Ensure script knows where to look if it uses env vars, otherwise we rely on network alias
+    if [ -n "$OLLAMA_URL" ]; then
+        echo "[AI] Starting LLM Bot Brain (Ollama: $OLLAMA_URL)..."
         python3 rustchain_bot_brain.py > /var/log/bot_brain.log 2>&1 &
     else
-        echo "[AI] OLLAMA_HOST not set, skipping LLM Brain."
+        echo "[AI] OLLAMA_URL not set, skipping LLM Brain."
     fi
 fi
 

@@ -236,13 +236,14 @@ class BloodEconomy:
         """
         state = self.get_player(player)
         state.last_damage_taken = damage
+        had_untouchable = state.kills_without_damage > 0
         state.kills_without_damage = 0  # Reset untouchable
 
         return {
             "player": player,
             "damage": damage,
             "shield_current": state.shield,
-            "untouchable_lost": True if state.kills_without_damage > 0 else False
+            "untouchable_lost": had_untouchable
         }
 
     def on_death(self, player: str) -> Dict:

@@ -283,7 +283,7 @@ class BotMLBrain:
             self.deaths = data.get("deaths", 0)
             self.aggression_bias = data.get("aggression_bias", 0.5)
             return True
-        except:
+        except Exception:
             return False
 
 

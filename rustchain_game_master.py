@@ -12,7 +12,7 @@ import json
 import sqlite3
 import threading
 import requests
-from datetime import datetime
+from datetime import datetime, timezone
 from decimal import Decimal, getcontext
 from typing import Dict, Optional
 from collections import deque
@@ -97,7 +97,7 @@ class GameMaster:
         try:
             requests.post(DISCORD_WEBHOOK, json={"embeds": [embed]}, timeout=3)
             self.last_discord_post = now
-        except:
+        except Exception:
             pass
 
     def on_match_start(self, map_name: str):
@@ -134,7 +134,7 @@ class GameMaster:
                     {"name": "Multipliers", "value": "1x → 1.2x → 1.5x → 2x → 3x → 4x → 5x", "inline": True},
                 ],
                 "footer": {"text": "RustChain Arena | Play to Earn"},
-                "timestamp": datetime.utcnow().isoformat()
+                "timestamp": datetime.now(timezone.utc).isoformat()
             }
             self.post_discord(embed, force=True)
 
@@ -157,7 +157,7 @@ class GameMaster:
             medal = medals[i] if i < 3 else "  "
             rank_name = RANK_CONFIG[player.rank]["name"]
             print(f"  {medal} {name}: {player.total_rtc:.4f} RTC | "
-                  f"K:{player.kills_this_life + player.deaths} D:{player.deaths} | "
+                  f"K:{player.total_kills} D:{player.deaths} | "
                   f"Best: {player.best_streak} streak")
 
         print(f"\n  Total RTC Distributed: {self.total_rtc_distributed:.4f}")
@@ -195,7 +195,7 @@ class GameMaster:
                     {"name": "Duration", "value": f"{int(duration // 60)}m {int(duration % 60)}s", "inline": True},
                 ],
                 "footer": {"text": "RustChain Arena"},
-                "timestamp": datetime.utcnow().isoformat()
+                "timestamp": datetime.now(timezone.utc).isoformat()
             }
             self.post_discord(embed, force=True)
 
