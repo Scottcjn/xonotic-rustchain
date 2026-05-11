@@ -122,7 +122,7 @@ The electro primary behaves like an ordinary rocket launcher as you might know i
 
 ### Crylink
 
-The crylink has a couple of very non-obvious features, which makes this weapon rather interesting and unique. First of all, due to negative (!) push force, getting hit by crylink particles will effectively slow you down very much, no matter of the direction you’re moving in in relation to the firing player. Even if you move at insane speeds, getting hit by several crylink particles at once will make you perform a full stop. This makes the crylink very popular amongst defending CTF players, as you can really annoy fast flag runners with it provided you manage to hit them.
+The crylink has a couple of very non-obvious features, which makes this weapon rather interesting and unique. First of all, due to negative (!) push force, getting hit by crylink particles will effectively slow you down very much, no matter of the direction you’re moving in relation to the firing player. Even if you move at insane speeds, getting hit by several crylink particles at once will make you perform a full stop. This makes the crylink very popular amongst defending CTF players, as you can really annoy fast flag runners with it provided you manage to hit them.
 
 The latter can, however, be quite tricky, given the high spread crylink primary has. Fortunately, crylink has another feature that is very unlikely to be discovered unless someone tells you about it: when you release primary fire, the spread of crylink primary will inverse. Let that sink in for a moment.
 
