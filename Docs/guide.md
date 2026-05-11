@@ -27,11 +27,11 @@ You may have noticed that players race around the maps at insane speeds, making 
 
 In Xonotic you have a lot of movement control while you are in the air (“air control”), and to a great extent you’ll accelerate when pressing the forward button while flying. When you just walk around though, your feet are in constant contact with the ground, so the friction is slowing you down a lot. One of the keys to gain high speeds in Xonotic is therefore to touch the ground as little as possible. By constantly jumping (“bunny hopping”) you can keep ground contact to a minimum. The good thing is that you only need to keep the jump button pressed and you will jump again once you hit the ground (unless of course you disabled that in Settings → Input). If you press the forward button while holding the jump button, you’ll continuously get faster until you hit the acceleration limit.
 
-This is quite easy and there’s nothing really to master about plain forward bunny hopping. However, you’ll face complications if you now try to turn once you gained some speed. If you continue to press the forward key and simply turn the mouse, you’ll hardly manage to make a sharp turn (unless you stop jumping, which slows you down a lot). In order to perform sharper turns without loosing speed, thus making you more agile, do the following:
+This is quite easy and there’s nothing really to master about plain forward bunny hopping. However, you’ll face complications if you now try to turn once you gained some speed. If you continue to press the forward key and simply turn the mouse, you’ll hardly manage to make a sharp turn (unless you stop jumping, which slows you down a lot). In order to perform sharper turns without losing speed, thus making you more agile, do the following:
 
 Before the turn, while still bunny hopping, release the forward key. Once you’ve released the forward key (while still keeping the jump key pressed), hold down the strafe key in the direction you want to turn (for sharp right turn: strafe right). Keep holding the jump key and the strafe key and smoothly and steadily turn your mouse into the strafe direction (in my example, right). It’s vital to move the mouse smoothly, because any abrupt sudden movements will slow you down. I can’t stress this aspect enough – a lot of newcomers that I told this technique basically got all the key pressing part right but fail at moving the mouse smoothly. Softly accelerate and decelerate the mouse turn and maintain a steady turn speed in between. The movement needs to be fluent and soft to get the full benefit. Also note that releasing the forward key while you’ve already pressed the strafe key will slow you down too, so be sure to use the right order. You’ll notice that if you do it right, you actually don’t lose speed in turns, but rather start to accelerate! This technique is called “strafe turning”.
 
-Once you’re done turning, you can release the strafe key and press forward key again or even directly switch to the other direction. A good way to practice this is to use forward only for inital acceleration, and then to do turns left and right running in an number eight-shaped figure (I recommend the main room in the map “afterslime” for that).
+Once you’re done turning, you can release the strafe key and press the forward key again or even directly switch to the other direction. A good way to practice this is to use forward only for initial acceleration, and then to do turns left and right running in a number-eight-shaped figure (I recommend the main room in the map “afterslime” for that).
 
 It takes a while to get used to, but if you practice it, this goes into your cerebellum sooner or later (depending on your age, mostly) and then you’ll never think about it again! At that point you’ll be bunny hopping all over the place at high speed. Mastering this technique is very rewarding, since running around a map at high speed is a bunch of fun.
 
@@ -56,14 +56,14 @@ Let’s now have a look at two important aspects of a very useful movement tool 
 
 But you’ll not always want to do very high jumps, for example if you’re on the run and need to hit a passageway without bumping your head on an arch above it (like the mega armor on Stormkeep coming from Hagar). In such cases, it can be useful to fire downwards while you are already (or still) in the air during bunny hopping, allowing the blaster projectile to travel a short distance before impact and having more space between impact and yourself, so the push is not that strong.
 
-You’ll have to experiment a bit with the timing of shooting and jumping to reliably achieve the desired jump heighth, but this will become muscle memory rather quickly since you’ll be using blaster jumps a lot in Xonotic gameplay.
+You’ll have to experiment a bit with the timing of shooting and jumping to reliably achieve the desired jump height, but this will become muscle memory rather quickly since you’ll be using blaster jumps a lot in Xonotic gameplay.
 
 Wall Blastering
 -------------
 
-Now, when accelerating fast, you won’t always want to do that vertically. Some times the first few bunny hops are not fast enough to reach a place (or to get out of a place) in time. With the technique of wall blastering you can easily reach rather high horizontal speeds instantly, out of the stand.
+Now, when accelerating fast, you won’t always want to do that vertically. Sometimes the first few bunny hops are not fast enough to reach a place (or to get out of a place) in time. With the technique of wall blastering you can easily reach rather high horizontal speeds instantly from a standstill.
 
-To master wall blastering, you’ll obviously need a wall. While it would seem logic to use a wall that you can blaster off in a 90 degree angle with a blaster shot backwards, it is at least equally effective and easier to use a wall that is parallel to your desired movement direction. For practicing this, you start off standing next to that wall and are facing into the desired movement direction. Then you start a bunny hop by pressing foward and then the jump key. While in the air from your first jump, you flick around (to approximately 8 o’clock if the wall is left from you, 4 o’clock if the wall is right to you), shoot the blaster at the wall, aiming slightly above your head. If you shoot parallel or even down a bit, you’ll get a high upwards boost, wasting energy into vertical acceleration, so be sure to aim a little bit upwards! After the flick shot turn back to your desired movement direction and contine to bunny hop. Do not release the jump key during the entire process.
+To master wall blastering, you’ll obviously need a wall. While it would seem logical to use a wall that you can blaster off at a 90-degree angle with a blaster shot backwards, it is at least equally effective and easier to use a wall that is parallel to your desired movement direction. For practicing this, you start off standing next to that wall and are facing into the desired movement direction. Then you start a bunny hop by pressing forward and then the jump key. While in the air from your first jump, you flick around (to approximately 8 o’clock if the wall is left from you, 4 o’clock if the wall is right to you), shoot the blaster at the wall, aiming slightly above your head. If you shoot parallel or even down a bit, you’ll get a high upwards boost, wasting energy into vertical acceleration, so be sure to aim a little bit upwards! After the flick shot turn back to your desired movement direction and continue to bunny hop. Do not release the jump key during the entire process.
 
 Now let’s tweak this a little more. You wouldn’t want to accelerate into your viewing direction when looking backwards during the flick shot, would you. That is why you should switch for the time you are not looking in your desired movement direction from the forward key to the respective strafe key (strafe right if you turn to a wall on your left, strafe left if you turn to a wall on your right). When turning back into movement direction, keep the strafe key pressed until you can switch to forward key again. You can use a smoother mouse movement for turning back at least for the last couple of degrees in order to gain extra acceleration as explained in the Bunny Hopping section. Also remember to release the forward key before pressing the strafe key, and vice versa!
 
@@ -72,7 +72,7 @@ Once you’ve learned how to reliably accelerate out of the stand with this tech
 Ramp Jumping
 ------------
 
-Ramps are sloped surfaces that can be used for extra upwards boost when doing a jump. If done properly, you can get to places you would not be able to reach without using a jump pad or the blaster (see the section about blaster jumps), while not making any suspicious noises nor loosing any health. This makes ramp jumps especially useful in duels or 2v2 tdm matches and generally extends your movement options in all game modes. Ramp jumps are also very much fun to do!
+Ramps are sloped surfaces that can be used for extra upwards boost when doing a jump. If done properly, you can get to places you would not be able to reach without using a jump pad or the blaster (see the section about blaster jumps), while not making any suspicious noises nor losing any health. This makes ramp jumps especially useful in duels or 2v2 tdm matches and generally extends your movement options in all game modes. Ramp jumps are also very much fun to do!
 
 In my “live” newbie tutorials, I always demonstrate the ramp jump on this spot on the map Xoylent, as it’s rather easy to master and you get the idea how it actually works:
 
@@ -96,7 +96,7 @@ Since we’ve now learned how to master Xonotic movement, it’s time to have a 
 
 ### Blaster
 
-I already explained the blaster as versatile movement tool in the Blaster Jumping Section. Apart from moving yourself around, you can also use it for juggling around *other* players, irritating annyoing campers or generally messing with other people’s movement. Pushing people around or forcing a prolonged bunny hop can be especially effective on space maps. Unless shooting at sitting ducks (such as campers), you might want to aim at your target’s feet to make use of its splash damage, as the blaster projectile needs some time to travel even though it is rather fast, thus aiming directly at moving targets can be rather tricky.
+I already explained the blaster as versatile movement tool in the Blaster Jumping Section. Apart from moving yourself around, you can also use it for juggling around *other* players, irritating annoying campers or generally messing with other people’s movement. Pushing people around or forcing a prolonged bunny hop can be especially effective on space maps. Unless shooting at sitting ducks (such as campers), you might want to aim at your target’s feet to make use of its splash damage, as the blaster projectile needs some time to travel even though it is rather fast, thus aiming directly at moving targets can be rather tricky.
 
 The blaster does not eat any ammo. Secondary fire will switch to the previously used weapon.
 
@@ -128,7 +128,7 @@ The latter can, however, be quite tricky, given the high spread crylink primary 
 
     "When you release primary fire, the spread of crylink primary will inverse"
 
-Got it? This means that if you press the primary fire button, the particles will get fired with a certain spread. As long as you keep the primary fire button pressed, the spread will stay constant. Once you release it, the spread inverses, which means **all particles traverse a single spot**. Now the trick is to time the release so that as many as possible particles hit the opponent. The more particles you manage to land on the target, the more drastical the negative push effect will obviously be.
+Got it? This means that if you press the primary fire button, the particles will get fired with a certain spread. As long as you keep the primary fire button pressed, the spread will stay constant. Once you release it, the spread inverses, which means **all particles traverse a single spot**. Now the trick is to time the release so that as many as possible particles hit the opponent. The more particles you manage to land on the target, the more drastic the negative push effect will obviously be.
 
 Crylink secondary does not have the spread inversion feature, the particles leave the gun at a very low and constant spread. The particles of secondary fire are faster than primary fire, and they don’t bounce. Their negative push force can be used on other players to break their movement (especially trick jumps) and even to pull them drastically if you manage to hit them in mid-air.
 
@@ -282,7 +282,7 @@ You will have to reconnect to the server (or, if you test it in a local game, ty
 
 ### Crosshair
 
-The next thing is to set an always visible crosshair. Though I personally like the per-weapon crosshairs, they unfortunately are not very bright. With them, I often had the problem of identifying where that crosshair actually is in the middle of a battle. Even though I probably ended up landing quite some hits this way due to my particularly fuzzy aim which seldomly places the crosshair on the target, I decided to make the crosshair really visible, now that I deliberately chose to use the darn thing. You can very comfortably configure the crosshair via the menu or just copy my settings:
+The next thing is to set an always visible crosshair. Though I personally like the per-weapon crosshairs, they unfortunately are not very bright. With them, I often had the problem of identifying where that crosshair actually is in the middle of a battle. Even though I probably ended up landing quite some hits this way due to my particularly fuzzy aim which seldom places the crosshair on the target, I decided to make the crosshair really visible, now that I deliberately chose to use the darn thing. You can very comfortably configure the crosshair via the menu or just copy my settings:
 
     crosshair 27 (this is really all about personal preference)
     crosshair_alpha 1
@@ -314,7 +314,7 @@ Also, who wants to waste time for the transition between zoom and non-zoom?
 
     cl_zoomspeed -1
 
-Ever since I configured a dedicated zoom key that I can use on all weapons (you can do so via the Menu, Settings window, Input tab), I got annoyed by the zoom getting lost upon switching the weapon, which results in loosing your aim just when it is crucial to hit. You can disable this by doing:
+Ever since I configured a dedicated zoom key that I can use on all weapons (you can do so via the Menu, Settings window, Input tab), I got annoyed by the zoom getting lost upon switching the weapon, which results in losing your aim just when it is crucial to hit. You can disable this by doing:
 
     cl_unpress_zoom_on_weapon_switch 0
 
