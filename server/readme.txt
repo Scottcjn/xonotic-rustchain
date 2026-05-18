@@ -45,5 +45,5 @@ Refer to rcon2irc.txt for usage and instructions.
 
 help.cfg is a Xonotic config file providing a simple help message
 system.  It prints all the messages from a list, one after the other
-with an configureable delay between them.  Great to provide beginners
+with a configurable delay between them.  Great to provide beginners
 with some hints.
