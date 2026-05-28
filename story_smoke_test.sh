@@ -17,11 +17,11 @@ timeout 25s ./xonotic-linux64-sophia \
   +map elyan_labs >"$LOG" 2>&1 || true
 
 echo "Spawn sequence observed:"
-rg -n "SpawnServer:" "$LOG" | sed -n '1,20p'
+grep -n "SpawnServer:" "$LOG" | sed -n '1,20p'
 
 echo
 echo "Story entity load summary:"
-rg -n "new entities parsed|target_rustchain_|campaign initialization failed|ERROR in CampaignBailout" "$LOG" | sed -n '1,40p' || true
+grep -nE "new entities parsed|target_rustchain_|campaign initialization failed|ERROR in CampaignBailout" "$LOG" | sed -n '1,40p' || true
 
 echo
 echo "Smoke log: $LOG"
