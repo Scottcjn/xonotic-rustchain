@@ -6,141 +6,165 @@ default
 	longestCurve 0.000000
 }
 
-0 // SURFACE_META V: 4 I: 6 planar
-{
-	shader textures/evil8_base/e8metal03c
-	lightmapAxis ( 0.000000 1.000000 0.000000 )
-}
-
-1 // SURFACE_META V: 4 I: 6 planar
+0 // SURFACE_FACE V: 4 I: 6 planar
 {
 	shader textures/evil8_base/e8metal03c
 	lightmapAxis ( 0.000000 -1.000000 0.000000 )
 }
 
-2 // SURFACE_META V: 4 I: 6 planar
+1 // SURFACE_FACE V: 4 I: 6 planar
 {
 	shader textures/evil8_base/e8metal03c
 	lightmapAxis ( 0.000000 1.000000 0.000000 )
 }
 
-3 // SURFACE_META V: 4 I: 6 planar
-{
-	shader textures/evil8_base/e8metal03c
-	lightmapAxis ( 0.000000 -1.000000 0.000000 )
-}
-
-4 // SURFACE_META V: 4 I: 6 planar
+2 // SURFACE_FACE V: 4 I: 6 planar
 {
 	shader textures/evil8_trim/e8mtltrim1
 	lightmapAxis ( 0.000000 0.000000 1.000000 )
 }
 
-5 // SURFACE_META V: 4 I: 6 planar
+3 // SURFACE_FACE V: 4 I: 6 planar
+{
+	shader textures/evil8_base/e8metal03c
+	lightmapAxis ( 0.000000 -1.000000 0.000000 )
+}
+
+4 // SURFACE_FACE V: 4 I: 6 planar
+{
+	shader textures/evil8_base/e8metal03c
+	lightmapAxis ( 0.000000 1.000000 0.000000 )
+}
+
+5 // SURFACE_FACE V: 4 I: 6 planar
 {
 	shader textures/evil8_trim/e8mtltrim1
 	lightmapAxis ( 0.000000 0.000000 1.000000 )
 }
 
-6 // SURFACE_META V: 4 I: 6 planar
-{
-	shader textures/evil8_trim/e8supporttrim01
-	lightmapAxis ( 0.000000 1.000000 0.000000 )
-}
-
-7 // SURFACE_META V: 4 I: 6 planar
+6 // SURFACE_FACE V: 4 I: 6 planar
 {
 	shader textures/evil8_trim/e8supporttrim01
 	lightmapAxis ( 0.000000 -1.000000 0.000000 )
 }
 
-8 // SURFACE_META V: 4 I: 6 planar
+7 // SURFACE_FACE V: 4 I: 6 planar
+{
+	shader textures/evil8_trim/e8supporttrim01
+	lightmapAxis ( 0.000000 1.000000 0.000000 )
+}
+
+8 // SURFACE_FACE V: 4 I: 6 planar
 {
 	shader textures/evil8_trim/e8beam01
 	lightmapAxis ( 0.000000 0.000000 1.000000 )
 }
 
-9 // SURFACE_META V: 4 I: 6 planar
+9 // SURFACE_FACE V: 4 I: 6 planar
+{
+	shader textures/rustchain/rustchain_wall_panel_01
+	lightmapAxis ( 0.000000 -1.000000 0.000000 )
+}
+
+10 // SURFACE_FACE V: 4 I: 6 planar
+{
+	shader textures/rustchain/rustchain_wall_panel_01
+	lightmapAxis ( 0.000000 1.000000 0.000000 )
+}
+
+11 // SURFACE_FACE V: 4 I: 6 planar
+{
+	shader textures/rustchain/rustchain_wall_panel_01
+	lightmapAxis ( 1.000000 0.000000 0.000000 )
+}
+
+12 // SURFACE_FACE V: 4 I: 6 planar
+{
+	shader textures/rustchain/rustchain_wall_panel_01
+	lightmapAxis ( 0.000000 -1.000000 0.000000 )
+}
+
+13 // SURFACE_FACE V: 4 I: 6 planar
+{
+	shader textures/rustchain/rustchain_wall_panel_01
+	lightmapAxis ( 0.000000 1.000000 0.000000 )
+}
+
+14 // SURFACE_FACE V: 4 I: 6 planar
+{
+	shader textures/rustchain/rustchain_wall_panel_01
+	lightmapAxis ( 1.000000 0.000000 0.000000 )
+}
+
+15 // SURFACE_FACE V: 4 I: 6 planar
+{
+	shader textures/rustchain/rustchain_wall_panel_01
+	lightmapAxis ( 1.000000 0.000000 0.000000 )
+}
+
+16 // SURFACE_FACE V: 4 I: 6 planar
+{
+	shader textures/rustchain/rustchain_wall_panel_01
+	lightmapAxis ( -1.000000 0.000000 0.000000 )
+}
+
+17 // SURFACE_FACE V: 4 I: 6 planar
+{
+	shader textures/rustchain/rustchain_wall_panel_01
+	lightmapAxis ( 0.000000 1.000000 0.000000 )
+}
+
+18 // SURFACE_FACE V: 4 I: 6 planar
+{
+	shader textures/rustchain/rustchain_wall_panel_01
+	lightmapAxis ( 0.000000 -1.000000 0.000000 )
+}
+
+19 // SURFACE_FACE V: 4 I: 6 planar
 {
 	shader textures/exx/light/light_panel01
 	lightmapAxis ( 0.000000 0.000000 -1.000000 )
 }
 
-10 // SURFACE_META V: 4 I: 6 planar
+20 // SURFACE_FACE V: 4 I: 6 planar
 {
 	shader textures/rustchain/rustchain_floor_plate_01
 	lightmapAxis ( 0.000000 0.000000 1.000000 )
 }
 
-11 // SURFACE_META V: 4 I: 6 planar
+21 // SURFACE_FACE V: 4 I: 6 planar
 {
 	shader textures/rustchain/rustchain_wall_panel_01
+	entity 1
+	castShadows 0
 	lightmapAxis ( -1.000000 0.000000 0.000000 )
 }
 
-12 // SURFACE_META V: 4 I: 6 planar
+22 // SURFACE_FACE V: 4 I: 6 planar
 {
 	shader textures/rustchain/rustchain_wall_panel_01
-	lightmapAxis ( 1.000000 0.000000 0.000000 )
-}
-
-13 // SURFACE_META V: 4 I: 6 planar
-{
-	shader textures/rustchain/rustchain_wall_panel_01
-	lightmapAxis ( 0.000000 -1.000000 0.000000 )
-}
-
-14 // SURFACE_META V: 4 I: 6 planar
-{
-	shader textures/rustchain/rustchain_wall_panel_01
-	lightmapAxis ( 0.000000 1.000000 0.000000 )
-}
-
-15 // SURFACE_META V: 4 I: 6 planar
-{
-	shader textures/rustchain/rustchain_wall_panel_01
-	lightmapAxis ( 1.000000 0.000000 0.000000 )
-}
-
-16 // SURFACE_META V: 4 I: 6 planar
-{
-	shader textures/rustchain/rustchain_wall_panel_01
-	lightmapAxis ( 0.000000 -1.000000 0.000000 )
-}
-
-17 // SURFACE_META V: 4 I: 6 planar
-{
-	shader textures/rustchain/rustchain_wall_panel_01
-	lightmapAxis ( 0.000000 1.000000 0.000000 )
-}
-
-18 // SURFACE_META V: 4 I: 6 planar
-{
-	shader textures/rustchain/rustchain_wall_panel_01
-	lightmapAxis ( 0.000000 -1.000000 0.000000 )
-}
-
-19 // SURFACE_META V: 4 I: 6 planar
-{
-	shader textures/rustchain/rustchain_wall_panel_01
-	lightmapAxis ( 1.000000 0.000000 0.000000 )
-}
-
-20 // SURFACE_META V: 4 I: 6 planar
-{
-	shader textures/rustchain/rustchain_wall_panel_01
-	lightmapAxis ( 0.000000 1.000000 0.000000 )
-}
-
-21 // SURFACE_META V: 4 I: 6 planar
-{
-	shader textures/common/metalclip
 	entity 1
 	castShadows 0
-	lightmapAxis ( 0.000000 0.000000 1.000000 )
+	lightmapAxis ( 1.000000 0.000000 0.000000 )
 }
 
-22 // SURFACE_META V: 4 I: 6 planar
+23 // SURFACE_FACE V: 4 I: 6 planar
+{
+	shader textures/rustchain/rustchain_wall_panel_01
+	entity 1
+	castShadows 0
+	lightmapAxis ( 0.000000 -1.000000 0.000000 )
+}
+
+24 // SURFACE_FACE V: 4 I: 6 planar
+{
+	shader textures/rustchain/rustchain_wall_panel_01
+	entity 1
+	castShadows 0
+	lightmapAxis ( 0.000000 1.000000 0.000000 )
+}
+
+25 // SURFACE_FACE V: 4 I: 6 planar
 {
 	shader textures/common/metalclip
 	entity 1
@@ -148,47 +172,47 @@ default
 	lightmapAxis ( 0.000000 0.000000 -1.000000 )
 }
 
-23 // SURFACE_META V: 4 I: 6 planar
-{
-	shader textures/rustchain/rustchain_wall_panel_01
-	entity 1
-	castShadows 0
-	lightmapAxis ( 1.000000 0.000000 0.000000 )
-}
-
-24 // SURFACE_META V: 4 I: 6 planar
-{
-	shader textures/rustchain/rustchain_wall_panel_01
-	entity 1
-	castShadows 0
-	lightmapAxis ( 0.000000 1.000000 0.000000 )
-}
-
-25 // SURFACE_META V: 4 I: 6 planar
-{
-	shader textures/rustchain/rustchain_wall_panel_01
-	entity 1
-	castShadows 0
-	lightmapAxis ( -1.000000 0.000000 0.000000 )
-}
-
-26 // SURFACE_META V: 4 I: 6 planar
-{
-	shader textures/rustchain/rustchain_wall_panel_01
-	entity 1
-	castShadows 0
-	lightmapAxis ( 0.000000 -1.000000 0.000000 )
-}
-
-27 // SURFACE_META V: 4 I: 6 planar
+26 // SURFACE_FACE V: 4 I: 6 planar
 {
 	shader textures/common/metalclip
-	entity 2
+	entity 1
 	castShadows 0
 	lightmapAxis ( 0.000000 0.000000 1.000000 )
 }
 
-28 // SURFACE_META V: 4 I: 6 planar
+27 // SURFACE_FACE V: 4 I: 6 planar
+{
+	shader textures/rustchain/rustchain_wall_panel_01
+	entity 2
+	castShadows 0
+	lightmapAxis ( -1.000000 0.000000 0.000000 )
+}
+
+28 // SURFACE_FACE V: 4 I: 6 planar
+{
+	shader textures/rustchain/rustchain_wall_panel_01
+	entity 2
+	castShadows 0
+	lightmapAxis ( 1.000000 0.000000 0.000000 )
+}
+
+29 // SURFACE_FACE V: 4 I: 6 planar
+{
+	shader textures/rustchain/rustchain_wall_panel_01
+	entity 2
+	castShadows 0
+	lightmapAxis ( 0.000000 -1.000000 0.000000 )
+}
+
+30 // SURFACE_FACE V: 4 I: 6 planar
+{
+	shader textures/rustchain/rustchain_wall_panel_01
+	entity 2
+	castShadows 0
+	lightmapAxis ( 0.000000 1.000000 0.000000 )
+}
+
+31 // SURFACE_FACE V: 4 I: 6 planar
 {
 	shader textures/common/metalclip
 	entity 2
@@ -196,35 +220,11 @@ default
 	lightmapAxis ( 0.000000 0.000000 -1.000000 )
 }
 
-29 // SURFACE_META V: 4 I: 6 planar
+32 // SURFACE_FACE V: 4 I: 6 planar
 {
-	shader textures/rustchain/rustchain_wall_panel_01
+	shader textures/common/metalclip
 	entity 2
 	castShadows 0
-	lightmapAxis ( 1.000000 0.000000 0.000000 )
-}
-
-30 // SURFACE_META V: 4 I: 6 planar
-{
-	shader textures/rustchain/rustchain_wall_panel_01
-	entity 2
-	castShadows 0
-	lightmapAxis ( 0.000000 1.000000 0.000000 )
-}
-
-31 // SURFACE_META V: 4 I: 6 planar
-{
-	shader textures/rustchain/rustchain_wall_panel_01
-	entity 2
-	castShadows 0
-	lightmapAxis ( -1.000000 0.000000 0.000000 )
-}
-
-32 // SURFACE_META V: 4 I: 6 planar
-{
-	shader textures/rustchain/rustchain_wall_panel_01
-	entity 2
-	castShadows 0
-	lightmapAxis ( 0.000000 -1.000000 0.000000 )
+	lightmapAxis ( 0.000000 0.000000 1.000000 )
 }
 
