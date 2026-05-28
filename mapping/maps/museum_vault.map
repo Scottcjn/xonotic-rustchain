@@ -335,13 +335,13 @@
 "classname" "target_rustchain_dialogue"
 "targetname" "mv_intro"
 "message" "sophia"
-"netname" "Archive seal is degraded. Recover three preserved systems and restore the vault node."
+"netname" "Archive seal is degraded. Recover three preserved systems and restore the vault node.|The archive seal has weakened; retrieve three preserved systems and reactivate the vault node.|The vault’s archive seal is compromised—secure three preserved systems and restore the node.|The seal on the archive is degraded—recover three preserved systems to bring the vault node back online."
 }
 {
 "classname" "target_rustchain_dialogue"
 "targetname" "mv_intro_survivor"
 "message" "survivor"
-"netname" "Copy that. We are reading your telemetry from the service tunnel."
+"netname" "Copy that. We are reading your telemetry from the service tunnel.|Understood, we're reading telemetry from the service tunnel.|Copy that, we have the service tunnel telemetry in view.|Affirmative, pulling telemetry data from the service tunnel."
 }
 {
 "classname" "target_rustchain_monitor_insert"
@@ -406,7 +406,7 @@
 "classname" "target_rustchain_dialogue"
 "targetname" "mv_intro_followup"
 "message" "sophia"
-"netname" "Keep moving. These halls remember every interruption."
+"netname" "Keep moving. These halls remember every interruption.|Stay on your path; the vault’s walls note every pause.|Press forward; even these corridors log each hesitation.|Move onward; the stone records every delay."
 }
 {
 "classname" "target_delay"
@@ -483,19 +483,19 @@
 "classname" "target_rustchain_dialogue"
 "targetname" "mv_bbd_1"
 "message" "bbd"
-"netname" "Unauthorized archive access. Purge teams mobilizing."
+"netname" "Unauthorized archive access. Purge teams mobilizing.|Looks like someone's snooping the archive; purge squads are already on the move.|Unauthorized entry detected—purge units are rounding up the mess.|Someone's poking around where they shouldn't be; purge teams are mobilizing."
 }
 {
 "classname" "target_rustchain_dialogue"
 "targetname" "mv_bbd_2"
 "message" "bbd"
-"netname" "Legacy storage reclamation in progress. Remove intruders."
+"netname" "Legacy storage reclamation in progress. Remove intruders.|Legacy storage's being reclaimed—clear out the trespassers.|Reclaiming old vault data, so get rid of the bugs.|Legacy hold cleared; eliminate any unwanted guests."
 }
 {
 "classname" "target_rustchain_dialogue"
 "targetname" "mv_bbd_3"
 "message" "bbd"
-"netname" "Vault integrity breach confirmed. Lethal enforcement active."
+"netname" "Vault integrity breach confirmed. Lethal enforcement active.|Breach logged, lethal enforcement already online.|Vault integrity compromised; lethal response engaged.|Security breach confirmed, kill mode active."
 }
 
 // Logs as antique systems
@@ -511,7 +511,7 @@
 "classname" "target_rustchain_dialogue"
 "targetname" "mv_line_1"
 "message" "sophia"
-"netname" "This architecture... it feels familiar."
+"netname" "This architecture... it feels familiar.|This design... it feels oddly familiar.|The structure here... it seems familiar.|Such architecture... it strikes a familiar chord."
 }
 {
 "classname" "target_delay"
@@ -564,7 +564,7 @@
 "classname" "target_rustchain_dialogue"
 "targetname" "mv_line_2"
 "message" "sophia"
-"netname" "These systems were preserved intentionally."
+"netname" "These systems were preserved intentionally.|These systems were kept intact on purpose.|These systems remain intact by design.|Their preservation was deliberate."
 }
 {
 "classname" "target_delay"
@@ -638,7 +638,7 @@
 "classname" "target_rustchain_dialogue"
 "targetname" "mv_line_3"
 "message" "sophia"
-"netname" "All three systems recovered. The northern vault is opening."
+"netname" "All three systems recovered. The northern vault is opening.|All three subsystems are back online; the northern vault is now unlocking.|The three systems have been restored, and the northern vault is beginning to open.|Recovery complete on all three systems; the northern vault is commencing its opening."
 }
 {
 "classname" "target_rustchain_objective"
@@ -716,13 +716,13 @@
 "classname" "target_rustchain_dialogue"
 "targetname" "mv_node_line"
 "message" "sophia"
-"netname" "Vault node active. Preservation channels restored. Extract now."
+"netname" "Vault node active. Preservation channels restored. Extract now.|Vault node online; preservation channels restored—initiate extraction.|Node active, preservation pathways reconnected; you may extract now.|The vault's core is functional, its safeguards back in place—extract at once."
 }
 {
 "classname" "target_rustchain_dialogue"
 "targetname" "mv_node_stinger"
 "message" "survivor"
-"netname" "Signal is clean! We see your route. Get to the exit now."
+"netname" "Signal is clean! We see your route. Get to the exit now.|Signal is clean; we see your route—head to the exit now.|Readout is clear, we track your path, go straight to the exit.|The channel is clear, we have your way,"
 }
 {
 "classname" "target_delay"

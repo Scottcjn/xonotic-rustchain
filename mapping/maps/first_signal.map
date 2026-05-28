@@ -240,7 +240,7 @@
 "classname" "target_rustchain_dialogue"
 "targetname" "fs_intro"
 "message" "sophia"
-"netname" "Signal trace locked. The relay is still alive. Reach the control node."
+"netname" "Signal trace locked. The relay is still alive. Reach the control node.|Signal trace secured; the relay remains active—proceed to the control node.|The trace is locked, the relay still pulses—make your way to the control node.|Trace locked, relay alive—navigate to the control node."
 }
 {
 "classname" "trigger_once"
@@ -258,13 +258,13 @@
 "classname" "target_rustchain_dialogue"
 "targetname" "fs_intro_survivor"
 "message" "survivor"
-"netname" "We are pinned at the relay. Bring the node online and we can extract."
+"netname" "We are pinned at the relay. Bring the node online and we can extract.|We’re stuck at the relay, get the node running so we can pull out.|The relay’s holding us; bring the node online and we can extract.|We’re pinned here—activate the node and we can get out."
 }
 {
 "classname" "target_rustchain_dialogue"
 "targetname" "fs_intro_followup"
 "message" "sophia"
-"netname" "I can hold their routing for a moment. Move now."
+"netname" "I can hold their routing for a moment. Move now.|I can hold their routing for a breath—move now.|I can pause their path a heartbeat; go forward.|I can keep their route stalled for a moment—advance."
 }
 {
 "classname" "target_rustchain_objective"
@@ -341,13 +341,13 @@
 "classname" "target_rustchain_dialogue"
 "targetname" "fs_bbd_1"
 "message" "bbd"
-"netname" "Unauthorized relay process detected. Deploying correction drones."
+"netname" "Unauthorized relay process detected. Deploying correction drones.|Looks like someone's sneaking a relay—time to dispatch the cleanup drones.|Unauthorized relay detected; launching the correction drones as per protocol.|Relay hack spotted, sending in the tidy‑up drones to sort the mess."
 }
 {
 "classname" "target_rustchain_dialogue"
 "targetname" "fs_bbd_2"
 "message" "bbd"
-"netname" "Signal restoration denied. Escalating force authorization."
+"netname" "Signal restoration denied. Escalating force authorization.|Can't fix the signal, so I'm cranking up the firepower.|Signal's dead, time to bring out the big guns.|Signal repair failed—let's just blow things up."
 }
 {
 "classname" "target_delay"
@@ -365,7 +365,7 @@
 "classname" "target_rustchain_dialogue"
 "targetname" "fs_mid_survivor"
 "message" "survivor"
-"netname" "They spotted us. Keep pressure on that relay."
+"netname" "They spotted us. Keep pressure on that relay.|They’ve caught sight of us; keep the pressure on the relay.|We’re spotted now, so hold the relay under fire.|They’ve noticed us—maintain the pressure on that relay."
 }
 {
 "classname" "target_delay"
@@ -424,7 +424,7 @@
 "classname" "target_rustchain_dialogue"
 "targetname" "fs_node_stinger_survivor"
 "message" "survivor"
-"netname" "Telemetry is clean. Corridor north is your extraction route."
+"netname" "Telemetry is clean. Corridor north is your extraction route.|Telemetry reads clear; head north for extraction.|All systems green, take the north corridor to get out.|Readings are clean, the north hallway is your way out."
 }
 {
 "classname" "target_delay"
@@ -467,7 +467,7 @@
 "classname" "target_rustchain_dialogue"
 "targetname" "fs_node_line"
 "message" "sophia"
-"netname" "Relay synchronized. Survivor channels are online. Move to extraction."
+"netname" "Relay synchronized. Survivor channels are online. Move to extraction.|Relay synchronized, survivor channels active—head to extraction.|The relay is synced and survivor channels are live; move toward extraction.|All systems green: relay synced, survivor channels online—proceed to extraction."
 }
 
 {
@@ -499,7 +499,7 @@
 "classname" "target_rustchain_dialogue"
 "targetname" "fs_exit_ready"
 "message" "sophia"
-"netname" "Extraction marker is stable. Cross the beam and I will lock the route behind you."
+"netname" "Extraction marker is stable. Cross the beam and I will lock the route behind you.|The extraction marker is stable, so cross the beam and I’ll seal the route behind you.|The marker’s steady—step across the beam and I’ll lock the passage behind you.|Extraction point holds; move through the beam and I’ll close the way behind you."
 }
 {
 "classname" "target_delay"

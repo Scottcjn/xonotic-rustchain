@@ -27,3 +27,6 @@ Thumbs.db
 
 # Xonotic user data
 .xonotic/
+
+# Backup files created by rustchain_map_injector.py
+mapping/maps/*.bak.*

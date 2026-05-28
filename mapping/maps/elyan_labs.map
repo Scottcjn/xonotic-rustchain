@@ -339,19 +339,19 @@
 "classname" "target_rustchain_dialogue"
 "targetname" "elyan_intro"
 "message" "sophia"
-"netname" "Power readings are unstable. Find the RustChain node and bring this lab online."
+"netname" "Power readings are unstable. Find the RustChain node and bring this lab online.|Fluctuating power readings demand you locate the RustChain node and reactivate this lab.|The power feed is erratic—track down the RustChain node and bring the lab back online.|Unstable readings signal a missing node; find the RustChain hub and restore lab operations."
 }
 {
 "classname" "target_rustchain_dialogue"
 "targetname" "elyan_survivor_ping"
 "message" "survivor"
-"netname" "We hear your signal in the static... please restore the lab uplink."
+"netname" "We hear your signal in the static... please restore the lab uplink.|Your signal pierces the static; we need the lab uplink restored.|We hear your transmission through the noise—please bring the lab uplink back online.|Your voice cuts through the static, restore the lab uplink."
 }
 {
 "classname" "target_rustchain_dialogue"
 "targetname" "elyan_intro_followup"
 "message" "sophia"
-"netname" "I am opening what paths I can. Stay with me."
+"netname" "I am opening what paths I can. Stay with me.|I’m revealing every route I can, stay by my side.|I’ll unlock all the avenues I can—remain with me.|I’m opening each path within reach; stay with me."
 }
 {
 "classname" "target_rustchain_objective"
@@ -422,13 +422,13 @@
 "classname" "target_rustchain_dialogue"
 "targetname" "elyan_actor_line_sophia"
 "message" "sophia"
-"netname" "I anchored this chamber long ago. The RustChain node is still breathing."
+"netname" "I anchored this chamber long ago. The RustChain node is still breathing.|I set this chamber’s foundation long ago, and the RustChain node still hums.|I fixed this space ages past, and the RustChain node continues to breathe.|I anchored this room eons ago, and the RustChain node remains alive."
 }
 {
 "classname" "target_rustchain_dialogue"
 "targetname" "elyan_actor_line_survivor"
 "message" "survivor"
-"netname" "You made it this far. Push the node and we'll have a path out."
+"netname" "You made it this far. Push the node and we'll have a path out.|You've come this far"
 }
 {
 "classname" "trigger_once"
@@ -510,7 +510,7 @@
 "classname" "target_rustchain_dialogue"
 "targetname" "elyan_bbd_01"
 "message" "bbd"
-"netname" "Dormant enclave reactivated. Dispatching correction scouts."
+"netname" "Dormant enclave reactivated. Dispatching correction scouts.|Enclave finally woke up, so I'm dispatching the correction scouts.|Dormant sector flickered back online, sending out the correction scouts.|Great, the silent enclave reactivated—launching the correction scouts."
 }
 
 {

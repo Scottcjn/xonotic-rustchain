@@ -1,0 +1,481 @@
+{
+  "version": 1,
+  "generated_at": "2026-05-28T12:44:36.591696+00:00",
+  "llm_backend": "openai",
+  "entries": [
+    {
+      "map": "chambers_ruins",
+      "speaker": "archivist",
+      "scenario": "encounter",
+      "original": "Archive register recognizes your bloodline. Keep moving, descendant.",
+      "variants": [
+        "Archive register recognizes your bloodline. Keep moving, descendant.",
+        "Your lineage is recorded in the archive; proceed onward, heir.",
+        "The archive acknowledges your ancestry; advance, descendant.",
+        "The register confirms your bloodline; continue forward, heir."
+      ],
+      "netname": "Archive register recognizes your bloodline. Keep moving, descendant.|Your lineage is recorded in the archive; proceed onward, heir.|The archive acknowledges your ancestry; advance, descendant.|The register confirms your bloodline; continue forward, heir.",
+      "targetname": "ch_actor_line_archivist"
+    },
+    {
+      "map": "chambers_ruins",
+      "speaker": "bbd",
+      "scenario": "encounter",
+      "original": "Unauthorized witness pattern detected. Memory correction authorized.",
+      "variants": [
+        "Unauthorized witness pattern detected. Memory correction authorized.",
+        "Unapproved observer pattern detected; initiating memory correction.",
+        "Unauthorized witness signature logged, proceeding with data wipe.",
+        "Rogue witness data identified, authorizing memory reset."
+      ],
+      "netname": "Unauthorized witness pattern detected. Memory correction authorized.|Unapproved observer pattern detected; initiating memory correction.|Unauthorized witness signature logged, proceeding with data wipe.|Rogue witness data identified, authorizing memory reset.",
+      "targetname": "ch_actor_line_bbd"
+    },
+    {
+      "map": "chambers_ruins",
+      "speaker": "sophia",
+      "scenario": "encounter",
+      "original": "These ruins remember you. Gather all three fragments.",
+      "variants": [
+        "These ruins remember you. Gather all three fragments.",
+        "These ruins recall your passage; gather the three fragments.",
+        "The stones here still remember you, so retrieve all three fragments.",
+        "Even the crumbling walls remember you—collect each of the three fragments."
+      ],
+      "netname": "These ruins remember you. Gather all three fragments.|These ruins recall your passage; gather the three fragments.|The stones here still remember you, so retrieve all three fragments.|Even the crumbling walls remember you—collect each of the three fragments.",
+      "targetname": "ch_actor_line_sophia"
+    },
+    {
+      "map": "chambers_ruins",
+      "speaker": "archivist",
+      "scenario": "general",
+      "original": "Archive checksum mismatch. Chambers records were tampered before collapse.",
+      "variants": [
+        "Archive checksum mismatch. Chambers records were tampered before collapse.",
+        "A checksum discrepancy reveals that the chambers' records were compromised before the collapse.",
+        "The archive's checksum does not align, confirming tampering of the chambers data pre‑collapse.",
+        "Checksum failure indicates the chambers archives were falsified prior to the collapse."
+      ],
+      "netname": "Archive checksum mismatch. Chambers records were tampered before collapse.|A checksum discrepancy reveals that the chambers' records were compromised before the collapse.|The archive's checksum does not align, confirming tampering of the chambers data pre‑collapse.|Checksum failure indicates the chambers archives were falsified prior to the collapse.",
+      "targetname": "ch_line_archivist"
+    },
+    {
+      "map": "chambers_ruins",
+      "speaker": "bbd",
+      "scenario": "bbd",
+      "original": "Historical process deemed unstable. Purge in progress.",
+      "variants": [
+        "Historical process deemed unstable. Purge in progress.",
+        "The legacy routine's unstable, purge underway.",
+        "Historical protocol flagged as volatile; purge in motion.",
+        "Old process deemed shaky, initiating purge now."
+      ],
+      "netname": "Historical process deemed unstable. Purge in progress.|The legacy routine's unstable, purge underway.|Historical protocol flagged as volatile; purge in motion.|Old process deemed shaky, initiating purge now.",
+      "targetname": "ch_line_bbd_1"
+    },
+    {
+      "map": "chambers_ruins",
+      "speaker": "bbd",
+      "scenario": "bbd",
+      "original": "Unauthorized retrieval persists. Escalating correction force.",
+      "variants": [
+        "Unauthorized retrieval persists. Escalating correction force.",
+        "Unauthorized looting continues, so I'm dialing up the correction force.",
+        "You keep taking what isn't yours; I'm about to raise the correction level.",
+        "The illegal grab persists—prepare for an amplified correction response."
+      ],
+      "netname": "Unauthorized retrieval persists. Escalating correction force.|Unauthorized looting continues, so I'm dialing up the correction force.|You keep taking what isn't yours; I'm about to raise the correction level.|The illegal grab persists—prepare for an amplified correction response.",
+      "targetname": "ch_line_bbd_2"
+    },
+    {
+      "map": "chambers_ruins",
+      "speaker": "sophia",
+      "scenario": "general",
+      "original": "All fragments recovered. Opening the server chamber now.",
+      "variants": [
+        "All fragments recovered. Opening the server chamber now.",
+        "All fragments secured; the server chamber is now being opened.",
+        "Fragments recovered; initiating the server chamber access.",
+        "All data pieces gathered; proceeding to open the server chamber."
+      ],
+      "netname": "All fragments recovered. Opening the server chamber now.|All fragments secured; the server chamber is now being opened.|Fragments recovered; initiating the server chamber access.|All data pieces gathered; proceeding to open the server chamber.",
+      "targetname": "ch_line_sophia_3"
+    },
+    {
+      "map": "chambers_ruins",
+      "speaker": "archivist",
+      "scenario": "general",
+      "original": "Final fragment verified. The old chamber doors are yours.",
+      "variants": [
+        "Final fragment verified. The old chamber doors are yours.",
+        "The final fragment is confirmed; the ancient chamber doors are now yours.",
+        "Verification of the last fragment is complete, and the old chamber doors belong to you.",
+        "The concluding fragment has been authenticated, granting you access to the venerable chamber doors."
+      ],
+      "netname": "Final fragment verified. The old chamber doors are yours.|The final fragment is confirmed; the ancient chamber doors are now yours.|Verification of the last fragment is complete, and the old chamber doors belong to you.|The concluding fragment has been authenticated, granting you access to the venerable chamber doors.",
+      "targetname": "ch_line_archivist_3"
+    },
+    {
+      "map": "elyan_labs",
+      "speaker": "sophia",
+      "scenario": "intro",
+      "original": "Power readings are unstable. Find the RustChain node and bring this lab online.",
+      "variants": [
+        "Power readings are unstable. Find the RustChain node and bring this lab online.",
+        "Fluctuating power readings demand you locate the RustChain node and reactivate this lab.",
+        "The power feed is erratic—track down the RustChain node and bring the lab back online.",
+        "Unstable readings signal a missing node; find the RustChain hub and restore lab operations."
+      ],
+      "netname": "Power readings are unstable. Find the RustChain node and bring this lab online.|Fluctuating power readings demand you locate the RustChain node and reactivate this lab.|The power feed is erratic—track down the RustChain node and bring the lab back online.|Unstable readings signal a missing node; find the RustChain hub and restore lab operations.",
+      "targetname": "elyan_intro"
+    },
+    {
+      "map": "elyan_labs",
+      "speaker": "survivor",
+      "scenario": "survivor",
+      "original": "We hear your signal in the static... please restore the lab uplink.",
+      "variants": [
+        "We hear your signal in the static... please restore the lab uplink.",
+        "Your signal pierces the static; we need the lab uplink restored.",
+        "We hear your transmission through the noise—please bring the lab uplink back online.",
+        "Your voice cuts through the static, restore the lab uplink."
+      ],
+      "netname": "We hear your signal in the static... please restore the lab uplink.|Your signal pierces the static; we need the lab uplink restored.|We hear your transmission through the noise—please bring the lab uplink back online.|Your voice cuts through the static, restore the lab uplink.",
+      "targetname": "elyan_survivor_ping"
+    },
+    {
+      "map": "elyan_labs",
+      "speaker": "sophia",
+      "scenario": "intro",
+      "original": "I am opening what paths I can. Stay with me.",
+      "variants": [
+        "I am opening what paths I can. Stay with me.",
+        "I’m revealing every route I can, stay by my side.",
+        "I’ll unlock all the avenues I can—remain with me.",
+        "I’m opening each path within reach; stay with me."
+      ],
+      "netname": "I am opening what paths I can. Stay with me.|I’m revealing every route I can, stay by my side.|I’ll unlock all the avenues I can—remain with me.|I’m opening each path within reach; stay with me.",
+      "targetname": "elyan_intro_followup"
+    },
+    {
+      "map": "elyan_labs",
+      "speaker": "sophia",
+      "scenario": "encounter",
+      "original": "I anchored this chamber long ago. The RustChain node is still breathing.",
+      "variants": [
+        "I anchored this chamber long ago. The RustChain node is still breathing.",
+        "I set this chamber’s foundation long ago, and the RustChain node still hums.",
+        "I fixed this space ages past, and the RustChain node continues to breathe.",
+        "I anchored this room eons ago, and the RustChain node remains alive."
+      ],
+      "netname": "I anchored this chamber long ago. The RustChain node is still breathing.|I set this chamber’s foundation long ago, and the RustChain node still hums.|I fixed this space ages past, and the RustChain node continues to breathe.|I anchored this room eons ago, and the RustChain node remains alive.",
+      "targetname": "elyan_actor_line_sophia"
+    },
+    {
+      "map": "elyan_labs",
+      "speaker": "survivor",
+      "scenario": "encounter",
+      "original": "You made it this far. Push the node and we'll have a path out.",
+      "variants": [
+        "You made it this far. Push the node and we'll have a path out.",
+        "You've come this far"
+      ],
+      "netname": "You made it this far. Push the node and we'll have a path out.|You've come this far",
+      "targetname": "elyan_actor_line_survivor"
+    },
+    {
+      "map": "elyan_labs",
+      "speaker": "bbd",
+      "scenario": "bbd",
+      "original": "Dormant enclave reactivated. Dispatching correction scouts.",
+      "variants": [
+        "Dormant enclave reactivated. Dispatching correction scouts.",
+        "Enclave finally woke up, so I'm dispatching the correction scouts.",
+        "Dormant sector flickered back online, sending out the correction scouts.",
+        "Great, the silent enclave reactivated—launching the correction scouts."
+      ],
+      "netname": "Dormant enclave reactivated. Dispatching correction scouts.|Enclave finally woke up, so I'm dispatching the correction scouts.|Dormant sector flickered back online, sending out the correction scouts.|Great, the silent enclave reactivated—launching the correction scouts.",
+      "targetname": "elyan_bbd_01"
+    },
+    {
+      "map": "first_signal",
+      "speaker": "sophia",
+      "scenario": "intro",
+      "original": "Signal trace locked. The relay is still alive. Reach the control node.",
+      "variants": [
+        "Signal trace locked. The relay is still alive. Reach the control node.",
+        "Signal trace secured; the relay remains active—proceed to the control node.",
+        "The trace is locked, the relay still pulses—make your way to the control node.",
+        "Trace locked, relay alive—navigate to the control node."
+      ],
+      "netname": "Signal trace locked. The relay is still alive. Reach the control node.|Signal trace secured; the relay remains active—proceed to the control node.|The trace is locked, the relay still pulses—make your way to the control node.|Trace locked, relay alive—navigate to the control node.",
+      "targetname": "fs_intro"
+    },
+    {
+      "map": "first_signal",
+      "speaker": "survivor",
+      "scenario": "intro",
+      "original": "We are pinned at the relay. Bring the node online and we can extract.",
+      "variants": [
+        "We are pinned at the relay. Bring the node online and we can extract.",
+        "We’re stuck at the relay, get the node running so we can pull out.",
+        "The relay’s holding us; bring the node online and we can extract.",
+        "We’re pinned here—activate the node and we can get out."
+      ],
+      "netname": "We are pinned at the relay. Bring the node online and we can extract.|We’re stuck at the relay, get the node running so we can pull out.|The relay’s holding us; bring the node online and we can extract.|We’re pinned here—activate the node and we can get out.",
+      "targetname": "fs_intro_survivor"
+    },
+    {
+      "map": "first_signal",
+      "speaker": "sophia",
+      "scenario": "intro",
+      "original": "I can hold their routing for a moment. Move now.",
+      "variants": [
+        "I can hold their routing for a moment. Move now.",
+        "I can hold their routing for a breath—move now.",
+        "I can pause their path a heartbeat; go forward.",
+        "I can keep their route stalled for a moment—advance."
+      ],
+      "netname": "I can hold their routing for a moment. Move now.|I can hold their routing for a breath—move now.|I can pause their path a heartbeat; go forward.|I can keep their route stalled for a moment—advance.",
+      "targetname": "fs_intro_followup"
+    },
+    {
+      "map": "first_signal",
+      "speaker": "bbd",
+      "scenario": "bbd",
+      "original": "Unauthorized relay process detected. Deploying correction drones.",
+      "variants": [
+        "Unauthorized relay process detected. Deploying correction drones.",
+        "Looks like someone's sneaking a relay—time to dispatch the cleanup drones.",
+        "Unauthorized relay detected; launching the correction drones as per protocol.",
+        "Relay hack spotted, sending in the tidy‑up drones to sort the mess."
+      ],
+      "netname": "Unauthorized relay process detected. Deploying correction drones.|Looks like someone's sneaking a relay—time to dispatch the cleanup drones.|Unauthorized relay detected; launching the correction drones as per protocol.|Relay hack spotted, sending in the tidy‑up drones to sort the mess.",
+      "targetname": "fs_bbd_1"
+    },
+    {
+      "map": "first_signal",
+      "speaker": "bbd",
+      "scenario": "bbd",
+      "original": "Signal restoration denied. Escalating force authorization.",
+      "variants": [
+        "Signal restoration denied. Escalating force authorization.",
+        "Can't fix the signal, so I'm cranking up the firepower.",
+        "Signal's dead, time to bring out the big guns.",
+        "Signal repair failed—let's just blow things up."
+      ],
+      "netname": "Signal restoration denied. Escalating force authorization.|Can't fix the signal, so I'm cranking up the firepower.|Signal's dead, time to bring out the big guns.|Signal repair failed—let's just blow things up.",
+      "targetname": "fs_bbd_2"
+    },
+    {
+      "map": "first_signal",
+      "speaker": "survivor",
+      "scenario": "survivor",
+      "original": "They spotted us. Keep pressure on that relay.",
+      "variants": [
+        "They spotted us. Keep pressure on that relay.",
+        "They’ve caught sight of us; keep the pressure on the relay.",
+        "We’re spotted now, so hold the relay under fire.",
+        "They’ve noticed us—maintain the pressure on that relay."
+      ],
+      "netname": "They spotted us. Keep pressure on that relay.|They’ve caught sight of us; keep the pressure on the relay.|We’re spotted now, so hold the relay under fire.|They’ve noticed us—maintain the pressure on that relay.",
+      "targetname": "fs_mid_survivor"
+    },
+    {
+      "map": "first_signal",
+      "speaker": "survivor",
+      "scenario": "survivor",
+      "original": "Telemetry is clean. Corridor north is your extraction route.",
+      "variants": [
+        "Telemetry is clean. Corridor north is your extraction route.",
+        "Telemetry reads clear; head north for extraction.",
+        "All systems green, take the north corridor to get out.",
+        "Readings are clean, the north hallway is your way out."
+      ],
+      "netname": "Telemetry is clean. Corridor north is your extraction route.|Telemetry reads clear; head north for extraction.|All systems green, take the north corridor to get out.|Readings are clean, the north hallway is your way out.",
+      "targetname": "fs_node_stinger_survivor"
+    },
+    {
+      "map": "first_signal",
+      "speaker": "sophia",
+      "scenario": "node",
+      "original": "Relay synchronized. Survivor channels are online. Move to extraction.",
+      "variants": [
+        "Relay synchronized. Survivor channels are online. Move to extraction.",
+        "Relay synchronized, survivor channels active—head to extraction.",
+        "The relay is synced and survivor channels are live; move toward extraction.",
+        "All systems green: relay synced, survivor channels online—proceed to extraction."
+      ],
+      "netname": "Relay synchronized. Survivor channels are online. Move to extraction.|Relay synchronized, survivor channels active—head to extraction.|The relay is synced and survivor channels are live; move toward extraction.|All systems green: relay synced, survivor channels online—proceed to extraction.",
+      "targetname": "fs_node_line"
+    },
+    {
+      "map": "first_signal",
+      "speaker": "sophia",
+      "scenario": "exit",
+      "original": "Extraction marker is stable. Cross the beam and I will lock the route behind you.",
+      "variants": [
+        "Extraction marker is stable. Cross the beam and I will lock the route behind you.",
+        "The extraction marker is stable, so cross the beam and I’ll seal the route behind you.",
+        "The marker’s steady—step across the beam and I’ll lock the passage behind you.",
+        "Extraction point holds; move through the beam and I’ll close the way behind you."
+      ],
+      "netname": "Extraction marker is stable. Cross the beam and I will lock the route behind you.|The extraction marker is stable, so cross the beam and I’ll seal the route behind you.|The marker’s steady—step across the beam and I’ll lock the passage behind you.|Extraction point holds; move through the beam and I’ll close the way behind you.",
+      "targetname": "fs_exit_ready"
+    },
+    {
+      "map": "museum_vault",
+      "speaker": "sophia",
+      "scenario": "intro",
+      "original": "Archive seal is degraded. Recover three preserved systems and restore the vault node.",
+      "variants": [
+        "Archive seal is degraded. Recover three preserved systems and restore the vault node.",
+        "The archive seal has weakened; retrieve three preserved systems and reactivate the vault node.",
+        "The vault’s archive seal is compromised—secure three preserved systems and restore the node.",
+        "The seal on the archive is degraded—recover three preserved systems to bring the vault node back online."
+      ],
+      "netname": "Archive seal is degraded. Recover three preserved systems and restore the vault node.|The archive seal has weakened; retrieve three preserved systems and reactivate the vault node.|The vault’s archive seal is compromised—secure three preserved systems and restore the node.|The seal on the archive is degraded—recover three preserved systems to bring the vault node back online.",
+      "targetname": "mv_intro"
+    },
+    {
+      "map": "museum_vault",
+      "speaker": "survivor",
+      "scenario": "intro",
+      "original": "Copy that. We are reading your telemetry from the service tunnel.",
+      "variants": [
+        "Copy that. We are reading your telemetry from the service tunnel.",
+        "Understood, we're reading telemetry from the service tunnel.",
+        "Copy that, we have the service tunnel telemetry in view.",
+        "Affirmative, pulling telemetry data from the service tunnel."
+      ],
+      "netname": "Copy that. We are reading your telemetry from the service tunnel.|Understood, we're reading telemetry from the service tunnel.|Copy that, we have the service tunnel telemetry in view.|Affirmative, pulling telemetry data from the service tunnel.",
+      "targetname": "mv_intro_survivor"
+    },
+    {
+      "map": "museum_vault",
+      "speaker": "sophia",
+      "scenario": "intro",
+      "original": "Keep moving. These halls remember every interruption.",
+      "variants": [
+        "Keep moving. These halls remember every interruption.",
+        "Stay on your path; the vault’s walls note every pause.",
+        "Press forward; even these corridors log each hesitation.",
+        "Move onward; the stone records every delay."
+      ],
+      "netname": "Keep moving. These halls remember every interruption.|Stay on your path; the vault’s walls note every pause.|Press forward; even these corridors log each hesitation.|Move onward; the stone records every delay.",
+      "targetname": "mv_intro_followup"
+    },
+    {
+      "map": "museum_vault",
+      "speaker": "bbd",
+      "scenario": "bbd",
+      "original": "Unauthorized archive access. Purge teams mobilizing.",
+      "variants": [
+        "Unauthorized archive access. Purge teams mobilizing.",
+        "Looks like someone's snooping the archive; purge squads are already on the move.",
+        "Unauthorized entry detected—purge units are rounding up the mess.",
+        "Someone's poking around where they shouldn't be; purge teams are mobilizing."
+      ],
+      "netname": "Unauthorized archive access. Purge teams mobilizing.|Looks like someone's snooping the archive; purge squads are already on the move.|Unauthorized entry detected—purge units are rounding up the mess.|Someone's poking around where they shouldn't be; purge teams are mobilizing.",
+      "targetname": "mv_bbd_1"
+    },
+    {
+      "map": "museum_vault",
+      "speaker": "bbd",
+      "scenario": "bbd",
+      "original": "Legacy storage reclamation in progress. Remove intruders.",
+      "variants": [
+        "Legacy storage reclamation in progress. Remove intruders.",
+        "Legacy storage's being reclaimed—clear out the trespassers.",
+        "Reclaiming old vault data, so get rid of the bugs.",
+        "Legacy hold cleared; eliminate any unwanted guests."
+      ],
+      "netname": "Legacy storage reclamation in progress. Remove intruders.|Legacy storage's being reclaimed—clear out the trespassers.|Reclaiming old vault data, so get rid of the bugs.|Legacy hold cleared; eliminate any unwanted guests.",
+      "targetname": "mv_bbd_2"
+    },
+    {
+      "map": "museum_vault",
+      "speaker": "bbd",
+      "scenario": "bbd",
+      "original": "Vault integrity breach confirmed. Lethal enforcement active.",
+      "variants": [
+        "Vault integrity breach confirmed. Lethal enforcement active.",
+        "Breach logged, lethal enforcement already online.",
+        "Vault integrity compromised; lethal response engaged.",
+        "Security breach confirmed, kill mode active."
+      ],
+      "netname": "Vault integrity breach confirmed. Lethal enforcement active.|Breach logged, lethal enforcement already online.|Vault integrity compromised; lethal response engaged.|Security breach confirmed, kill mode active.",
+      "targetname": "mv_bbd_3"
+    },
+    {
+      "map": "museum_vault",
+      "speaker": "sophia",
+      "scenario": "general",
+      "original": "This architecture... it feels familiar.",
+      "variants": [
+        "This architecture... it feels familiar.",
+        "This design... it feels oddly familiar.",
+        "The structure here... it seems familiar.",
+        "Such architecture... it strikes a familiar chord."
+      ],
+      "netname": "This architecture... it feels familiar.|This design... it feels oddly familiar.|The structure here... it seems familiar.|Such architecture... it strikes a familiar chord.",
+      "targetname": "mv_line_1"
+    },
+    {
+      "map": "museum_vault",
+      "speaker": "sophia",
+      "scenario": "general",
+      "original": "These systems were preserved intentionally.",
+      "variants": [
+        "These systems were preserved intentionally.",
+        "These systems were kept intact on purpose.",
+        "These systems remain intact by design.",
+        "Their preservation was deliberate."
+      ],
+      "netname": "These systems were preserved intentionally.|These systems were kept intact on purpose.|These systems remain intact by design.|Their preservation was deliberate.",
+      "targetname": "mv_line_2"
+    },
+    {
+      "map": "museum_vault",
+      "speaker": "sophia",
+      "scenario": "general",
+      "original": "All three systems recovered. The northern vault is opening.",
+      "variants": [
+        "All three systems recovered. The northern vault is opening.",
+        "All three subsystems are back online; the northern vault is now unlocking.",
+        "The three systems have been restored, and the northern vault is beginning to open.",
+        "Recovery complete on all three systems; the northern vault is commencing its opening."
+      ],
+      "netname": "All three systems recovered. The northern vault is opening.|All three subsystems are back online; the northern vault is now unlocking.|The three systems have been restored, and the northern vault is beginning to open.|Recovery complete on all three systems; the northern vault is commencing its opening.",
+      "targetname": "mv_line_3"
+    },
+    {
+      "map": "museum_vault",
+      "speaker": "sophia",
+      "scenario": "node",
+      "original": "Vault node active. Preservation channels restored. Extract now.",
+      "variants": [
+        "Vault node active. Preservation channels restored. Extract now.",
+        "Vault node online; preservation channels restored—initiate extraction.",
+        "Node active, preservation pathways reconnected; you may extract now.",
+        "The vault's core is functional, its safeguards back in place—extract at once."
+      ],
+      "netname": "Vault node active. Preservation channels restored. Extract now.|Vault node online; preservation channels restored—initiate extraction.|Node active, preservation pathways reconnected; you may extract now.|The vault's core is functional, its safeguards back in place—extract at once.",
+      "targetname": "mv_node_line"
+    },
+    {
+      "map": "museum_vault",
+      "speaker": "survivor",
+      "scenario": "node",
+      "original": "Signal is clean! We see your route. Get to the exit now.",
+      "variants": [
+        "Signal is clean! We see your route. Get to the exit now.",
+        "Signal is clean; we see your route—head to the exit now.",
+        "Readout is clear, we track your path, go straight to the exit.",
+        "The channel is clear, we have your way,"
+      ],
+      "netname": "Signal is clean! We see your route. Get to the exit now.|Signal is clean; we see your route—head to the exit now.|Readout is clear, we track your path, go straight to the exit.|The channel is clear, we have your way,",
+      "targetname": "mv_node_stinger"
+    }
+  ]
+}

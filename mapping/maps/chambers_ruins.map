@@ -234,19 +234,19 @@
 "classname" "target_rustchain_dialogue"
 "targetname" "ch_actor_line_archivist"
 "message" "archivist"
-"netname" "Archive register recognizes your bloodline. Keep moving, descendant."
+"netname" "Archive register recognizes your bloodline. Keep moving, descendant.|Your lineage is recorded in the archive; proceed onward, heir.|The archive acknowledges your ancestry; advance, descendant.|The register confirms your bloodline; continue forward, heir."
 }
 {
 "classname" "target_rustchain_dialogue"
 "targetname" "ch_actor_line_bbd"
 "message" "bbd"
-"netname" "Unauthorized witness pattern detected. Memory correction authorized."
+"netname" "Unauthorized witness pattern detected. Memory correction authorized.|Unapproved observer pattern detected; initiating memory correction.|Unauthorized witness signature logged, proceeding with data wipe.|Rogue witness data identified, authorizing memory reset."
 }
 {
 "classname" "target_rustchain_dialogue"
 "targetname" "ch_actor_line_sophia"
 "message" "sophia"
-"netname" "These ruins remember you. Gather all three fragments."
+"netname" "These ruins remember you. Gather all three fragments.|These ruins recall your passage; gather the three fragments.|The stones here still remember you, so retrieve all three fragments.|Even the crumbling walls remember you—collect each of the three fragments."
 }
 {
 "classname" "trigger_once"
@@ -332,31 +332,31 @@
 "classname" "target_rustchain_dialogue"
 "targetname" "ch_line_archivist"
 "message" "archivist"
-"netname" "Archive checksum mismatch. Chambers records were tampered before collapse."
+"netname" "Archive checksum mismatch. Chambers records were tampered before collapse.|A checksum discrepancy reveals that the chambers' records were compromised before the collapse.|The archive's checksum does not align, confirming tampering of the chambers data pre‑collapse.|Checksum failure indicates the chambers archives were falsified prior to the collapse."
 }
 {
 "classname" "target_rustchain_dialogue"
 "targetname" "ch_line_bbd_1"
 "message" "bbd"
-"netname" "Historical process deemed unstable. Purge in progress."
+"netname" "Historical process deemed unstable. Purge in progress.|The legacy routine's unstable, purge underway.|Historical protocol flagged as volatile; purge in motion.|Old process deemed shaky, initiating purge now."
 }
 {
 "classname" "target_rustchain_dialogue"
 "targetname" "ch_line_bbd_2"
 "message" "bbd"
-"netname" "Unauthorized retrieval persists. Escalating correction force."
+"netname" "Unauthorized retrieval persists. Escalating correction force.|Unauthorized looting continues, so I'm dialing up the correction force.|You keep taking what isn't yours; I'm about to raise the correction level.|The illegal grab persists—prepare for an amplified correction response."
 }
 {
 "classname" "target_rustchain_dialogue"
 "targetname" "ch_line_sophia_3"
 "message" "sophia"
-"netname" "All fragments recovered. Opening the server chamber now."
+"netname" "All fragments recovered. Opening the server chamber now.|All fragments secured; the server chamber is now being opened.|Fragments recovered; initiating the server chamber access.|All data pieces gathered; proceeding to open the server chamber."
 }
 {
 "classname" "target_rustchain_dialogue"
 "targetname" "ch_line_archivist_3"
 "message" "archivist"
-"netname" "Final fragment verified. The old chamber doors are yours."
+"netname" "Final fragment verified. The old chamber doors are yours.|The final fragment is confirmed; the ancient chamber doors are now yours.|Verification of the last fragment is complete, and the old chamber doors belong to you.|The concluding fragment has been authenticated, granting you access to the venerable chamber doors."
 }
 {
 "classname" "target_delay"
