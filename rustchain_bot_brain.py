@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 RustChain Arena - LLM-Enhanced Bot Brain
-Uses local LLM (Ollama) for tactical decision making with personality.
+Uses LLMClient (OpenAI/Ollama/mock backends) for tactical decision making.
 Monitors game state and sends commands via RCON.
 """
 
@@ -10,18 +10,20 @@ import re
 import time
 import json
 import socket
-import requests
 from datetime import datetime
 from collections import deque
 from typing import Dict, List, Optional, Tuple
 
+from rustchain_llm_client import LLMClient
+
 # Configuration
 XONOTIC_LOG = os.path.expanduser("~/.xonotic/data/server.log")
-OLLAMA_URL = os.environ.get("OLLAMA_URL", "http://localhost:11434")
-OLLAMA_MODEL = os.environ.get("OLLAMA_MODEL", "llama3.2:1b")  # Fast, small model
 RCON_HOST = "127.0.0.1"
 RCON_PORT = 26000
 RCON_PASSWORD = os.environ.get("RCON_PASSWORD", "rustchain")
+
+# Shared LLM client (backend chosen via LLM_BACKEND env var; default openai)
+_llm = LLMClient()
 
 # Bot personalities - detailed prompts for LLM
 BOT_PERSONALITIES = {
@@ -150,60 +152,27 @@ SITUATION: {context}
 
 What is your tactical decision? (1 line, be specific: target player, position, weapon choice)"""
 
-        try:
-            response = requests.post(
-                f"{OLLAMA_URL}/api/generate",
-                json={
-                    "model": OLLAMA_MODEL,
-                    "system": self.personality["system"],
-                    "prompt": prompt,
-                    "stream": False,
-                    "options": {
-                        "temperature": 0.7,
-                        "num_predict": 50,  # Keep responses short
-                    }
-                },
-                timeout=2.0  # Fast timeout for real-time
-            )
-
-            if response.status_code == 200:
-                result = response.json()
-                decision = result.get("response", "").strip()
-                self.conversation_history.append(decision)
-                return decision
-
-        except requests.exceptions.RequestException as e:
-            print(f"[LLM] Error querying Ollama: {e}")
-
+        messages = [
+            {"role": "system", "content": self.personality["system"]},
+            {"role": "user", "content": prompt},
+        ]
+        decision = _llm.chat(messages, max_tokens=50, temperature=0.7)
+        if decision:
+            self.conversation_history.append(decision)
+            return decision
         return None
 
     def get_taunt(self, victim: str, weapon: str) -> Optional[str]:
         """Generate a personality-appropriate taunt after a kill"""
 
-        try:
-            prompt = f"You just killed {victim} with {weapon}. Say a brief taunt (max 10 words):"
-
-            response = requests.post(
-                f"{OLLAMA_URL}/api/generate",
-                json={
-                    "model": OLLAMA_MODEL,
-                    "system": self.personality["system"],
-                    "prompt": prompt,
-                    "stream": False,
-                    "options": {
-                        "temperature": 0.9,
-                        "num_predict": 20,
-                    }
-                },
-                timeout=1.5
-            )
-
-            if response.status_code == 200:
-                result = response.json()
-                return result.get("response", "").strip()
-
-        except Exception:
-            pass
+        prompt = f"You just killed {victim} with {weapon}. Say a brief taunt (max 10 words):"
+        messages = [
+            {"role": "system", "content": self.personality["system"]},
+            {"role": "user", "content": prompt},
+        ]
+        taunt = _llm.chat(messages, max_tokens=20, temperature=0.9)
+        if taunt:
+            return taunt
 
         # Fallback taunts by style
         fallbacks = {
@@ -249,20 +218,14 @@ class RCONClient:
         self.send_command(command)
 
 
-def check_ollama_available() -> bool:
-    """Check if Ollama is running and model is available"""
-    try:
-        response = requests.get(f"{OLLAMA_URL}/api/tags", timeout=2)
-        if response.status_code == 200:
-            models = response.json().get("models", [])
-            model_names = [m["name"] for m in models]
-            if any(OLLAMA_MODEL in m for m in model_names):
-                return True
-            print(f"[LLM] Model {OLLAMA_MODEL} not found. Available: {model_names}")
-            return False
-    except Exception:
-        pass
-    return False
+def check_llm_available() -> bool:
+    """Probe the configured LLM backend with a trivial message."""
+    reply = _llm.chat(
+        [{"role": "user", "content": "ping"}],
+        max_tokens=4,
+        temperature=0.0,
+    )
+    return reply is not None
 
 
 def main():
@@ -270,18 +233,17 @@ def main():
 ╔═══════════════════════════════════════════════════════════╗
 ║     RUSTCHAIN ARENA - LLM Bot Brain v1.0                  ║
 ╠═══════════════════════════════════════════════════════════╣
-║  Enhancing bot AI with local LLM tactical decisions       ║
-║  Powered by Ollama                                        ║
+║  Enhancing bot AI with LLM tactical decisions             ║
+║  Backend selected via LLM_BACKEND (openai/ollama/mock)    ║
 ╚═══════════════════════════════════════════════════════════╝
 """)
 
-    # Check Ollama
-    if check_ollama_available():
-        print(f"[LLM] Connected to Ollama ({OLLAMA_MODEL})")
+    # Probe configured LLM backend
+    if check_llm_available():
+        print(f"[LLM] Connected via backend={_llm.backend}")
     else:
-        print(f"[LLM] WARNING: Ollama not available at {OLLAMA_URL}")
-        print("[LLM] Install: curl -fsSL https://ollama.ai/install.sh | sh")
-        print(f"[LLM] Then run: ollama pull {OLLAMA_MODEL}")
+        print(f"[LLM] WARNING: backend={_llm.backend} unreachable or returning empty")
+        print("[LLM] Set LLM_BACKEND=mock for offline development")
         print("[LLM] Continuing with fallback taunts only...")
 
     # Initialize components

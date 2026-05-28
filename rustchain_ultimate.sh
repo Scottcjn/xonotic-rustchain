@@ -54,6 +54,7 @@ cleanup() {
     echo -e "\n${YELLOW}[System] Shutting down all systems...${NC}"
     [ -n "$MASTER_PID" ] && kill $MASTER_PID 2>/dev/null && echo "  ✓ Game Master stopped"
     [ -n "$ML_PID" ] && kill $ML_PID 2>/dev/null && echo "  ✓ ML Trainer stopped"
+    [ -n "$REWARDS_PID" ] && kill $REWARDS_PID 2>/dev/null && echo "  ✓ Rewards bridge stopped"
     echo -e "${GREEN}[System] Goodbye!${NC}"
     exit 0
 }
@@ -74,6 +75,15 @@ echo -e "${CYAN}[2/3] Starting Game Master...${NC}"
 PYTHONUNBUFFERED=1 python3 rustchain_game_master.py &
 MASTER_PID=$!
 echo -e "  ${GREEN}✓ Game Master started (PID: $MASTER_PID)${NC}"
+
+
+# Start RTC rewards bridge (on-chain payouts)
+echo -e "${CYAN}[2.5/3] Starting RTC rewards bridge...${NC}"
+if [ -f "rustchain_rewards_bridge.py" ]; then
+    PYTHONUNBUFFERED=1 python3 rustchain_rewards_bridge.py > /tmp/arena_rewards.log 2>&1 &
+    REWARDS_PID=$!
+    echo -e "  ${GREEN}✓ Rewards bridge started (PID: $REWARDS_PID)${NC}"
+fi
 
 # Optional: Start ML Bot Trainer
 if [ -f "rustchain_bot_ml.py" ]; then
@@ -117,7 +127,7 @@ echo -e "${GREEN}Launching Xonotic...${NC}"
 echo ""
 
 # Launch Xonotic
-./xonotic-linux64-sdl \
+./xonotic-linux64-sophia \
     +exec rustcore_bots.cfg \
     +log_file "server.log" \
     +sv_eventlog 1 \

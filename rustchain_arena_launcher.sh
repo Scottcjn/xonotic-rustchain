@@ -27,7 +27,7 @@ sleep 1
 
 # Launch Xonotic with custom settings
 echo "[*] Launching RustChain Arena..."
-./xonotic-linux64-sdl \
+./xonotic-linux64-sophia \
     +log_file "server.log" \
     +exec bots_rustchain.cfg \
     +bot_number 3 \

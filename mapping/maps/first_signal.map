@@ -1,0 +1,572 @@
+// First Signal - Mission 2 (RustChain Story)
+{
+"classname" "worldspawn"
+"message" "First Signal"
+"author" "Elyan Labs"
+"_ambient" "40"
+"_minlight" "44"
+"fog" "0.0022 0.08 0.12 0.16"
+
+// Outer shell interior: x/y -1152..1152 z 0..320
+// Floor
+{
+( 1184 -928 0 ) ( -1184 -928 0 ) ( -1184 928 0 ) rustchain/rustchain_floor_plate_01 0 0 0 0.25 0.25 0 0 0
+( 1184 928 -32 ) ( -1184 928 -32 ) ( -1184 -928 -32 ) common/caulk 0 0 0 0.25 0.25 0 0 0
+( 1184 928 -32 ) ( 1184 928 0 ) ( -1184 928 0 ) common/caulk 0 0 0 0.25 0.25 0 0 0
+( -1184 -928 -32 ) ( -1184 -928 0 ) ( 1184 -928 0 ) common/caulk 0 0 0 0.25 0.25 0 0 0
+( 1184 -928 -32 ) ( 1184 -928 0 ) ( 1184 928 0 ) common/caulk 0 0 0 0.25 0.25 0 0 0
+( -1184 928 -32 ) ( -1184 928 0 ) ( -1184 -928 0 ) common/caulk 0 0 0 0.25 0.25 0 0 0
+}
+// Ceiling
+{
+( 1184 -928 352 ) ( -1184 -928 352 ) ( -1184 928 352 ) common/caulk 0 0 0 0.25 0.25 0 0 0
+( 1184 928 320 ) ( -1184 928 320 ) ( -1184 -928 320 ) exx/light/light_panel01 0 0 0 0.25 0.25 0 0 0
+( 1184 928 320 ) ( 1184 928 352 ) ( -1184 928 352 ) common/caulk 0 0 0 0.25 0.25 0 0 0
+( -1184 -928 320 ) ( -1184 -928 352 ) ( 1184 -928 352 ) common/caulk 0 0 0 0.25 0.25 0 0 0
+( 1184 -928 320 ) ( 1184 -928 352 ) ( 1184 928 352 ) common/caulk 0 0 0 0.25 0.25 0 0 0
+( -1184 928 320 ) ( -1184 928 352 ) ( -1184 -928 352 ) common/caulk 0 0 0 0.25 0.25 0 0 0
+}
+// North wall
+{
+( 1184 896 320 ) ( -1184 896 320 ) ( -1184 928 320 ) common/caulk 0 0 0 0.25 0.25 0 0 0
+( 1184 928 0 ) ( -1184 928 0 ) ( -1184 896 0 ) common/caulk 0 0 0 0.25 0.25 0 0 0
+( 1184 928 0 ) ( 1184 928 320 ) ( -1184 928 320 ) common/caulk 0 0 0 0.25 0.25 0 0 0
+( -1184 896 0 ) ( -1184 896 320 ) ( 1184 896 320 ) rustchain/rustchain_wall_panel_01 0 0 0 0.25 0.25 0 0 0
+( 1184 896 0 ) ( 1184 896 320 ) ( 1184 928 320 ) common/caulk 0 0 0 0.25 0.25 0 0 0
+( -1184 928 0 ) ( -1184 928 320 ) ( -1184 896 320 ) common/caulk 0 0 0 0.25 0.25 0 0 0
+}
+// South wall
+{
+( 1184 -928 320 ) ( -1184 -928 320 ) ( -1184 -896 320 ) common/caulk 0 0 0 0.25 0.25 0 0 0
+( 1184 -896 0 ) ( -1184 -896 0 ) ( -1184 -928 0 ) common/caulk 0 0 0 0.25 0.25 0 0 0
+( 1184 -896 0 ) ( 1184 -896 320 ) ( -1184 -896 320 ) rustchain/rustchain_wall_panel_01 0 0 0 0.25 0.25 0 0 0
+( -1184 -928 0 ) ( -1184 -928 320 ) ( 1184 -928 320 ) common/caulk 0 0 0 0.25 0.25 0 0 0
+( 1184 -928 0 ) ( 1184 -928 320 ) ( 1184 -896 320 ) common/caulk 0 0 0 0.25 0.25 0 0 0
+( -1184 -896 0 ) ( -1184 -896 320 ) ( -1184 -928 320 ) common/caulk 0 0 0 0.25 0.25 0 0 0
+}
+// East wall
+{
+( 1184 -928 320 ) ( 1152 -928 320 ) ( 1152 928 320 ) common/caulk 0 0 0 0.25 0.25 0 0 0
+( 1184 928 0 ) ( 1152 928 0 ) ( 1152 -928 0 ) common/caulk 0 0 0 0.25 0.25 0 0 0
+( 1184 928 0 ) ( 1184 928 320 ) ( 1152 928 320 ) common/caulk 0 0 0 0.25 0.25 0 0 0
+( 1152 -928 0 ) ( 1152 -928 320 ) ( 1184 -928 320 ) common/caulk 0 0 0 0.25 0.25 0 0 0
+( 1184 -928 0 ) ( 1184 -928 320 ) ( 1184 928 320 ) common/caulk 0 0 0 0.25 0.25 0 0 0
+( 1152 928 0 ) ( 1152 928 320 ) ( 1152 -928 320 ) rustchain/rustchain_wall_panel_01 0 0 0 0.25 0.25 0 0 0
+}
+// West wall
+{
+( -1152 -928 320 ) ( -1184 -928 320 ) ( -1184 928 320 ) common/caulk 0 0 0 0.25 0.25 0 0 0
+( -1152 928 0 ) ( -1184 928 0 ) ( -1184 -928 0 ) common/caulk 0 0 0 0.25 0.25 0 0 0
+( -1152 928 0 ) ( -1152 928 320 ) ( -1184 928 320 ) common/caulk 0 0 0 0.25 0.25 0 0 0
+( -1184 -928 0 ) ( -1184 -928 320 ) ( -1152 -928 320 ) common/caulk 0 0 0 0.25 0.25 0 0 0
+( -1152 -928 0 ) ( -1152 -928 320 ) ( -1152 928 320 ) rustchain/rustchain_wall_panel_01 0 0 0 0.25 0.25 0 0 0
+( -1184 928 0 ) ( -1184 928 320 ) ( -1184 -928 320 ) common/caulk 0 0 0 0.25 0.25 0 0 0
+}
+
+// Central relay tower block
+{
+( 200 -120 220 ) ( -200 -120 220 ) ( -200 120 220 ) rustchain/rustchain_wall_panel_01 0 0 0 0.25 0.25 0 0 0
+( 200 120 0 ) ( -200 120 0 ) ( -200 -120 0 ) rustchain/rustchain_floor_plate_01 0 0 0 0.25 0.25 0 0 0
+( 200 120 0 ) ( 200 120 220 ) ( -200 120 220 ) rustchain/rustchain_wall_panel_01 0 0 0 0.25 0.25 0 0 0
+( -200 -120 0 ) ( -200 -120 220 ) ( 200 -120 220 ) rustchain/rustchain_wall_panel_01 0 0 0 0.25 0.25 0 0 0
+( 200 -120 0 ) ( 200 -120 220 ) ( 200 120 220 ) rustchain/rustchain_wall_panel_01 0 0 0 0.25 0.25 0 0 0
+( -200 120 0 ) ( -200 120 220 ) ( -200 -120 220 ) rustchain/rustchain_wall_panel_01 0 0 0 0.25 0.25 0 0 0
+}
+
+// Relay spine beam
+{
+( 1040 -20 292 ) ( -1040 -20 292 ) ( -1040 20 292 ) evil8_trim/e8beam02 0 0 0 0.25 0.25 0 0 0
+( 1040 20 256 ) ( -1040 20 256 ) ( -1040 -20 256 ) common/caulk 0 0 0 0.25 0.25 0 0 0
+( 1040 20 256 ) ( 1040 20 292 ) ( -1040 20 292 ) evil8_trim/e8supporttrim01 0 0 0 0.25 0.25 0 0 0
+( -1040 -20 256 ) ( -1040 -20 292 ) ( 1040 -20 292 ) evil8_trim/e8supporttrim01 0 0 0 0.25 0.25 0 0 0
+( 1040 -20 256 ) ( 1040 -20 292 ) ( 1040 20 292 ) common/caulk 0 0 0 0.25 0.25 0 0 0
+( -1040 20 256 ) ( -1040 20 292 ) ( -1040 -20 292 ) common/caulk 0 0 0 0.25 0.25 0 0 0
+}
+// East relay catwalk strip
+{
+( 1040 260 64 ) ( -1040 260 64 ) ( -1040 300 64 ) evil8_floor/e8clangfloor04warn 0 0 0 0.25 0.25 0 0 0
+( 1040 300 32 ) ( -1040 300 32 ) ( -1040 260 32 ) common/caulk 0 0 0 0.25 0.25 0 0 0
+( 1040 300 32 ) ( 1040 300 64 ) ( -1040 300 64 ) evil8_base/e8metal03b 0 0 0 0.25 0.25 0 0 0
+( -1040 260 32 ) ( -1040 260 64 ) ( 1040 260 64 ) evil8_base/e8metal03b 0 0 0 0.25 0.25 0 0 0
+( 1040 260 32 ) ( 1040 260 64 ) ( 1040 300 64 ) common/caulk 0 0 0 0.25 0.25 0 0 0
+( -1040 300 32 ) ( -1040 300 64 ) ( -1040 260 64 ) common/caulk 0 0 0 0.25 0.25 0 0 0
+}
+// West relay catwalk strip
+{
+( 1040 -300 64 ) ( -1040 -300 64 ) ( -1040 -260 64 ) evil8_floor/e8clangfloor04warn 0 0 0 0.25 0.25 0 0 0
+( 1040 -260 32 ) ( -1040 -260 32 ) ( -1040 -300 32 ) common/caulk 0 0 0 0.25 0.25 0 0 0
+( 1040 -260 32 ) ( 1040 -260 64 ) ( -1040 -260 64 ) evil8_base/e8metal03b 0 0 0 0.25 0.25 0 0 0
+( -1040 -300 32 ) ( -1040 -300 64 ) ( 1040 -300 64 ) evil8_base/e8metal03b 0 0 0 0.25 0.25 0 0 0
+( 1040 -300 32 ) ( 1040 -300 64 ) ( 1040 -260 64 ) common/caulk 0 0 0 0.25 0.25 0 0 0
+( -1040 -260 32 ) ( -1040 -260 64 ) ( -1040 -300 64 ) common/caulk 0 0 0 0.25 0.25 0 0 0
+}
+}
+
+{
+"classname" "info_player_deathmatch"
+"origin" "0 -760 32"
+"angle" "90"
+}
+{
+"classname" "weapon_shotgun"
+"origin" "80 -700 32"
+}
+
+{
+"classname" "light"
+"origin" "0 -760 220"
+"light" "180"
+"_color" "1 0.9 0.8"
+}
+{
+"classname" "light"
+"origin" "0 0 240"
+"light" "260"
+"_color" "0.8 0.95 1"
+}
+{
+"classname" "light"
+"origin" "0 760 220"
+"light" "200"
+"_color" "0.8 0.9 1"
+}
+{
+"classname" "light"
+"origin" "0 60 180"
+"light" "320"
+"_color" "0.2 0.8 1"
+}
+{
+"classname" "light"
+"origin" "0 780 180"
+"light" "360"
+"_color" "0.2 1 0.4"
+}
+{
+"classname" "misc_gamemodel"
+"origin" "-980 -740 32"
+"model" "models/displays/display_sophia_poster.obj"
+"solid" "0"
+"angle" "15"
+"modelscale" "1.0"
+}
+{
+"classname" "misc_gamemodel"
+"origin" "-860 80 32"
+"model" "models/displays/display_sophia_terminal.obj"
+"solid" "0"
+"angle" "85"
+"modelscale" "1.0"
+}
+{
+"classname" "misc_gamemodel"
+"origin" "860 120 32"
+"model" "models/displays/display_museum_sign_new.obj"
+"solid" "0"
+"angle" "275"
+"modelscale" "1.0"
+}
+{
+"classname" "misc_gamemodel"
+"origin" "980 -80 32"
+"model" "models/displays/display_rustchain_logo.obj"
+"solid" "0"
+"angle" "260"
+"modelscale" "1.2"
+}
+{
+"classname" "misc_gamemodel"
+"origin" "0 -180 32"
+"model" "models/displays/display_robot_janitor.obj"
+"solid" "0"
+"angle" "170"
+"modelscale" "0.85"
+}
+{
+"classname" "light"
+"origin" "-860 80 170"
+"light" "220"
+"_color" "0.24 0.78 1"
+}
+{
+"classname" "light"
+"origin" "980 -80 170"
+"light" "240"
+"_color" "0.2 0.95 0.55"
+}
+{
+"classname" "light"
+"origin" "0 -180 170"
+"light" "190"
+"_color" "1 0.6 0.45"
+}
+{
+"classname" "misc_gamemodel"
+"targetname" "fs_actor_sophia"
+"origin" "-260 -640 32"
+"model" "models/player/seraphina.iqm"
+"solid" "0"
+"angle" "20"
+"modelscale" "1.0"
+}
+{
+"classname" "misc_gamemodel"
+"targetname" "fs_actor_survivor"
+"origin" "220 120 32"
+"model" "models/player/umbra.iqm"
+"solid" "0"
+"angle" "210"
+"modelscale" "1.0"
+}
+{
+"classname" "target_rustchain_actor_idle"
+"target" "fs_actor_sophia"
+"speed" "0.9"
+"count" "4.2"
+"health" "0.9"
+"dmg" "0.1"
+}
+{
+"classname" "target_rustchain_actor_idle"
+"target" "fs_actor_survivor"
+"speed" "1.1"
+"count" "3.2"
+"health" "0.7"
+"dmg" "0.9"
+}
+
+// Intro dialogue
+{
+"classname" "target_rustchain_dialogue"
+"targetname" "fs_intro"
+"message" "sophia"
+"netname" "Signal trace locked. The relay is still alive. Reach the control node."
+}
+{
+"classname" "trigger_once"
+"target" "fs_intro_chain"
+{
+( 160 -860 128 ) ( -160 -860 128 ) ( -160 -620 128 ) common/trigger 0 0 0 0.25 0.25 0 0 0
+( 160 -620 0 ) ( -160 -620 0 ) ( -160 -860 0 ) common/trigger 0 0 0 0.25 0.25 0 0 0
+( 160 -620 0 ) ( 160 -620 128 ) ( -160 -620 128 ) common/trigger 0 0 0 0.25 0.25 0 0 0
+( -160 -860 0 ) ( -160 -860 128 ) ( 160 -860 128 ) common/trigger 0 0 0 0.25 0.25 0 0 0
+( 160 -860 0 ) ( 160 -860 128 ) ( 160 -620 128 ) common/trigger 0 0 0 0.25 0.25 0 0 0
+( -160 -620 0 ) ( -160 -620 128 ) ( -160 -860 128 ) common/trigger 0 0 0 0.25 0.25 0 0 0
+}
+}
+{
+"classname" "target_rustchain_dialogue"
+"targetname" "fs_intro_survivor"
+"message" "survivor"
+"netname" "We are pinned at the relay. Bring the node online and we can extract."
+}
+{
+"classname" "target_rustchain_dialogue"
+"targetname" "fs_intro_followup"
+"message" "sophia"
+"netname" "I can hold their routing for a moment. Move now."
+}
+{
+"classname" "target_rustchain_objective"
+"targetname" "fs_obj_start"
+"message" "OBJECTIVE"
+"netname" "Reach the relay node and restore the signal."
+}
+{
+"classname" "trigger_relay"
+"targetname" "fs_intro_chain"
+"target" "fs_intro"
+}
+{
+"classname" "trigger_relay"
+"targetname" "fs_intro_chain"
+"target" "fs_obj_start"
+}
+{
+"classname" "target_delay"
+"targetname" "fs_intro_survivor_delay"
+"delay" "1.6"
+"target" "fs_intro_survivor"
+}
+{
+"classname" "target_delay"
+"targetname" "fs_intro_followup_delay"
+"delay" "3.2"
+"target" "fs_intro_followup"
+}
+{
+"classname" "trigger_relay"
+"targetname" "fs_intro_chain"
+"target" "fs_intro_survivor_delay"
+}
+{
+"classname" "trigger_relay"
+"targetname" "fs_intro_chain"
+"target" "fs_intro_followup_delay"
+}
+
+{
+"classname" "target_rustchain_wave"
+"targetname" "fs_wave_1"
+"count" "2"
+"health" "2"
+"dmg" "1.0"
+"armorvalue" "1.0"
+"netname" "bbd"
+"message" "Scout drones converging on the relay perimeter."
+}
+{
+"classname" "target_rustchain_wave"
+"targetname" "fs_wave_2"
+"count" "2"
+"health" "3.2"
+"dmg" "1.10"
+"armorvalue" "1.15"
+"netname" "bbd"
+"message" "Signal spike detected. Reinforcements inbound."
+}
+{
+"classname" "target_delay"
+"targetname" "fs_wave_1_delay"
+"delay" "1.2"
+"target" "fs_wave_1"
+}
+{
+"classname" "target_delay"
+"targetname" "fs_wave_2_delay"
+"delay" "2.3"
+"target" "fs_wave_2"
+}
+{
+"classname" "target_rustchain_dialogue"
+"targetname" "fs_bbd_1"
+"message" "bbd"
+"netname" "Unauthorized relay process detected. Deploying correction drones."
+}
+{
+"classname" "target_rustchain_dialogue"
+"targetname" "fs_bbd_2"
+"message" "bbd"
+"netname" "Signal restoration denied. Escalating force authorization."
+}
+{
+"classname" "target_delay"
+"targetname" "fs_bbd_1_delay"
+"delay" "1.0"
+"target" "fs_bbd_1"
+}
+{
+"classname" "target_delay"
+"targetname" "fs_bbd_2_delay"
+"delay" "0.9"
+"target" "fs_bbd_2"
+}
+{
+"classname" "target_rustchain_dialogue"
+"targetname" "fs_mid_survivor"
+"message" "survivor"
+"netname" "They spotted us. Keep pressure on that relay."
+}
+{
+"classname" "target_delay"
+"targetname" "fs_mid_survivor_delay"
+"delay" "2.0"
+"target" "fs_mid_survivor"
+}
+{
+"classname" "target_rustchain_objective"
+"targetname" "fs_obj_mid"
+"message" "OBJECTIVE UPDATE"
+"netname" "Push to relay center."
+}
+{
+"classname" "trigger_relay"
+"targetname" "fs_mid_chain"
+"target" "fs_wave_1_delay"
+}
+{
+"classname" "trigger_relay"
+"targetname" "fs_mid_chain"
+"target" "fs_bbd_1_delay"
+}
+{
+"classname" "trigger_relay"
+"targetname" "fs_mid_chain"
+"target" "fs_mid_survivor_delay"
+}
+{
+"classname" "trigger_relay"
+"targetname" "fs_mid_chain"
+"target" "fs_obj_mid"
+}
+{
+"classname" "trigger_relay"
+"targetname" "fs_node_chain"
+"target" "fs_wave_2_delay"
+}
+{
+"classname" "trigger_relay"
+"targetname" "fs_node_chain"
+"target" "fs_node_line"
+}
+{
+"classname" "trigger_relay"
+"targetname" "fs_node_chain"
+"target" "fs_bbd_2_delay"
+}
+{
+"classname" "target_rustchain_objective"
+"targetname" "fs_obj_node"
+"message" "OBJECTIVE UPDATE"
+"netname" "Relay restored. Move to extraction."
+}
+{
+"classname" "target_rustchain_dialogue"
+"targetname" "fs_node_stinger_survivor"
+"message" "survivor"
+"netname" "Telemetry is clean. Corridor north is your extraction route."
+}
+{
+"classname" "target_delay"
+"targetname" "fs_node_stinger_survivor_delay"
+"delay" "1.6"
+"target" "fs_node_stinger_survivor"
+}
+{
+"classname" "trigger_relay"
+"targetname" "fs_node_chain"
+"target" "fs_obj_node"
+}
+{
+"classname" "trigger_relay"
+"targetname" "fs_node_chain"
+"target" "fs_node_stinger_survivor_delay"
+}
+
+// Mid-zone wave trigger
+{
+"classname" "trigger_once"
+"target" "fs_mid_chain"
+{
+( 220 -240 128 ) ( -220 -240 128 ) ( -220 40 128 ) common/trigger 0 0 0 0.25 0.25 0 0 0
+( 220 40 0 ) ( -220 40 0 ) ( -220 -240 0 ) common/trigger 0 0 0 0.25 0.25 0 0 0
+( 220 40 0 ) ( 220 40 128 ) ( -220 40 128 ) common/trigger 0 0 0 0.25 0.25 0 0 0
+( -220 -240 0 ) ( -220 -240 128 ) ( 220 -240 128 ) common/trigger 0 0 0 0.25 0.25 0 0 0
+( 220 -240 0 ) ( 220 -240 128 ) ( 220 40 128 ) common/trigger 0 0 0 0.25 0.25 0 0 0
+( -220 40 0 ) ( -220 40 128 ) ( -220 -240 128 ) common/trigger 0 0 0 0.25 0.25 0 0 0
+}
+}
+
+// Node and relay restore
+{
+"classname" "target_rustchain_node"
+"targetname" "fs_node_01"
+"target" "fs_node_chain"
+}
+{
+"classname" "target_rustchain_dialogue"
+"targetname" "fs_node_line"
+"message" "sophia"
+"netname" "Relay synchronized. Survivor channels are online. Move to extraction."
+}
+
+{
+"classname" "trigger_once"
+"target" "fs_node_01"
+{
+( 140 -80 128 ) ( -140 -80 128 ) ( -140 160 128 ) common/trigger 0 0 0 0.25 0.25 0 0 0
+( 140 160 0 ) ( -140 160 0 ) ( -140 -80 0 ) common/trigger 0 0 0 0.25 0.25 0 0 0
+( 140 160 0 ) ( 140 160 128 ) ( -140 160 128 ) common/trigger 0 0 0 0.25 0.25 0 0 0
+( -140 -80 0 ) ( -140 -80 128 ) ( 140 -80 128 ) common/trigger 0 0 0 0.25 0.25 0 0 0
+( 140 -80 0 ) ( 140 -80 128 ) ( 140 160 128 ) common/trigger 0 0 0 0.25 0.25 0 0 0
+( -140 160 0 ) ( -140 160 128 ) ( -140 -80 128 ) common/trigger 0 0 0 0.25 0.25 0 0 0
+}
+}
+
+// Exit objective
+{
+"classname" "target_rustchain_exit"
+"targetname" "fs_exit"
+"origin" "0 780 32"
+}
+{
+"classname" "target_rustchain_objective"
+"targetname" "fs_obj_exit"
+"message" "OBJECTIVE"
+"netname" "Enter extraction zone."
+}
+{
+"classname" "target_rustchain_dialogue"
+"targetname" "fs_exit_ready"
+"message" "sophia"
+"netname" "Extraction marker is stable. Cross the beam and I will lock the route behind you."
+}
+{
+"classname" "target_delay"
+"targetname" "fs_exit_ready_delay"
+"delay" "0.8"
+"target" "fs_exit_ready"
+}
+{
+"classname" "trigger_relay"
+"targetname" "fs_node_chain"
+"target" "fs_obj_exit"
+}
+{
+"classname" "trigger_relay"
+"targetname" "fs_node_chain"
+"target" "fs_exit_ready_delay"
+}
+{
+"classname" "trigger_once"
+"target" "fs_exit"
+{
+( 180 700 128 ) ( -180 700 128 ) ( -180 880 128 ) common/trigger 0 0 0 0.25 0.25 0 0 0
+( 180 880 0 ) ( -180 880 0 ) ( -180 700 0 ) common/trigger 0 0 0 0.25 0.25 0 0 0
+( 180 880 0 ) ( 180 880 128 ) ( -180 880 128 ) common/trigger 0 0 0 0.25 0.25 0 0 0
+( -180 700 0 ) ( -180 700 128 ) ( 180 700 128 ) common/trigger 0 0 0 0.25 0.25 0 0 0
+( 180 700 0 ) ( 180 700 128 ) ( 180 880 128 ) common/trigger 0 0 0 0.25 0.25 0 0 0
+( -180 880 0 ) ( -180 880 128 ) ( -180 700 128 ) common/trigger 0 0 0 0.25 0.25 0 0 0
+}
+}
+
+// Failsafe: if progression misses the node trigger, force-activate after 3 minutes
+{
+"classname" "target_delay"
+"targetname" "fs_failsafe_delay"
+"delay" "60"
+"target" "fs_failsafe_chain"
+}
+{
+"classname" "target_rustchain_objective"
+"targetname" "fs_failsafe_line"
+"message" "FAILSAFE"
+"netname" "Relay fallback engaged. Proceed to extraction."
+}
+{
+"classname" "trigger_relay"
+"targetname" "fs_failsafe_chain"
+"target" "fs_node_01"
+}
+{
+"classname" "trigger_relay"
+"targetname" "fs_failsafe_chain"
+"target" "fs_failsafe_line"
+}
+{
+"classname" "trigger_relay"
+"targetname" "fs_intro_chain"
+"target" "fs_failsafe_delay"
+}
+{
+"classname" "trigger_once"
+"target" "fs_failsafe_chain"
+{
+( 260 -260 128 ) ( -260 -260 128 ) ( -260 260 128 ) common/trigger 0 0 0 0.25 0.25 0 0 0
+( 260 260 0 ) ( -260 260 0 ) ( -260 -260 0 ) common/trigger 0 0 0 0.25 0.25 0 0 0
+( 260 260 0 ) ( 260 260 128 ) ( -260 260 128 ) common/trigger 0 0 0 0.25 0.25 0 0 0
+( -260 -260 0 ) ( -260 -260 128 ) ( 260 -260 128 ) common/trigger 0 0 0 0.25 0.25 0 0 0
+( 260 -260 0 ) ( 260 -260 128 ) ( 260 260 128 ) common/trigger 0 0 0 0.25 0.25 0 0 0
+( -260 260 0 ) ( -260 260 128 ) ( -260 -260 128 ) common/trigger 0 0 0 0.25 0.25 0 0 0
+}
+}

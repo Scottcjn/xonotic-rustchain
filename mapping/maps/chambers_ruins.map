@@ -1,0 +1,565 @@
+// Chambers Institute - Ruins (Story Mode)
+// Objective flow: collect 3 logs -> open sealed chamber -> extract.
+{
+"classname" "worldspawn"
+"message" "Chambers Institute - Ruins"
+"author" "Chambers Institute"
+"_ambient" "28"
+"_minlight" "28"
+
+// Main shell interior bounds: x/y -960..960, z 0..352
+
+// Floor
+{
+( 992 -800 0 ) ( -992 -800 0 ) ( -992 800 0 ) evil8_wall/e8crete03c 0 0 0 0.25 0.25 0 0 0
+( 992 800 -32 ) ( -992 800 -32 ) ( -992 -800 -32 ) common/caulk 0 0 0 0.25 0.25 0 0 0
+( 992 800 -32 ) ( 992 800 0 ) ( -992 800 0 ) common/caulk 0 0 0 0.25 0.25 0 0 0
+( -992 -800 -32 ) ( -992 -800 0 ) ( 992 -800 0 ) common/caulk 0 0 0 0.25 0.25 0 0 0
+( 992 -800 -32 ) ( 992 -800 0 ) ( 992 800 0 ) common/caulk 0 0 0 0.25 0.25 0 0 0
+( -992 800 -32 ) ( -992 800 0 ) ( -992 -800 0 ) common/caulk 0 0 0 0.25 0.25 0 0 0
+}
+
+// Ceiling
+{
+( 992 -800 384 ) ( -992 -800 384 ) ( -992 800 384 ) common/caulk 0 0 0 0.25 0.25 0 0 0
+( 992 800 352 ) ( -992 800 352 ) ( -992 -800 352 ) exx/light/light_panel01 0 0 0 0.25 0.25 0 0 0
+( 992 800 352 ) ( 992 800 384 ) ( -992 800 384 ) common/caulk 0 0 0 0.25 0.25 0 0 0
+( -992 -800 352 ) ( -992 -800 384 ) ( 992 -800 384 ) common/caulk 0 0 0 0.25 0.25 0 0 0
+( 992 -800 352 ) ( 992 -800 384 ) ( 992 800 384 ) common/caulk 0 0 0 0.25 0.25 0 0 0
+( -992 800 352 ) ( -992 800 384 ) ( -992 -800 384 ) common/caulk 0 0 0 0.25 0.25 0 0 0
+}
+
+// North shell wall
+{
+( 992 768 352 ) ( -992 768 352 ) ( -992 800 352 ) common/caulk 0 0 0 0.25 0.25 0 0 0
+( 992 800 0 ) ( -992 800 0 ) ( -992 768 0 ) common/caulk 0 0 0 0.25 0.25 0 0 0
+( 992 800 0 ) ( 992 800 352 ) ( -992 800 352 ) common/caulk 0 0 0 0.25 0.25 0 0 0
+( -992 768 0 ) ( -992 768 352 ) ( 992 768 352 ) evil8_wall/e8_mtlwall3 0 0 0 0.25 0.25 0 0 0
+( 992 768 0 ) ( 992 768 352 ) ( 992 800 352 ) common/caulk 0 0 0 0.25 0.25 0 0 0
+( -992 800 0 ) ( -992 800 352 ) ( -992 768 352 ) common/caulk 0 0 0 0.25 0.25 0 0 0
+}
+
+// South shell wall
+{
+( 992 -800 352 ) ( -992 -800 352 ) ( -992 -768 352 ) common/caulk 0 0 0 0.25 0.25 0 0 0
+( 992 -768 0 ) ( -992 -768 0 ) ( -992 -800 0 ) common/caulk 0 0 0 0.25 0.25 0 0 0
+( 992 -768 0 ) ( 992 -768 352 ) ( -992 -768 352 ) evil8_wall/e8_mtlwall3 0 0 0 0.25 0.25 0 0 0
+( -992 -800 0 ) ( -992 -800 352 ) ( 992 -800 352 ) common/caulk 0 0 0 0.25 0.25 0 0 0
+( 992 -800 0 ) ( 992 -800 352 ) ( 992 -768 352 ) common/caulk 0 0 0 0.25 0.25 0 0 0
+( -992 -768 0 ) ( -992 -768 352 ) ( -992 -800 352 ) common/caulk 0 0 0 0.25 0.25 0 0 0
+}
+
+// East shell wall
+{
+( 992 -800 352 ) ( 960 -800 352 ) ( 960 800 352 ) common/caulk 0 0 0 0.25 0.25 0 0 0
+( 992 800 0 ) ( 960 800 0 ) ( 960 -800 0 ) common/caulk 0 0 0 0.25 0.25 0 0 0
+( 992 800 0 ) ( 992 800 352 ) ( 960 800 352 ) common/caulk 0 0 0 0.25 0.25 0 0 0
+( 960 -800 0 ) ( 960 -800 352 ) ( 992 -800 352 ) common/caulk 0 0 0 0.25 0.25 0 0 0
+( 992 -800 0 ) ( 992 -800 352 ) ( 992 800 352 ) common/caulk 0 0 0 0.25 0.25 0 0 0
+( 960 800 0 ) ( 960 800 352 ) ( 960 -800 352 ) evil8_wall/e8_mtlwall4 0 0 0 0.25 0.25 0 0 0
+}
+
+// West shell wall
+{
+( -960 -800 352 ) ( -992 -800 352 ) ( -992 800 352 ) common/caulk 0 0 0 0.25 0.25 0 0 0
+( -960 800 0 ) ( -992 800 0 ) ( -992 -800 0 ) common/caulk 0 0 0 0.25 0.25 0 0 0
+( -960 800 0 ) ( -960 800 352 ) ( -992 800 352 ) common/caulk 0 0 0 0.25 0.25 0 0 0
+( -992 -800 0 ) ( -992 -800 352 ) ( -960 -800 352 ) common/caulk 0 0 0 0.25 0.25 0 0 0
+( -960 -800 0 ) ( -960 -800 352 ) ( -960 800 352 ) evil8_wall/e8_mtlwall4 0 0 0 0.25 0.25 0 0 0
+( -992 800 0 ) ( -992 800 352 ) ( -992 -800 352 ) common/caulk 0 0 0 0.25 0.25 0 0 0
+}
+
+// Interior seal wall at y=384 with center opening (-96..96)
+// Lintel
+{
+( 992 384 352 ) ( -992 384 352 ) ( -992 416 352 ) common/caulk 0 0 0 0.25 0.25 0 0 0
+( 992 416 224 ) ( -992 416 224 ) ( -992 384 224 ) common/caulk 0 0 0 0.25 0.25 0 0 0
+( 992 416 224 ) ( 992 416 352 ) ( -992 416 352 ) common/caulk 0 0 0 0.25 0.25 0 0 0
+( -992 384 224 ) ( -992 384 352 ) ( 992 384 352 ) evil8_wall/e8_mtltrim2_9 0 0 0 0.25 0.25 0 0 0
+( 992 384 224 ) ( 992 384 352 ) ( 992 416 352 ) common/caulk 0 0 0 0.25 0.25 0 0 0
+( -992 416 224 ) ( -992 416 352 ) ( -992 384 352 ) common/caulk 0 0 0 0.25 0.25 0 0 0
+}
+// West segment
+{
+( -96 384 224 ) ( -992 384 224 ) ( -992 416 224 ) common/caulk 0 0 0 0.25 0.25 0 0 0
+( -96 416 0 ) ( -992 416 0 ) ( -992 384 0 ) common/caulk 0 0 0 0.25 0.25 0 0 0
+( -96 416 0 ) ( -96 416 224 ) ( -992 416 224 ) common/caulk 0 0 0 0.25 0.25 0 0 0
+( -992 384 0 ) ( -992 384 224 ) ( -96 384 224 ) evil8_wall/e8_mtlwall3 0 0 0 0.25 0.25 0 0 0
+( -96 384 0 ) ( -96 384 224 ) ( -96 416 224 ) common/caulk 0 0 0 0.25 0.25 0 0 0
+( -992 416 0 ) ( -992 416 224 ) ( -992 384 224 ) common/caulk 0 0 0 0.25 0.25 0 0 0
+}
+// East segment
+{
+( 992 384 224 ) ( 96 384 224 ) ( 96 416 224 ) common/caulk 0 0 0 0.25 0.25 0 0 0
+( 992 416 0 ) ( 96 416 0 ) ( 96 384 0 ) common/caulk 0 0 0 0.25 0.25 0 0 0
+( 992 416 0 ) ( 992 416 224 ) ( 96 416 224 ) common/caulk 0 0 0 0.25 0.25 0 0 0
+( 96 384 0 ) ( 96 384 224 ) ( 992 384 224 ) evil8_wall/e8_mtlwall3 0 0 0 0.25 0.25 0 0 0
+( 992 384 0 ) ( 992 384 224 ) ( 992 416 224 ) common/caulk 0 0 0 0.25 0.25 0 0 0
+( 96 416 0 ) ( 96 416 224 ) ( 96 384 224 ) common/caulk 0 0 0 0.25 0.25 0 0 0
+}
+}
+
+// Sealed door to north chamber (opens after third log)
+{
+"classname" "func_door"
+"targetname" "ch_door_exit"
+"speed" "220"
+"wait" "-1"
+{
+( 96 384 224 ) ( -96 384 224 ) ( -96 416 224 ) common/metalclip 0 0 0 0.25 0.25 0 0 0
+( 96 416 0 ) ( -96 416 0 ) ( -96 384 0 ) common/metalclip 0 0 0 0.25 0.25 0 0 0
+( 96 416 0 ) ( 96 416 224 ) ( -96 416 224 ) evil8_wall/e8_mtltrim2_9 0 0 0 0.25 0.25 0 0 0
+( -96 384 0 ) ( -96 384 224 ) ( 96 384 224 ) evil8_wall/e8_mtltrim2_9 0 0 0 0.25 0.25 0 0 0
+( 96 384 0 ) ( 96 384 224 ) ( 96 416 224 ) evil8_wall/e8_mtltrim2_9 0 0 0 0.25 0.25 0 0 0
+( -96 416 0 ) ( -96 416 224 ) ( -96 384 224 ) evil8_wall/e8_mtltrim2_9 0 0 0 0.25 0.25 0 0 0
+}
+}
+
+// Spawn
+{
+"classname" "info_player_deathmatch"
+"origin" "0 -300 32"
+"angle" "90"
+}
+
+{
+"classname" "weapon_shotgun"
+"origin" "80 -260 32"
+}
+
+// Lights
+{
+"classname" "light"
+"origin" "0 -300 260"
+"light" "220"
+"_color" "1.0 0.85 0.70"
+}
+{
+"classname" "light"
+"origin" "-560 -40 240"
+"light" "170"
+"_color" "0.85 0.75 0.68"
+}
+{
+"classname" "light"
+"origin" "560 40 240"
+"light" "170"
+"_color" "0.85 0.75 0.68"
+}
+{
+"classname" "light"
+"origin" "0 620 260"
+"light" "180"
+"_color" "0.8 0.82 1.0"
+}
+{
+"classname" "light"
+"origin" "-700 -120 180"
+"light" "300"
+"_color" "0.3 0.8 1"
+}
+{
+"classname" "light"
+"origin" "700 -60 180"
+"light" "300"
+"_color" "0.3 0.8 1"
+}
+{
+"classname" "light"
+"origin" "0 260 180"
+"light" "300"
+"_color" "0.3 0.8 1"
+}
+{
+"classname" "light"
+"origin" "0 410 180"
+"light" "340"
+"_color" "0.2 1 0.45"
+}
+{
+"classname" "light"
+"origin" "0 650 180"
+"light" "380"
+"_color" "0.2 1 0.45"
+}
+{
+"classname" "misc_gamemodel"
+"targetname" "ch_actor_archivist"
+"origin" "-640 -80 32"
+"model" "models/player/nyx.iqm"
+"angle" "40"
+"modelscale" "1.0"
+}
+{
+"classname" "misc_gamemodel"
+"targetname" "ch_actor_bbd"
+"origin" "640 -20 32"
+"model" "models/player/erebus.iqm"
+"angle" "220"
+"modelscale" "1.0"
+}
+{
+"classname" "misc_gamemodel"
+"targetname" "ch_actor_sophia_terminal"
+"origin" "0 220 32"
+"model" "models/player/seraphina.iqm"
+"angle" "180"
+"modelscale" "1.0"
+}
+{
+"classname" "target_rustchain_actor_idle"
+"target" "ch_actor_archivist"
+"speed" "0.85"
+"count" "4.5"
+"health" "1.0"
+"dmg" "0.8"
+}
+{
+"classname" "target_rustchain_actor_idle"
+"target" "ch_actor_bbd"
+"speed" "0.7"
+"count" "2.8"
+"health" "0.6"
+"dmg" "1.7"
+}
+{
+"classname" "target_rustchain_actor_idle"
+"target" "ch_actor_sophia_terminal"
+"speed" "1.0"
+"count" "4.0"
+"health" "0.9"
+"dmg" "0.2"
+}
+{
+"classname" "target_rustchain_dialogue"
+"targetname" "ch_actor_line_archivist"
+"message" "archivist"
+"netname" "Archive register recognizes your bloodline. Keep moving, descendant."
+}
+{
+"classname" "target_rustchain_dialogue"
+"targetname" "ch_actor_line_bbd"
+"message" "bbd"
+"netname" "Unauthorized witness pattern detected. Memory correction authorized."
+}
+{
+"classname" "target_rustchain_dialogue"
+"targetname" "ch_actor_line_sophia"
+"message" "sophia"
+"netname" "These ruins remember you. Gather all three fragments."
+}
+{
+"classname" "trigger_once"
+"target" "ch_actor_line_archivist"
+{
+( -540 -180 128 ) ( -740 -180 128 ) ( -740 20 128 ) common/trigger 0 0 0 0.25 0.25 0 0 0
+( -540 20 0 ) ( -740 20 0 ) ( -740 -180 0 ) common/trigger 0 0 0 0.25 0.25 0 0 0
+( -540 20 0 ) ( -540 20 128 ) ( -740 20 128 ) common/trigger 0 0 0 0.25 0.25 0 0 0
+( -740 -180 0 ) ( -740 -180 128 ) ( -540 -180 128 ) common/trigger 0 0 0 0.25 0.25 0 0 0
+( -540 -180 0 ) ( -540 -180 128 ) ( -540 20 128 ) common/trigger 0 0 0 0.25 0.25 0 0 0
+( -740 20 0 ) ( -740 20 128 ) ( -740 -180 128 ) common/trigger 0 0 0 0.25 0.25 0 0 0
+}
+}
+{
+"classname" "trigger_once"
+"target" "ch_actor_line_bbd"
+{
+( 740 -120 128 ) ( 540 -120 128 ) ( 540 80 128 ) common/trigger 0 0 0 0.25 0.25 0 0 0
+( 740 80 0 ) ( 540 80 0 ) ( 540 -120 0 ) common/trigger 0 0 0 0.25 0.25 0 0 0
+( 740 80 0 ) ( 740 80 128 ) ( 540 80 128 ) common/trigger 0 0 0 0.25 0.25 0 0 0
+( 540 -120 0 ) ( 540 -120 128 ) ( 740 -120 128 ) common/trigger 0 0 0 0.25 0.25 0 0 0
+( 740 -120 0 ) ( 740 -120 128 ) ( 740 80 128 ) common/trigger 0 0 0 0.25 0.25 0 0 0
+( 540 80 0 ) ( 540 80 128 ) ( 540 -120 128 ) common/trigger 0 0 0 0.25 0.25 0 0 0
+}
+}
+{
+"classname" "trigger_once"
+"target" "ch_actor_line_sophia"
+{
+( 120 120 128 ) ( -120 120 128 ) ( -120 320 128 ) common/trigger 0 0 0 0.25 0.25 0 0 0
+( 120 320 0 ) ( -120 320 0 ) ( -120 120 0 ) common/trigger 0 0 0 0.25 0.25 0 0 0
+( 120 320 0 ) ( 120 320 128 ) ( -120 320 128 ) common/trigger 0 0 0 0.25 0.25 0 0 0
+( -120 120 0 ) ( -120 120 128 ) ( 120 120 128 ) common/trigger 0 0 0 0.25 0.25 0 0 0
+( 120 120 0 ) ( 120 120 128 ) ( 120 320 128 ) common/trigger 0 0 0 0.25 0.25 0 0 0
+( -120 320 0 ) ( -120 320 128 ) ( -120 120 128 ) common/trigger 0 0 0 0.25 0.25 0 0 0
+}
+}
+
+// Wave entities
+{
+"classname" "target_rustchain_wave"
+"targetname" "ch_wave_1"
+"count" "1"
+"health" "4"
+"netname" "bbd"
+"message" "Infrastructure drones rerouting to Chambers."
+}
+{
+"classname" "target_rustchain_wave"
+"targetname" "ch_wave_2"
+"count" "1"
+"health" "4"
+"netname" "bbd"
+"message" "Additional hostile signatures detected."
+}
+{
+"classname" "target_rustchain_wave"
+"targetname" "ch_wave_3"
+"count" "2"
+"health" "5"
+"netname" "mixed"
+"message" "Core defenses waking in the ruins."
+}
+{
+"classname" "target_delay"
+"targetname" "ch_wave_1_delay"
+"delay" "0.8"
+"target" "ch_wave_1"
+}
+{
+"classname" "target_delay"
+"targetname" "ch_wave_2_delay"
+"delay" "0.9"
+"target" "ch_wave_2"
+}
+{
+"classname" "target_delay"
+"targetname" "ch_wave_3_delay"
+"delay" "1.2"
+"target" "ch_wave_3"
+}
+{
+"classname" "target_rustchain_dialogue"
+"targetname" "ch_line_archivist"
+"message" "archivist"
+"netname" "Archive checksum mismatch. Chambers records were tampered before collapse."
+}
+{
+"classname" "target_rustchain_dialogue"
+"targetname" "ch_line_bbd_1"
+"message" "bbd"
+"netname" "Historical process deemed unstable. Purge in progress."
+}
+{
+"classname" "target_rustchain_dialogue"
+"targetname" "ch_line_bbd_2"
+"message" "bbd"
+"netname" "Unauthorized retrieval persists. Escalating correction force."
+}
+{
+"classname" "target_rustchain_dialogue"
+"targetname" "ch_line_sophia_3"
+"message" "sophia"
+"netname" "All fragments recovered. Opening the server chamber now."
+}
+{
+"classname" "target_rustchain_dialogue"
+"targetname" "ch_line_archivist_3"
+"message" "archivist"
+"netname" "Final fragment verified. The old chamber doors are yours."
+}
+{
+"classname" "target_delay"
+"targetname" "ch_line_bbd_2_delay"
+"delay" "1.0"
+"target" "ch_line_bbd_2"
+}
+{
+"classname" "target_delay"
+"targetname" "ch_line_archivist_3_delay"
+"delay" "2.2"
+"target" "ch_line_archivist_3"
+}
+{
+"classname" "target_rustchain_objective"
+"targetname" "ch_obj_start"
+"message" "OBJECTIVE"
+"netname" "Recover all three Chambers fragments."
+}
+{
+"classname" "target_rustchain_objective"
+"targetname" "ch_obj_exit"
+"message" "OBJECTIVE"
+"netname" "Door unlocked. Reach the server chamber."
+}
+
+// Logs
+{
+"classname" "target_rustchain_log"
+"targetname" "ch_log_a"
+"target" "ch_log_a_chain"
+"origin" "-700 -120 32"
+"message" "Log A: Integrity"
+"netname" "Dataset integrity compromised.\\n"
+}
+{
+"classname" "target_rustchain_log"
+"targetname" "ch_log_b"
+"target" "ch_log_b_chain"
+"origin" "700 -60 32"
+"message" "Log B: Dissonance"
+"netname" "Conflicting neural models detected.\\n"
+}
+{
+"classname" "target_rustchain_log"
+"targetname" "ch_log_c"
+"target" "ch_log_c_chain"
+"origin" "0 260 32"
+"message" "Log C: Unstable"
+"netname" "System behavior unstable.\\n"
+}
+
+// Third log opens exit chamber and starts final wave
+{
+"classname" "trigger_relay"
+"targetname" "ch_log_c_chain"
+"target" "ch_door_exit"
+}
+{
+"classname" "trigger_relay"
+"targetname" "ch_log_c_chain"
+"target" "ch_wave_3_delay"
+}
+{
+"classname" "trigger_relay"
+"targetname" "ch_log_c_chain"
+"target" "ch_line_sophia_3"
+}
+{
+"classname" "trigger_relay"
+"targetname" "ch_log_c_chain"
+"target" "ch_line_bbd_2_delay"
+}
+{
+"classname" "trigger_relay"
+"targetname" "ch_log_c_chain"
+"target" "ch_line_archivist_3_delay"
+}
+{
+"classname" "trigger_relay"
+"targetname" "ch_log_c_chain"
+"target" "ch_obj_exit"
+}
+{
+"classname" "trigger_relay"
+"targetname" "ch_log_a_chain"
+"target" "ch_wave_1_delay"
+}
+{
+"classname" "trigger_relay"
+"targetname" "ch_log_a_chain"
+"target" "ch_line_archivist"
+}
+{
+"classname" "trigger_relay"
+"targetname" "ch_log_b_chain"
+"target" "ch_wave_2_delay"
+}
+{
+"classname" "trigger_relay"
+"targetname" "ch_log_b_chain"
+"target" "ch_line_bbd_1"
+}
+
+// Log triggers
+{
+"classname" "trigger_once"
+"target" "ch_log_a"
+{
+( -620 -200 128 ) ( -780 -200 128 ) ( -780 -40 128 ) common/trigger 0 0 0 0.25 0.25 0 0 0
+( -620 -40 0 ) ( -780 -40 0 ) ( -780 -200 0 ) common/trigger 0 0 0 0.25 0.25 0 0 0
+( -620 -40 0 ) ( -620 -40 128 ) ( -780 -40 128 ) common/trigger 0 0 0 0.25 0.25 0 0 0
+( -780 -200 0 ) ( -780 -200 128 ) ( -620 -200 128 ) common/trigger 0 0 0 0.25 0.25 0 0 0
+( -620 -200 0 ) ( -620 -200 128 ) ( -620 -40 128 ) common/trigger 0 0 0 0.25 0.25 0 0 0
+( -780 -40 0 ) ( -780 -40 128 ) ( -780 -200 128 ) common/trigger 0 0 0 0.25 0.25 0 0 0
+}
+}
+{
+"classname" "trigger_once"
+"target" "ch_log_b"
+{
+( 780 -140 128 ) ( 620 -140 128 ) ( 620 20 128 ) common/trigger 0 0 0 0.25 0.25 0 0 0
+( 780 20 0 ) ( 620 20 0 ) ( 620 -140 0 ) common/trigger 0 0 0 0.25 0.25 0 0 0
+( 780 20 0 ) ( 780 20 128 ) ( 620 20 128 ) common/trigger 0 0 0 0.25 0.25 0 0 0
+( 620 -140 0 ) ( 620 -140 128 ) ( 780 -140 128 ) common/trigger 0 0 0 0.25 0.25 0 0 0
+( 780 -140 0 ) ( 780 -140 128 ) ( 780 20 128 ) common/trigger 0 0 0 0.25 0.25 0 0 0
+( 620 20 0 ) ( 620 20 128 ) ( 620 -140 128 ) common/trigger 0 0 0 0.25 0.25 0 0 0
+}
+}
+{
+"classname" "trigger_once"
+"target" "ch_log_c"
+{
+( 96 190 128 ) ( -96 190 128 ) ( -96 320 128 ) common/trigger 0 0 0 0.25 0.25 0 0 0
+( 96 320 0 ) ( -96 320 0 ) ( -96 190 0 ) common/trigger 0 0 0 0.25 0.25 0 0 0
+( 96 320 0 ) ( 96 320 128 ) ( -96 320 128 ) common/trigger 0 0 0 0.25 0.25 0 0 0
+( -96 190 0 ) ( -96 190 128 ) ( 96 190 128 ) common/trigger 0 0 0 0.25 0.25 0 0 0
+( 96 190 0 ) ( 96 190 128 ) ( 96 320 128 ) common/trigger 0 0 0 0.25 0.25 0 0 0
+( -96 320 0 ) ( -96 320 128 ) ( -96 190 128 ) common/trigger 0 0 0 0.25 0.25 0 0 0
+}
+}
+
+// Objective exit in north chamber
+{
+"classname" "target_rustchain_exit"
+"targetname" "ch_exit"
+"origin" "0 650 32"
+}
+{
+"classname" "trigger_once"
+"target" "ch_exit"
+{
+( 128 600 128 ) ( -128 600 128 ) ( -128 736 128 ) common/trigger 0 0 0 0.25 0.25 0 0 0
+( 128 736 0 ) ( -128 736 0 ) ( -128 600 0 ) common/trigger 0 0 0 0.25 0.25 0 0 0
+( 128 736 0 ) ( 128 736 128 ) ( -128 736 128 ) common/trigger 0 0 0 0.25 0.25 0 0 0
+( -128 600 0 ) ( -128 600 128 ) ( 128 600 128 ) common/trigger 0 0 0 0.25 0.25 0 0 0
+( 128 600 0 ) ( 128 600 128 ) ( 128 736 128 ) common/trigger 0 0 0 0.25 0.25 0 0 0
+( -128 736 0 ) ( -128 736 128 ) ( -128 600 128 ) common/trigger 0 0 0 0.25 0.25 0 0 0
+}
+}
+
+// Start objective + failsafe progression
+{
+"classname" "trigger_once"
+"target" "ch_start_chain"
+{
+( 120 -380 128 ) ( -120 -380 128 ) ( -120 -220 128 ) common/trigger 0 0 0 0.25 0.25 0 0 0
+( 120 -220 0 ) ( -120 -220 0 ) ( -120 -380 0 ) common/trigger 0 0 0 0.25 0.25 0 0 0
+( 120 -220 0 ) ( 120 -220 128 ) ( -120 -220 128 ) common/trigger 0 0 0 0.25 0.25 0 0 0
+( -120 -380 0 ) ( -120 -380 128 ) ( 120 -380 128 ) common/trigger 0 0 0 0.25 0.25 0 0 0
+( 120 -380 0 ) ( 120 -380 128 ) ( 120 -220 128 ) common/trigger 0 0 0 0.25 0.25 0 0 0
+( -120 -220 0 ) ( -120 -220 128 ) ( -120 -380 128 ) common/trigger 0 0 0 0.25 0.25 0 0 0
+}
+}
+{
+"classname" "trigger_relay"
+"targetname" "ch_start_chain"
+"target" "ch_obj_start"
+}
+{
+"classname" "target_delay"
+"targetname" "ch_failsafe_delay"
+"delay" "210"
+"target" "ch_failsafe_chain"
+}
+{
+"classname" "trigger_relay"
+"targetname" "ch_start_chain"
+"target" "ch_failsafe_delay"
+}
+{
+"classname" "trigger_relay"
+"targetname" "ch_failsafe_chain"
+"target" "ch_door_exit"
+}
+{
+"classname" "target_rustchain_objective"
+"targetname" "ch_failsafe_line"
+"message" "FAILSAFE"
+"netname" "Emergency override opened the chamber door."
+}
+{
+"classname" "trigger_relay"
+"targetname" "ch_failsafe_chain"
+"target" "ch_failsafe_line"
+}

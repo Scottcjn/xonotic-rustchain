@@ -43,6 +43,7 @@ cleanup() {
     [ -n "$DISCORD_PID" ] && kill $DISCORD_PID 2>/dev/null && echo "  Stopped Discord bridge"
     [ -n "$ML_PID" ] && kill $ML_PID 2>/dev/null && echo "  Stopped ML trainer"
     [ -n "$LLM_PID" ] && kill $LLM_PID 2>/dev/null && echo "  Stopped LLM brain"
+    [ -n "$REWARDS_PID" ] && kill $REWARDS_PID 2>/dev/null && echo "  Stopped RTC rewards bridge"
 
     echo -e "${GREEN}[System] Goodbye!${NC}"
     exit 0
@@ -87,11 +88,19 @@ fi
 # Wait for bridges to initialize
 sleep 2
 
+# Start RTC rewards bridge (on-chain payouts)
+echo -e "${CYAN}[4/5] Starting RTC rewards bridge...${NC}"
+if [ -f "rustchain_rewards_bridge.py" ]; then
+    PYTHONUNBUFFERED=1 python3 rustchain_rewards_bridge.py > /tmp/arena_rewards.log 2>&1 &
+    REWARDS_PID=$!
+    echo "  PID: $REWARDS_PID"
+fi
+
 # Launch Xonotic
-echo -e "${CYAN}[4/4] Launching Xonotic...${NC}"
+echo -e "${CYAN}[5/5] Launching Xonotic...${NC}"
 echo ""
 
-./xonotic-linux64-sdl \
+./xonotic-linux64-sophia \
     +exec rustcore_bots.cfg \
     +log_file "server.log" \
     +sv_eventlog 1 \

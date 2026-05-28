@@ -183,29 +183,31 @@ def init_db():
     return conn
 
 def award_rtc(conn, player, event_type, amount):
-    wallet = f"arena-{player.lower()}"
+    """Discord-side reward accounting is now PASSIVE — rustchain_rewards_bridge.py
+    is the canonical writer for both local DB and on-chain payouts.
+    This function still RETURNS the running total for Discord embed display,
+    but no longer writes to the DB (eliminates the double-count bug Codex flagged
+    2026-05-28). To re-enable double-writing, restore the INSERT/UPDATE block."""
     c = conn.cursor()
-    c.execute('INSERT INTO rewards (timestamp, player, wallet, event_type, amount) VALUES (?, ?, ?, ?, ?)',
-              (datetime.now().isoformat(), player, wallet, event_type, str(amount)))
     c.execute('INSERT OR IGNORE INTO stats (player, total_rtc) VALUES (?, "0")', (player,))
     c.execute('SELECT total_rtc FROM stats WHERE player = ?', (player,))
     current = Decimal(c.fetchone()[0])
-    new_total = current + amount
-    c.execute('UPDATE stats SET total_rtc = ?, kills = kills + ? WHERE player = ?',
-              (str(new_total), 1 if event_type == "kill" else 0, player))
-    conn.commit()
-    return new_total
+    return current + amount  # not committed
 
 def parse_kill_event(line):
-    patterns = [
-        r':kill:\d+:\d+:\d+:([^:]+):([^:]+)',
-        r'(\w+) fragged (\w+)',
-        r'(\w+) was fragged by (\w+)',
-    ]
-    for pattern in patterns:
-        match = re.search(pattern, line)
-        if match:
-            return match.group(1).strip(), match.group(2).strip()
+    """Return (killer, victim) — note third pattern has reversed groups so
+    we extract killer first regardless of phrasing."""
+    # Active-voice patterns: group(1) = killer, group(2) = victim
+    m = re.search(r':kill:\d+:\d+:\d+:([^:]+):([^:]+)', line)
+    if m:
+        return m.group(1).strip(), m.group(2).strip()
+    m = re.search(r'(\w+) fragged (\w+)', line)
+    if m:
+        return m.group(1).strip(), m.group(2).strip()
+    # Passive voice: "X was fragged by Y" — X is victim, Y is killer (FIX 2026-05-28)
+    m = re.search(r'(\w+) was fragged by (\w+)', line)
+    if m:
+        return m.group(2).strip(), m.group(1).strip()
     return None, None
 
 def monitor_log(conn):

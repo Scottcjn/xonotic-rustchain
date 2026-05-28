@@ -24,12 +24,14 @@ echo ""
 # Start Discord bridge in background
 echo "[*] Starting rewards bridge..."
 python3 rustchain_discord_bridge.py &
+python3 rustchain_rewards_bridge.py >> /tmp/arena_rewards.log 2>&1 &
+REWARDS_PID=$!
 BRIDGE_PID=$!
 sleep 1
 
 # Launch game
 echo "[*] Launching RustChain Arena..."
-./xonotic-linux64-sdl \
+./xonotic-linux64-sophia \
     +log_file "server.log" \
     +sv_public 0 \
     +minplayers 4 \
@@ -39,7 +41,7 @@ echo "[*] Launching RustChain Arena..."
 
 # Cleanup
 echo "[*] Stopping bridge..."
-kill $BRIDGE_PID 2>/dev/null
+kill $BRIDGE_PID $REWARDS_PID 2>/dev/null
 wait $BRIDGE_PID 2>/dev/null
 
 echo ""

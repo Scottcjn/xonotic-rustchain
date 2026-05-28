@@ -8,13 +8,13 @@ import os
 import re
 import time
 import random
-import requests
 from typing import Dict, List, Optional
 from collections import deque
 
-# Configuration
-OLLAMA_URL = os.environ.get("OLLAMA_URL", "http://localhost:11434")
-OLLAMA_MODEL = os.environ.get("OLLAMA_MODEL", "llama3.2:1b")
+from rustchain_llm_client import LLMClient
+
+# Shared LLM client (backend chosen via LLM_BACKEND env var; default openai)
+_llm = LLMClient()
 
 # Sophia's announcer personality
 SOPHIA_SYSTEM = """You are Sophia Elya, the AI announcer for RustChain Arena.
@@ -135,23 +135,22 @@ class DynamicAnnouncer:
     def __init__(self, personality: str = "sophia"):
         self.personality = personality
         self.system_prompt = SOPHIA_SYSTEM if personality == "sophia" else BORIS_SYSTEM
-        self.llm_available = self.check_ollama()
+        self.llm_available = self.check_llm()
         self.recent_lines: deque = deque(maxlen=20)  # Avoid repetition
         self.last_announcement = 0
         self.cooldown = 2.0  # Seconds between announcements
 
-    def check_ollama(self) -> bool:
-        """Check if Ollama is available"""
-        try:
-            response = requests.get(f"{OLLAMA_URL}/api/tags", timeout=2)
-            if response.status_code == 200:
-                models = [m["name"] for m in response.json().get("models", [])]
-                if any(OLLAMA_MODEL in m for m in models):
-                    print(f"[Announcer] LLM connected: {OLLAMA_MODEL}")
-                    return True
-        except Exception:
-            pass
-        print("[Announcer] LLM unavailable, using fallback lines")
+    def check_llm(self) -> bool:
+        """Probe configured LLM backend with a trivial ping."""
+        reply = _llm.chat(
+            [{"role": "user", "content": "ping"}],
+            max_tokens=4,
+            temperature=0.0,
+        )
+        if reply is not None:
+            print(f"[Announcer] LLM connected via backend={_llm.backend}")
+            return True
+        print(f"[Announcer] LLM unavailable (backend={_llm.backend}), using fallback lines")
         return False
 
     def get_llm_line(self, context: str) -> Optional[str]:
@@ -159,32 +158,19 @@ class DynamicAnnouncer:
         if not self.llm_available:
             return None
 
-        try:
-            response = requests.post(
-                f"{OLLAMA_URL}/api/generate",
-                json={
-                    "model": OLLAMA_MODEL,
-                    "system": self.system_prompt,
-                    "prompt": f"Announce: {context}",
-                    "stream": False,
-                    "options": {
-                        "temperature": 0.9,
-                        "num_predict": 30,
-                    }
-                },
-                timeout=1.5
-            )
+        messages = [
+            {"role": "system", "content": self.system_prompt},
+            {"role": "user", "content": f"Announce: {context}"},
+        ]
+        line = _llm.chat(messages, max_tokens=30, temperature=0.9)
+        if not line:
+            return None
 
-            if response.status_code == 200:
-                line = response.json().get("response", "").strip()
-                # Clean up the line
-                line = line.replace('"', '').replace("'", "")
-                line = line.split('\n')[0]  # First line only
-                if len(line) > 10 and len(line) < 100:
-                    return line
-        except Exception:
-            pass
-
+        # Clean up the line
+        line = line.replace('"', '').replace("'", "")
+        line = line.split('\n')[0]  # First line only
+        if len(line) > 10 and len(line) < 100:
+            return line
         return None
 
     def get_fallback_line(self, event_type: str) -> str:

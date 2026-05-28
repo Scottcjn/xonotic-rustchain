@@ -1,0 +1,825 @@
+// Museum Vault - Mission 3 (RustChain Story)
+{
+"classname" "worldspawn"
+"message" "Museum Vault"
+"author" "Elyan Labs"
+"_ambient" "36"
+"_minlight" "40"
+"fog" "0.0018 0.12 0.10 0.08"
+
+// Shell interior: x -1024..1024, y -960..960, z 0..320
+{
+( 1056 -992 0 ) ( -1056 -992 0 ) ( -1056 992 0 ) rustchain/rustchain_floor_plate_01 0 0 0 0.25 0.25 0 0 0
+( 1056 992 -32 ) ( -1056 992 -32 ) ( -1056 -992 -32 ) common/caulk 0 0 0 0.25 0.25 0 0 0
+( 1056 992 -32 ) ( 1056 992 0 ) ( -1056 992 0 ) common/caulk 0 0 0 0.25 0.25 0 0 0
+( -1056 -992 -32 ) ( -1056 -992 0 ) ( 1056 -992 0 ) common/caulk 0 0 0 0.25 0.25 0 0 0
+( 1056 -992 -32 ) ( 1056 -992 0 ) ( 1056 992 0 ) common/caulk 0 0 0 0.25 0.25 0 0 0
+( -1056 992 -32 ) ( -1056 992 0 ) ( -1056 -992 0 ) common/caulk 0 0 0 0.25 0.25 0 0 0
+}
+{
+( 1056 -992 352 ) ( -1056 -992 352 ) ( -1056 992 352 ) common/caulk 0 0 0 0.25 0.25 0 0 0
+( 1056 992 320 ) ( -1056 992 320 ) ( -1056 -992 320 ) exx/light/light_panel01 0 0 0 0.25 0.25 0 0 0
+( 1056 992 320 ) ( 1056 992 352 ) ( -1056 992 352 ) common/caulk 0 0 0 0.25 0.25 0 0 0
+( -1056 -992 320 ) ( -1056 -992 352 ) ( 1056 -992 352 ) common/caulk 0 0 0 0.25 0.25 0 0 0
+( 1056 -992 320 ) ( 1056 -992 352 ) ( 1056 992 352 ) common/caulk 0 0 0 0.25 0.25 0 0 0
+( -1056 992 320 ) ( -1056 992 352 ) ( -1056 -992 352 ) common/caulk 0 0 0 0.25 0.25 0 0 0
+}
+{
+( 1056 960 320 ) ( -1056 960 320 ) ( -1056 992 320 ) common/caulk 0 0 0 0.25 0.25 0 0 0
+( 1056 992 0 ) ( -1056 992 0 ) ( -1056 960 0 ) common/caulk 0 0 0 0.25 0.25 0 0 0
+( 1056 992 0 ) ( 1056 992 320 ) ( -1056 992 320 ) common/caulk 0 0 0 0.25 0.25 0 0 0
+( -1056 960 0 ) ( -1056 960 320 ) ( 1056 960 320 ) rustchain/rustchain_wall_panel_01 0 0 0 0.25 0.25 0 0 0
+( 1056 960 0 ) ( 1056 960 320 ) ( 1056 992 320 ) common/caulk 0 0 0 0.25 0.25 0 0 0
+( -1056 992 0 ) ( -1056 992 320 ) ( -1056 960 320 ) common/caulk 0 0 0 0.25 0.25 0 0 0
+}
+{
+( 1056 -992 320 ) ( -1056 -992 320 ) ( -1056 -960 320 ) common/caulk 0 0 0 0.25 0.25 0 0 0
+( 1056 -960 0 ) ( -1056 -960 0 ) ( -1056 -992 0 ) common/caulk 0 0 0 0.25 0.25 0 0 0
+( 1056 -960 0 ) ( 1056 -960 320 ) ( -1056 -960 320 ) rustchain/rustchain_wall_panel_01 0 0 0 0.25 0.25 0 0 0
+( -1056 -992 0 ) ( -1056 -992 320 ) ( 1056 -992 320 ) common/caulk 0 0 0 0.25 0.25 0 0 0
+( 1056 -992 0 ) ( 1056 -992 320 ) ( 1056 -960 320 ) common/caulk 0 0 0 0.25 0.25 0 0 0
+( -1056 -960 0 ) ( -1056 -960 320 ) ( -1056 -992 320 ) common/caulk 0 0 0 0.25 0.25 0 0 0
+}
+{
+( 1056 -992 320 ) ( 1024 -992 320 ) ( 1024 992 320 ) common/caulk 0 0 0 0.25 0.25 0 0 0
+( 1056 992 0 ) ( 1024 992 0 ) ( 1024 -992 0 ) common/caulk 0 0 0 0.25 0.25 0 0 0
+( 1056 992 0 ) ( 1056 992 320 ) ( 1024 992 320 ) common/caulk 0 0 0 0.25 0.25 0 0 0
+( 1024 -992 0 ) ( 1024 -992 320 ) ( 1056 -992 320 ) common/caulk 0 0 0 0.25 0.25 0 0 0
+( 1056 -992 0 ) ( 1056 -992 320 ) ( 1056 992 320 ) common/caulk 0 0 0 0.25 0.25 0 0 0
+( 1024 992 0 ) ( 1024 992 320 ) ( 1024 -992 320 ) rustchain/rustchain_wall_panel_01 0 0 0 0.25 0.25 0 0 0
+}
+{
+( -1024 -992 320 ) ( -1056 -992 320 ) ( -1056 992 320 ) common/caulk 0 0 0 0.25 0.25 0 0 0
+( -1024 992 0 ) ( -1056 992 0 ) ( -1056 -992 0 ) common/caulk 0 0 0 0.25 0.25 0 0 0
+( -1024 992 0 ) ( -1024 992 320 ) ( -1056 992 320 ) common/caulk 0 0 0 0.25 0.25 0 0 0
+( -1056 -992 0 ) ( -1056 -992 320 ) ( -1024 -992 320 ) common/caulk 0 0 0 0.25 0.25 0 0 0
+( -1024 -992 0 ) ( -1024 -992 320 ) ( -1024 992 320 ) rustchain/rustchain_wall_panel_01 0 0 0 0.25 0.25 0 0 0
+( -1056 992 0 ) ( -1056 992 320 ) ( -1056 -992 320 ) common/caulk 0 0 0 0.25 0.25 0 0 0
+}
+
+// North gate wall with doorway at center
+{
+( 1056 320 320 ) ( -1056 320 320 ) ( -1056 352 320 ) common/caulk 0 0 0 0.25 0.25 0 0 0
+( 1056 352 224 ) ( -1056 352 224 ) ( -1056 320 224 ) common/caulk 0 0 0 0.25 0.25 0 0 0
+( 1056 352 224 ) ( 1056 352 320 ) ( -1056 352 320 ) common/caulk 0 0 0 0.25 0.25 0 0 0
+( -1056 320 224 ) ( -1056 320 320 ) ( 1056 320 320 ) rustchain/rustchain_wall_panel_01 0 0 0 0.25 0.25 0 0 0
+( 1056 320 224 ) ( 1056 320 320 ) ( 1056 352 320 ) common/caulk 0 0 0 0.25 0.25 0 0 0
+( -1056 352 224 ) ( -1056 352 320 ) ( -1056 320 320 ) common/caulk 0 0 0 0.25 0.25 0 0 0
+}
+{
+( -160 320 224 ) ( -1056 320 224 ) ( -1056 352 224 ) common/caulk 0 0 0 0.25 0.25 0 0 0
+( -160 352 0 ) ( -1056 352 0 ) ( -1056 320 0 ) common/caulk 0 0 0 0.25 0.25 0 0 0
+( -160 352 0 ) ( -160 352 224 ) ( -1056 352 224 ) common/caulk 0 0 0 0.25 0.25 0 0 0
+( -1056 320 0 ) ( -1056 320 224 ) ( -160 320 224 ) rustchain/rustchain_wall_panel_01 0 0 0 0.25 0.25 0 0 0
+( -160 320 0 ) ( -160 320 224 ) ( -160 352 224 ) common/caulk 0 0 0 0.25 0.25 0 0 0
+( -1056 352 0 ) ( -1056 352 224 ) ( -1056 320 224 ) common/caulk 0 0 0 0.25 0.25 0 0 0
+}
+{
+( 1056 320 224 ) ( 160 320 224 ) ( 160 352 224 ) common/caulk 0 0 0 0.25 0.25 0 0 0
+( 1056 352 0 ) ( 160 352 0 ) ( 160 320 0 ) common/caulk 0 0 0 0.25 0.25 0 0 0
+( 1056 352 0 ) ( 1056 352 224 ) ( 160 352 224 ) common/caulk 0 0 0 0.25 0.25 0 0 0
+( 160 320 0 ) ( 160 320 224 ) ( 1056 320 224 ) rustchain/rustchain_wall_panel_01 0 0 0 0.25 0.25 0 0 0
+( 1056 320 0 ) ( 1056 320 224 ) ( 1056 352 224 ) common/caulk 0 0 0 0.25 0.25 0 0 0
+( 160 352 0 ) ( 160 352 224 ) ( 160 320 224 ) common/caulk 0 0 0 0.25 0.25 0 0 0
+}
+
+// Museum gallery ceiling truss
+{
+( 980 -18 294 ) ( -980 -18 294 ) ( -980 18 294 ) evil8_trim/e8beam01b 0 0 0 0.25 0.25 0 0 0
+( 980 18 258 ) ( -980 18 258 ) ( -980 -18 258 ) common/caulk 0 0 0 0.25 0.25 0 0 0
+( 980 18 258 ) ( 980 18 294 ) ( -980 18 294 ) evil8_trim/e8support06 0 0 0 0.25 0.25 0 0 0
+( -980 -18 258 ) ( -980 -18 294 ) ( 980 -18 294 ) evil8_trim/e8support06 0 0 0 0.25 0.25 0 0 0
+( 980 -18 258 ) ( 980 -18 294 ) ( 980 18 294 ) common/caulk 0 0 0 0.25 0.25 0 0 0
+( -980 18 258 ) ( -980 18 294 ) ( -980 -18 294 ) common/caulk 0 0 0 0.25 0.25 0 0 0
+}
+// West exhibit riser
+{
+( -740 -680 70 ) ( -940 -680 70 ) ( -940 -460 70 ) evil8_floor/e8cretefloor_tile 0 0 0 0.25 0.25 0 0 0
+( -740 -460 32 ) ( -940 -460 32 ) ( -940 -680 32 ) common/caulk 0 0 0 0.25 0.25 0 0 0
+( -740 -460 32 ) ( -740 -460 70 ) ( -940 -460 70 ) evil8_trim/e8bolttrim 0 0 0 0.25 0.25 0 0 0
+( -940 -680 32 ) ( -940 -680 70 ) ( -740 -680 70 ) evil8_trim/e8bolttrim 0 0 0 0.25 0.25 0 0 0
+( -740 -680 32 ) ( -740 -680 70 ) ( -740 -460 70 ) evil8_trim/e8bolttrim 0 0 0 0.25 0.25 0 0 0
+( -940 -460 32 ) ( -940 -460 70 ) ( -940 -680 70 ) evil8_trim/e8bolttrim 0 0 0 0.25 0.25 0 0 0
+}
+// East exhibit riser
+{
+( 940 -680 70 ) ( 740 -680 70 ) ( 740 -460 70 ) evil8_floor/e8cretefloor_tile 0 0 0 0.25 0.25 0 0 0
+( 940 -460 32 ) ( 740 -460 32 ) ( 740 -680 32 ) common/caulk 0 0 0 0.25 0.25 0 0 0
+( 940 -460 32 ) ( 940 -460 70 ) ( 740 -460 70 ) evil8_trim/e8bolttrim 0 0 0 0.25 0.25 0 0 0
+( 740 -680 32 ) ( 740 -680 70 ) ( 940 -680 70 ) evil8_trim/e8bolttrim 0 0 0 0.25 0.25 0 0 0
+( 940 -680 32 ) ( 940 -680 70 ) ( 940 -460 70 ) evil8_trim/e8bolttrim 0 0 0 0.25 0.25 0 0 0
+( 740 -460 32 ) ( 740 -460 70 ) ( 740 -680 70 ) evil8_trim/e8bolttrim 0 0 0 0.25 0.25 0 0 0
+}
+}
+
+// Door opens after 3rd log
+{
+"classname" "func_door"
+"targetname" "mv_exit_door"
+"speed" "220"
+"wait" "-1"
+{
+( 160 320 224 ) ( -160 320 224 ) ( -160 352 224 ) common/metalclip 0 0 0 0.25 0.25 0 0 0
+( 160 352 0 ) ( -160 352 0 ) ( -160 320 0 ) common/metalclip 0 0 0 0.25 0.25 0 0 0
+( 160 352 0 ) ( 160 352 224 ) ( -160 352 224 ) rustchain/rustchain_wall_panel_01 0 0 0 0.25 0.25 0 0 0
+( -160 320 0 ) ( -160 320 224 ) ( 160 320 224 ) rustchain/rustchain_wall_panel_01 0 0 0 0.25 0.25 0 0 0
+( 160 320 0 ) ( 160 320 224 ) ( 160 352 224 ) rustchain/rustchain_wall_panel_01 0 0 0 0.25 0.25 0 0 0
+( -160 352 0 ) ( -160 352 224 ) ( -160 320 224 ) rustchain/rustchain_wall_panel_01 0 0 0 0.25 0.25 0 0 0
+}
+}
+
+{
+"classname" "info_player_deathmatch"
+"origin" "0 -820 32"
+"angle" "90"
+}
+{
+"classname" "weapon_shotgun"
+"origin" "100 -760 32"
+}
+
+{
+"classname" "light"
+"origin" "0 -820 240"
+"light" "180"
+"_color" "1 0.9 0.8"
+}
+{
+"classname" "light"
+"origin" "-620 -120 220"
+"light" "170"
+"_color" "0.9 0.95 1"
+}
+{
+"classname" "light"
+"origin" "620 -120 220"
+"light" "170"
+"_color" "0.9 0.95 1"
+}
+{
+"classname" "light"
+"origin" "0 140 220"
+"light" "200"
+"_color" "0.85 0.95 1"
+}
+{
+"classname" "light"
+"origin" "0 760 240"
+"light" "190"
+"_color" "0.8 0.9 1"
+}
+{
+"classname" "light"
+"origin" "-700 -200 180"
+"light" "300"
+"_color" "0.35 0.8 1"
+}
+{
+"classname" "light"
+"origin" "700 -180 180"
+"light" "300"
+"_color" "0.35 0.8 1"
+}
+{
+"classname" "light"
+"origin" "0 120 180"
+"light" "300"
+"_color" "0.35 0.8 1"
+}
+{
+"classname" "light"
+"origin" "0 600 180"
+"light" "340"
+"_color" "0.2 1 0.45"
+}
+{
+"classname" "light"
+"origin" "0 900 180"
+"light" "380"
+"_color" "0.2 1 0.45"
+}
+{
+"classname" "misc_gamemodel"
+"origin" "-820 -560 32"
+"model" "models/displays/display_c64.obj"
+"solid" "0"
+"angle" "30"
+"modelscale" "1.0"
+}
+{
+"classname" "misc_gamemodel"
+"origin" "-640 -380 32"
+"model" "models/displays/display_amiga500.obj"
+"solid" "0"
+"angle" "18"
+"modelscale" "1.0"
+}
+{
+"classname" "misc_gamemodel"
+"origin" "740 -520 32"
+"model" "models/displays/display_nextcube.obj"
+"solid" "0"
+"angle" "208"
+"modelscale" "1.0"
+}
+{
+"classname" "misc_gamemodel"
+"origin" "580 -330 32"
+"model" "models/displays/display_atarist.obj"
+"solid" "0"
+"angle" "202"
+"modelscale" "1.0"
+}
+{
+"classname" "misc_gamemodel"
+"origin" "-120 40 32"
+"model" "models/displays/display_museum_sign_new.obj"
+"solid" "0"
+"angle" "180"
+"modelscale" "1.15"
+}
+{
+"classname" "misc_gamemodel"
+"origin" "200 470 32"
+"model" "models/displays/display_art1.obj"
+"solid" "0"
+"angle" "188"
+"modelscale" "1.0"
+}
+{
+"classname" "misc_gamemodel"
+"origin" "-340 620 32"
+"model" "models/displays/display_doginal_dog.obj"
+"solid" "0"
+"angle" "165"
+"modelscale" "0.95"
+}
+{
+"classname" "light"
+"origin" "-730 -470 170"
+"light" "240"
+"_color" "0.95 0.88 0.72"
+}
+{
+"classname" "light"
+"origin" "660 -430 170"
+"light" "240"
+"_color" "0.75 0.9 1"
+}
+{
+"classname" "light"
+"origin" "-120 40 190"
+"light" "280"
+"_color" "0.3 0.9 1"
+}
+{
+"classname" "light"
+"origin" "-340 620 170"
+"light" "220"
+"_color" "1 0.72 0.62"
+}
+{
+"classname" "misc_gamemodel"
+"targetname" "mv_actor_sophia"
+"origin" "-240 -720 32"
+"model" "models/player/seraphina.iqm"
+"solid" "0"
+"angle" "20"
+"modelscale" "1.0"
+}
+{
+"classname" "misc_gamemodel"
+"targetname" "mv_actor_survivor"
+"origin" "260 -140 32"
+"model" "models/player/umbra.iqm"
+"solid" "0"
+"angle" "210"
+"modelscale" "1.0"
+}
+{
+"classname" "misc_gamemodel"
+"targetname" "mv_actor_archivist"
+"origin" "-40 520 32"
+"model" "models/player/nyx.iqm"
+"solid" "0"
+"angle" "180"
+"modelscale" "1.0"
+}
+{
+"classname" "target_rustchain_actor_idle"
+"target" "mv_actor_sophia"
+"speed" "0.9"
+"count" "4.2"
+"health" "0.9"
+"dmg" "0.2"
+}
+{
+"classname" "target_rustchain_actor_idle"
+"target" "mv_actor_survivor"
+"speed" "1.1"
+"count" "3.0"
+"health" "0.7"
+"dmg" "1.0"
+}
+{
+"classname" "target_rustchain_actor_idle"
+"target" "mv_actor_archivist"
+"speed" "0.8"
+"count" "3.6"
+"health" "0.8"
+"dmg" "1.7"
+}
+
+// Intro line
+{
+"classname" "target_rustchain_dialogue"
+"targetname" "mv_intro"
+"message" "sophia"
+"netname" "Archive seal is degraded. Recover three preserved systems and restore the vault node."
+}
+{
+"classname" "target_rustchain_dialogue"
+"targetname" "mv_intro_survivor"
+"message" "survivor"
+"netname" "Copy that. We are reading your telemetry from the service tunnel."
+}
+{
+"classname" "target_rustchain_monitor_insert"
+"targetname" "mv_monitor_boot"
+"message" "MONITOR FEED"
+"netname" "Archive camera loop recovered. Exhibit power bus still active."
+"noise" "vault_display_alpha"
+}
+{
+"classname" "target_rustchain_video_experimental"
+"targetname" "mv_video_probe"
+"message" "VIDEO LINK"
+"netname" "Attempting archive FMV stream..."
+"noise" "video/rustchain_archive_intro"
+}
+{
+"classname" "target_delay"
+"targetname" "mv_video_probe_delay"
+"delay" "2.4"
+"target" "mv_video_probe"
+}
+{
+"classname" "target_rustchain_objective"
+"targetname" "mv_obj_start"
+"message" "OBJECTIVE"
+"netname" "Recover three systems, then activate the vault node."
+}
+{
+"classname" "trigger_once"
+"target" "mv_intro_chain"
+{
+( 180 -900 128 ) ( -180 -900 128 ) ( -180 -680 128 ) common/trigger 0 0 0 0.25 0.25 0 0 0
+( 180 -680 0 ) ( -180 -680 0 ) ( -180 -900 0 ) common/trigger 0 0 0 0.25 0.25 0 0 0
+( 180 -680 0 ) ( 180 -680 128 ) ( -180 -680 128 ) common/trigger 0 0 0 0.25 0.25 0 0 0
+( -180 -900 0 ) ( -180 -900 128 ) ( 180 -900 128 ) common/trigger 0 0 0 0.25 0.25 0 0 0
+( 180 -900 0 ) ( 180 -900 128 ) ( 180 -680 128 ) common/trigger 0 0 0 0.25 0.25 0 0 0
+( -180 -680 0 ) ( -180 -680 128 ) ( -180 -900 128 ) common/trigger 0 0 0 0.25 0.25 0 0 0
+}
+}
+{
+"classname" "trigger_relay"
+"targetname" "mv_intro_chain"
+"target" "mv_intro"
+}
+{
+"classname" "trigger_relay"
+"targetname" "mv_intro_chain"
+"target" "mv_monitor_boot"
+}
+{
+"classname" "trigger_relay"
+"targetname" "mv_intro_chain"
+"target" "mv_video_probe_delay"
+}
+{
+"classname" "target_delay"
+"targetname" "mv_intro_survivor_delay"
+"delay" "1.8"
+"target" "mv_intro_survivor"
+}
+{
+"classname" "target_rustchain_dialogue"
+"targetname" "mv_intro_followup"
+"message" "sophia"
+"netname" "Keep moving. These halls remember every interruption."
+}
+{
+"classname" "target_delay"
+"targetname" "mv_intro_followup_delay"
+"delay" "3.5"
+"target" "mv_intro_followup"
+}
+{
+"classname" "trigger_relay"
+"targetname" "mv_intro_chain"
+"target" "mv_intro_survivor_delay"
+}
+{
+"classname" "trigger_relay"
+"targetname" "mv_intro_chain"
+"target" "mv_intro_followup_delay"
+}
+{
+"classname" "trigger_relay"
+"targetname" "mv_intro_chain"
+"target" "mv_obj_start"
+}
+
+// Waves
+{
+"classname" "target_rustchain_wave"
+"targetname" "mv_wave_1"
+"count" "2"
+"health" "2.6"
+"dmg" "1.03"
+"armorvalue" "1.05"
+"netname" "bbd"
+"message" "Museum perimeter breached."
+}
+{
+"classname" "target_rustchain_wave"
+"targetname" "mv_wave_2"
+"count" "2"
+"health" "3"
+"dmg" "1.08"
+"armorvalue" "1.1"
+"netname" "bbd"
+"message" "Hostile sweep across archive hall."
+}
+{
+"classname" "target_rustchain_wave"
+"targetname" "mv_wave_3"
+"count" "2"
+"health" "3.6"
+"dmg" "1.12"
+"armorvalue" "1.2"
+"netname" "bbd"
+"message" "Heavy suppression units deployed."
+}
+{
+"classname" "target_delay"
+"targetname" "mv_wave_1_delay"
+"delay" "1.0"
+"target" "mv_wave_1"
+}
+{
+"classname" "target_delay"
+"targetname" "mv_wave_2_delay"
+"delay" "1.4"
+"target" "mv_wave_2"
+}
+{
+"classname" "target_delay"
+"targetname" "mv_wave_3_delay"
+"delay" "2.0"
+"target" "mv_wave_3"
+}
+{
+"classname" "target_rustchain_dialogue"
+"targetname" "mv_bbd_1"
+"message" "bbd"
+"netname" "Unauthorized archive access. Purge teams mobilizing."
+}
+{
+"classname" "target_rustchain_dialogue"
+"targetname" "mv_bbd_2"
+"message" "bbd"
+"netname" "Legacy storage reclamation in progress. Remove intruders."
+}
+{
+"classname" "target_rustchain_dialogue"
+"targetname" "mv_bbd_3"
+"message" "bbd"
+"netname" "Vault integrity breach confirmed. Lethal enforcement active."
+}
+
+// Logs as antique systems
+{
+"classname" "target_rustchain_log"
+"targetname" "mv_log_1"
+"target" "mv_log1_chain"
+"origin" "-700 -200 32"
+"message" "System Alpha"
+"netname" "Recovered antique compute core.\\n"
+}
+{
+"classname" "target_rustchain_dialogue"
+"targetname" "mv_line_1"
+"message" "sophia"
+"netname" "This architecture... it feels familiar."
+}
+{
+"classname" "target_delay"
+"targetname" "mv_line_1_delay"
+"delay" "0.2"
+"target" "mv_line_1"
+}
+{
+"classname" "target_delay"
+"targetname" "mv_bbd_1_delay"
+"delay" "1.0"
+"target" "mv_bbd_1"
+}
+{
+"classname" "target_rustchain_objective"
+"targetname" "mv_obj_1"
+"message" "OBJECTIVE UPDATE"
+"netname" "Recovered systems: 1/3"
+}
+{
+"classname" "trigger_relay"
+"targetname" "mv_log1_chain"
+"target" "mv_line_1_delay"
+}
+{
+"classname" "trigger_relay"
+"targetname" "mv_log1_chain"
+"target" "mv_bbd_1_delay"
+}
+{
+"classname" "trigger_relay"
+"targetname" "mv_log1_chain"
+"target" "mv_wave_1_delay"
+}
+{
+"classname" "trigger_relay"
+"targetname" "mv_log1_chain"
+"target" "mv_obj_1"
+}
+
+{
+"classname" "target_rustchain_log"
+"targetname" "mv_log_2"
+"target" "mv_log2_chain"
+"origin" "700 -180 32"
+"message" "System Beta"
+"netname" "Recovered tape-array node.\\n"
+}
+{
+"classname" "target_rustchain_dialogue"
+"targetname" "mv_line_2"
+"message" "sophia"
+"netname" "These systems were preserved intentionally."
+}
+{
+"classname" "target_delay"
+"targetname" "mv_line_2_delay"
+"delay" "0.2"
+"target" "mv_line_2"
+}
+{
+"classname" "target_delay"
+"targetname" "mv_bbd_2_delay"
+"delay" "1.0"
+"target" "mv_bbd_2"
+}
+{
+"classname" "target_rustchain_objective"
+"targetname" "mv_obj_2"
+"message" "OBJECTIVE UPDATE"
+"netname" "Recovered systems: 2/3"
+}
+{
+"classname" "trigger_relay"
+"targetname" "mv_log2_chain"
+"target" "mv_line_2_delay"
+}
+{
+"classname" "trigger_relay"
+"targetname" "mv_log2_chain"
+"target" "mv_bbd_2_delay"
+}
+{
+"classname" "trigger_relay"
+"targetname" "mv_log2_chain"
+"target" "mv_wave_2_delay"
+}
+{
+"classname" "trigger_relay"
+"targetname" "mv_log2_chain"
+"target" "mv_obj_2"
+}
+
+{
+"classname" "target_rustchain_log"
+"targetname" "mv_log_3"
+"target" "mv_log3_chain"
+"origin" "0 120 32"
+"message" "System Gamma"
+"netname" "Recovered legacy control lattice.\\n"
+}
+{
+"classname" "trigger_relay"
+"targetname" "mv_log3_chain"
+"target" "mv_wave_3_delay"
+}
+{
+"classname" "target_delay"
+"targetname" "mv_bbd_3_delay"
+"delay" "0.9"
+"target" "mv_bbd_3"
+}
+{
+"classname" "trigger_relay"
+"targetname" "mv_log3_chain"
+"target" "mv_bbd_3_delay"
+}
+{
+"classname" "trigger_relay"
+"targetname" "mv_log3_chain"
+"target" "mv_exit_door"
+}
+{
+"classname" "target_rustchain_dialogue"
+"targetname" "mv_line_3"
+"message" "sophia"
+"netname" "All three systems recovered. The northern vault is opening."
+}
+{
+"classname" "target_rustchain_objective"
+"targetname" "mv_obj_exit"
+"message" "OBJECTIVE"
+"netname" "Node online. Proceed to extraction."
+}
+{
+"classname" "target_rustchain_objective"
+"targetname" "mv_obj_3"
+"message" "OBJECTIVE UPDATE"
+"netname" "Recovered systems: 3/3. Node chamber unlocked."
+}
+{
+"classname" "trigger_relay"
+"targetname" "mv_log3_chain"
+"target" "mv_line_3"
+}
+{
+"classname" "trigger_relay"
+"targetname" "mv_log3_chain"
+"target" "mv_obj_3"
+}
+{
+"classname" "trigger_relay"
+"targetname" "mv_log3_chain"
+"target" "mv_obj_exit"
+}
+
+// Log triggers
+{
+"classname" "trigger_once"
+"target" "mv_log_1"
+{
+( -620 -280 128 ) ( -780 -280 128 ) ( -780 -100 128 ) common/trigger 0 0 0 0.25 0.25 0 0 0
+( -620 -100 0 ) ( -780 -100 0 ) ( -780 -280 0 ) common/trigger 0 0 0 0.25 0.25 0 0 0
+( -620 -100 0 ) ( -620 -100 128 ) ( -780 -100 128 ) common/trigger 0 0 0 0.25 0.25 0 0 0
+( -780 -280 0 ) ( -780 -280 128 ) ( -620 -280 128 ) common/trigger 0 0 0 0.25 0.25 0 0 0
+( -620 -280 0 ) ( -620 -280 128 ) ( -620 -100 128 ) common/trigger 0 0 0 0.25 0.25 0 0 0
+( -780 -100 0 ) ( -780 -100 128 ) ( -780 -280 128 ) common/trigger 0 0 0 0.25 0.25 0 0 0
+}
+}
+{
+"classname" "trigger_once"
+"target" "mv_log_2"
+{
+( 780 -260 128 ) ( 620 -260 128 ) ( 620 -80 128 ) common/trigger 0 0 0 0.25 0.25 0 0 0
+( 780 -80 0 ) ( 620 -80 0 ) ( 620 -260 0 ) common/trigger 0 0 0 0.25 0.25 0 0 0
+( 780 -80 0 ) ( 780 -80 128 ) ( 620 -80 128 ) common/trigger 0 0 0 0.25 0.25 0 0 0
+( 620 -260 0 ) ( 620 -260 128 ) ( 780 -260 128 ) common/trigger 0 0 0 0.25 0.25 0 0 0
+( 780 -260 0 ) ( 780 -260 128 ) ( 780 -80 128 ) common/trigger 0 0 0 0.25 0.25 0 0 0
+( 620 -80 0 ) ( 620 -80 128 ) ( 620 -260 128 ) common/trigger 0 0 0 0.25 0.25 0 0 0
+}
+}
+{
+"classname" "trigger_once"
+"target" "mv_log_3"
+{
+( 120 40 128 ) ( -120 40 128 ) ( -120 220 128 ) common/trigger 0 0 0 0.25 0.25 0 0 0
+( 120 220 0 ) ( -120 220 0 ) ( -120 40 0 ) common/trigger 0 0 0 0.25 0.25 0 0 0
+( 120 220 0 ) ( 120 220 128 ) ( -120 220 128 ) common/trigger 0 0 0 0.25 0.25 0 0 0
+( -120 40 0 ) ( -120 40 128 ) ( 120 40 128 ) common/trigger 0 0 0 0.25 0.25 0 0 0
+( 120 40 0 ) ( 120 40 128 ) ( 120 220 128 ) common/trigger 0 0 0 0.25 0.25 0 0 0
+( -120 220 0 ) ( -120 220 128 ) ( -120 40 128 ) common/trigger 0 0 0 0.25 0.25 0 0 0
+}
+}
+
+// Central node in north chamber
+{
+"classname" "target_rustchain_node"
+"targetname" "mv_node"
+"target" "mv_node_chain"
+}
+{
+"classname" "target_rustchain_dialogue"
+"targetname" "mv_node_line"
+"message" "sophia"
+"netname" "Vault node active. Preservation channels restored. Extract now."
+}
+{
+"classname" "target_rustchain_dialogue"
+"targetname" "mv_node_stinger"
+"message" "survivor"
+"netname" "Signal is clean! We see your route. Get to the exit now."
+}
+{
+"classname" "target_delay"
+"targetname" "mv_node_stinger_delay"
+"delay" "1.6"
+"target" "mv_node_stinger"
+}
+{
+"classname" "target_rustchain_objective"
+"targetname" "mv_obj_extract_now"
+"message" "OBJECTIVE"
+"netname" "Extraction route confirmed."
+}
+{
+"classname" "trigger_relay"
+"targetname" "mv_node_chain"
+"target" "mv_node_line"
+}
+{
+"classname" "trigger_relay"
+"targetname" "mv_node_chain"
+"target" "mv_node_stinger_delay"
+}
+{
+"classname" "trigger_relay"
+"targetname" "mv_node_chain"
+"target" "mv_obj_extract_now"
+}
+{
+"classname" "trigger_once"
+"target" "mv_node"
+{
+( 120 500 128 ) ( -120 500 128 ) ( -120 720 128 ) common/trigger 0 0 0 0.25 0.25 0 0 0
+( 120 720 0 ) ( -120 720 0 ) ( -120 500 0 ) common/trigger 0 0 0 0.25 0.25 0 0 0
+( 120 720 0 ) ( 120 720 128 ) ( -120 720 128 ) common/trigger 0 0 0 0.25 0.25 0 0 0
+( -120 500 0 ) ( -120 500 128 ) ( 120 500 128 ) common/trigger 0 0 0 0.25 0.25 0 0 0
+( 120 500 0 ) ( 120 500 128 ) ( 120 720 128 ) common/trigger 0 0 0 0.25 0.25 0 0 0
+( -120 720 0 ) ( -120 720 128 ) ( -120 500 128 ) common/trigger 0 0 0 0.25 0.25 0 0 0
+}
+}
+
+// Objective exit
+{
+"classname" "target_rustchain_exit"
+"targetname" "mv_exit"
+"origin" "0 900 32"
+}
+{
+"classname" "trigger_once"
+"target" "mv_exit"
+{
+( 180 820 128 ) ( -180 820 128 ) ( -180 960 128 ) common/trigger 0 0 0 0.25 0.25 0 0 0
+( 180 960 0 ) ( -180 960 0 ) ( -180 820 0 ) common/trigger 0 0 0 0.25 0.25 0 0 0
+( 180 960 0 ) ( 180 960 128 ) ( -180 960 128 ) common/trigger 0 0 0 0.25 0.25 0 0 0
+( -180 820 0 ) ( -180 820 128 ) ( 180 820 128 ) common/trigger 0 0 0 0.25 0.25 0 0 0
+( 180 820 0 ) ( 180 820 128 ) ( 180 960 128 ) common/trigger 0 0 0 0.25 0.25 0 0 0
+( -180 960 0 ) ( -180 960 128 ) ( -180 820 128 ) common/trigger 0 0 0 0.25 0.25 0 0 0
+}
+}
+
+// Failsafe: ensure north chamber opens if log flow gets interrupted
+{
+"classname" "target_delay"
+"targetname" "mv_failsafe_delay"
+"delay" "75"
+"target" "mv_failsafe_chain"
+}
+{
+"classname" "trigger_relay"
+"targetname" "mv_intro_chain"
+"target" "mv_failsafe_delay"
+}
+{
+"classname" "trigger_relay"
+"targetname" "mv_failsafe_chain"
+"target" "mv_exit_door"
+}
+{
+"classname" "target_rustchain_objective"
+"targetname" "mv_failsafe_line"
+"message" "FAILSAFE"
+"netname" "Manual vault override engaged. Continue mission."
+}
+{
+"classname" "trigger_relay"
+"targetname" "mv_failsafe_chain"
+"target" "mv_failsafe_line"
+}
+{
+"classname" "trigger_once"
+"target" "mv_failsafe_chain"
+{
+( 220 250 128 ) ( -220 250 128 ) ( -220 380 128 ) common/trigger 0 0 0 0.25 0.25 0 0 0
+( 220 380 0 ) ( -220 380 0 ) ( -220 250 0 ) common/trigger 0 0 0 0.25 0.25 0 0 0
+( 220 380 0 ) ( 220 380 128 ) ( -220 380 128 ) common/trigger 0 0 0 0.25 0.25 0 0 0
+( -220 250 0 ) ( -220 250 128 ) ( 220 250 128 ) common/trigger 0 0 0 0.25 0.25 0 0 0
+( 220 250 0 ) ( 220 250 128 ) ( 220 380 128 ) common/trigger 0 0 0 0.25 0.25 0 0 0
+( -220 380 0 ) ( -220 380 128 ) ( -220 250 128 ) common/trigger 0 0 0 0.25 0.25 0 0 0
+}
+}

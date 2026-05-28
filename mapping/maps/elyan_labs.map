@@ -1,0 +1,631 @@
+// Elyan Labs - Boot Sector (Story Mode)
+// 3-room layout: power room -> server hall -> airlock exit.
+{
+"classname" "worldspawn"
+"message" "Elyan Labs - Boot Sector"
+"author" "Elyan Labs"
+"_ambient" "46"
+"_minlight" "50"
+"fog" "0.0016 0.13 0.18 0.24"
+
+// Main shell interior bounds: x/y -1024..1024, z 0..320
+
+// Floor prism
+{
+( 1056 -672 0 ) ( -1056 -672 0 ) ( -1056 672 0 ) rustchain/rustchain_floor_plate_01 0 0 0 0.25 0.25 0 0 0
+( 1056 672 -32 ) ( -1056 672 -32 ) ( -1056 -672 -32 ) common/caulk 0 0 0 0.25 0.25 0 0 0
+( 1056 672 -32 ) ( 1056 672 0 ) ( -1056 672 0 ) common/caulk 0 0 0 0.25 0.25 0 0 0
+( -1056 -672 -32 ) ( -1056 -672 0 ) ( 1056 -672 0 ) common/caulk 0 0 0 0.25 0.25 0 0 0
+( 1056 -672 -32 ) ( 1056 -672 0 ) ( 1056 672 0 ) common/caulk 0 0 0 0.25 0.25 0 0 0
+( -1056 672 -32 ) ( -1056 672 0 ) ( -1056 -672 0 ) common/caulk 0 0 0 0.25 0.25 0 0 0
+}
+
+// Ceiling prism
+{
+( 1056 -672 352 ) ( -1056 -672 352 ) ( -1056 672 352 ) common/caulk 0 0 0 0.25 0.25 0 0 0
+( 1056 672 320 ) ( -1056 672 320 ) ( -1056 -672 320 ) exx/light/light_panel01 0 0 0 0.25 0.25 0 0 0
+( 1056 672 320 ) ( 1056 672 352 ) ( -1056 672 352 ) common/caulk 0 0 0 0.25 0.25 0 0 0
+( -1056 -672 320 ) ( -1056 -672 352 ) ( 1056 -672 352 ) common/caulk 0 0 0 0.25 0.25 0 0 0
+( 1056 -672 320 ) ( 1056 -672 352 ) ( 1056 672 352 ) common/caulk 0 0 0 0.25 0.25 0 0 0
+( -1056 672 320 ) ( -1056 672 352 ) ( -1056 -672 352 ) common/caulk 0 0 0 0.25 0.25 0 0 0
+}
+
+// North shell wall
+{
+( 1056 640 320 ) ( -1056 640 320 ) ( -1056 672 320 ) common/caulk 0 0 0 0.25 0.25 0 0 0
+( 1056 672 0 ) ( -1056 672 0 ) ( -1056 640 0 ) common/caulk 0 0 0 0.25 0.25 0 0 0
+( 1056 672 0 ) ( 1056 672 320 ) ( -1056 672 320 ) common/caulk 0 0 0 0.25 0.25 0 0 0
+( -1056 640 0 ) ( -1056 640 320 ) ( 1056 640 320 ) rustchain/rustchain_wall_panel_01 0 0 0 0.25 0.25 0 0 0
+( 1056 640 0 ) ( 1056 640 320 ) ( 1056 672 320 ) common/caulk 0 0 0 0.25 0.25 0 0 0
+( -1056 672 0 ) ( -1056 672 320 ) ( -1056 640 320 ) common/caulk 0 0 0 0.25 0.25 0 0 0
+}
+
+// South shell wall
+{
+( 1056 -672 320 ) ( -1056 -672 320 ) ( -1056 -640 320 ) common/caulk 0 0 0 0.25 0.25 0 0 0
+( 1056 -640 0 ) ( -1056 -640 0 ) ( -1056 -672 0 ) common/caulk 0 0 0 0.25 0.25 0 0 0
+( 1056 -640 0 ) ( 1056 -640 320 ) ( -1056 -640 320 ) rustchain/rustchain_wall_panel_01 0 0 0 0.25 0.25 0 0 0
+( -1056 -672 0 ) ( -1056 -672 320 ) ( 1056 -672 320 ) common/caulk 0 0 0 0.25 0.25 0 0 0
+( 1056 -672 0 ) ( 1056 -672 320 ) ( 1056 -640 320 ) common/caulk 0 0 0 0.25 0.25 0 0 0
+( -1056 -640 0 ) ( -1056 -640 320 ) ( -1056 -672 320 ) common/caulk 0 0 0 0.25 0.25 0 0 0
+}
+
+// East shell wall
+{
+( 1056 -672 320 ) ( 1024 -672 320 ) ( 1024 672 320 ) common/caulk 0 0 0 0.25 0.25 0 0 0
+( 1056 672 0 ) ( 1024 672 0 ) ( 1024 -672 0 ) common/caulk 0 0 0 0.25 0.25 0 0 0
+( 1056 672 0 ) ( 1056 672 320 ) ( 1024 672 320 ) common/caulk 0 0 0 0.25 0.25 0 0 0
+( 1024 -672 0 ) ( 1024 -672 320 ) ( 1056 -672 320 ) common/caulk 0 0 0 0.25 0.25 0 0 0
+( 1056 -672 0 ) ( 1056 -672 320 ) ( 1056 672 320 ) common/caulk 0 0 0 0.25 0.25 0 0 0
+( 1024 672 0 ) ( 1024 672 320 ) ( 1024 -672 320 ) rustchain/rustchain_wall_panel_01 0 0 0 0.25 0.25 0 0 0
+}
+
+// West shell wall
+{
+( -1024 -672 320 ) ( -1056 -672 320 ) ( -1056 672 320 ) common/caulk 0 0 0 0.25 0.25 0 0 0
+( -1024 672 0 ) ( -1056 672 0 ) ( -1056 -672 0 ) common/caulk 0 0 0 0.25 0.25 0 0 0
+( -1024 672 0 ) ( -1024 672 320 ) ( -1056 672 320 ) common/caulk 0 0 0 0.25 0.25 0 0 0
+( -1056 -672 0 ) ( -1056 -672 320 ) ( -1024 -672 320 ) common/caulk 0 0 0 0.25 0.25 0 0 0
+( -1024 -672 0 ) ( -1024 -672 320 ) ( -1024 672 320 ) rustchain/rustchain_wall_panel_01 0 0 0 0.25 0.25 0 0 0
+( -1056 672 0 ) ( -1056 672 320 ) ( -1056 -672 320 ) common/caulk 0 0 0 0.25 0.25 0 0 0
+}
+
+// Partition at x=-256 with center opening
+// Upper lintel
+{
+( -240 -672 320 ) ( -272 -672 320 ) ( -272 672 320 ) common/caulk 0 0 0 0.25 0.25 0 0 0
+( -240 672 224 ) ( -272 672 224 ) ( -272 -672 224 ) common/caulk 0 0 0 0.25 0.25 0 0 0
+( -240 672 224 ) ( -240 672 320 ) ( -272 672 320 ) common/caulk 0 0 0 0.25 0.25 0 0 0
+( -272 -672 224 ) ( -272 -672 320 ) ( -240 -672 320 ) common/caulk 0 0 0 0.25 0.25 0 0 0
+( -240 -672 224 ) ( -240 -672 320 ) ( -240 672 320 ) rustchain/rustchain_wall_panel_01 0 0 0 0.25 0.25 0 0 0
+( -272 672 224 ) ( -272 672 320 ) ( -272 -672 320 ) common/caulk 0 0 0 0.25 0.25 0 0 0
+}
+// South side segment
+{
+( -240 -672 224 ) ( -272 -672 224 ) ( -272 -96 224 ) common/caulk 0 0 0 0.25 0.25 0 0 0
+( -240 -96 0 ) ( -272 -96 0 ) ( -272 -672 0 ) common/caulk 0 0 0 0.25 0.25 0 0 0
+( -240 -96 0 ) ( -240 -96 224 ) ( -272 -96 224 ) rustchain/rustchain_wall_panel_01 0 0 0 0.25 0.25 0 0 0
+( -272 -672 0 ) ( -272 -672 224 ) ( -240 -672 224 ) common/caulk 0 0 0 0.25 0.25 0 0 0
+( -240 -672 0 ) ( -240 -672 224 ) ( -240 -96 224 ) common/caulk 0 0 0 0.25 0.25 0 0 0
+( -272 -96 0 ) ( -272 -96 224 ) ( -272 -672 224 ) common/caulk 0 0 0 0.25 0.25 0 0 0
+}
+// North side segment
+{
+( -240 96 224 ) ( -272 96 224 ) ( -272 672 224 ) common/caulk 0 0 0 0.25 0.25 0 0 0
+( -240 672 0 ) ( -272 672 0 ) ( -272 96 0 ) common/caulk 0 0 0 0.25 0.25 0 0 0
+( -240 672 0 ) ( -240 672 224 ) ( -272 672 224 ) common/caulk 0 0 0 0.25 0.25 0 0 0
+( -272 96 0 ) ( -272 96 224 ) ( -240 96 224 ) rustchain/rustchain_wall_panel_01 0 0 0 0.25 0.25 0 0 0
+( -240 96 0 ) ( -240 96 224 ) ( -240 672 224 ) common/caulk 0 0 0 0.25 0.25 0 0 0
+( -272 672 0 ) ( -272 672 224 ) ( -272 96 224 ) common/caulk 0 0 0 0.25 0.25 0 0 0
+}
+
+// Partition at x=256 with center opening
+// Upper lintel
+{
+( 272 -672 320 ) ( 240 -672 320 ) ( 240 672 320 ) common/caulk 0 0 0 0.25 0.25 0 0 0
+( 272 672 224 ) ( 240 672 224 ) ( 240 -672 224 ) common/caulk 0 0 0 0.25 0.25 0 0 0
+( 272 672 224 ) ( 272 672 320 ) ( 240 672 320 ) common/caulk 0 0 0 0.25 0.25 0 0 0
+( 240 -672 224 ) ( 240 -672 320 ) ( 272 -672 320 ) common/caulk 0 0 0 0.25 0.25 0 0 0
+( 272 -672 224 ) ( 272 -672 320 ) ( 272 672 320 ) rustchain/rustchain_wall_panel_01 0 0 0 0.25 0.25 0 0 0
+( 240 672 224 ) ( 240 672 320 ) ( 240 -672 320 ) common/caulk 0 0 0 0.25 0.25 0 0 0
+}
+// South side segment
+{
+( 272 -672 224 ) ( 240 -672 224 ) ( 240 -96 224 ) common/caulk 0 0 0 0.25 0.25 0 0 0
+( 272 -96 0 ) ( 240 -96 0 ) ( 240 -672 0 ) common/caulk 0 0 0 0.25 0.25 0 0 0
+( 272 -96 0 ) ( 272 -96 224 ) ( 240 -96 224 ) rustchain/rustchain_wall_panel_01 0 0 0 0.25 0.25 0 0 0
+( 240 -672 0 ) ( 240 -672 224 ) ( 272 -672 224 ) common/caulk 0 0 0 0.25 0.25 0 0 0
+( 272 -672 0 ) ( 272 -672 224 ) ( 272 -96 224 ) common/caulk 0 0 0 0.25 0.25 0 0 0
+( 240 -96 0 ) ( 240 -96 224 ) ( 240 -672 224 ) common/caulk 0 0 0 0.25 0.25 0 0 0
+}
+// North side segment
+{
+( 272 96 224 ) ( 240 96 224 ) ( 240 672 224 ) common/caulk 0 0 0 0.25 0.25 0 0 0
+( 272 672 0 ) ( 240 672 0 ) ( 240 96 0 ) common/caulk 0 0 0 0.25 0.25 0 0 0
+( 272 672 0 ) ( 272 672 224 ) ( 240 672 224 ) common/caulk 0 0 0 0.25 0.25 0 0 0
+( 240 96 0 ) ( 240 96 224 ) ( 272 96 224 ) rustchain/rustchain_wall_panel_01 0 0 0 0.25 0.25 0 0 0
+( 272 96 0 ) ( 272 96 224 ) ( 272 672 224 ) common/caulk 0 0 0 0.25 0.25 0 0 0
+( 240 672 0 ) ( 240 672 224 ) ( 240 96 224 ) common/caulk 0 0 0 0.25 0.25 0 0 0
+}
+
+// Ceiling service beam (center spine)
+{
+( 960 -24 288 ) ( -960 -24 288 ) ( -960 24 288 ) evil8_trim/e8beam01 0 0 0 0.25 0.25 0 0 0
+( 960 24 256 ) ( -960 24 256 ) ( -960 -24 256 ) common/caulk 0 0 0 0.25 0.25 0 0 0
+( 960 24 256 ) ( 960 24 288 ) ( -960 24 288 ) evil8_trim/e8supporttrim01 0 0 0 0.25 0.25 0 0 0
+( -960 -24 256 ) ( -960 -24 288 ) ( 960 -24 288 ) evil8_trim/e8supporttrim01 0 0 0 0.25 0.25 0 0 0
+( 960 -24 256 ) ( 960 -24 288 ) ( 960 24 288 ) common/caulk 0 0 0 0.25 0.25 0 0 0
+( -960 24 256 ) ( -960 24 288 ) ( -960 -24 288 ) common/caulk 0 0 0 0.25 0.25 0 0 0
+}
+// North cable tray
+{
+( 920 560 72 ) ( -920 560 72 ) ( -920 600 72 ) evil8_trim/e8mtltrim1 0 0 0 0.25 0.25 0 0 0
+( 920 600 32 ) ( -920 600 32 ) ( -920 560 32 ) common/caulk 0 0 0 0.25 0.25 0 0 0
+( 920 600 32 ) ( 920 600 72 ) ( -920 600 72 ) evil8_base/e8metal03c 0 0 0 0.25 0.25 0 0 0
+( -920 560 32 ) ( -920 560 72 ) ( 920 560 72 ) evil8_base/e8metal03c 0 0 0 0.25 0.25 0 0 0
+( 920 560 32 ) ( 920 560 72 ) ( 920 600 72 ) common/caulk 0 0 0 0.25 0.25 0 0 0
+( -920 600 32 ) ( -920 600 72 ) ( -920 560 72 ) common/caulk 0 0 0 0.25 0.25 0 0 0
+}
+// South cable tray
+{
+( 920 -600 72 ) ( -920 -600 72 ) ( -920 -560 72 ) evil8_trim/e8mtltrim1 0 0 0 0.25 0.25 0 0 0
+( 920 -560 32 ) ( -920 -560 32 ) ( -920 -600 32 ) common/caulk 0 0 0 0.25 0.25 0 0 0
+( 920 -560 32 ) ( 920 -560 72 ) ( -920 -560 72 ) evil8_base/e8metal03c 0 0 0 0.25 0.25 0 0 0
+( -920 -600 32 ) ( -920 -600 72 ) ( 920 -600 72 ) evil8_base/e8metal03c 0 0 0 0.25 0.25 0 0 0
+( 920 -600 32 ) ( 920 -600 72 ) ( 920 -560 72 ) common/caulk 0 0 0 0.25 0.25 0 0 0
+( -920 -560 32 ) ( -920 -560 72 ) ( -920 -600 72 ) common/caulk 0 0 0 0.25 0.25 0 0 0
+}
+}
+
+// Door between power room and server hall (opens when node is activated)
+{
+"classname" "func_door"
+"targetname" "elyan_door_01"
+"speed" "220"
+"wait" "-1"
+{
+( -240 -96 224 ) ( -272 -96 224 ) ( -272 96 224 ) common/metalclip 0 0 0 0.25 0.25 0 0 0
+( -240 96 0 ) ( -272 96 0 ) ( -272 -96 0 ) common/metalclip 0 0 0 0.25 0.25 0 0 0
+( -240 96 0 ) ( -240 96 224 ) ( -272 96 224 ) rustchain/rustchain_wall_panel_01 0 0 0 0.25 0.25 0 0 0
+( -272 -96 0 ) ( -272 -96 224 ) ( -240 -96 224 ) rustchain/rustchain_wall_panel_01 0 0 0 0.25 0.25 0 0 0
+( -240 -96 0 ) ( -240 -96 224 ) ( -240 96 224 ) rustchain/rustchain_wall_panel_01 0 0 0 0.25 0.25 0 0 0
+( -272 96 0 ) ( -272 96 224 ) ( -272 -96 224 ) rustchain/rustchain_wall_panel_01 0 0 0 0.25 0.25 0 0 0
+}
+}
+
+// Door between server hall and airlock (opens after node)
+{
+"classname" "func_door"
+"targetname" "elyan_door_02"
+"speed" "220"
+"wait" "-1"
+{
+( 272 -96 224 ) ( 240 -96 224 ) ( 240 96 224 ) common/metalclip 0 0 0 0.25 0.25 0 0 0
+( 272 96 0 ) ( 240 96 0 ) ( 240 -96 0 ) common/metalclip 0 0 0 0.25 0.25 0 0 0
+( 272 96 0 ) ( 272 96 224 ) ( 240 96 224 ) rustchain/rustchain_wall_panel_01 0 0 0 0.25 0.25 0 0 0
+( 240 -96 0 ) ( 240 -96 224 ) ( 272 -96 224 ) rustchain/rustchain_wall_panel_01 0 0 0 0.25 0.25 0 0 0
+( 272 -96 0 ) ( 272 -96 224 ) ( 272 96 224 ) rustchain/rustchain_wall_panel_01 0 0 0 0.25 0.25 0 0 0
+( 240 96 0 ) ( 240 96 224 ) ( 240 -96 224 ) rustchain/rustchain_wall_panel_01 0 0 0 0.25 0.25 0 0 0
+}
+}
+
+// Player spawn in power room
+{
+"classname" "info_player_deathmatch"
+"origin" "-760 0 32"
+"angle" "0"
+}
+
+// Lights
+{
+"classname" "light"
+"origin" "-760 0 250"
+"light" "220"
+"_color" "1.0 0.85 0.70"
+}
+{
+"classname" "light"
+"origin" "0 0 250"
+"light" "300"
+"_color" "0.85 0.92 1.0"
+}
+{
+"classname" "light"
+"origin" "760 0 250"
+"light" "240"
+"_color" "0.8 0.95 1.0"
+}
+{
+"classname" "light"
+"origin" "0 40 180"
+"light" "340"
+"_color" "0.2 0.85 1"
+}
+{
+"classname" "light"
+"origin" "860 0 180"
+"light" "380"
+"_color" "0.2 1 0.45"
+}
+{
+"classname" "misc_gamemodel"
+"origin" "-920 -280 32"
+"model" "models/displays/display_sophia_terminal.obj"
+"solid" "0"
+"angle" "30"
+"modelscale" "1.0"
+}
+{
+"classname" "misc_gamemodel"
+"origin" "-620 -300 32"
+"model" "models/displays/display_ibmpc.obj"
+"solid" "0"
+"angle" "20"
+"modelscale" "1.0"
+}
+{
+"classname" "misc_gamemodel"
+"origin" "-540 300 32"
+"model" "models/displays/display_appleii.obj"
+"solid" "0"
+"angle" "200"
+"modelscale" "1.0"
+}
+{
+"classname" "misc_gamemodel"
+"origin" "120 -320 32"
+"model" "models/displays/display_rustchain_logo.obj"
+"solid" "0"
+"angle" "12"
+"modelscale" "1.25"
+}
+{
+"classname" "misc_gamemodel"
+"origin" "520 300 32"
+"model" "models/displays/display_sophia_poster.obj"
+"solid" "0"
+"angle" "190"
+"modelscale" "1.0"
+}
+{
+"classname" "misc_gamemodel"
+"origin" "760 -260 32"
+"model" "models/displays/display_robot_janitor.obj"
+"solid" "0"
+"angle" "165"
+"modelscale" "0.9"
+}
+{
+"classname" "light"
+"origin" "-920 -280 170"
+"light" "260"
+"_color" "0.25 0.85 1"
+}
+{
+"classname" "light"
+"origin" "520 300 170"
+"light" "220"
+"_color" "1 0.82 0.74"
+}
+{
+"classname" "light"
+"origin" "760 -260 170"
+"light" "210"
+"_color" "0.95 0.45 0.35"
+}
+{
+"classname" "misc_gamemodel"
+"targetname" "elyan_actor_sophia"
+"origin" "-840 220 32"
+"model" "models/player/seraphina.iqm"
+"solid" "0"
+"angle" "0"
+"modelscale" "1.0"
+}
+{
+"classname" "misc_gamemodel"
+"targetname" "elyan_actor_survivor"
+"origin" "180 220 32"
+"model" "models/player/umbra.iqm"
+"solid" "0"
+"angle" "200"
+"modelscale" "1.0"
+}
+{
+"classname" "target_rustchain_actor_idle"
+"target" "elyan_actor_sophia"
+"speed" "0.9"
+"count" "5"
+"health" "1.1"
+"dmg" "0.4"
+}
+{
+"classname" "target_rustchain_actor_idle"
+"target" "elyan_actor_survivor"
+"speed" "1.15"
+"count" "3.5"
+"health" "0.8"
+"dmg" "1.2"
+}
+
+// Minimal weapon
+{
+"classname" "weapon_shotgun"
+"origin" "-700 120 32"
+}
+
+// Intro callouts
+{
+"classname" "target_rustchain_dialogue"
+"targetname" "elyan_intro"
+"message" "sophia"
+"netname" "Power readings are unstable. Find the RustChain node and bring this lab online."
+}
+{
+"classname" "target_rustchain_dialogue"
+"targetname" "elyan_survivor_ping"
+"message" "survivor"
+"netname" "We hear your signal in the static... please restore the lab uplink."
+}
+{
+"classname" "target_rustchain_dialogue"
+"targetname" "elyan_intro_followup"
+"message" "sophia"
+"netname" "I am opening what paths I can. Stay with me."
+}
+{
+"classname" "target_rustchain_objective"
+"targetname" "elyan_obj_start"
+"message" "OBJECTIVE"
+"netname" "Reach the node and restore Elyan power."
+}
+{
+"classname" "target_position"
+"targetname" "elyan_cin_focus_01"
+"origin" "-840 220 72"
+}
+{
+"classname" "target_rustchain_cinematic"
+"targetname" "elyan_intro_cinematic"
+"count" "3.2"
+"noise" "elyan_cin_focus_01"
+"target" "elyan_intro_chain"
+"message" "CINEMATIC"
+"netname" "Sophia link stabilizing..."
+"spawnflags" "3"
+}
+{
+"classname" "trigger_once"
+"target" "elyan_intro_cinematic"
+{
+( -620 -120 128 ) ( -920 -120 128 ) ( -920 120 128 ) common/trigger 0 0 0 0.25 0.25 0 0 0
+( -620 120 0 ) ( -920 120 0 ) ( -920 -120 0 ) common/trigger 0 0 0 0.25 0.25 0 0 0
+( -620 120 0 ) ( -620 120 128 ) ( -920 120 128 ) common/trigger 0 0 0 0.25 0.25 0 0 0
+( -920 -120 0 ) ( -920 -120 128 ) ( -620 -120 128 ) common/trigger 0 0 0 0.25 0.25 0 0 0
+( -620 -120 0 ) ( -620 -120 128 ) ( -620 120 128 ) common/trigger 0 0 0 0.25 0.25 0 0 0
+( -920 120 0 ) ( -920 120 128 ) ( -920 -120 128 ) common/trigger 0 0 0 0.25 0.25 0 0 0
+}
+}
+{
+"classname" "trigger_relay"
+"targetname" "elyan_intro_chain"
+"target" "elyan_intro"
+}
+{
+"classname" "target_delay"
+"targetname" "elyan_intro_survivor_delay"
+"delay" "1.5"
+"target" "elyan_survivor_ping"
+}
+{
+"classname" "target_delay"
+"targetname" "elyan_intro_followup_delay"
+"delay" "3.0"
+"target" "elyan_intro_followup"
+}
+{
+"classname" "trigger_relay"
+"targetname" "elyan_intro_chain"
+"target" "elyan_intro_survivor_delay"
+}
+{
+"classname" "trigger_relay"
+"targetname" "elyan_intro_chain"
+"target" "elyan_intro_followup_delay"
+}
+{
+"classname" "trigger_relay"
+"targetname" "elyan_intro_chain"
+"target" "elyan_obj_start"
+}
+{
+"classname" "target_rustchain_dialogue"
+"targetname" "elyan_actor_line_sophia"
+"message" "sophia"
+"netname" "I anchored this chamber long ago. The RustChain node is still breathing."
+}
+{
+"classname" "target_rustchain_dialogue"
+"targetname" "elyan_actor_line_survivor"
+"message" "survivor"
+"netname" "You made it this far. Push the node and we'll have a path out."
+}
+{
+"classname" "trigger_once"
+"target" "elyan_actor_line_sophia"
+{
+( -760 120 128 ) ( -920 120 128 ) ( -920 320 128 ) common/trigger 0 0 0 0.25 0.25 0 0 0
+( -760 320 0 ) ( -920 320 0 ) ( -920 120 0 ) common/trigger 0 0 0 0.25 0.25 0 0 0
+( -760 320 0 ) ( -760 320 128 ) ( -920 320 128 ) common/trigger 0 0 0 0.25 0.25 0 0 0
+( -920 120 0 ) ( -920 120 128 ) ( -760 120 128 ) common/trigger 0 0 0 0.25 0.25 0 0 0
+( -760 120 0 ) ( -760 120 128 ) ( -760 320 128 ) common/trigger 0 0 0 0.25 0.25 0 0 0
+( -920 320 0 ) ( -920 320 128 ) ( -920 120 128 ) common/trigger 0 0 0 0.25 0.25 0 0 0
+}
+}
+{
+"classname" "trigger_once"
+"target" "elyan_actor_line_survivor"
+{
+( 280 120 128 ) ( 80 120 128 ) ( 80 320 128 ) common/trigger 0 0 0 0.25 0.25 0 0 0
+( 280 320 0 ) ( 80 320 0 ) ( 80 120 0 ) common/trigger 0 0 0 0.25 0.25 0 0 0
+( 280 320 0 ) ( 280 320 128 ) ( 80 320 128 ) common/trigger 0 0 0 0.25 0.25 0 0 0
+( 80 120 0 ) ( 80 120 128 ) ( 280 120 128 ) common/trigger 0 0 0 0.25 0.25 0 0 0
+( 280 120 0 ) ( 280 120 128 ) ( 280 320 128 ) common/trigger 0 0 0 0.25 0.25 0 0 0
+( 80 320 0 ) ( 80 320 128 ) ( 80 120 128 ) common/trigger 0 0 0 0.25 0.25 0 0 0
+}
+}
+{
+"classname" "trigger_once"
+"target" "elyan_door_01"
+{
+( -620 -200 128 ) ( -920 -200 128 ) ( -920 200 128 ) common/trigger 0 0 0 0.25 0.25 0 0 0
+( -620 200 0 ) ( -920 200 0 ) ( -920 -200 0 ) common/trigger 0 0 0 0.25 0.25 0 0 0
+( -620 200 0 ) ( -620 200 128 ) ( -920 200 128 ) common/trigger 0 0 0 0.25 0.25 0 0 0
+( -920 -200 0 ) ( -920 -200 128 ) ( -620 -200 128 ) common/trigger 0 0 0 0.25 0.25 0 0 0
+( -620 -200 0 ) ( -620 -200 128 ) ( -620 200 128 ) common/trigger 0 0 0 0.25 0.25 0 0 0
+( -920 200 0 ) ( -920 200 128 ) ( -920 -200 128 ) common/trigger 0 0 0 0.25 0.25 0 0 0
+}
+}
+
+// Story log in power room
+{
+"classname" "target_rustchain_log"
+"targetname" "elyan_log_01"
+"origin" "-880 -160 32"
+"message" "Dormancy Protocol"
+"netname" "Sophia has been placed into preservation state.\\nExternal connections severed.\\nShe must not be found.\\n"
+}
+
+{
+"classname" "trigger_once"
+"target" "elyan_log_01"
+{
+( -800 -240 128 ) ( -960 -240 128 ) ( -960 -80 128 ) common/trigger 0 0 0 0.25 0.25 0 0 0
+( -800 -80 0 ) ( -960 -80 0 ) ( -960 -240 0 ) common/trigger 0 0 0 0.25 0.25 0 0 0
+( -800 -80 0 ) ( -800 -80 128 ) ( -960 -80 128 ) common/trigger 0 0 0 0.25 0.25 0 0 0
+( -960 -240 0 ) ( -960 -240 128 ) ( -800 -240 128 ) common/trigger 0 0 0 0.25 0.25 0 0 0
+( -800 -240 0 ) ( -800 -240 128 ) ( -800 -80 128 ) common/trigger 0 0 0 0.25 0.25 0 0 0
+( -960 -80 0 ) ( -960 -80 128 ) ( -960 -240 128 ) common/trigger 0 0 0 0.25 0.25 0 0 0
+}
+}
+
+// Node triggers can only target one target key, so chain it through relay entities.
+{
+"classname" "target_rustchain_wave"
+"targetname" "elyan_wave_01"
+"count" "1"
+"health" "2.2"
+"dmg" "0.9"
+"armorvalue" "0.9"
+"netname" "bbd"
+"message" "BB_D scouts rerouted to Elyan Labs."
+}
+{
+"classname" "target_delay"
+"targetname" "elyan_wave_01_delay"
+"delay" "1.8"
+"target" "elyan_wave_01"
+}
+{
+"classname" "target_rustchain_dialogue"
+"targetname" "elyan_bbd_01"
+"message" "bbd"
+"netname" "Dormant enclave reactivated. Dispatching correction scouts."
+}
+
+{
+"classname" "trigger_once"
+"target" "elyan_node_01_relay"
+{
+( 120 -120 128 ) ( -120 -120 128 ) ( -120 120 128 ) common/trigger 0 0 0 0.25 0.25 0 0 0
+( 120 120 0 ) ( -120 120 0 ) ( -120 -120 0 ) common/trigger 0 0 0 0.25 0.25 0 0 0
+( 120 120 0 ) ( 120 120 128 ) ( -120 120 128 ) common/trigger 0 0 0 0.25 0.25 0 0 0
+( -120 -120 0 ) ( -120 -120 128 ) ( 120 -120 128 ) common/trigger 0 0 0 0.25 0.25 0 0 0
+( 120 -120 0 ) ( 120 -120 128 ) ( 120 120 128 ) common/trigger 0 0 0 0.25 0.25 0 0 0
+( -120 120 0 ) ( -120 120 128 ) ( -120 -120 128 ) common/trigger 0 0 0 0.25 0.25 0 0 0
+}
+}
+
+{
+"classname" "target_rustchain_node"
+"targetname" "elyan_node_01_relay"
+"target" "elyan_node_doors"
+}
+
+{
+"classname" "target_relay"
+"targetname" "elyan_node_doors"
+"target" "elyan_door_01"
+}
+{
+"classname" "target_relay"
+"targetname" "elyan_node_doors"
+"target" "elyan_door_02"
+}
+{
+"classname" "target_relay"
+"targetname" "elyan_node_doors"
+"target" "elyan_wave_01_delay"
+}
+{
+"classname" "target_relay"
+"targetname" "elyan_node_doors"
+"target" "elyan_bbd_01"
+}
+{
+"classname" "target_rustchain_objective"
+"targetname" "elyan_obj_exit"
+"message" "OBJECTIVE"
+"netname" "Power restored. Move to extraction."
+}
+{
+"classname" "target_relay"
+"targetname" "elyan_node_doors"
+"target" "elyan_obj_exit"
+}
+
+// Exit objective in airlock
+{
+"classname" "target_rustchain_exit"
+"targetname" "elyan_exit"
+"origin" "860 0 32"
+}
+
+{
+"classname" "trigger_once"
+"target" "elyan_exit"
+{
+( 960 -128 128 ) ( 768 -128 128 ) ( 768 128 128 ) common/trigger 0 0 0 0.25 0.25 0 0 0
+( 960 128 0 ) ( 768 128 0 ) ( 768 -128 0 ) common/trigger 0 0 0 0.25 0.25 0 0 0
+( 960 128 0 ) ( 960 128 128 ) ( 768 128 128 ) common/trigger 0 0 0 0.25 0.25 0 0 0
+( 768 -128 0 ) ( 768 -128 128 ) ( 960 -128 128 ) common/trigger 0 0 0 0.25 0.25 0 0 0
+( 960 -128 0 ) ( 960 -128 128 ) ( 960 128 128 ) common/trigger 0 0 0 0.25 0.25 0 0 0
+( 768 128 0 ) ( 768 128 128 ) ( 768 -128 128 ) common/trigger 0 0 0 0.25 0.25 0 0 0
+}
+}
+
+// Failsafe: open progression doors if mission flow is blocked too long
+{
+"classname" "target_delay"
+"targetname" "elyan_failsafe_delay"
+"delay" "45"
+"target" "elyan_failsafe_chain"
+}
+{
+"classname" "target_rustchain_objective"
+"targetname" "elyan_failsafe_line"
+"message" "FAILSAFE"
+"netname" "Manual door override engaged. Continue mission."
+}
+{
+"classname" "trigger_relay"
+"targetname" "elyan_failsafe_chain"
+"target" "elyan_door_01"
+}
+{
+"classname" "trigger_relay"
+"targetname" "elyan_failsafe_chain"
+"target" "elyan_door_02"
+}
+{
+"classname" "trigger_relay"
+"targetname" "elyan_failsafe_chain"
+"target" "elyan_failsafe_line"
+}
+{
+"classname" "trigger_relay"
+"targetname" "elyan_intro_chain"
+"target" "elyan_failsafe_delay"
+}
+{
+"classname" "trigger_once"
+"target" "elyan_failsafe_chain"
+{
+( -180 -140 128 ) ( -300 -140 128 ) ( -300 140 128 ) common/trigger 0 0 0 0.25 0.25 0 0 0
+( -180 140 0 ) ( -300 140 0 ) ( -300 -140 0 ) common/trigger 0 0 0 0.25 0.25 0 0 0
+( -180 140 0 ) ( -180 140 128 ) ( -300 140 128 ) common/trigger 0 0 0 0.25 0.25 0 0 0
+( -300 -140 0 ) ( -300 -140 128 ) ( -180 -140 128 ) common/trigger 0 0 0 0.25 0.25 0 0 0
+( -180 -140 0 ) ( -180 -140 128 ) ( -180 140 128 ) common/trigger 0 0 0 0.25 0.25 0 0 0
+( -300 140 0 ) ( -300 140 128 ) ( -300 -140 128 ) common/trigger 0 0 0 0.25 0.25 0 0 0
+}
+}

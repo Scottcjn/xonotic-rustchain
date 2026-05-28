@@ -14,15 +14,29 @@ At 100 active players, 50 kills/day each:
 
 import os
 import re
+import sys
 import time
 import sqlite3
 from datetime import datetime
 from decimal import Decimal, getcontext
 
+import requests
+
 getcontext().prec = 18
 
 XONOTIC_LOG = os.path.expanduser("~/.xonotic/data/server.log")
 DB_PATH = os.path.expanduser("~/Games/Xonotic/rustchain_rewards.db")
+
+# On-chain payout config (env-driven). Mirrors the Minecraft-bridge pattern:
+# tail log -> compute reward -> POST direct to RustChain /wallet/transfer.
+# RC_ADMIN_KEY comes from ~/.config/rustchain/admin_key via arena_config.sh.
+RUSTCHAIN_API = os.environ.get("RUSTCHAIN_API", "https://50.28.86.131").rstrip("/")
+RC_ADMIN_KEY = os.environ.get("RC_ADMIN_KEY", "").strip()
+RTC_SOURCE_WALLET = os.environ.get("RTC_SOURCE_WALLET", "founder_community")
+ONCHAIN_TIMEOUT = float(os.environ.get("RTC_TRANSFER_TIMEOUT", "10"))
+PAYOUTS_ENABLED = bool(RC_ADMIN_KEY)
+if not PAYOUTS_ENABLED:
+    print("[RTC] WARNING: RC_ADMIN_KEY not set. Running in AUDIT-ONLY mode (local DB writes only, no on-chain payouts).", file=sys.stderr)
 
 # Rewards in milli-RTC (0.001 RTC units)
 # Much more satisfying numbers!
@@ -40,7 +54,43 @@ REWARDS = {
 
 PLAYER_WALLETS = {
     "Scott": "scott-victus-arena",
+    "Sophia_Elya": "sophia_elya_arena",
+    "SophiaElya": "sophia_elya_arena",
+    "Sophia": "sophia_elya_arena",
+    "Boris_Volkov": "boris_volkov_arena",
+    "Boris": "boris_volkov_arena",
+    "AutomatedJanitor": "automatedjanitor-arena",
+    "Automatedjanitor": "automatedjanitor-arena",
 }
+
+
+def _post_onchain(wallet: str, amount: Decimal, reason: str) -> tuple:
+    """POST to RustChain /wallet/transfer admin endpoint. Returns (ok, pending_id, error_msg).
+    Idempotency is not built in yet — see Task #9 for the pattern (match_signature dedup)."""
+    if not PAYOUTS_ENABLED:
+        return False, None, "audit_only_no_admin_key"
+    try:
+        r = requests.post(
+            f"{RUSTCHAIN_API}/wallet/transfer",
+            headers={"X-Admin-Key": RC_ADMIN_KEY, "Content-Type": "application/json"},
+            json={
+                "from_miner": RTC_SOURCE_WALLET,
+                "to_miner": wallet,
+                "amount_rtc": float(amount),
+                "reason": reason,
+            },
+            verify=False,  # nginx self-signed on .131
+            timeout=ONCHAIN_TIMEOUT,
+        )
+        try:
+            data = r.json()
+        except ValueError:
+            data = {"_raw": r.text[:300]}
+        if r.status_code == 200 and data.get("error") is None:
+            return True, data.get("pending_id"), None
+        return False, None, f"http_{r.status_code}: {data.get('error') or r.text[:200]}"
+    except requests.RequestException as e:
+        return False, None, repr(e)[:200]
 
 def init_db():
     conn = sqlite3.connect(DB_PATH)
@@ -72,21 +122,31 @@ def init_db():
 
 def award_rtc(conn, player, event_type, amount):
     wallet = PLAYER_WALLETS.get(player, f"arena-{player.lower()}")
-    
+    ts = datetime.now().isoformat()
+
     c = conn.cursor()
     c.execute('''INSERT INTO rewards (timestamp, player, wallet, event_type, amount)
                  VALUES (?, ?, ?, ?, ?)''',
-              (datetime.now().isoformat(), player, wallet, event_type, str(amount)))
-    
+              (ts, player, wallet, event_type, str(amount)))
+    reward_id = c.lastrowid
+
     c.execute('''INSERT OR IGNORE INTO stats (player, total_rtc) VALUES (?, '0')''', (player,))
     c.execute('''SELECT total_rtc FROM stats WHERE player = ?''', (player,))
     current = Decimal(c.fetchone()[0])
     new_total = current + amount
     c.execute('''UPDATE stats SET total_rtc = ?, kills = kills + ? WHERE player = ?''',
               (str(new_total), 1 if event_type == "kill" else 0, player))
-    
     conn.commit()
-    print(f"  ⚡ {player} +{amount} RTC ({event_type}) | Total: {new_total:.6f} RTC")
+
+    # On-chain transfer (audit-only fallback if RC_ADMIN_KEY unset)
+    reason = f"xonotic:{event_type}:{player}"
+    ok, pending_id, err = _post_onchain(wallet, amount, reason)
+    if ok:
+        c.execute('UPDATE rewards SET submitted = 1 WHERE id = ?', (reward_id,))
+        conn.commit()
+        print(f"  ⚡ {player} +{amount} RTC ({event_type}) | pending #{pending_id} | Total: {new_total:.6f} RTC")
+    else:
+        print(f"  ⚡ {player} +{amount} RTC ({event_type}) | OFF-CHAIN ({err}) | Total: {new_total:.6f} RTC")
 
 def parse_kill_event(line):
     # Xonotic formats
