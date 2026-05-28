@@ -105,9 +105,13 @@ def generate_variants(
         f"numbering, no quotes, no name prefix. Each must be a single short "
         f"sentence."
     )
+    # 400 tokens leaves room for GPT-OSS reasoning trace AND the output
+    # content. Reasoning models (gpt-oss, o1-style) emit chain-of-thought
+    # in `reasoning_content` first and only THEN write to `content`; a
+    # 100-token budget will be exhausted mid-think and content stays empty.
     reply = llm.chat(
         [{"role": "system", "content": persona}, {"role": "user", "content": user}],
-        max_tokens=160,
+        max_tokens=400,
         temperature=temperature,
     )
     if reply is None:
@@ -145,7 +149,9 @@ def variants_to_netname(variants: list) -> str:
 
 
 def cli_main(args):
-    llm = LLMClient()
+    # Packager is offline pre-generation, so we can afford a long budget
+    # to let GPT-OSS-style reasoning models think AND output.
+    llm = LLMClient(timeout=120.0)
     variants = generate_variants(
         llm,
         map_name=args.map,
@@ -160,7 +166,7 @@ def batch_main(args):
     with open(args.batch) as f:
         manifest = json.load(f)
 
-    llm = LLMClient()
+    llm = LLMClient(timeout=120.0)
     entries = manifest.get("entries", [])
     out_pool = {
         "version": 1,

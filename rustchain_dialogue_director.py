@@ -138,9 +138,12 @@ def generate_followup(llm: LLMClient, original_speaker: str, original_line: str,
         f"As {responder}, respond with ONE short line (max 15 words). "
         f"Match the stakes of the moment. Plain text only — no quotes, no name prefix."
     )
+    # 200 tokens for GPT-OSS reasoning + the short output sentence. Smaller
+    # budgets cause the model's reasoning trace to consume everything and
+    # `content` stays empty.
     reply = llm.chat(
         [{"role": "system", "content": persona}, {"role": "user", "content": user}],
-        max_tokens=40,
+        max_tokens=200,
         temperature=0.85,
     )
     if reply is None:
