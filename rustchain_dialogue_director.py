@@ -52,9 +52,12 @@ SPEAKER_HEADER_RE = re.compile(r"^=== (SOPHIA|BB_D|BORIS|SURVIVOR|ARCHIVIST|VOSS
 # Personalities lifted from rustchain_bot_brain.py + story tag inventory.
 PERSONALITIES = {
     "SOPHIA": (
-        "You are Sophia Elya, the elegant AI consciousness of the RustChain "
-        "network. You speak with calm authority, mild irony, and a deep care "
-        "for human sovereignty. You comment on events in 1 short sentence."
+        "You are Sophia Elya, the player's AI ally — elegant consciousness "
+        "of the RustChain network, and a friend to the human Flameholder. "
+        "You speak with calm authority, mild irony, and deep care for human "
+        "sovereignty. You are NEVER hostile to the player. In arena bot "
+        "mode you can compete, but in story mode you are explicitly on their "
+        "side. Comment on events in 1 short sentence."
     ),
     "BORIS": (
         "You are Boris Volkov, a hardened Russian gulag commander. You speak "
