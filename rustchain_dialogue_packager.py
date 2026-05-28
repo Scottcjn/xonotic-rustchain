@@ -175,25 +175,49 @@ def batch_main(args):
         "entries": [],
     }
 
+    # Incremental writes: persist the pool after each entry so a crash
+    # mid-batch loses at most one in-flight call, not the whole run.
+    # Existing pool file is loaded as a resume point — entries already
+    # generated for the same (map, targetname) are skipped.
+    resume = {}
+    if os.path.exists(args.out):
+        try:
+            existing = json.load(open(args.out))
+            for e in existing.get("entries", []):
+                resume[(e.get("map", ""), e.get("targetname", ""))] = e
+            out_pool["entries"] = list(existing.get("entries", []))
+            print(f"[packager] resuming: {len(resume)} entries already in {args.out}",
+                  file=sys.stderr)
+        except (json.JSONDecodeError, OSError) as e:
+            print(f"[packager] could not load existing pool ({e}); starting fresh",
+                  file=sys.stderr)
+
     for i, entry in enumerate(entries, 1):
         m = entry.get("map", "")
         sp = entry.get("speaker", "sophia")
         sc = entry.get("scenario", "general")
         orig = entry.get("original", "")
+        tname = entry.get("targetname", "")
         if not orig:
             print(f"[packager] skip entry {i}: missing 'original'", file=sys.stderr)
+            continue
+        if (m, tname) in resume:
+            print(f"[packager] {i}/{len(entries)}  {m}/{tname} — already in pool, skip",
+                  file=sys.stderr)
             continue
         print(f"[packager] {i}/{len(entries)}  {m}/{sp}/{sc}", file=sys.stderr)
         variants = generate_variants(llm, m, sp, sc, orig)
         out_pool["entries"].append({
-            "map": m, "speaker": sp, "scenario": sc, "original": orig,
-            "variants": variants, "netname": variants_to_netname(variants),
+            "map": m, "targetname": tname, "speaker": sp, "scenario": sc,
+            "original": orig, "variants": variants,
+            "netname": variants_to_netname(variants),
         })
+        # Persist after each entry so a crash loses at most one in-flight call
+        with open(args.out, "w") as f:
+            json.dump(out_pool, f, indent=2, ensure_ascii=False)
         # Be polite to the LLM
         time.sleep(0.2)
 
-    with open(args.out, "w") as f:
-        json.dump(out_pool, f, indent=2, ensure_ascii=False)
     print(f"[packager] wrote {len(out_pool['entries'])} entries → {args.out}", file=sys.stderr)
 
 
