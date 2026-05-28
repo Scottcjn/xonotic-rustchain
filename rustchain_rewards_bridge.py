@@ -22,10 +22,14 @@ from decimal import Decimal, getcontext
 
 import requests
 
+from rustchain_dedup import Deduper
+
 getcontext().prec = 18
 
 XONOTIC_LOG = os.path.expanduser("~/.xonotic/data/server.log")
 DB_PATH = os.path.expanduser("~/Games/Xonotic/rustchain_rewards.db")
+DEDUP_DB_PATH = os.path.expanduser("~/Games/Xonotic/rustchain_dedup.db")
+_DEDUPER = Deduper(DEDUP_DB_PATH, "xonotic")
 
 # On-chain payout config (env-driven). Mirrors the Minecraft-bridge pattern:
 # tail log -> compute reward -> POST direct to RustChain /wallet/transfer.
@@ -124,6 +128,21 @@ def award_rtc(conn, player, event_type, amount):
     wallet = PLAYER_WALLETS.get(player, f"arena-{player.lower()}")
     ts = datetime.now().isoformat()
 
+    # DEDUP guard at the TOP — short-circuit before ANY local writes so a
+    # tracker replay (crash + log re-tail) cannot inflate stats.total_rtc.
+    # Keeps local DB in sync with on-chain truth.
+    dedup_payload = {
+        "player_name": player,
+        "event_type": event_type,
+        "timestamp": time.time(),
+        "kills": 1 if event_type == "kill" else 0,
+    }
+    sig = _DEDUPER.signature(dedup_payload)
+    prior = _DEDUPER.seen(sig)
+    if prior:
+        print(f"  🔁 dedup: prior #{prior.get('pending_id')}, skipping ({player} {event_type} {amount} RTC)")
+        return
+
     c = conn.cursor()
     c.execute('''INSERT INTO rewards (timestamp, player, wallet, event_type, amount)
                  VALUES (?, ?, ?, ?, ?)''',
@@ -139,13 +158,17 @@ def award_rtc(conn, player, event_type, amount):
     conn.commit()
 
     # On-chain transfer (audit-only fallback if RC_ADMIN_KEY unset)
+    # Dedup is enforced UP TOP of this function so we don't re-write local stats either.
     reason = f"xonotic:{event_type}:{player}"
     ok, pending_id, err = _post_onchain(wallet, amount, reason)
     if ok:
         c.execute('UPDATE rewards SET submitted = 1 WHERE id = ?', (reward_id,))
         conn.commit()
+        _DEDUPER.record(sig, pending_id, str(amount), dedup_payload)
         print(f"  ⚡ {player} +{amount} RTC ({event_type}) | pending #{pending_id} | Total: {new_total:.6f} RTC")
     else:
+        # Record dedup even on chain failure — prevents replay double-writing local stats
+        _DEDUPER.record(sig, None, str(amount), dedup_payload)
         print(f"  ⚡ {player} +{amount} RTC ({event_type}) | OFF-CHAIN ({err}) | Total: {new_total:.6f} RTC")
 
 def parse_kill_event(line):
