@@ -24,6 +24,31 @@ WEAPON_RTC_BASE = {
     "double_spend": Decimal("0.0018"),
 }
 
+# Weapon fire sounds — the RustChain Arena sound set (CC0, bounty #293 / PR #10).
+# Paths are relative to Xonotic's `sound/` vfs root, the form used by
+# precache_sound() / sound() in QuakeC. Files ship in pk3_build/sound/.
+WEAPON_SOUNDS = {
+    "validator":       "weapons/rustchain/validator_pistol.ogg",
+    "forker":          "weapons/rustchain/forker_shotgun.ogg",
+    "hashcannon":      "weapons/rustchain/hashcannon.ogg",
+    "mempool_grenade": "weapons/rustchain/mempool_grenade.ogg",
+    "double_spend":    "weapons/rustchain/double_spend_smg.ogg",
+}
+
+
+def weapon_fire_sound(weapon_name: str) -> Optional[str]:
+    """Return the RustChain fire-sound vfs path for a weapon key, or None."""
+    return WEAPON_SOUNDS.get(weapon_name)
+
+
+def precache_sound_lines() -> List[str]:
+    """QuakeC precache_sound() lines for the RustChain weapon sound set.
+
+    Drop these into the server-side precache hook so the engine loads the
+    sounds before they are played with sound(...).
+    """
+    return [f'precache_sound("{path}");' for path in WEAPON_SOUNDS.values()]
+
 
 class WeaponID(IntEnum):
     """Weapon identifiers matching Xonotic slots"""
@@ -640,8 +665,15 @@ class BlockchainWeapons:
     # ═══════════════════════════════════════════════════════════════════════
 
     def get_weapon_info(self, weapon_name: str) -> Dict:
-        """Get weapon configuration"""
-        return self.weapons.get(weapon_name, {})
+        """Get weapon configuration (including its fire sound, if any)."""
+        info = dict(self.weapons.get(weapon_name, {}))
+        if info and weapon_name in WEAPON_SOUNDS:
+            info["fire_sound"] = WEAPON_SOUNDS[weapon_name]
+        return info
+
+    def get_fire_sound(self, weapon_name: str) -> Optional[str]:
+        """Return the fire-sound vfs path for a weapon key, or None."""
+        return WEAPON_SOUNDS.get(weapon_name)
 
     def get_announcer_line(self, weapon_name: str) -> str:
         """Get random announcer line for weapon"""
@@ -727,6 +759,17 @@ alias doublespend_rename "settemp cl_weaponpriority_6_name \"Double-Spend Rifle\
 
 // Apply all renames
 alias rustchain_weapons "forker_rename; validator_rename; hashcannon_rename; mempool_rename; doublespend_rename"
+
+// ═══════════════════════════════════════════════════════════════
+// WEAPON FIRE SOUNDS (RustChain sound set — pk3_build/sound/weapons/rustchain/)
+// CC0, bounty #293 / PR #10. Read by the QuakeC bridge; precache via
+// precache_sound_lines() from rustchain_weapons.py.
+// ═══════════════════════════════════════════════════════════════
+set g_rustchain_forker_fire_sound "weapons/rustchain/forker_shotgun.ogg"
+set g_rustchain_validator_fire_sound "weapons/rustchain/validator_pistol.ogg"
+set g_rustchain_hashcannon_fire_sound "weapons/rustchain/hashcannon.ogg"
+set g_rustchain_mempool_fire_sound "weapons/rustchain/mempool_grenade.ogg"
+set g_rustchain_doublespend_fire_sound "weapons/rustchain/double_spend_smg.ogg"
 """
 
 
