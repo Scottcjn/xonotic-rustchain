@@ -18,6 +18,24 @@ precache_sound("weapons/rustchain/hashcannon.ogg");
 sound(self, CHAN_WEAPON, "weapons/rustchain/hashcannon.ogg", VOL_BASE, ATTEN_NORM);
 ```
 
+## Integration
+
+Each sound is bound to a weapon in `rustchain_weapons.py` via `WEAPON_SOUNDS`:
+
+| Weapon (key) | Base Xonotic weapon | Fire sound |
+|---|---|---|
+| `validator` | electro | `validator_pistol.ogg` |
+| `forker` | shotgun | `forker_shotgun.ogg` |
+| `hashcannon` | devastator | `hashcannon.ogg` |
+| `mempool_grenade` | mortar | `mempool_grenade.ogg` |
+| `double_spend` | vortex | `double_spend_smg.ogg` |
+
+- `generate_weapon_config()` emits matching `g_rustchain_*_fire_sound` cvars into the
+  weapons `.cfg` for the QuakeC bridge to read.
+- `precache_sound_lines()` returns ready-to-paste `precache_sound(...)` lines for the
+  server precache hook.
+- `tests/test_weapon_sounds.py` verifies every mapping resolves to a real OGG on disk.
+
 ## Regeneration
 
 From the repository root:
