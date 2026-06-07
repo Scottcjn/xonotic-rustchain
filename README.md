@@ -1,7 +1,10 @@
 # Xonotic RustChain Arena
 
 [![BCOS Certified](https://img.shields.io/badge/BCOS-Certified-brightgreen?style=flat&logo=data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0id2hpdGUiPjxwYXRoIGQ9Ik0xMiAxTDMgNXY2YzAgNS41NSAzLjg0IDEwLjc0IDkgMTIgNS4xNi0xLjI2IDktNi40NSA5LTEyVjVsLTktNHptLTIgMTZsLTQtNCA1LjQxLTUuNDEgMS40MSAxLjQxTDEwIDE0bDYtNiAxLjQxIDEuNDFMMTAgMTd6Ii8+PC9zdmc+)](BCOS.md)
-A modded [Xonotic](https://xonotic.org/) FPS arena where players earn **RTC tokens** through skill-based gameplay. Built on the DarkPlaces engine with ULTRAKILL-inspired mechanics.
+
+**Xonotic RustChain Arena is an open-source Xonotic FPS mod that combines skill-based arena combat with verifiable RTC token rewards on the RustChain network.**
+
+Built on the [Xonotic](https://xonotic.org/) DarkPlaces engine, the project adds a damage-driven blood economy, style multipliers, blockchain-themed weapons, local AI bots, anti-cheat checks, and optional Discord integration.
 
 ## Features
 
@@ -94,6 +97,40 @@ rustchain_game_master.py     # Master orchestrator
 ## Sophia Arena (DarkPlaces Mod)
 
 Custom DarkPlaces engine modification with AI-generated announcer voice (Sophia) using XTTS voice cloning. See [SOPHIA_ARENA_README.md](SOPHIA_ARENA_README.md) for engine-level details.
+
+## Frequently Asked Questions
+
+### What is Xonotic RustChain Arena?
+
+Xonotic RustChain Arena is a GPL-licensed Xonotic mod that turns arena performance into locally tracked RTC rewards and provides bridges for syncing eligible rewards with RustChain.
+
+### What is RTC?
+
+RTC is the native token of [RustChain](https://rustchain.org), a Proof-of-Antiquity network designed to reward participation by vintage and uncommon computer hardware. In this mod, RTC amounts represent gameplay rewards generated from kills, style combos, and match results.
+
+### Do I need cryptocurrency to play?
+
+No. You can run the arena and its gameplay systems locally without owning RTC. RustChain connectivity is only needed when you want to participate in the network or sync eligible rewards.
+
+### How do I start a local arena?
+
+Install [Xonotic](https://xonotic.org/download/), clone this repository into the Xonotic directory, install the Python dependencies, and run `./rustchain_arena_full.sh`. The [Quick Start](#quick-start) section lists the exact commands.
+
+### How are rewards calculated?
+
+The game master combines weapon rewards, style rank multipliers, combos, and match outcomes. Reward tracking and network synchronization are implemented in `rustchain_rewards_bridge.py`; style progression is implemented in `rustchain_style_system.py`.
+
+### How does the project discourage reward farming?
+
+The project includes consensus-inspired anti-cheat checks for suspicious movement, stat manipulation, and coordinated farming. These controls are implemented in `rustchain_51_attack.py` and complement normal server administration.
+
+### Can the AI features run locally?
+
+Yes. Bot tactics can use a local [Ollama](https://ollama.com/) model, and the announcer can use a local XTTS setup. These integrations are optional; the core arena can run without an external hosted AI service.
+
+### Where can I find related projects and contribution bounties?
+
+Use the canonical [RustChain repository](https://github.com/Scottcjn/Rustchain), [RustChain Bounties](https://github.com/Scottcjn/rustchain-bounties), and [BoTTube](https://bottube.ai). Project-specific contribution opportunities are also listed below.
 
 ## Contributing
 

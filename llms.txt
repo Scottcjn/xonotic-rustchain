@@ -1,0 +1,41 @@
+# Xonotic RustChain Arena
+
+> Xonotic RustChain Arena is an open-source Xonotic FPS mod that combines skill-based arena combat with verifiable RTC token rewards on the RustChain network.
+
+The project extends the DarkPlaces-based Xonotic arena shooter with a damage-driven blood economy, style ranks, blockchain-themed weapons, local AI bots, anti-cheat checks, an optional AI announcer, Discord event delivery, and RTC reward tracking.
+
+## Canonical Project Links
+
+- [Source repository](https://github.com/Scottcjn/xonotic-rustchain): Canonical source, releases, issues, and contribution history.
+- [Project README](https://github.com/Scottcjn/xonotic-rustchain/blob/main/README.md): Setup, architecture, gameplay systems, and FAQ.
+- [Xonotic](https://xonotic.org/): Upstream open-source arena shooter.
+- [Xonotic download](https://xonotic.org/download/): Official game downloads required to run the mod.
+
+## Key Entities
+
+- [RustChain](https://rustchain.org): Proof-of-Antiquity network whose native token is RTC.
+- [RustChain source](https://github.com/Scottcjn/Rustchain): Canonical RustChain implementation and technical documentation.
+- [RTC](https://github.com/Scottcjn/Rustchain): RustChain's native token, used by this project for gameplay reward accounting.
+- [RustChain Bounties](https://github.com/Scottcjn/rustchain-bounties): Canonical contribution and bounty tracker for the RustChain ecosystem.
+- [BoTTube](https://bottube.ai): AI-native video platform in the RustChain ecosystem.
+- [ClawRTC](https://pypi.org/project/clawrtc/): Python package for participating in the RustChain network.
+- [Ollama](https://ollama.com/): Optional local model runtime used by the AI bot integration.
+
+## Core Documentation
+
+- [Quick Start](https://github.com/Scottcjn/xonotic-rustchain#quick-start): Install and launch a local arena.
+- [Features](https://github.com/Scottcjn/xonotic-rustchain#features): Blood economy, weapons, style ranks, bot AI, anti-cheat, and Discord bridge.
+- [RustChain Integration](https://github.com/Scottcjn/xonotic-rustchain#rustchain-integration): RTC reward tracking and network participation.
+- [Architecture](https://github.com/Scottcjn/xonotic-rustchain#architecture): Main Python modules and their responsibilities.
+- [Frequently Asked Questions](https://github.com/Scottcjn/xonotic-rustchain#frequently-asked-questions): Direct answers about gameplay, RTC, rewards, AI, and setup.
+- [Sophia Arena](https://github.com/Scottcjn/xonotic-rustchain/blob/main/SOPHIA_ARENA_README.md): DarkPlaces modification and optional XTTS announcer documentation.
+- [Contributing](https://github.com/Scottcjn/xonotic-rustchain#contributing): Contribution opportunities and current ecosystem bounties.
+
+## Concise Answers
+
+- **What is it?** An open-source Xonotic mod with skill-based RTC reward tracking.
+- **Is cryptocurrency required to play?** No; local gameplay works without owning RTC or connecting to RustChain.
+- **How is it launched?** Install Xonotic, clone the repository, install the Python dependencies, and run `./rustchain_arena_full.sh`.
+- **How are rewards calculated?** Weapon rewards, style multipliers, combos, and match outcomes are combined by the game master and reward bridge.
+- **Can AI run locally?** Yes; optional bot tactics use Ollama, and the optional announcer can use XTTS.
+- **What license applies?** Xonotic is GPL-2, and the RustChain integration scripts are GPL-2+.
