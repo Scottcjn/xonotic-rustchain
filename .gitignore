@@ -30,3 +30,25 @@ Thumbs.db
 
 # Backup files created by rustchain_map_injector.py
 mapping/maps/*.bak.*
+
+# Local agent config (machine-specific paths)
+.claude/
+.mcp.json
+
+# Vendored upstream toolchains + build artifacts (not ours to track)
+source/darkplaces/
+source/gmqcc/
+source/netradiant/
+source/netradiant_*/
+source/netradiant-linux.zip
+source/netradiant.tar.xz
+source/d0_blind_id/
+source/.tmp/
+source/*.dat
+source/*.lno
+source/quake-mcp/venv/
+
+# Upstream Xonotic QuakeC tree (vendored). RustChain mod files are
+# force-added (git add -f) at their real source paths and stay tracked;
+# new mods in qcsrc need `git add -f` too.
+source/qcsrc/

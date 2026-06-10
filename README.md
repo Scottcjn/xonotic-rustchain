@@ -61,6 +61,24 @@ python3 rustchain_game_master.py  # Full game master
 python3 rustchain_bot_brain.py    # AI bot system
 ```
 
+## Offline Story Mode (Campaign)
+
+This port includes an offline campaign built on Xonotic's native `g_campaign` system.
+
+1. Deploy the campaign file:
+
+```bash
+./source/build.sh story
+```
+
+2. Launch story mode:
+
+```bash
+./rustchain_story_launcher.sh
+```
+
+Or start Xonotic and choose: `Singleplayer` -> `Campaign` -> `RustChain Story Mode`.
+
 ## RustChain Integration
 
 Players earn RTC (RustChain Token) for kills, style combos, and winning matches. Rewards are tracked in a local SQLite database and can be synced to the RustChain network.

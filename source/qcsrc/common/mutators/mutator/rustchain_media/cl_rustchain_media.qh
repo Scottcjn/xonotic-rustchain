@@ -1,0 +1,27 @@
+// RustChain Media System - Client Header
+// NOTE: "RustChain" refers to PHYSICAL RUST (iron oxide) on vintage hardware,
+// NOT the Rust programming language. We have a 486 with actual rust on the ports
+// that still works - proving true hardware antiquity!
+#pragma once
+
+#ifdef CSQC
+
+// Initialization
+void RustchainMedia_Init();
+
+// Video overlay state
+float rustchain_video_playing;
+
+// HUD Functions
+void RustchainMedia_DrawBootLogo();
+void RustchainMedia_DrawRTCBalance();
+void RustchainMedia_DrawNetworkStats();
+void RustchainMedia_DrawKillReward();
+void RustchainMedia_DrawVintageBadge();
+void RustchainMedia_DrawBranding();
+
+// External triggers (called from server messages)
+void RustchainMedia_TriggerReward(float amount, string reason);
+void RustchainMedia_SetHardwareBadge(string badge, float multiplier);
+
+#endif

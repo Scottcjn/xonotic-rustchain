@@ -1,0 +1,24 @@
+// RustChain Media System - Server Header
+// Video player, music, and ambient sounds for RustChain themed maps
+// + RustChain blockchain announcements via Sophia voice
+#pragma once
+
+#ifdef SVQC
+
+// Video functions
+void RustchainMedia_PlayVideo(string videoname);
+void RustchainMedia_StopVideo();
+
+// Music functions (uses cd play command)
+void RustchainMedia_PlayMusic(string trackname);
+void RustchainMedia_StopMusic();
+
+// Ambient sound functions
+void RustchainMedia_PlayAmbient(string soundpath);
+
+// RustChain blockchain announcement functions
+void RustChain_PlayAnnouncement(string event_type);
+void RustChain_QueueAnnouncement(string event_type);
+void RustChain_PollAPI();
+
+#endif

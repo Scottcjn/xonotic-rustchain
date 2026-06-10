@@ -1,0 +1,10 @@
+// generated file; do not modify
+#pragma once
+
+#ifdef SVQC
+#include <common/mutators/mutator/rustchain_media/sv_rustchain_media.qh>
+#endif
+
+#ifdef CSQC
+#include <common/mutators/mutator/rustchain_media/cl_rustchain_media.qh>
+#endif
