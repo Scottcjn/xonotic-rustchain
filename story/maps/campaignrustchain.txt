@@ -1,0 +1,18 @@
+//campaign:Sophia Elya: RustChain Awakening
+//"game","mapname","bots","skill","fraglimit","timelimit","mutator-sets","description","long description"
+//fraglimit: Score limit + lead limit, use "default" to leave the implicit value in effect, leave unset for no limit. eg: 50, 30+5, +10, 0+default
+//timelimit: Match duration in minutes, use "default" to leave the implicit value in effect, leave unset for no limit.
+//
+// Notes:
+// - This is an offline campaign: it runs with sv_public 0 and pausable 1 (handled by campaign code).
+// - "mutator-sets" are parsed as semicolon-separated cvar sets (see Xonotic campaign implementation).
+//
+"dm","elyan_labs","1","0","3",,,"Mission 1: Boot Sector","Elyan Labs is dark. Dust in the air. Fans asleep.\n\nObjective: Restore local power and survive the first contact.\nTip: Movement is your first weapon."
+"dm","first_signal","4","2","8",,,"Mission 2: First Signal","An old telecom relay still hums, faint and stubborn.\n\nObjective: Clear the tower area and bring the signal online.\nTip: Take high ground; deny angles."
+"dm","museum_vault","5","3","10",,,"Mission 3: Museum Vault","An underground archive of antique systems.\n\nObjective: Secure the vault and activate the central node.\nTip: The chain remembers what you protect."
+"dm","warfare","6","4","12",,,"Mission 4: Factory of Boris","Red lights. Conveyor belts. Production without end.\n\nObjective: Break the factory's rhythm and escape.\nTip: Keep pressure; do not let the line reset."
+"dm","finalrage","6","5","14",,,"Mission 5: Silent Datacenter","Clean halls. Cold geometry. No mercy.\n\nObjective: Cut BB_D control and survive the purge response.\nTip: Stay unpredictable; BB_D predicts patterns."
+"dm","chambers_ruins","5","6","15",,,"Mission 6: Chambers Ruins","Burned corridors and broken screens.\n\nObjective: Recover the truth fragments and reach the server heart.\nTip: You are closer to Elyan than you think."
+"tdm","rustcore_v3","7","7",,"8",,"Mission 7: RustChain Uplink","Storm over dead towers. Three signals, one world.\n\nObjective: Reconnect the chain and hold the line.\nTip: Win space first, then win frags."
+"mayhem","rustcore","7","8",,"7",,"Mission 8: Boris' Last Offensive","Factories scream. Steel marches.\n\nObjective: Survive the offensive and break the Colossus.\nTip: When the core opens, commit."
+"dm","glowplant","6","10","25",,,"Mission 9: Core of BB_D","A digital cathedral built from stolen infrastructure.\n\nObjective: Break the logic anchors and end the correction.\nTip: Stability is not peace."

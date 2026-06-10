@@ -52,3 +52,9 @@ source/quake-mcp/venv/
 # force-added (git add -f) at their real source paths and stay tracked;
 # new mods in qcsrc need `git add -f` too.
 source/qcsrc/
+
+# Game binaries / launchers (upstream or locally built — reproducible)
+xonotic*.exe
+xonotic-linux64-*
+xonotic-osx-dedicated
+xonotic-x86*
