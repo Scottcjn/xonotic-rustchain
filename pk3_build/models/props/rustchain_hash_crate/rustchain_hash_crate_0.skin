@@ -1,0 +1,4 @@
+crate_iron,models/props/rustchain_hash_crate/hash_crate_iron
+hash_panels,models/props/rustchain_hash_crate/hash_crate_panels
+rtc_glow,models/props/rustchain_hash_crate/hash_crate_glow
+warning_stripe,models/props/rustchain_hash_crate/hash_crate_warning

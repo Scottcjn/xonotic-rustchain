@@ -1,0 +1,15 @@
+newmtl crate_iron
+Kd 0.170 0.200 0.200
+map_Kd hash_crate_iron.tga
+
+newmtl hash_panels
+Kd 0.340 0.390 0.370
+map_Kd hash_crate_panels.tga
+
+newmtl rtc_glow
+Kd 0.080 0.760 0.780
+map_Kd hash_crate_glow.tga
+
+newmtl warning_stripe
+Kd 0.900 0.450 0.080
+map_Kd hash_crate_warning.tga
