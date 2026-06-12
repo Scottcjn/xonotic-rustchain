@@ -1,0 +1,11 @@
+newmtl frame
+Kd 0.18 0.20 0.18
+map_Kd textures/ledger_billboard_frame.tga
+
+newmtl screen
+Kd 0.03 0.18 0.16
+map_Kd textures/ledger_billboard_panel.tga
+
+newmtl glow
+Kd 0.25 1.0 0.78
+map_Kd textures/ledger_billboard_glow.tga

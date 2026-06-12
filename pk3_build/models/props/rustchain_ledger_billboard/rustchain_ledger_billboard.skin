@@ -1,0 +1,3 @@
+frame,models/props/rustchain_ledger_billboard/textures/ledger_billboard_frame.tga
+screen,models/props/rustchain_ledger_billboard/textures/ledger_billboard_panel.tga
+glow,models/props/rustchain_ledger_billboard/textures/ledger_billboard_glow.tga
