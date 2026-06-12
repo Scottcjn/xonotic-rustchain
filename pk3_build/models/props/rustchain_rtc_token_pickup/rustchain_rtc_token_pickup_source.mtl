@@ -1,0 +1,15 @@
+newmtl token_gold
+Kd 0.900 0.620 0.180
+map_Kd rtc_token_pickup_gold.tga
+
+newmtl token_edge
+Kd 0.420 0.300 0.120
+map_Kd rtc_token_pickup_edge.tga
+
+newmtl pickup_glow
+Kd 1.000 0.440 0.100
+map_Kd rtc_token_pickup_glow.tga
+
+newmtl pickup_base
+Kd 0.160 0.190 0.210
+map_Kd rtc_token_pickup_base.tga
