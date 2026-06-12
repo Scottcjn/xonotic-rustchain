@@ -1,0 +1,2 @@
+rack,models/props/rustchain_server_rack/textures/server_rack_front.tga
+led,models/props/rustchain_server_rack/textures/server_rack_leds.tga

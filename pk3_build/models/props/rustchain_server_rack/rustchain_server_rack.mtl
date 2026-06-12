@@ -1,0 +1,7 @@
+newmtl rack
+Kd 0.12 0.14 0.18
+map_Kd textures/server_rack_front.tga
+
+newmtl led
+Kd 0.2 1.0 0.45
+map_Kd textures/server_rack_leds.tga
