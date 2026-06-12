@@ -1,0 +1,15 @@
+newmtl pillar_metal
+Kd 0.200 0.220 0.240
+map_Kd validator_node_pillar_metal.tga
+
+newmtl pillar_gold
+Kd 0.860 0.570 0.180
+map_Kd validator_node_pillar_gold.tga
+
+newmtl pillar_glow
+Kd 1.000 0.420 0.100
+map_Kd validator_node_pillar_glow.tga
+
+newmtl pillar_glass
+Kd 0.160 0.620 0.740
+map_Kd validator_node_pillar_glass.tga
