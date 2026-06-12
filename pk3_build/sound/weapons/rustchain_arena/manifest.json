@@ -1,0 +1,53 @@
+{
+  "bounty": "rustchain-bounties#293",
+  "set": "Xonotic RustChain Arena weapon SFX",
+  "sample_rate": 44100,
+  "license": "CC-BY-SA-4.0",
+  "files": [
+    {
+      "file": "sfx/weapons/validator_pistol_charge.wav",
+      "duration_sec": 0.55,
+      "sha256": "cc21c8d5fac04cf673511bb0c552a41ba8121dcd60fae03edf7325bf4a1ff4bc"
+    },
+    {
+      "file": "sfx/weapons/validator_pistol_discharge.wav",
+      "duration_sec": 0.42,
+      "sha256": "2b9135d7072e990bb1397469612d701405c66f9dcd6cf7bee7c7765c50489fe5"
+    },
+    {
+      "file": "sfx/weapons/forker_shotgun_pump.wav",
+      "duration_sec": 0.48,
+      "sha256": "af5b35ed6d984bf206c0cea4d6dd462ea6a13fb4015423171e0f1cf225a52436"
+    },
+    {
+      "file": "sfx/weapons/forker_shotgun_dual_blast.wav",
+      "duration_sec": 0.75,
+      "sha256": "e2dd76b1e4818418facaabc2e2ed8ce208b59ed88a5e12a1f4db753155925be1"
+    },
+    {
+      "file": "sfx/weapons/hashcannon_windup.wav",
+      "duration_sec": 1.15,
+      "sha256": "254802c32db6856f5c6218107a16c3770de91a1e4901d58a8b446fc9ed441ace"
+    },
+    {
+      "file": "sfx/weapons/hashcannon_beam.wav",
+      "duration_sec": 0.95,
+      "sha256": "ecccb1c1b26615025e86bc39e8d28d623e2c483d4309fd03b792600a63cd071d"
+    },
+    {
+      "file": "sfx/weapons/mempool_grenade_cluster.wav",
+      "duration_sec": 1.2,
+      "sha256": "b3a4af0c38acec6dba690e02fc25ac3f90142a0924df053e3f82c2d4875fb4aa"
+    },
+    {
+      "file": "sfx/weapons/mempool_grenade_detonation.wav",
+      "duration_sec": 1.0,
+      "sha256": "a490908e57d921e880e042cca7961b52a797b3d2ce7cb17dc5ba935d1fa58e5d"
+    },
+    {
+      "file": "sfx/weapons/double_spend_smgs_burst.wav",
+      "duration_sec": 0.9,
+      "sha256": "be18e07825389b80c4bd28d03e93cce8c00b1530b78b97952049b5128d87c9b4"
+    }
+  ]
+}
