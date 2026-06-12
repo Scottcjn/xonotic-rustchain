@@ -4,16 +4,16 @@ One original blockchain-themed player skin texture set for the RustChain Arena.
 
 | File | Purpose |
 |---|---|
-| `rustchain_mempool_diffuse.tga` | 1024x1024 diffuse map with clustered pending-transaction nodes, fee-lane markings, and queue panels |
-| `rustchain_mempool_glow.tga` | 1024x1024 glow/emission map for swarm links, packet nodes, and queue bars |
+| `rustchain_mempool_diffuse.tga` | 1024x1024 diffuse map with queued transaction nodes, fee lanes, and swarm links |
+| `rustchain_mempool_glow.tga` | 1024x1024 glow/emission map for transaction nodes, lane traces, and the pending-tx core |
 | `rustchain_mempool_preview.png` | Preview render and texture thumbnails |
 | `rustchain_mempool.skin` | Minimal DarkPlaces skin mapping for the texture pair |
 
 ## Theme
 
 The design implements **Mempool** from the skin wishlist: a cluster/swarm
-player identity with pending transaction tiles, fee-lane routing, neon backlog
-bars, and a network of waiting packet nodes.
+character built from pending transaction nodes, queue bands, fee-lane markings,
+and a bright pending-tx reactor.
 
 ## Integration notes
 

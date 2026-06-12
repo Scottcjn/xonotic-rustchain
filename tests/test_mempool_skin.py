@@ -55,11 +55,11 @@ class MempoolSkinPackageTests(unittest.TestCase):
                 self.assertEqual(image.size, size)
 
         with Image.open(diffuse_path) as diffuse:
-            chest_queue = diffuse.crop((360, 400, 660, 610))
-            upper_left_swarm = diffuse.crop((40, 120, 330, 360))
+            center = diffuse.crop((420, 400, 604, 604))
+            corner = diffuse.crop((24, 24, 180, 180))
             self.assertNotEqual(
-                chest_queue.resize((1, 1)).getpixel((0, 0)),
-                upper_left_swarm.resize((1, 1)).getpixel((0, 0)),
+                center.resize((1, 1)).getpixel((0, 0)),
+                corner.resize((1, 1)).getpixel((0, 0)),
             )
 
         with Image.open(glow_path) as glow:

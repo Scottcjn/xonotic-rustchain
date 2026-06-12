@@ -15,7 +15,7 @@ from PIL import Image, ImageDraw, ImageFilter, ImageFont
 ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / "pk3_build" / "models" / "player" / "skins" / "rustchain_mempool"
 SIZE = 1024
-SEED = 0x6D454D50
+SEED = 0x6D656D70
 
 
 def font(size: int) -> ImageFont.ImageFont:
@@ -31,19 +31,15 @@ def clamp(value: int) -> int:
     return max(0, min(255, value))
 
 
-def add_backlog_noise(base: Image.Image) -> None:
+def add_packet_noise(base: Image.Image) -> None:
     pixels = base.load()
     for y in range(SIZE):
         for x in range(SIZE):
-            row_wave = int(9 * math.sin(y / 21.0))
-            column_wave = int(7 * math.sin((x + y) / 47.0))
-            cell = 8 if ((x // 28) + (y // 18)) % 3 == 0 else -5
+            wave = int(7 * math.sin(x / 27.0) + 6 * math.cos(y / 31.0))
+            cell = ((x // 22) ^ (y // 22)) & 1
+            delta = wave + (8 if cell else -5)
             r, g, b = pixels[x, y]
-            pixels[x, y] = (
-                clamp(r + cell + row_wave // 2),
-                clamp(g + cell + column_wave),
-                clamp(b + row_wave + column_wave),
-            )
+            pixels[x, y] = (clamp(r + delta), clamp(g + delta + 2), clamp(b + delta))
 
 
 def polygon(draw: ImageDraw.ImageDraw, points, fill, outline, width=3) -> None:
@@ -51,143 +47,138 @@ def polygon(draw: ImageDraw.ImageDraw, points, fill, outline, width=3) -> None:
     draw.line(points + [points[0]], fill=outline, width=width, joint="curve")
 
 
-def draw_packet_node(
-    draw: ImageDraw.ImageDraw,
-    glow: ImageDraw.ImageDraw,
-    x: int,
-    y: int,
-    size: int,
-    fill,
-    outline,
-    label: str,
-) -> None:
-    box = (x - size, y - size, x + size, y + size)
-    draw.rounded_rectangle(box, radius=max(5, size // 3), fill=fill, outline=outline, width=3)
-    draw.text((x - size + 5, y - 10), label, fill=(232, 255, 248), font=font(max(14, size // 2)))
-    glow.rounded_rectangle((box[0] - 5, box[1] - 5, box[2] + 5, box[3] + 5), radius=max(8, size // 2), fill=outline)
+def draw_packet(draw: ImageDraw.ImageDraw, glow: ImageDraw.ImageDraw, x: int, y: int, size: int, fill, outline, label: str) -> None:
+    draw.rounded_rectangle((x, y, x + size, y + size), radius=max(6, size // 6), fill=fill, outline=outline, width=2)
+    draw.line((x + 8, y + size // 2, x + size - 8, y + size // 2), fill=outline, width=2)
+    draw.text((x + 8, y + size // 2 + 4), label, fill=(220, 252, 246), font=font(max(13, size // 4)))
+    glow.rounded_rectangle((x - 2, y - 2, x + size + 2, y + size + 2), radius=max(8, size // 6), outline=outline, width=5)
 
 
 def draw_swarm(draw: ImageDraw.ImageDraw, glow: ImageDraw.ImageDraw, rng: random.Random) -> None:
-    cyan = (70, 235, 255)
-    green = (91, 255, 175)
-    violet = (217, 87, 255)
-    amber = (255, 195, 79)
-    nodes = []
-    for band, y in enumerate((142, 226, 324, 438, 544, 662, 804, 910)):
-        for i in range(7):
-            x = 96 + i * 130 + rng.randint(-18, 18)
-            ny = y + rng.randint(-28, 28)
-            nodes.append((x, ny, band, i))
+    teal = (60, 235, 204)
+    amber = (255, 197, 72)
+    core = (222, 255, 246)
+    centers = []
+    for _ in range(64):
+        x = rng.randrange(90, 934)
+        y = rng.randrange(110, 920)
+        radius = rng.randrange(9, 20)
+        color = teal if rng.random() < 0.72 else amber
+        centers.append((x, y, color))
+        draw.ellipse((x - radius, y - radius, x + radius, y + radius), fill=(24, 47, 50), outline=color, width=2)
+        draw.ellipse((x - 4, y - 4, x + 4, y + 4), fill=core)
+        glow.ellipse((x - radius - 4, y - radius - 4, x + radius + 4, y + radius + 4), fill=color)
 
-    for index, (x, y, band, i) in enumerate(nodes):
-        color = (cyan, green, violet, amber)[(band + i) % 4]
-        if index + 1 < len(nodes):
-            nx, ny, _, _ = nodes[index + 1]
-            if abs(nx - x) < 190:
-                draw.line((x, y, nx, ny), fill=(38, 94, 108), width=3)
-                glow.line((x, y, nx, ny), fill=color, width=10)
-        label = f"{rng.randrange(0, 9999):04x}"[-3:]
-        draw_packet_node(draw, glow, x, y, 24 + (i % 3) * 4, (25, 34, 44), color, label)
-
-
-def draw_body_panels(draw: ImageDraw.ImageDraw, glow: ImageDraw.ImageDraw) -> None:
-    cyan = (70, 235, 255)
-    green = (91, 255, 175)
-    violet = (217, 87, 255)
-    amber = (255, 195, 79)
-    dark = (26, 33, 43)
-    steel = (42, 54, 66)
-
-    plates = [
-        [(348, 58), (676, 58), (706, 258), (512, 332), (318, 258)],
-        [(274, 350), (750, 350), (706, 724), (512, 790), (318, 724)],
-        [(58, 304), (262, 350), (220, 748), (32, 680)],
-        [(762, 350), (966, 304), (992, 680), (804, 748)],
-        [(306, 792), (494, 826), (454, 976), (280, 976)],
-        [(530, 826), (718, 792), (744, 976), (570, 976)],
-    ]
-    outlines = (green, cyan, violet, amber, green, cyan)
-    for index, pts in enumerate(plates):
-        polygon(draw, pts, steel if index < 2 else dark, outlines[index], width=4)
-        glow.line(pts + [pts[0]], fill=outlines[index], width=10, joint="curve")
-
-    draw.rounded_rectangle((380, 412, 644, 584), radius=28, fill=(15, 25, 32), outline=green, width=5)
-    glow.rounded_rectangle((364, 396, 660, 600), radius=36, fill=(42, 196, 128))
-    for i, y in enumerate(range(432, 562, 26)):
-        color = (green, cyan, violet, amber)[i % 4]
-        draw.rounded_rectangle((412, y, 612 - i * 8, y + 13), radius=6, fill=color)
-        glow.rounded_rectangle((404, y - 4, 620 - i * 8, y + 17), radius=8, fill=color)
-
-    draw.text((344, 272), "MEMPOOL", fill=(232, 255, 248), font=font(62))
-    draw.text((392, 596), "TX QUEUE", fill=amber, font=font(30))
-    draw.text((72, 258), "pending", fill=green, font=font(28))
-    draw.text((804, 258), "fee lane", fill=violet, font=font(28))
+    for index, (x, y, color) in enumerate(centers):
+        for j in range(index + 1, min(index + 5, len(centers))):
+            x2, y2, _ = centers[j]
+            if (x - x2) ** 2 + (y - y2) ** 2 < 36000:
+                draw.line((x, y, x2, y2), fill=color, width=2)
+                glow.line((x, y, x2, y2), fill=color, width=5)
 
 
 def make_diffuse_and_glow() -> tuple[Image.Image, Image.Image]:
     rng = random.Random(SEED)
-    diffuse = Image.new("RGB", (SIZE, SIZE), (16, 21, 29))
+    diffuse = Image.new("RGB", (SIZE, SIZE), (16, 24, 27))
     glow = Image.new("RGB", (SIZE, SIZE), (0, 0, 0))
-    add_backlog_noise(diffuse)
+    add_packet_noise(diffuse)
 
     d = ImageDraw.Draw(diffuse)
     g = ImageDraw.Draw(glow)
-    draw_body_panels(d, g)
+
+    teal = (60, 235, 204)
+    teal_dark = (24, 69, 70)
+    amber = (255, 197, 72)
+    dark = (27, 38, 43)
+    mid = (39, 54, 60)
+    violet = (137, 103, 255)
+
+    plates = [
+        [(358, 62), (666, 62), (700, 256), (512, 326), (324, 256)],
+        [(278, 340), (746, 340), (698, 708), (512, 786), (326, 708)],
+        [(68, 312), (266, 356), (224, 744), (44, 686)],
+        [(758, 356), (956, 312), (980, 686), (800, 744)],
+        [(310, 770), (498, 804), (452, 970), (276, 970)],
+        [(526, 804), (714, 770), (748, 970), (572, 970)],
+        [(24, 82), (190, 82), (190, 252), (24, 252)],
+        [(834, 82), (1000, 82), (1000, 252), (834, 252)],
+    ]
+    fills = [mid, dark, dark, dark, (25, 42, 45), (25, 42, 45), (22, 35, 39), (22, 35, 39)]
+    outlines = [teal, teal, amber, amber, teal, amber, violet, violet]
+    for pts, fill, outline in zip(plates, fills, outlines):
+        polygon(d, pts, fill, outline)
+
     draw_swarm(d, g, rng)
 
+    # Queue bands and priority fee lanes.
+    for lane, y in enumerate((410, 470, 530, 590, 650)):
+        color = teal if lane % 2 == 0 else amber
+        d.line((318, y, 704, y + int(18 * math.sin(lane))), fill=color, width=6)
+        g.line((318, y, 704, y + int(18 * math.sin(lane))), fill=color, width=14)
+        for x in range(344, 684, 68):
+            draw_packet(d, g, x, y - 20, 42, teal_dark, color, f"{rng.randrange(10, 99)}")
+
+    d.ellipse((444, 432, 580, 568), fill=(11, 45, 49), outline=(221, 255, 246), width=5)
+    d.ellipse((478, 466, 546, 534), fill=teal)
+    g.ellipse((426, 414, 598, 586), fill=teal)
+    d.text((482, 488), "tx", fill=(12, 38, 40), font=font(31))
+
+    title_font = font(60)
+    small_font = font(30)
+    d.text((348, 260), "MEMPOOL", fill=(225, 255, 247), font=title_font)
+    d.text((70, 258), "pending", fill=(208, 255, 246), font=small_font)
+    d.text((814, 258), "fee lane", fill=(255, 228, 154), font=small_font)
+    d.text((378, 714), "queued tx swarm", fill=(197, 235, 231), font=small_font)
+
+    hex_chars = "0123456789abcdef"
     for _ in range(120):
-        x = rng.randrange(24, SIZE - 78)
-        y = rng.randrange(36, SIZE - 36)
-        fee = rng.choice(("1sat", "2sat", "5sat", "push", "rpl", "wait"))
-        color = rng.choice(((117, 255, 186), (86, 231, 255), (226, 108, 255), (255, 207, 96)))
-        d.text((x, y), fee, fill=color, font=font(17))
+        x = rng.randrange(36, SIZE - 110)
+        y = rng.randrange(34, SIZE - 34)
+        text = "".join(rng.choice(hex_chars) for _ in range(4))
+        color = (rng.randrange(78, 142), rng.randrange(174, 245), rng.randrange(170, 238))
+        d.text((x, y), text, fill=color, font=font(17))
 
     for _ in range(260):
         x = rng.randrange(SIZE)
         y = rng.randrange(SIZE)
-        side = rng.randrange(2, 7)
-        color = (
-            rng.randrange(28, 58),
-            rng.randrange(44, 90),
-            rng.randrange(54, 116),
-        )
-        d.rectangle((x, y, x + side, y + side), fill=color)
+        radius = rng.randrange(2, 6)
+        color = (rng.randrange(22, 66), rng.randrange(52, 102), rng.randrange(56, 108))
+        d.rectangle((x, y, x + radius, y + radius), fill=color)
 
-    glow = glow.filter(ImageFilter.GaussianBlur(2.3))
+    glow = glow.filter(ImageFilter.GaussianBlur(2.1))
     return diffuse, glow
 
 
 def make_preview(diffuse: Image.Image, glow: Image.Image) -> Image.Image:
-    canvas = Image.new("RGB", (1400, 760), (13, 17, 24))
+    canvas = Image.new("RGB", (1400, 760), (14, 19, 22))
     bg = diffuse.resize((700, 700)).filter(ImageFilter.GaussianBlur(4))
     canvas.paste(bg, (0, 30))
 
     d = ImageDraw.Draw(canvas)
-    green = (91, 255, 175)
-    cyan = (70, 235, 255)
-    violet = (217, 87, 255)
-    amber = (255, 195, 79)
-    d.rectangle((0, 0, 1400, 760), outline=green, width=3)
-    d.text((760, 86), "RustChain Mempool", fill=(232, 255, 248), font=font(56))
-    d.text((762, 158), "Cluster swarm player skin", fill=(190, 208, 214), font=font(31))
-    d.text((762, 222), "Diffuse + glow maps, 1024x1024 TGA", fill=(190, 208, 214), font=font(28))
-    d.text((762, 266), "CC-BY-SA-4.0, deterministic procedural source", fill=(190, 208, 214), font=font(28))
+    d.rectangle((0, 0, 1400, 760), outline=(60, 235, 204), width=3)
+    d.text((760, 86), "RustChain Mempool", fill=(225, 255, 247), font=font(58))
+    d.text((762, 160), "Queued transaction swarm player skin", fill=(186, 207, 205), font=font(31))
+    d.text((762, 224), "Diffuse + glow maps, 1024x1024 TGA", fill=(186, 207, 205), font=font(28))
+    d.text((762, 268), "CC-BY-SA-4.0, deterministic procedural source", fill=(186, 207, 205), font=font(28))
 
     avatar = Image.new("RGBA", (420, 520), (0, 0, 0, 0))
     a = ImageDraw.Draw(avatar)
-    a.ellipse((156, 20, 264, 128), fill=(38, 50, 60), outline=green, width=5)
-    a.rounded_rectangle((106, 128, 314, 326), radius=34, fill=(34, 43, 54), outline=cyan, width=5)
-    a.rounded_rectangle((150, 178, 270, 268), radius=18, fill=(18, 28, 36), outline=green, width=4)
-    for i, y in enumerate(range(194, 252, 16)):
-        color = (green, cyan, violet, amber)[i % 4]
-        a.rounded_rectangle((166, y, 254 - i * 10, y + 8), radius=4, fill=color)
-    a.polygon([(106, 164), (30, 292), (78, 334), (144, 224)], fill=(30, 39, 50), outline=violet)
-    a.polygon([(314, 164), (390, 292), (342, 334), (276, 224)], fill=(30, 39, 50), outline=amber)
-    a.polygon([(146, 326), (210, 326), (190, 505), (112, 505)], fill=(26, 35, 45), outline=green)
-    a.polygon([(210, 326), (276, 326), (308, 505), (230, 505)], fill=(26, 35, 45), outline=cyan)
-    for x, y, color in ((112, 84, green), (262, 150, cyan), (88, 384, violet), (300, 408, amber)):
-        a.rounded_rectangle((x, y, x + 44, y + 30), radius=8, fill=(18, 26, 34), outline=color, width=3)
-        a.line((x + 44, y + 15, 210, 224), fill=color, width=4)
+    teal = (60, 235, 204)
+    amber = (255, 197, 72)
+    a.ellipse((156, 20, 264, 128), fill=(36, 52, 56), outline=teal, width=5)
+    a.rounded_rectangle((112, 128, 308, 322), radius=34, fill=(35, 48, 53), outline=teal, width=5)
+    a.ellipse((184, 194, 236, 246), fill=teal, outline=(225, 255, 247), width=3)
+    a.polygon([(112, 164), (34, 292), (78, 328), (140, 220)], fill=(30, 44, 48), outline=amber)
+    a.polygon([(308, 164), (388, 292), (342, 328), (280, 220)], fill=(30, 44, 48), outline=amber)
+    a.polygon([(146, 322), (210, 322), (190, 505), (112, 505)], fill=(27, 42, 45), outline=teal)
+    a.polygon([(210, 322), (276, 322), (308, 505), (230, 505)], fill=(27, 42, 45), outline=teal)
+    for i in range(22):
+        x = 100 + (i * 37) % 220
+        y = 74 + (i * 61) % 360
+        color = teal if i % 3 else amber
+        a.ellipse((x - 7, y - 7, x + 7, y + 7), fill=color)
+        if i > 0:
+            a.line((x, y, 210, 216), fill=color, width=2)
     avatar = avatar.resize((340, 421), Image.Resampling.LANCZOS)
     canvas.paste(avatar, (850, 318), avatar)
 
@@ -195,10 +186,10 @@ def make_preview(diffuse: Image.Image, glow: Image.Image) -> Image.Image:
     glow_thumb = glow.resize((190, 190))
     canvas.paste(diff_thumb, (70, 500))
     canvas.paste(glow_thumb, (284, 500))
-    d.rectangle((70, 500, 260, 690), outline=(232, 255, 248), width=2)
-    d.rectangle((284, 500, 474, 690), outline=(232, 255, 248), width=2)
-    d.text((70, 704), "diffuse", fill=(232, 255, 248), font=font(23))
-    d.text((284, 704), "glow", fill=(232, 255, 248), font=font(23))
+    d.rectangle((70, 500, 260, 690), outline=(225, 255, 247), width=2)
+    d.rectangle((284, 500, 474, 690), outline=(225, 255, 247), width=2)
+    d.text((70, 704), "diffuse", fill=(225, 255, 247), font=font(23))
+    d.text((284, 704), "glow", fill=(225, 255, 247), font=font(23))
     return canvas
 
 
