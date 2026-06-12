@@ -1,0 +1,4 @@
+token_gold,models/props/rustchain_rtc_token_pickup/rtc_token_pickup_gold
+token_edge,models/props/rustchain_rtc_token_pickup/rtc_token_pickup_edge
+pickup_glow,models/props/rustchain_rtc_token_pickup/rtc_token_pickup_glow
+pickup_base,models/props/rustchain_rtc_token_pickup/rtc_token_pickup_base
