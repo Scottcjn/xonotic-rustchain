@@ -1,0 +1,7 @@
+title RustChain Mempool Vault
+description Tight vertical RustChain DM/CA arena with mempool chokepoints, validator balconies, and aggressive center reward flow.
+author Nomad Codex
+cdtrack 5
+has weapons
+gametype dm pointlimit=30 timelimit=15
+gametype ca pointlimit=10 timelimit=15 teams=2
