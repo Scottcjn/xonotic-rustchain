@@ -1,0 +1,15 @@
+newmtl rig_frame
+Kd 0.150 0.160 0.180
+map_Kd gpu_farm_frame.tga
+
+newmtl gpu_board
+Kd 0.080 0.340 0.310
+map_Kd gpu_farm_boards.tga
+
+newmtl fan_glow
+Kd 0.060 0.700 0.760
+map_Kd gpu_farm_fans.tga
+
+newmtl rtc_cable
+Kd 0.850 0.420 0.100
+map_Kd gpu_farm_cables.tga

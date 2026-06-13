@@ -1,0 +1,4 @@
+rig_frame,models/props/rustchain_gpu_farm/gpu_farm_frame
+gpu_board,models/props/rustchain_gpu_farm/gpu_farm_boards
+fan_glow,models/props/rustchain_gpu_farm/gpu_farm_fans
+rtc_cable,models/props/rustchain_gpu_farm/gpu_farm_cables
