@@ -1,0 +1,13 @@
+// NetRadiant prefab: RTC token pickup prop
+{
+"classname" "misc_model"
+"model" "models/props/rtc_token_pickup/rtc_token_pickup.md3"
+"origin" "0 0 32"
+"angle" "0"
+}
+{
+"classname" "light"
+"origin" "0 0 48"
+"light" "180"
+"_color" "1.0 0.65 0.08"
+}

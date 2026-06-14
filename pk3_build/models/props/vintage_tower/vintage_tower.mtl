@@ -1,0 +1,11 @@
+newmtl case
+Kd 0.52 0.42 0.30
+map_Kd vintage_tower.tga
+newmtl dark
+Kd 0.08 0.08 0.08
+newmtl glass
+Kd 0.03 0.14 0.18
+newmtl cyan
+Kd 0.00 0.85 1.00
+newmtl amber
+Kd 1.00 0.55 0.05
