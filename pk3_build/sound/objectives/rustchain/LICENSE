@@ -1,0 +1,8 @@
+CC0 1.0 Universal
+
+The RustChain objective control cue sound design, generated audio files, and
+deterministic synthesis source in `tools/audio/generate_rustchain_objective_cues.py`
+are dedicated to the public domain under Creative Commons CC0 1.0 Universal.
+
+No external samples, recordings, speech models, or third-party audio assets are
+used.
