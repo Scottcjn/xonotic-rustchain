@@ -1,0 +1,7 @@
+title RustChain Antiquity Vault
+description Two-level RustChain arena through an antique hardware vault, crossed ledger bridges, and aggressive center reward flow.
+author EldwinMemoryOps
+cdtrack 5
+has weapons
+gametype dm pointlimit=30 timelimit=15
+gametype ca pointlimit=10 timelimit=15 teams=2
