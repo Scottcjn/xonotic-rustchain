@@ -1,0 +1,28 @@
+# Material table for rustchain_vintage_powerpc_tower
+newmtl powerpc_case
+Ka 0.000 0.000 0.000
+Kd 0.720 0.680 0.580
+Ks 0.050 0.050 0.050
+Ns 16.0
+map_Kd textures/powerpc_case.tga
+
+newmtl powerpc_dark
+Ka 0.000 0.000 0.000
+Kd 0.120 0.130 0.140
+Ks 0.050 0.050 0.050
+Ns 16.0
+map_Kd textures/powerpc_dark.tga
+
+newmtl powerpc_glow
+Ka 0.000 0.000 0.000
+Kd 0.050 0.840 0.880
+Ks 0.050 0.050 0.050
+Ns 16.0
+map_Kd textures/powerpc_glow.tga
+
+newmtl powerpc_label
+Ka 0.000 0.000 0.000
+Kd 0.820 0.500 0.180
+Ks 0.050 0.050 0.050
+Ns 16.0
+map_Kd textures/powerpc_label.tga
