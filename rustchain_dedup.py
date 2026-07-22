@@ -20,8 +20,10 @@ from functools import wraps
 RETENTION_SECONDS = 12 * 3600  # 12h prune window
 
 # Fields that form the dedup identity. Missing fields are silently dropped.
-# `timestamp` is floored to the minute to absorb tracker clock noise.
-_SIG_FIELDS = ("player_name", "event_type", "timestamp", "kills", "victim")
+# `event_id` is the immutable identity of the source event (e.g. the byte offset
+# of the log line) — prefer it over `timestamp`, which is only a coarse fallback
+# and is floored to the minute to absorb tracker clock noise.
+_SIG_FIELDS = ("player_name", "event_type", "event_id", "timestamp", "kills", "victim")
 
 
 class Deduper:
