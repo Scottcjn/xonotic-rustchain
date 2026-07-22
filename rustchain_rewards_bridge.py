@@ -176,9 +176,15 @@ def parse_kill_event(line):
     kill_match = re.search(r':kill:\d+:\d+:\d+:([^:]+):([^:]+)', line)
     if kill_match:
         return kill_match.group(1).strip(), kill_match.group(2).strip()
+    # Passive voice: "X was fragged by Y" — X is victim, Y is killer.
+    # This has to be tried BEFORE the active-voice pattern below, which happily
+    # matches the same line as killer="was", victim="by".
+    passive_match = re.search(r'(\w+) was fragged by (\w+)', line)
+    if passive_match:
+        return passive_match.group(2).strip(), passive_match.group(1).strip()
     frag_match = re.search(r'(\w+) fragged (\w+)', line)
     if frag_match:
-        return frag_match.group(1), frag_match.group(2)
+        return frag_match.group(1).strip(), frag_match.group(2).strip()
     return None, None
 
 def monitor_log(conn):
