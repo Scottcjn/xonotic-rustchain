@@ -17,6 +17,7 @@ import re
 import sys
 import time
 import sqlite3
+import uuid
 from datetime import datetime
 from decimal import Decimal, getcontext
 
@@ -124,17 +125,26 @@ def init_db():
     conn.commit()
     return conn
 
-def award_rtc(conn, player, event_type, amount):
+def award_rtc(conn, player, event_type, amount, event_id=None, victim=None):
     wallet = PLAYER_WALLETS.get(player, f"arena-{player.lower()}")
     ts = datetime.now().isoformat()
+
+    if event_id is None:
+        # No log identity supplied (manual/admin award): dedup has nothing to
+        # match on, and it must never silently swallow the payout instead.
+        event_id = f"adhoc:{uuid.uuid4()}"
 
     # DEDUP guard at the TOP — short-circuit before ANY local writes so a
     # tracker replay (crash + log re-tail) cannot inflate stats.total_rtc.
     # Keeps local DB in sync with on-chain truth.
+    # The identity is the SOURCE EVENT (log offset + victim), not the moment we
+    # happened to process it: a replay re-reads the same line at the same
+    # offset, while two real kills seconds apart are two different offsets.
     dedup_payload = {
         "player_name": player,
         "event_type": event_type,
-        "timestamp": time.time(),
+        "event_id": event_id,
+        "victim": victim,
         "kills": 1 if event_type == "kill" else 0,
     }
     sig = _DEDUPER.signature(dedup_payload)
@@ -201,6 +211,10 @@ def monitor_log(conn):
             f.seek(0, 2)
             
             while True:
+                # Byte offset of this line = immutable identity of the event.
+                # Re-tailing the same log yields the same offsets, so a replay
+                # dedups; two real kills never share one.
+                offset = f.tell()
                 line = f.readline()
                 if not line:
                     time.sleep(0.1)
@@ -211,23 +225,23 @@ def monitor_log(conn):
                     session_kills += 1
                     
                     # Base kill
-                    award_rtc(conn, killer, "kill", REWARDS["kill"])
+                    award_rtc(conn, killer, "kill", REWARDS["kill"], event_id=offset, victim=victim)
                     session_rtc += REWARDS["kill"]
                     
                     # First blood
                     if first_blood:
-                        award_rtc(conn, killer, "first_blood", REWARDS["first_blood"])
+                        award_rtc(conn, killer, "first_blood", REWARDS["first_blood"], event_id=offset, victim=victim)
                         session_rtc += REWARDS["first_blood"]
                         first_blood = False
                         print(f"  🩸 FIRST BLOOD!")
                     
                     # Boss bonuses
                     if "Boris" in victim:
-                        award_rtc(conn, killer, "kill_boris", REWARDS["kill_boris"])
+                        award_rtc(conn, killer, "kill_boris", REWARDS["kill_boris"], event_id=offset, victim=victim)
                         session_rtc += REWARDS["kill_boris"]
                         print(f"  ⚔️ Boris defeated!")
                     elif "Sophia" in victim:
-                        award_rtc(conn, killer, "kill_sophia", REWARDS["kill_sophia"])
+                        award_rtc(conn, killer, "kill_sophia", REWARDS["kill_sophia"], event_id=offset, victim=victim)
                         session_rtc += REWARDS["kill_sophia"]
                         print(f"  🤖 Sophia outsmarted!")
                     
@@ -237,20 +251,20 @@ def monitor_log(conn):
                     
                     streak = killstreaks[killer]
                     if streak == 5:
-                        award_rtc(conn, killer, "killstreak_5", REWARDS["killstreak_5"])
+                        award_rtc(conn, killer, "killstreak_5", REWARDS["killstreak_5"], event_id=offset, victim=victim)
                         print(f"  🔥 KILLING SPREE!")
                     elif streak == 10:
-                        award_rtc(conn, killer, "killstreak_10", REWARDS["killstreak_10"])
+                        award_rtc(conn, killer, "killstreak_10", REWARDS["killstreak_10"], event_id=offset, victim=victim)
                         print(f"  💀 RAMPAGE!")
                     elif streak == 25:
-                        award_rtc(conn, killer, "killstreak_25", REWARDS["killstreak_25"])
+                        award_rtc(conn, killer, "killstreak_25", REWARDS["killstreak_25"], event_id=offset, victim=victim)
                         print(f"  ⚡ G O D L I K E !")
                     
                     # Domination tracking
                     dom_key = f"{killer}>{victim}"
                     dominations[dom_key] = dominations.get(dom_key, 0) + 1
                     if dominations[dom_key] == 4:
-                        award_rtc(conn, killer, "domination", REWARDS["domination"])
+                        award_rtc(conn, killer, "domination", REWARDS["domination"], event_id=offset, victim=victim)
                         print(f"  👑 {killer} is DOMINATING {victim}!")
                 
                 # Match end
