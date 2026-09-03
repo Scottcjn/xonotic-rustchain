@@ -1,0 +1,7 @@
+title RustChain Ledger Nexus
+description Symmetric DM/CA arena with central ledger core, vertical validator shafts, and mempool flanks for aggressive flow.
+author rafaio1
+cdtrack 5
+has weapons
+gametype dm pointlimit=30 timelimit=15
+gametype ca pointlimit=10 timelimit=15 teams=2
