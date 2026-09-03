@@ -1,0 +1,84 @@
+{
+"classname" "worldspawn"
+"message" "RustChain Ledger Nexus"
+"author" "rafaio1"
+"_description" "Symmetric DM/CA arena: central ledger core with vertical validator shafts and mempool flanks."
+"_lightmapscale" "0.125"
+"_ambient" "32"
+"music" "sound/music/rustchain/chain_reactor_loop.ogg"
+{
+( 1024 -768 0 ) ( -1024 -768 0 ) ( -1024 768 0 ) eX/eX_floor_tread_01_d 0 0 0 0.25 0.25 0 0 0
+( 1024 768 -64 ) ( -1024 768 -64 ) ( -1024 -768 -64 ) common/caulk 0 0 0 0.25 0.25 0 0 0
+( 1024 768 -64 ) ( 1024 768 0 ) ( -1024 768 0 ) common/caulk 0 0 0 0.25 0.25 0 0 0
+( -1024 -768 -64 ) ( -1024 -768 0 ) ( 1024 -768 0 ) common/caulk 0 0 0 0.25 0.25 0 0 0
+( 1024 -768 -64 ) ( 1024 -768 0 ) ( 1024 768 0 ) common/caulk 0 0 0 0.25 0.25 0 0 0
+( -1024 768 -64 ) ( -1024 768 0 ) ( -1024 -768 0 ) common/caulk 0 0 0 0.25 0.25 0 0 0
+}
+{
+( 256 -256 0 ) ( -256 -256 0 ) ( -256 256 0 ) eX/eX_mtl_panel_03_d 0 0 0 0.25 0.25 0 0 0
+( 256 256 128 ) ( -256 256 128 ) ( -256 -256 128 ) eX/eX_mtl_panel_03_d 0 0 0 0.25 0.25 0 0 0
+( 256 256 0 ) ( 256 256 128 ) ( -256 256 128 ) common/caulk 0 0 0 0.25 0.25 0 0 0
+( -256 -256 0 ) ( -256 -256 128 ) ( 256 -256 128 ) common/caulk 0 0 0 0.25 0.25 0 0 0
+( 256 -256 0 ) ( 256 -256 128 ) ( 256 256 128 ) common/caulk 0 0 0 0.25 0.25 0 0 0
+( -256 256 0 ) ( -256 256 128 ) ( -256 -256 128 ) common/caulk 0 0 0 0.25 0.25 0 0 0
+}
+{
+( 64 -64 128 ) ( -64 -64 128 ) ( -64 64 128 ) exx/light/light_panel01 0 0 0 0.5 0.5 0 0 0
+( 64 64 256 ) ( -64 64 256 ) ( -64 -64 256 ) exx/light/light_panel01 0 0 0 0.5 0.5 0 0 0
+( 64 64 128 ) ( 64 64 256 ) ( -64 64 256 ) common/caulk 0 0 0 0.5 0.5 0 0 0
+( -64 -64 128 ) ( -64 -64 256 ) ( 64 -64 256 ) common/caulk 0 0 0 0.5 0.5 0 0 0
+( 64 -64 128 ) ( 64 -64 256 ) ( 64 64 256 ) common/caulk 0 0 0 0.5 0.5 0 0 0
+( -64 64 128 ) ( -64 64 256 ) ( -64 -64 256 ) common/caulk 0 0 0 0.5 0.5 0 0 0
+}
+{
+( 768 -128 0 ) ( 512 -128 0 ) ( 512 128 0 ) eX/eX_wall_panels_08_d 0 0 0 0.25 0.25 0 0 0
+( 768 128 256 ) ( 512 128 256 ) ( 512 -128 256 ) eX/eX_wall_panels_08_d 0 0 0 0.25 0.25 0 0 0
+( 768 128 0 ) ( 768 128 256 ) ( 512 128 256 ) common/caulk 0 0 0 0.25 0.25 0 0 0
+( 512 -128 0 ) ( 512 -128 256 ) ( 768 -128 256 ) common/caulk 0 0 0 0.25 0.25 0 0 0
+( 768 -128 0 ) ( 768 -128 256 ) ( 768 128 256 ) common/caulk 0 0 0 0.25 0.25 0 0 0
+( 512 128 0 ) ( 512 128 256 ) ( 512 -128 256 ) common/caulk 0 0 0 0.25 0.25 0 0 0
+}
+{
+( -512 -128 0 ) ( -768 -128 0 ) ( -768 128 0 ) eX/eX_wall_panels_08_d 0 0 0 0.25 0.25 0 0 0
+( -512 128 256 ) ( -768 128 256 ) ( -768 -128 256 ) eX/eX_wall_panels_08_d 0 0 0 0.25 0.25 0 0 0
+( -512 128 0 ) ( -512 128 256 ) ( -768 128 256 ) common/caulk 0 0 0 0.25 0.25 0 0 0
+( -768 -128 0 ) ( -768 -128 256 ) ( -512 -128 256 ) common/caulk 0 0 0 0.25 0.25 0 0 0
+( -512 -128 0 ) ( -512 -128 256 ) ( -512 128 256 ) common/caulk 0 0 0 0.25 0.25 0 0 0
+( -768 128 0 ) ( -768 128 256 ) ( -768 -128 256 ) common/caulk 0 0 0 0.25 0.25 0 0 0
+}
+{
+"classname" "info_player_deathmatch"
+"origin" "384 0 32"
+}
+{
+"classname" "info_player_deathmatch"
+"origin" "-384 0 32"
+}
+{
+"classname" "info_player_deathmatch"
+"origin" "0 384 32"
+}
+{
+"classname" "info_player_deathmatch"
+"origin" "0 -384 32"
+}
+{
+"classname" "item_health_medium"
+"origin" "0 0 160"
+}
+{
+"classname" "weapon_shotgun"
+"origin" "640 0 32"
+}
+{
+"classname" "weapon_machinegun"
+"origin" "-640 0 32"
+}
+{
+"classname" "item_armor_medium"
+"origin" "0 512 32"
+}
+{
+"classname" "item_armor_small"
+"origin" "0 -512 32"
+}
