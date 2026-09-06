@@ -1,0 +1,6 @@
+title RustChain Ledger Exchange
+description Cross-route RustChain DM/CA arena with a central settlement ring, exchange desks, and side ledgers.
+author prins1bap-ui
+has weapons
+gametype dm pointlimit=30 timelimit=15
+gametype ca pointlimit=10 timelimit=15 teams=2
