@@ -1,0 +1,6 @@
+title RustChain Antiquity Relay Yard
+description Two-lane DM/CA relay yard with asymmetric vertical platforms and a central transfer spine.
+author prins1bap-ui
+has weapons
+gametype dm pointlimit=30 timelimit=15
+gametype ca pointlimit=10 timelimit=15 teams=2
